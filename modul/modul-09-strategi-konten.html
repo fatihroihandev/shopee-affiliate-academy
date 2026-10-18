@@ -1,0 +1,728 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Modul 09 — Strategi Konten · Shopee Affiliate Academy</title>
+<meta name="description" content="Setelah modul ini, kamu mampu:">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#EE4D2D">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/style.css">
+<script>(function(){var d=document.documentElement;d.classList.add('js');try{var t=localStorage.getItem('sea-theme');if(t&&t!=='auto')d.setAttribute('data-theme',t);var p=JSON.parse(localStorage.getItem('sea-prefs')||'{}');['fs','lh','font','width'].forEach(function(k){if(p[k])d.setAttribute('data-'+k,p[k]);});if(p.focus)d.setAttribute('data-focus','1');}catch(e){}})();</script>
+</head>
+<body data-root="../" data-kind="modul" data-page="modul/modul-09-strategi-konten.html" data-title="Modul 09 — Strategi Konten">
+<a class="skip" href="#isi">Lewati ke isi</a>
+<div class="read-progress" id="read-progress" aria-hidden="true"></div>
+<div class="top" id="top">
+<header class="topbar">
+  <button class="icon-btn menu-btn" id="menu-btn" aria-label="Buka menu materi" aria-controls="sidebar" aria-expanded="false"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+  <a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true">SA</span><span class="brand-name">Shopee Affiliate Academy</span></a>
+  <div class="search" id="search">
+    <div class="search-box">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input id="search-input" type="search" placeholder="Cari materi…" autocomplete="off" aria-label="Cari materi">
+      <button class="icon-btn search-close" id="search-close" type="button" aria-label="Tutup pencarian"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+    </div>
+    <div class="search-results" id="search-results" hidden></div>
+  </div>
+  <button class="icon-btn desk-only" id="focus-btn" aria-label="Mode fokus" title="Mode fokus"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9V5h4M20 9V5h-4M4 15v4h4M20 15v4h-4"/></svg></button>
+  <button class="icon-btn aa-btn" id="aa-btn" aria-label="Pengaturan baca" aria-expanded="false" aria-controls="prefs"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20 10 5l6 15"/><path d="M6.5 14.5h7"/><path d="M15 12h5M17.5 12v8"/></svg></button>
+</header>
+<div class="subbar" id="subbar" aria-hidden="true"><span class="sb-title"></span><span class="sb-pct"></span></div>
+</div>
+<div class="prefs" id="prefs" hidden role="dialog" aria-label="Pengaturan tampilan">
+  <div class="prefs-head"><strong>Pengaturan baca</strong><button class="icon-btn sm" id="prefs-close" type="button" aria-label="Tutup"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
+  <div class="pref-row"><span>Ukuran teks</span><div class="seg" role="group" aria-label="Ukuran teks">
+    <button type="button" id="fs-down" aria-label="Perkecil teks">A−</button><output id="fs-val">3/5</output><button type="button" id="fs-up" aria-label="Perbesar teks">A+</button></div></div>
+  <div class="pref-row"><span>Jarak baris</span><div class="seg"><button type="button" data-pref="lh" data-val="tight">Rapat</button><button type="button" data-pref="lh" data-val="normal">Normal</button><button type="button" data-pref="lh" data-val="loose">Lega</button></div></div>
+  <div class="pref-row"><span>Huruf</span><div class="seg"><button type="button" data-pref="font" data-val="sans">Sans</button><button type="button" data-pref="font" data-val="serif">Serif</button></div></div>
+  <div class="pref-row"><span>Lebar teks</span><div class="seg"><button type="button" data-pref="width" data-val="normal">Standar</button><button type="button" data-pref="width" data-val="wide">Lebar</button></div></div>
+  <div class="pref-row"><span>Tema</span><div class="seg theme-seg"><button type="button" data-pref="theme" data-val="light">Terang</button><button type="button" data-pref="theme" data-val="sepia">Sepia</button><button type="button" data-pref="theme" data-val="dark">Gelap</button><button type="button" data-pref="theme" data-val="auto">Auto</button></div></div>
+  <label class="pref-switch"><input type="checkbox" id="pref-break" checked><span class="sw"></span><span>Pengingat istirahat (tiap 25 menit)</span></label>
+  <label class="pref-switch desk-only"><input type="checkbox" id="pref-focus"><span class="sw"></span><span>Mode fokus (sembunyikan menu)</span></label>
+  <button type="button" class="reset" id="prefs-reset">Kembalikan ke bawaan</button>
+</div>
+<div class="shell">
+<nav class="sidebar" id="sidebar" aria-label="Navigasi materi">
+<div class="nav-group">
+<a href="../index.html" data-page="index.html"><span>Beranda dan Pengantar</span></a>
+<a href="../master.html" data-page="master.html"><span>Rangkuman Master</span></a>
+</div>
+<details class="nav-level" data-mods="modul/modul-01-dasar-affiliate-marketing.html,modul/modul-02-shopee-affiliate-program-dan-kebijakan.html,modul/modul-03-persiapan-akun-dan-operasional.html"><summary><span class="lv-badge">1</span><span class="lv-name">Fundamentals</span><span class="lv-count">0/3</span></summary>
+<a href="../level-1.html" data-page="level-1.html"><span>Ringkasan level</span></a>
+<a href="../modul/modul-01-dasar-affiliate-marketing.html" data-page="modul/modul-01-dasar-affiliate-marketing.html"><span>Modul 01 — Dasar Affiliate Marketing</span></a>
+<a href="../modul/modul-02-shopee-affiliate-program-dan-kebijakan.html" data-page="modul/modul-02-shopee-affiliate-program-dan-kebijakan.html"><span>Modul 02 — Shopee Affiliate Program dan Kebijakan</span></a>
+<a href="../modul/modul-03-persiapan-akun-dan-operasional.html" data-page="modul/modul-03-persiapan-akun-dan-operasional.html"><span>Modul 03 — Persiapan Akun dan Operasional</span></a>
+</details>
+<details class="nav-level" data-mods="modul/modul-04-riset-pasar-dan-permintaan.html,modul/modul-05-niche-audiens-dan-positioning.html,modul/modul-06-riset-dan-evaluasi-produk.html,modul/modul-07-riset-kompetitor.html"><summary><span class="lv-badge">2</span><span class="lv-name">Market and Product Research</span><span class="lv-count">0/4</span></summary>
+<a href="../level-2.html" data-page="level-2.html"><span>Ringkasan level</span></a>
+<a href="../modul/modul-04-riset-pasar-dan-permintaan.html" data-page="modul/modul-04-riset-pasar-dan-permintaan.html"><span>Modul 04 — Riset Pasar dan Permintaan</span></a>
+<a href="../modul/modul-05-niche-audiens-dan-positioning.html" data-page="modul/modul-05-niche-audiens-dan-positioning.html"><span>Modul 05 — Niche, Audiens, dan Positioning</span></a>
+<a href="../modul/modul-06-riset-dan-evaluasi-produk.html" data-page="modul/modul-06-riset-dan-evaluasi-produk.html"><span>Modul 06 — Riset dan Evaluasi Produk</span></a>
+<a href="../modul/modul-07-riset-kompetitor.html" data-page="modul/modul-07-riset-kompetitor.html"><span>Modul 07 — Riset Kompetitor</span></a>
+</details>
+<details class="nav-level" data-mods="modul/modul-08-strategi-channel-dan-traffic-organik.html,modul/modul-09-strategi-konten.html,modul/modul-10-copywriting-dan-hook.html,modul/modul-11-produksi-video-dan-visual.html,modul/modul-12-seo-dan-konten-berbasis-pencarian.html,modul/modul-13-distribusi-dan-community-building.html" open><summary><span class="lv-badge">3</span><span class="lv-name">Content and Traffic</span><span class="lv-count">0/6</span></summary>
+<a href="../level-3.html" data-page="level-3.html"><span>Ringkasan level</span></a>
+<a href="../modul/modul-08-strategi-channel-dan-traffic-organik.html" data-page="modul/modul-08-strategi-channel-dan-traffic-organik.html"><span>Modul 08 — Strategi Channel dan Traffic Organik</span></a>
+<a href="../modul/modul-09-strategi-konten.html" data-page="modul/modul-09-strategi-konten.html" aria-current="page"><span>Modul 09 — Strategi Konten</span></a>
+<a href="../modul/modul-10-copywriting-dan-hook.html" data-page="modul/modul-10-copywriting-dan-hook.html"><span>Modul 10 — Copywriting dan Hook</span></a>
+<a href="../modul/modul-11-produksi-video-dan-visual.html" data-page="modul/modul-11-produksi-video-dan-visual.html"><span>Modul 11 — Produksi Video dan Visual</span></a>
+<a href="../modul/modul-12-seo-dan-konten-berbasis-pencarian.html" data-page="modul/modul-12-seo-dan-konten-berbasis-pencarian.html"><span>Modul 12 — SEO dan Konten Berbasis Pencarian</span></a>
+<a href="../modul/modul-13-distribusi-dan-community-building.html" data-page="modul/modul-13-distribusi-dan-community-building.html"><span>Modul 13 — Distribusi dan Community Building</span></a>
+</details>
+<details class="nav-level" data-mods="modul/modul-14-affiliate-link-dan-tracking.html,modul/modul-15-conversion-rate-optimization-cro.html,modul/modul-16-analytics-dan-dashboard.html,modul/modul-17-eksperimen-dan-validasi.html"><summary><span class="lv-badge">4</span><span class="lv-name">Conversion and Analytics</span><span class="lv-count">0/4</span></summary>
+<a href="../level-4.html" data-page="level-4.html"><span>Ringkasan level</span></a>
+<a href="../modul/modul-14-affiliate-link-dan-tracking.html" data-page="modul/modul-14-affiliate-link-dan-tracking.html"><span>Modul 14 — Affiliate Link dan Tracking</span></a>
+<a href="../modul/modul-15-conversion-rate-optimization-cro.html" data-page="modul/modul-15-conversion-rate-optimization-cro.html"><span>Modul 15 — Conversion Rate Optimization (CRO)</span></a>
+<a href="../modul/modul-16-analytics-dan-dashboard.html" data-page="modul/modul-16-analytics-dan-dashboard.html"><span>Modul 16 — Analytics dan Dashboard</span></a>
+<a href="../modul/modul-17-eksperimen-dan-validasi.html" data-page="modul/modul-17-eksperimen-dan-validasi.html"><span>Modul 17 — Eksperimen dan Validasi</span></a>
+</details>
+<details class="nav-level" data-mods="modul/modul-18-monetisasi-dan-pemilihan-produk-lanjutan.html,modul/modul-19-keuangan-dan-target-komisi.html,modul/modul-20-scaling-dan-sistem-produksi.html,modul/modul-21-kepatuhan-risiko-dan-reputasi.html,modul/modul-22-advanced-strategy.html,modul/modul-23-otomasi-dan-sistem-kerja.html,modul/modul-24-evaluasi-bisnis-dan-mastery.html"><summary><span class="lv-badge">5</span><span class="lv-name">Professional Growth</span><span class="lv-count">0/7</span></summary>
+<a href="../level-5.html" data-page="level-5.html"><span>Ringkasan level</span></a>
+<a href="../modul/modul-18-monetisasi-dan-pemilihan-produk-lanjutan.html" data-page="modul/modul-18-monetisasi-dan-pemilihan-produk-lanjutan.html"><span>Modul 18 — Monetisasi dan Pemilihan Produk Lanjutan</span></a>
+<a href="../modul/modul-19-keuangan-dan-target-komisi.html" data-page="modul/modul-19-keuangan-dan-target-komisi.html"><span>Modul 19 — Keuangan dan Target Komisi</span></a>
+<a href="../modul/modul-20-scaling-dan-sistem-produksi.html" data-page="modul/modul-20-scaling-dan-sistem-produksi.html"><span>Modul 20 — Scaling dan Sistem Produksi</span></a>
+<a href="../modul/modul-21-kepatuhan-risiko-dan-reputasi.html" data-page="modul/modul-21-kepatuhan-risiko-dan-reputasi.html"><span>Modul 21 — Kepatuhan, Risiko, dan Reputasi</span></a>
+<a href="../modul/modul-22-advanced-strategy.html" data-page="modul/modul-22-advanced-strategy.html"><span>Modul 22 — Advanced Strategy</span></a>
+<a href="../modul/modul-23-otomasi-dan-sistem-kerja.html" data-page="modul/modul-23-otomasi-dan-sistem-kerja.html"><span>Modul 23 — Otomasi dan Sistem Kerja</span></a>
+<a href="../modul/modul-24-evaluasi-bisnis-dan-mastery.html" data-page="modul/modul-24-evaluasi-bisnis-dan-mastery.html"><span>Modul 24 — Evaluasi Bisnis dan Mastery</span></a>
+</details>
+<div class="nav-group"><p class="nav-label">Praktik</p>
+<a href="../proyek-praktik.html" data-page="proyek-praktik.html"><span>8 Project Praktik Wajib</span></a>
+<a href="../database-notion.html" data-page="database-notion.html"><span>Database Notion</span></a>
+</div>
+<div class="nav-group"><p class="nav-label">Lampiran</p>
+<a href="../kamus-istilah.html" data-page="kamus-istilah.html"><span>Kamus Istilah</span></a>
+<a href="../rumus-template.html" data-page="rumus-template.html"><span>Lembar Rumus dan Template</span></a>
+<a href="../studi-kasus.html" data-page="studi-kasus.html"><span>Studi Kasus Simulasi</span></a>
+<a href="../panduan-pelatih.html" data-page="panduan-pelatih.html"><span>Panduan Pelatih dan Penilaian</span></a>
+</div></nav>
+<div class="scrim" id="scrim" hidden></div>
+<main id="isi" class="content">
+<nav class="crumbs" aria-label="Jejak halaman"><a href="../index.html">Beranda</a> <span>/</span> <a href="../level-3.html">Level 3</a> <span>/</span> Modul 09</nav>
+<details class="toc-mobile"><summary>Di halaman ini</summary><ol><li><a href="#1-tujuan-pembelajaran">Tujuan Pembelajaran</a></li><li><a href="#2-ringkasan-konsep-utama">Ringkasan Konsep Utama</a></li><li><a href="#3-penjelasan">Penjelasan</a></li><li><a href="#4-istilah-penting">Istilah Penting</a></li><li><a href="#5-langkah-praktik">Langkah Praktik</a></li><li><a href="#6-contoh-dan-template">Contoh dan Template</a></li><li><a href="#7-kesalahan-umum-dan-cara-menghindarinya">Kesalahan Umum dan Cara Menghindarinya</a></li><li><a href="#8-tugas-dan-checklist">Tugas dan Checklist</a></li><li><a href="#9-latihan-dan-kunci-jawaban">Latihan dan Kunci Jawaban</a></li><li><a href="#10-standar-kelulusan">Standar Kelulusan</a></li></ol></details>
+<article class="prose">
+<div class="eyebrow"><a class="chip" href="../level-3.html">Level 3 · Content and Traffic</a><span class="chip ghost">Modul 09 dari 24</span><span class="chip ghost">± 12 menit baca</span></div>
+<h1 id="modul-09-strategi-konten">Modul 09 — Strategi Konten</h1>
+<section class="sec reveal"><h2 id="1-tujuan-pembelajaran"><span class="h-text">1. Tujuan Pembelajaran</span><a class="anchor" href="#1-tujuan-pembelajaran" aria-label="Tautan ke bagian ini">#</a></h2>
+<p>Setelah modul ini, kamu mampu:</p>
+<ul>
+<li>Menentukan pilar konten yang sesuai kebutuhan audiens.</li>
+<li>Mengembangkan satu topik menjadi banyak sudut pandang.</li>
+<li>Membuat konten edukasi, demonstrasi, review, perbandingan, dan buying guide.</li>
+<li>Menjelaskan empat tahap pembelian calon pelanggan.</li>
+<li>Menyusun kalender konten 30 hari.</li>
+<li>Memakai ulang materi secara tepat dan diizinkan.</li>
+<li>Menghasilkan ide konten tanpa bergantung pada tren viral.</li>
+</ul>
+<hr />
+</section><section class="sec reveal"><h2 id="2-ringkasan-konsep-utama"><span class="h-text">2. Ringkasan Konsep Utama</span><a class="anchor" href="#2-ringkasan-konsep-utama" aria-label="Tautan ke bagian ini">#</a></h2>
+<ol>
+<li>Strategi konten adalah rencana tentang <strong>konten apa yang dibuat, untuk siapa, dengan tujuan apa, dan bagaimana hasilnya diukur</strong>.</li>
+<li><strong>Content pillar</strong> adalah kelompok besar topik yang menjadi dasar konten sebuah akun. Modul ini memberi enam pilar contoh untuk kategori perlengkapan kerja.</li>
+<li><strong>Content angle</strong> adalah sudut pandang spesifik untuk satu topik. Satu produk bisa menghasilkan banyak angle tanpa mencari produk baru.</li>
+<li><strong>Problem-solution content</strong> dimulai dari masalah audiens, bukan dari produk.</li>
+<li>Ada enam jenis konten affiliate: demonstrasi, edukasi, review, perbandingan, buying guide, dan jawaban keberatan. Keenamnya adalah pengelompokan dari 8 format yang kamu amati pada kompetitor di Modul 07. Format menjawab "bentuk kontennya apa", sedangkan jenis menjawab "fungsinya apa".</li>
+<li>Sesuaikan konten dengan empat tahap pembelian: Awareness, Consideration, Evaluation, Conversion.</li>
+<li>Content calendar bukan hanya tanggal dan judul. Ia memuat pilar, audiens, masalah, format, CTA, status produksi, dan metrik evaluasi.</li>
+<li><strong>Repurposing</strong> boleh dengan tiga syarat: punya hak penggunaan, disesuaikan dengan platform, dan bukan menyalin kreator lain.</li>
+<li>Tidak semua konten harus berakhir dengan ajakan membeli. Kejujuran meningkatkan kepercayaan jangka panjang.</li>
+</ol>
+<hr />
+</section><section class="sec reveal"><h2 id="3-penjelasan"><span class="h-text">3. Penjelasan</span><a class="anchor" href="#3-penjelasan" aria-label="Tautan ke bagian ini">#</a></h2>
+<h3 id="3-1-apa-itu-strategi-konten"><span class="h-text">3.1 Apa Itu Strategi Konten?</span><a class="anchor" href="#3-1-apa-itu-strategi-konten" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>Strategi konten adalah rencana tentang konten apa yang dibuat, untuk siapa, dengan tujuan apa, dan bagaimana hasilnya diukur. Tanpa strategi, kamu bisa mengunggah video setiap hari tetapi tidak punya arah.</p>
+<p>Contoh pembanding (kategori perlengkapan meja kerja):</p>
+<ul>
+<li><strong>Konten tanpa strategi:</strong> video produk dengan tulisan "Wajib punya!"</li>
+<li><strong>Konten dengan strategi:</strong> membahas<ul>
+<li>Masalah meja kerja yang terlalu sempit.</li>
+<li>Cara memilih stand laptop.</li>
+<li>Perbedaan stand laptop lipat dan tetap.</li>
+<li>Kesalahan saat membeli lampu meja.</li>
+<li>Perbandingan dua produk berdasarkan spesifikasi.</li>
+<li>Hal yang diperiksa sebelum membeli.</li>
+</ul>
+</li>
+</ul>
+<p>Setiap konten punya fungsi berbeda dalam membantu calon pembeli.</p>
+<h3 id="3-2-content-pillar"><span class="h-text">3.2 Content Pillar</span><a class="anchor" href="#3-2-content-pillar" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>Content pillar adalah kelompok besar topik yang menjadi dasar konten sebuah akun. Pilar menjaga arah pembahasan dan mengurangi kebingungan mencari ide tiap hari.</p>
+<p><strong>Enam content pillar contoh:</strong></p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Pilar</th>
+<th>Isi</th>
+<th>Contoh judul</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Pilar 1 — Masalah dan solusi</td>
+<td>Membahas masalah sehari-hari yang relevan dengan produk</td>
+<td>"Meja kerja terasa sempit? Periksa tiga penyebab ini sebelum membeli organizer."</td>
+</tr>
+<tr>
+<td>Pilar 2 — Demonstrasi produk</td>
+<td>Memperlihatkan cara kerja, fitur, ukuran, atau cara penggunaan</td>
+<td>"Begini cara mengatur tinggi stand laptop yang dapat disesuaikan."</td>
+</tr>
+<tr>
+<td>Pilar 3 — Perbandingan</td>
+<td>Membantu audiens memahami perbedaan beberapa pilihan</td>
+<td>"Stand laptop lipat vs. stand tetap: apa yang perlu dipertimbangkan?"</td>
+</tr>
+<tr>
+<td>Pilar 4 — Edukasi pembelian</td>
+<td>Mengajarkan cara menilai produk sebelum membeli</td>
+<td>"Empat hal yang perlu diperiksa sebelum membeli lampu meja."</td>
+</tr>
+<tr>
+<td>Pilar 5 — Inspirasi dan penggunaan</td>
+<td>Menunjukkan contoh pengaturan ruang, rutinitas, atau penggunaan produk</td>
+<td>"Ide menata meja kerja kecil tanpa menambahkan banyak barang."</td>
+</tr>
+<tr>
+<td>Pilar 6 — Keberatan dan pertanyaan pembeli</td>
+<td>Menjawab kekhawatiran soal harga, ukuran, bahan, daya tahan, atau kecocokan</td>
+<td>"Apakah stand laptop lipat cocok dimasukkan ke tas?"</td>
+</tr>
+</tbody>
+</table></div>
+<p>Enam pilar ini <strong>contoh untuk kategori perlengkapan kerja</strong>. Jika kamu memilih kategori lain, sesuaikan pilar dengan pertanyaan dan masalah pembeli di kategori itu.</p>
+<p><strong>Mengapa perlu beberapa pilar?</strong></p>
+<ul>
+<li>Jika semua konten berisi promosi, audiens merasa terus dijual produk.</li>
+<li>Jika semua konten edukasi tanpa jalur monetisasi, kamu dapat perhatian tetapi sedikit transaksi.</li>
+<li>Strategi yang baik menggabungkan konten yang membantu, mendidik, menunjukkan bukti, dan memudahkan keputusan beli.</li>
+</ul>
+<h3 id="3-3-content-angle"><span class="h-text">3.3 Content Angle</span><a class="anchor" href="#3-3-content-angle" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>Content angle adalah sudut pandang spesifik untuk membahas satu topik. Satu produk bisa menghasilkan banyak angle.</p>
+<p><strong>Contoh produk: organizer kabel.</strong></p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Angle</th>
+<th>Ide Konten</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Masalah</td>
+<td>Mengapa kabel di meja mudah berantakan?</td>
+</tr>
+<tr>
+<td>Demonstrasi</td>
+<td>Cara memasang organizer kabel</td>
+</tr>
+<tr>
+<td>Edukasi</td>
+<td>Hal yang perlu diperiksa sebelum membeli pengikat kabel</td>
+</tr>
+<tr>
+<td>Perbandingan</td>
+<td>Klip kabel vs. kotak penyimpanan kabel</td>
+</tr>
+<tr>
+<td>Keberatan</td>
+<td>Apakah organizer kabel cocok untuk semua jenis meja?</td>
+</tr>
+<tr>
+<td>Kesalahan</td>
+<td>Kesalahan memilih panjang kabel dan ukuran pengikat</td>
+</tr>
+<tr>
+<td>Penghematan</td>
+<td>Cara merapikan kabel dengan barang yang sudah dimiliki</td>
+</tr>
+<tr>
+<td>Buying guide</td>
+<td>Cara memilih organizer kabel sesuai kebutuhan</td>
+</tr>
+</tbody>
+</table></div>
+<p>Tidak semua konten harus berakhir dengan rekomendasi membeli. Kadang solusi terbaik adalah memakai barang yang sudah kamu punya. Kejujuran seperti ini meningkatkan kepercayaan jangka panjang.</p>
+<h3 id="3-4-problem-solution-content"><span class="h-text">3.4 Problem-Solution Content</span><a class="anchor" href="#3-4-problem-solution-content" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>Problem-solution content dimulai dari masalah audiens, lalu menjelaskan solusi yang relevan.</p>
+<p><strong>Struktur (6 langkah):</strong></p>
+<ol>
+<li>Sebutkan masalah.</li>
+<li>Jelaskan penyebab atau konteksnya.</li>
+<li>Tunjukkan solusi.</li>
+<li>Perlihatkan cara solusi bekerja.</li>
+<li>Berikan batasan atau hal yang perlu diperhatikan.</li>
+<li>Arahkan audiens ke langkah berikutnya.</li>
+</ol>
+<p><strong>Contoh lengkap:</strong></p>
+<ul>
+<li><strong>Masalah:</strong> kabel pengisi daya sering jatuh ke belakang meja.</li>
+<li><strong>Konteks:</strong> meja tidak punya pengelola kabel.</li>
+<li><strong>Solusi:</strong> pakai klip kabel yang sesuai.</li>
+<li><strong>Demonstrasi:</strong> tunjukkan cara memasang dan memakainya.</li>
+<li><strong>Batasan:</strong> pastikan ukuran klip sesuai diameter kabel.</li>
+<li><strong>CTA:</strong> ajak audiens memeriksa ukuran dan spesifikasi produk.</li>
+</ul>
+<p>Jangan menciptakan masalah palsu hanya agar produk terlihat penting.</p>
+<h3 id="3-5-jenis-konten-affiliate"><span class="h-text">3.5 Jenis Konten Affiliate</span><a class="anchor" href="#3-5-jenis-konten-affiliate" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>Ada enam jenis konten affiliate. Ini pengelompokan dari 8 format di Modul 07, yaitu format yang kamu amati pada kompetitor. Satu jenis bisa tampil dalam beberapa format.</p>
+<p><strong>A. Demonstrasi produk.</strong> Memperlihatkan cara produk dipakai. Elemen penting:</p>
+<ul>
+<li>Produk terlihat jelas.</li>
+<li>Fitur yang dibahas benar-benar ada.</li>
+<li>Demonstrasi mudah dipahami.</li>
+<li>Hasil tidak dimanipulasi.</li>
+<li>Kekurangan atau batasan dijelaskan jika relevan.</li>
+</ul>
+<p><strong>B. Konten edukasi.</strong> Memberi pengetahuan yang membantu audiens mengambil keputusan. Contoh: "Bagaimana memilih ukuran organizer yang sesuai dengan ruang penyimpanan?" Konten edukasi menarik audiens yang belum siap membeli tetapi sedang mempelajari masalahnya.</p>
+<p><strong>C. Review.</strong> Evaluasi produk berdasarkan bukti yang ada. Review langsung sebaiknya berdasar penggunaan nyata. Jika belum pernah mencoba produk, jangan menulis seolah sudah memakainya. Alternatif yang jujur adalah analisis spesifikasi, misalnya: "Berdasarkan informasi produk, ini tiga hal yang perlu diperiksa sebelum membeli." Bedakan informasi dari penjual dan pengalaman pribadi.</p>
+<p><strong>D. Perbandingan produk.</strong> Membantu audiens memahami kelebihan dan kekurangan beberapa pilihan. Bandingkan aspek yang sejenis:</p>
+<ul>
+<li>Harga pada waktu pengecekan.</li>
+<li>Dimensi.</li>
+<li>Bahan.</li>
+<li>Fitur.</li>
+<li>Garansi.</li>
+<li>Kebutuhan penggunaan.</li>
+<li>Informasi ulasan yang bisa diverifikasi.</li>
+</ul>
+<p>Jangan menyatakan produk A lebih baik secara mutlak jika ia hanya lebih cocok untuk kebutuhan tertentu.</p>
+<p><strong>E. Buying guide.</strong> Panduan memilih produk berdasarkan kebutuhan, bukan sekadar daftar produk populer. Struktur:</p>
+<ol>
+<li>Tentukan masalah pembeli.</li>
+<li>Identifikasi kriteria penting.</li>
+<li>Jelaskan pilihan yang tersedia.</li>
+<li>Bandingkan kelebihan dan kekurangan.</li>
+<li>Beri rekomendasi berdasarkan kebutuhan.</li>
+<li>Arahkan pembaca ke produk yang relevan.</li>
+<li>Ungkapkan hubungan affiliate.</li>
+</ol>
+<p><strong>F. Konten jawaban keberatan.</strong> Keberatan adalah alasan yang membuat calon pembeli ragu. Contoh:</p>
+<ul>
+<li>"Apakah ukurannya cocok?"</li>
+<li>"Apakah harganya sepadan?"</li>
+<li>"Apakah ada pilihan lebih murah?"</li>
+<li>"Apakah produk ini sesuai kebutuhan saya?"</li>
+<li>"Apa yang harus diperiksa sebelum membeli?"</li>
+</ul>
+<p>Jawab keberatan dengan fakta, bukan tekanan.</p>
+<h3 id="3-6-konten-berdasarkan-tahap-pembelian"><span class="h-text">3.6 Konten Berdasarkan Tahap Pembelian</span><a class="anchor" href="#3-6-konten-berdasarkan-tahap-pembelian" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>Calon pembeli tidak selalu siap membeli saat pertama menemukan kontenmu.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Tahap</th>
+<th>Nama</th>
+<th>Kondisi audiens</th>
+<th>Contoh konten</th>
+<th>Tujuan</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Awareness (menyadari masalah)</td>
+<td>Audiens mulai memahami masalah atau kebutuhan</td>
+<td>"Tiga penyebab meja kerja terasa berantakan."</td>
+<td>Menarik audiens yang relevan</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Consideration (mencari dan mempertimbangkan solusi)</td>
+<td>Audiens mulai membandingkan cara mengatasi masalah</td>
+<td>"Kapan organizer kabel diperlukan dan kapan tidak?"</td>
+<td>Membangun pemahaman dan kepercayaan</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Evaluation (membandingkan produk)</td>
+<td>Audiens membandingkan pilihan berdasarkan spesifikasi, harga, dan kebutuhan</td>
+<td>"Perbandingan dua jenis organizer kabel berdasarkan ukuran dan pemasangan."</td>
+<td>Membantu pengambilan keputusan</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Conversion (memutuskan membeli)</td>
+<td>Audiens butuh informasi terakhir sebelum transaksi</td>
+<td>"Periksa ukuran meja dan jenis kabel sebelum memilih produk ini."</td>
+<td>Mempermudah tindakan yang relevan tanpa memaksa</td>
+</tr>
+</tbody>
+</table></div>
+<p>Pembagian ini tidak kaku. Satu video bisa mengedukasi sekaligus mendorong pembelian.</p>
+<h3 id="3-7-content-calendar"><span class="h-text">3.7 Content Calendar</span><a class="anchor" href="#3-7-content-calendar" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>Content calendar adalah jadwal yang mencatat konten apa yang dipublikasikan, kapan, dan apa tujuannya.</p>
+<p>Kalender yang baik tidak hanya berisi tanggal dan judul. Tambahkan:</p>
+<ul>
+<li>Pilar konten.</li>
+<li>Audiens yang dituju.</li>
+<li>Masalah yang dibahas.</li>
+<li>Format.</li>
+<li>CTA.</li>
+<li>Status produksi.</li>
+<li>Metrik evaluasi.</li>
+</ul>
+<p><strong>Contoh kalender 7 hari:</strong></p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Hari</th>
+<th>Pilar</th>
+<th>Topik</th>
+<th>Format</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Masalah</td>
+<td>Meja kerja berantakan</td>
+<td>Video</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Edukasi</td>
+<td>Cara mengukur ruang meja</td>
+<td>Video</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Demonstrasi</td>
+<td>Cara memasang klip kabel</td>
+<td>Video</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Perbandingan</td>
+<td>Klip kabel vs. kotak kabel</td>
+<td>Video</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Keberatan</td>
+<td>Ukuran klip untuk kabel berbeda</td>
+<td>Video</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Buying guide</td>
+<td>Memilih organizer sesuai meja</td>
+<td>Video</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Evaluasi</td>
+<td>Analisis performa minggu pertama</td>
+<td>Analisis</td>
+</tr>
+</tbody>
+</table></div>
+<p>Kalender ini <strong>contoh pola</strong>, bukan aturan bahwa konten harus terbit setiap hari. Sesuaikan frekuensi dengan kapasitas produksimu.</p>
+<h3 id="3-8-content-repurposing"><span class="h-text">3.8 Content Repurposing</span><a class="anchor" href="#3-8-content-repurposing" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>Content repurposing adalah mengadaptasi materi yang sudah dibuat menjadi format lain yang tetap relevan. Satu topik, "Memilih stand laptop", bisa menjadi:</p>
+<ul>
+<li>Video demonstrasi singkat.</li>
+<li>Video perbandingan.</li>
+<li>Carousel tentang kriteria pemilihan.</li>
+<li>Artikel buying guide.</li>
+<li>Video jawaban atas pertanyaan audiens.</li>
+</ul>
+<p><strong>Tiga hal yang harus diperhatikan:</strong></p>
+<ol>
+<li>Pastikan kamu punya hak untuk memakai rekaman, gambar, musik, dan materi lain.</li>
+<li>Sesuaikan isi dengan karakteristik tiap platform.</li>
+<li>Jangan menyalin konten kreator lain hanya dengan mengganti teks atau musik.</li>
+</ol>
+<p>Konten buatan sendiri yang disesuaikan dengan kebutuhan audiens lebih aman sebagai fondasi bisnis jangka panjang.</p>
+<h3 id="3-9-seri-konten"><span class="h-text">3.9 Seri Konten</span><a class="anchor" href="#3-9-seri-konten" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>Seri konten adalah kumpulan konten yang membahas topik secara bertahap.</p>
+<p><strong>Contoh seri "Menata Meja Kerja Kecil":</strong></p>
+<ol>
+<li>Mengidentifikasi masalah meja kerja.</li>
+<li>Mengatur posisi laptop.</li>
+<li>Merapikan kabel.</li>
+<li>Memilih pencahayaan.</li>
+<li>Menentukan tempat penyimpanan.</li>
+<li>Memilih produk sesuai ukuran meja.</li>
+</ol>
+<p><strong>Keuntungan seri konten:</strong></p>
+<ul>
+<li>Ide lebih mudah dikembangkan.</li>
+<li>Audiens punya alasan mengikuti konten berikutnya.</li>
+<li>Topik bisa diperdalam bertahap.</li>
+<li>Hasil tiap bagian bisa dibandingkan.</li>
+</ul>
+<p>Jangan membuat seri hanya untuk memperbanyak unggahan. Setiap bagian harus punya manfaat yang berdiri sendiri.</p>
+<h3 id="3-10-konten-evergreen-dan-musiman"><span class="h-text">3.10 Konten Evergreen dan Musiman</span><a class="anchor" href="#3-10-konten-evergreen-dan-musiman" aria-label="Tautan ke bagian ini">#</a></h3>
+<p><strong>Konten evergreen</strong> adalah konten yang relevansinya relatif tahan lama. Contoh:</p>
+<ul>
+<li>Cara mengukur ruang sebelum membeli rak.</li>
+<li>Cara memilih ukuran organizer.</li>
+<li>Perbedaan bahan suatu produk.</li>
+<li>Kesalahan memilih aksesori kerja.</li>
+</ul>
+<p><strong>Konten musiman</strong> adalah konten yang relevan pada periode tertentu. Contoh:</p>
+<ul>
+<li>Perlengkapan sekolah menjelang tahun ajaran baru.</li>
+<li>Ide hadiah menjelang hari raya.</li>
+<li>Kebutuhan perjalanan saat musim liburan.</li>
+<li>Produk tertentu selama kampanye belanja.</li>
+</ul>
+<p>Konten musiman bisa berubah harga, ketersediaan, dan promosinya. <strong>Selalu periksa informasi terkini sebelum memublikasikan klaim soal penawaran.</strong></p>
+<hr />
+</section><section class="sec reveal"><h2 id="4-istilah-penting"><span class="h-text">4. Istilah Penting</span><a class="anchor" href="#4-istilah-penting" aria-label="Tautan ke bagian ini">#</a></h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Istilah</th>
+<th>Definisi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Strategi konten</td>
+<td>Rencana tentang konten apa yang dibuat, untuk siapa, dengan tujuan apa, dan bagaimana hasilnya diukur</td>
+</tr>
+<tr>
+<td>Content pillar</td>
+<td>Kelompok besar topik yang menjadi dasar konten sebuah akun</td>
+</tr>
+<tr>
+<td>Content angle</td>
+<td>Sudut pandang spesifik untuk membahas suatu topik</td>
+</tr>
+<tr>
+<td>Problem-solution content</td>
+<td>Konten yang dimulai dari masalah audiens dan menjelaskan solusi yang relevan</td>
+</tr>
+<tr>
+<td>Review</td>
+<td>Evaluasi produk berdasarkan bukti yang tersedia</td>
+</tr>
+<tr>
+<td>Buying guide</td>
+<td>Panduan memilih produk berdasarkan kebutuhan, bukan sekadar daftar produk populer</td>
+</tr>
+<tr>
+<td>Keberatan</td>
+<td>Alasan yang membuat calon pembeli ragu</td>
+</tr>
+<tr>
+<td>Awareness</td>
+<td>Tahap audiens mulai memahami masalah atau kebutuhan</td>
+</tr>
+<tr>
+<td>Consideration</td>
+<td>Tahap audiens mulai mencari dan membandingkan cara mengatasi masalah</td>
+</tr>
+<tr>
+<td>Evaluation</td>
+<td>Tahap audiens membandingkan produk berdasarkan spesifikasi, harga, dan kebutuhan</td>
+</tr>
+<tr>
+<td>Conversion</td>
+<td>Tahap audiens memutuskan membeli dan butuh informasi terakhir sebelum transaksi</td>
+</tr>
+<tr>
+<td>Content calendar</td>
+<td>Jadwal yang mencatat konten apa yang dipublikasikan, kapan, dan apa tujuannya</td>
+</tr>
+<tr>
+<td>Content repurposing</td>
+<td>Mengadaptasi materi yang sudah dibuat menjadi format lain yang tetap relevan</td>
+</tr>
+<tr>
+<td>Seri konten</td>
+<td>Kumpulan konten yang membahas topik secara bertahap</td>
+</tr>
+<tr>
+<td>Konten evergreen</td>
+<td>Konten yang relevansinya relatif tahan lama</td>
+</tr>
+<tr>
+<td>Konten musiman</td>
+<td>Konten yang relevan pada periode tertentu</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section><section class="sec reveal"><h2 id="5-langkah-praktik"><span class="h-text">5. Langkah Praktik</span><a class="anchor" href="#5-langkah-praktik" aria-label="Tautan ke bagian ini">#</a></h2>
+<p><strong>Alur menyusun strategi konten:</strong> tentukan enam content pillar → buat 30 ide konten dengan format 8 kolom → susun kalender 30 hari → catat hasil tiap format.</p>
+<p><strong>Struktur problem-solution content:</strong> sebutkan masalah → jelaskan penyebab → tunjukkan solusi → perlihatkan cara kerja → beri batasan → arahkan ke langkah berikutnya.</p>
+<p><strong>Struktur buying guide:</strong> tentukan masalah pembeli → identifikasi kriteria → jelaskan pilihan → bandingkan kelebihan dan kekurangan → rekomendasi sesuai kebutuhan → arahkan ke produk relevan → ungkapkan hubungan affiliate.</p>
+<hr />
+</section><section class="sec reveal"><h2 id="6-contoh-dan-template"><span class="h-text">6. Contoh dan Template</span><a class="anchor" href="#6-contoh-dan-template" aria-label="Tautan ke bagian ini">#</a></h2>
+<p><strong>Format pengisian ide konten (untuk Tugas 2).</strong> Pakai untuk setiap ide:</p>
+<ul>
+<li>Judul:</li>
+<li>Audiens:</li>
+<li>Masalah:</li>
+<li>Pilar:</li>
+<li>Angle:</li>
+<li>Format:</li>
+<li>CTA:</li>
+<li>Bukti yang diperlukan:</li>
+</ul>
+<p><strong>Contoh satu ide yang sudah terisi:</strong></p>
+<ul>
+<li><strong>Judul:</strong> Cara memilih organizer kabel untuk meja kecil.</li>
+<li><strong>Audiens:</strong> orang yang bekerja atau belajar di meja berukuran kecil.</li>
+<li><strong>Masalah:</strong> kabel tidak tertata.</li>
+<li><strong>Pilar:</strong> edukasi pembelian.</li>
+<li><strong>Angle:</strong> ukuran dan metode pemasangan.</li>
+<li><strong>Format:</strong> video demonstrasi.</li>
+<li><strong>CTA:</strong> periksa ukuran produk sebelum membeli.</li>
+<li><strong>Bukti:</strong> dimensi produk dan demonstrasi pemasangan yang benar.</li>
+</ul>
+<p><strong>Tabel pencatatan hasil per format (untuk Tugas 4):</strong></p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Konten</th>
+<th>Pilar</th>
+<th>Views</th>
+<th>Klik</th>
+<th>Transaksi</th>
+<th>Catatan</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Konten A</td>
+<td>Edukasi</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Konten B</td>
+<td>Demonstrasi</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Konten C</td>
+<td>Perbandingan</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section><section class="sec reveal"><h2 id="7-kesalahan-umum-dan-cara-menghindarinya"><span class="h-text">7. Kesalahan Umum dan Cara Menghindarinya</span><a class="anchor" href="#7-kesalahan-umum-dan-cara-menghindarinya" aria-label="Tautan ke bagian ini">#</a></h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Kesalahan</th>
+<th>Cara menghindari</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mengunggah video tiap hari tanpa arah</td>
+<td>Buat strategi: konten apa, untuk siapa, tujuan apa, diukur bagaimana</td>
+</tr>
+<tr>
+<td>Semua konten berisi promosi</td>
+<td>Gabungkan beberapa pilar agar audiens tidak merasa terus dijual produk</td>
+</tr>
+<tr>
+<td>Semua konten edukasi tanpa jalur monetisasi</td>
+<td>Sediakan jalur ke produk yang relevan agar perhatian berubah jadi transaksi</td>
+</tr>
+<tr>
+<td>Menciptakan masalah palsu agar produk terlihat penting</td>
+<td>Dilarang; mulai dari masalah nyata audiens</td>
+</tr>
+<tr>
+<td>Menulis review seolah sudah memakai produk padahal belum</td>
+<td>Pakai analisis spesifikasi dan bedakan informasi penjual dari pengalaman pribadi</td>
+</tr>
+<tr>
+<td>Menyatakan produk A lebih baik secara mutlak</td>
+<td>Nyatakan hanya lebih cocok untuk kebutuhan tertentu</td>
+</tr>
+<tr>
+<td>Menjawab keberatan dengan tekanan</td>
+<td>Jawab dengan fakta</td>
+</tr>
+<tr>
+<td>Menyalin konten kreator lain dengan mengganti teks atau musik</td>
+<td>Dilarang; pastikan hak penggunaan materi</td>
+</tr>
+<tr>
+<td>Membuat seri hanya untuk memperbanyak unggahan</td>
+<td>Pastikan tiap bagian punya manfaat yang berdiri sendiri</td>
+</tr>
+<tr>
+<td>Memublikasikan klaim penawaran musiman tanpa cek ulang</td>
+<td>Periksa harga, ketersediaan, dan promosi sebelum publikasi</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section><section class="sec reveal"><h2 id="8-tugas-dan-checklist"><span class="h-text">8. Tugas dan Checklist</span><a class="anchor" href="#8-tugas-dan-checklist" aria-label="Tautan ke bagian ini">#</a></h2>
+<p><strong>Tugas 1 — Tentukan enam content pillar</strong> (sesuai kategori yang kamu pilih)</p>
+<ul>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-09-strategi-konten.html#1"> <span>Pilar 1:</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-09-strategi-konten.html#2"> <span>Pilar 2:</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-09-strategi-konten.html#3"> <span>Pilar 3:</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-09-strategi-konten.html#4"> <span>Pilar 4:</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-09-strategi-konten.html#5"> <span>Pilar 5:</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-09-strategi-konten.html#6"> <span>Pilar 6:</span></label></li>
+</ul>
+<p><strong>Tugas 2 — Buat 30 ide konten.</strong> Pakai format 8 kolom di bagian 6 untuk tiap ide.</p>
+<ul>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-09-strategi-konten.html#7"> <span>30 ide tersebar di enam pilar.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-09-strategi-konten.html#8"> <span>Tiap ide punya audiens, masalah, angle, format, CTA, dan bukti.</span></label></li>
+</ul>
+<p><strong>Tugas 3 — Buat kalender 30 hari</strong></p>
+<ul>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-09-strategi-konten.html#9"> <span>Tentukan frekuensi publikasi yang realistis.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-09-strategi-konten.html#10"> <span>Sebarkan topik ke beberapa pilar.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-09-strategi-konten.html#11"> <span>Gabungkan konten edukasi dan komersial.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-09-strategi-konten.html#12"> <span>Jadwalkan evaluasi mingguan.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-09-strategi-konten.html#13"> <span>Siapkan ide cadangan dari pertanyaan audiens.</span></label></li>
+</ul>
+<p><strong>Tugas 4 — Catat hasil tiap format.</strong> Isi tabel pencatatan hasil di bagian 6 setelah konten terbit.</p>
+<hr />
+</section><section class="sec reveal sec-latihan"><h2 id="9-latihan-dan-kunci-jawaban"><span class="h-text">9. Latihan dan Kunci Jawaban</span><a class="anchor" href="#9-latihan-dan-kunci-jawaban" aria-label="Tautan ke bagian ini">#</a></h2>
+<div class="qa"><p class="q"><strong>1. Apa beda content pillar dan content angle?</strong></p><details class="ans"><summary>Lihat jawaban</summary><div class="a"><p>Content pillar = kelompok besar topik yang menjadi dasar konten sebuah akun. Content angle = sudut pandang spesifik untuk membahas satu topik. Satu pilar bisa dipecah menjadi banyak angle.</p></div></details></div>
+<div class="qa"><p class="q"><strong>2. Sebutkan enam pilar contoh untuk kategori perlengkapan kerja.</strong></p><details class="ans"><summary>Lihat jawaban</summary><div class="a"><p>Masalah dan solusi; demonstrasi produk; perbandingan; edukasi pembelian; inspirasi dan penggunaan; keberatan dan pertanyaan pembeli.</p></div></details></div>
+<div class="qa"><p class="q"><strong>3. Kamu belum pernah memakai produknya. Review jenis apa yang jujur?</strong></p><details class="ans"><summary>Lihat jawaban</summary><div class="a"><p>Analisis spesifikasi, misalnya: "Berdasarkan informasi produk, ini tiga hal yang perlu diperiksa sebelum membeli." Jangan menulis seolah sudah memakainya.</p></div></details></div>
+<div class="qa"><p class="q"><strong>4. Audiens baru menyadari mejanya berantakan tetapi belum tahu solusinya. Tahap apa, dan apa contoh kontennya?</strong></p><details class="ans"><summary>Lihat jawaban</summary><div class="a"><p>Tahap 1, Awareness (menyadari masalah). Contoh: "Tiga penyebab meja kerja terasa berantakan." Tujuannya menarik audiens yang relevan.</p></div></details></div>
+<div class="qa"><p class="q"><strong>5. Apa tiga syarat repurposing?</strong></p><details class="ans"><summary>Lihat jawaban</summary><div class="a"><ol>
+<li>Memiliki hak atas rekaman, gambar, musik, dan materi lain.</li>
+<li>Menyesuaikan isi dengan karakteristik tiap platform.</li>
+<li>Tidak menyalin konten kreator lain hanya dengan mengganti teks atau musik.</li>
+</ol></div></details></div>
+<hr />
+</section><section class="sec reveal"><h2 id="10-standar-kelulusan"><span class="h-text">10. Standar Kelulusan</span><a class="anchor" href="#10-standar-kelulusan" aria-label="Tautan ke bagian ini">#</a></h2>
+<p>Kamu dianggap menguasai modul ini jika kamu punya enam pilar yang relevan, 30 ide konten, kalender 30 hari, dan cara menilai konten berdasarkan kebutuhan audiens serta hasil aktual.</p></section>
+</article>
+<div class="complete reveal"><button type="button" id="mark-done" data-page="modul/modul-09-strategi-konten.html">Tandai modul ini selesai</button><span class="hint">Tersimpan di browser kamu.</span></div>
+<nav class="pager" aria-label="Halaman sebelumnya dan berikutnya"><a class="prev" href="../modul/modul-08-strategi-channel-dan-traffic-organik.html"><small>← Sebelumnya</small><span>08. Strategi Channel dan Traffic Organik</span></a><a class="next" href="../modul/modul-10-copywriting-dan-hook.html"><small>Berikutnya →</small><span>10. Copywriting dan Hook</span></a></nav>
+<footer class="foot">
+  <p>Materi pembelajaran, bukan nasihat hukum atau pajak. Aturan Shopee Affiliate bisa berubah, jadi selalu cek sumber resmi dan catat tanggal pemeriksaannya. Situs ini bukan situs resmi Shopee.</p>
+</footer>
+</main>
+<aside class="toc" aria-label="Isi halaman"><p class="toc-title">Di halaman ini</p><ol><li><a href="#1-tujuan-pembelajaran">Tujuan Pembelajaran</a></li><li><a href="#2-ringkasan-konsep-utama">Ringkasan Konsep Utama</a></li><li><a href="#3-penjelasan">Penjelasan</a></li><li><a href="#4-istilah-penting">Istilah Penting</a></li><li><a href="#5-langkah-praktik">Langkah Praktik</a></li><li><a href="#6-contoh-dan-template">Contoh dan Template</a></li><li><a href="#7-kesalahan-umum-dan-cara-menghindarinya">Kesalahan Umum dan Cara Menghindarinya</a></li><li><a href="#8-tugas-dan-checklist">Tugas dan Checklist</a></li><li><a href="#9-latihan-dan-kunci-jawaban">Latihan dan Kunci Jawaban</a></li><li><a href="#10-standar-kelulusan">Standar Kelulusan</a></li></ol></aside>
+</div>
+<nav class="bottom-nav" id="bottom-nav" aria-label="Navigasi cepat">
+  <a class="bn-item" href="../index.html"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5"/><path d="M5 10v10h14V10"/></svg><span>Beranda</span></a>
+  <button class="bn-item" id="bn-menu" type="button" aria-controls="sidebar"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="7" rx="1.5"/><rect x="4" y="13" width="7" height="7" rx="1.5"/><rect x="13" y="13" width="7" height="7" rx="1.5"/></svg><span>Materi</span></button>
+  <button class="bn-item" id="bn-search" type="button"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span>Cari</span></button>
+  <a class="bn-item bn-primary" href="../modul/modul-10-copywriting-dan-hook.html"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg><span>Lanjut</span></a>
+</nav>
+<button class="to-top" id="to-top" type="button" aria-label="Kembali ke atas" hidden><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5"/><path d="m5 12 7-7 7 7"/></svg></button>
+<div class="toast-wrap" id="toasts" aria-live="polite"></div>
+<script src="../assets/search-index.js"></script>
+<script src="../assets/app.js"></script>
+</body>
+</html>

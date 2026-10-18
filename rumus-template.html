@@ -1,0 +1,509 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Lembar Rumus dan Template · Shopee Affiliate Academy</title>
+<meta name="description" content="Halaman ini merangkum semua rumus dan template penting di satu tempat. Semua angka contoh adalah simulasi untuk latihan. Itu bukan tarif resmi Shopee dan bukan janji hasil.">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#EE4D2D">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/style.css">
+<script>(function(){var d=document.documentElement;d.classList.add('js');try{var t=localStorage.getItem('sea-theme');if(t&&t!=='auto')d.setAttribute('data-theme',t);var p=JSON.parse(localStorage.getItem('sea-prefs')||'{}');['fs','lh','font','width'].forEach(function(k){if(p[k])d.setAttribute('data-'+k,p[k]);});if(p.focus)d.setAttribute('data-focus','1');}catch(e){}})();</script>
+</head>
+<body data-root="" data-kind="lampiran" data-page="rumus-template.html" data-title="Lembar Rumus dan Template">
+<a class="skip" href="#isi">Lewati ke isi</a>
+<div class="read-progress" id="read-progress" aria-hidden="true"></div>
+<div class="top" id="top">
+<header class="topbar">
+  <button class="icon-btn menu-btn" id="menu-btn" aria-label="Buka menu materi" aria-controls="sidebar" aria-expanded="false"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+  <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true">SA</span><span class="brand-name">Shopee Affiliate Academy</span></a>
+  <div class="search" id="search">
+    <div class="search-box">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input id="search-input" type="search" placeholder="Cari materi…" autocomplete="off" aria-label="Cari materi">
+      <button class="icon-btn search-close" id="search-close" type="button" aria-label="Tutup pencarian"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+    </div>
+    <div class="search-results" id="search-results" hidden></div>
+  </div>
+  <button class="icon-btn desk-only" id="focus-btn" aria-label="Mode fokus" title="Mode fokus"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9V5h4M20 9V5h-4M4 15v4h4M20 15v4h-4"/></svg></button>
+  <button class="icon-btn aa-btn" id="aa-btn" aria-label="Pengaturan baca" aria-expanded="false" aria-controls="prefs"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20 10 5l6 15"/><path d="M6.5 14.5h7"/><path d="M15 12h5M17.5 12v8"/></svg></button>
+</header>
+<div class="subbar" id="subbar" aria-hidden="true"><span class="sb-title"></span><span class="sb-pct"></span></div>
+</div>
+<div class="prefs" id="prefs" hidden role="dialog" aria-label="Pengaturan tampilan">
+  <div class="prefs-head"><strong>Pengaturan baca</strong><button class="icon-btn sm" id="prefs-close" type="button" aria-label="Tutup"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
+  <div class="pref-row"><span>Ukuran teks</span><div class="seg" role="group" aria-label="Ukuran teks">
+    <button type="button" id="fs-down" aria-label="Perkecil teks">A−</button><output id="fs-val">3/5</output><button type="button" id="fs-up" aria-label="Perbesar teks">A+</button></div></div>
+  <div class="pref-row"><span>Jarak baris</span><div class="seg"><button type="button" data-pref="lh" data-val="tight">Rapat</button><button type="button" data-pref="lh" data-val="normal">Normal</button><button type="button" data-pref="lh" data-val="loose">Lega</button></div></div>
+  <div class="pref-row"><span>Huruf</span><div class="seg"><button type="button" data-pref="font" data-val="sans">Sans</button><button type="button" data-pref="font" data-val="serif">Serif</button></div></div>
+  <div class="pref-row"><span>Lebar teks</span><div class="seg"><button type="button" data-pref="width" data-val="normal">Standar</button><button type="button" data-pref="width" data-val="wide">Lebar</button></div></div>
+  <div class="pref-row"><span>Tema</span><div class="seg theme-seg"><button type="button" data-pref="theme" data-val="light">Terang</button><button type="button" data-pref="theme" data-val="sepia">Sepia</button><button type="button" data-pref="theme" data-val="dark">Gelap</button><button type="button" data-pref="theme" data-val="auto">Auto</button></div></div>
+  <label class="pref-switch"><input type="checkbox" id="pref-break" checked><span class="sw"></span><span>Pengingat istirahat (tiap 25 menit)</span></label>
+  <label class="pref-switch desk-only"><input type="checkbox" id="pref-focus"><span class="sw"></span><span>Mode fokus (sembunyikan menu)</span></label>
+  <button type="button" class="reset" id="prefs-reset">Kembalikan ke bawaan</button>
+</div>
+<div class="shell">
+<nav class="sidebar" id="sidebar" aria-label="Navigasi materi">
+<div class="nav-group">
+<a href="index.html" data-page="index.html"><span>Beranda dan Pengantar</span></a>
+<a href="master.html" data-page="master.html"><span>Rangkuman Master</span></a>
+</div>
+<details class="nav-level" data-mods="modul/modul-01-dasar-affiliate-marketing.html,modul/modul-02-shopee-affiliate-program-dan-kebijakan.html,modul/modul-03-persiapan-akun-dan-operasional.html"><summary><span class="lv-badge">1</span><span class="lv-name">Fundamentals</span><span class="lv-count">0/3</span></summary>
+<a href="level-1.html" data-page="level-1.html"><span>Ringkasan level</span></a>
+<a href="modul/modul-01-dasar-affiliate-marketing.html" data-page="modul/modul-01-dasar-affiliate-marketing.html"><span>Modul 01 — Dasar Affiliate Marketing</span></a>
+<a href="modul/modul-02-shopee-affiliate-program-dan-kebijakan.html" data-page="modul/modul-02-shopee-affiliate-program-dan-kebijakan.html"><span>Modul 02 — Shopee Affiliate Program dan Kebijakan</span></a>
+<a href="modul/modul-03-persiapan-akun-dan-operasional.html" data-page="modul/modul-03-persiapan-akun-dan-operasional.html"><span>Modul 03 — Persiapan Akun dan Operasional</span></a>
+</details>
+<details class="nav-level" data-mods="modul/modul-04-riset-pasar-dan-permintaan.html,modul/modul-05-niche-audiens-dan-positioning.html,modul/modul-06-riset-dan-evaluasi-produk.html,modul/modul-07-riset-kompetitor.html"><summary><span class="lv-badge">2</span><span class="lv-name">Market and Product Research</span><span class="lv-count">0/4</span></summary>
+<a href="level-2.html" data-page="level-2.html"><span>Ringkasan level</span></a>
+<a href="modul/modul-04-riset-pasar-dan-permintaan.html" data-page="modul/modul-04-riset-pasar-dan-permintaan.html"><span>Modul 04 — Riset Pasar dan Permintaan</span></a>
+<a href="modul/modul-05-niche-audiens-dan-positioning.html" data-page="modul/modul-05-niche-audiens-dan-positioning.html"><span>Modul 05 — Niche, Audiens, dan Positioning</span></a>
+<a href="modul/modul-06-riset-dan-evaluasi-produk.html" data-page="modul/modul-06-riset-dan-evaluasi-produk.html"><span>Modul 06 — Riset dan Evaluasi Produk</span></a>
+<a href="modul/modul-07-riset-kompetitor.html" data-page="modul/modul-07-riset-kompetitor.html"><span>Modul 07 — Riset Kompetitor</span></a>
+</details>
+<details class="nav-level" data-mods="modul/modul-08-strategi-channel-dan-traffic-organik.html,modul/modul-09-strategi-konten.html,modul/modul-10-copywriting-dan-hook.html,modul/modul-11-produksi-video-dan-visual.html,modul/modul-12-seo-dan-konten-berbasis-pencarian.html,modul/modul-13-distribusi-dan-community-building.html"><summary><span class="lv-badge">3</span><span class="lv-name">Content and Traffic</span><span class="lv-count">0/6</span></summary>
+<a href="level-3.html" data-page="level-3.html"><span>Ringkasan level</span></a>
+<a href="modul/modul-08-strategi-channel-dan-traffic-organik.html" data-page="modul/modul-08-strategi-channel-dan-traffic-organik.html"><span>Modul 08 — Strategi Channel dan Traffic Organik</span></a>
+<a href="modul/modul-09-strategi-konten.html" data-page="modul/modul-09-strategi-konten.html"><span>Modul 09 — Strategi Konten</span></a>
+<a href="modul/modul-10-copywriting-dan-hook.html" data-page="modul/modul-10-copywriting-dan-hook.html"><span>Modul 10 — Copywriting dan Hook</span></a>
+<a href="modul/modul-11-produksi-video-dan-visual.html" data-page="modul/modul-11-produksi-video-dan-visual.html"><span>Modul 11 — Produksi Video dan Visual</span></a>
+<a href="modul/modul-12-seo-dan-konten-berbasis-pencarian.html" data-page="modul/modul-12-seo-dan-konten-berbasis-pencarian.html"><span>Modul 12 — SEO dan Konten Berbasis Pencarian</span></a>
+<a href="modul/modul-13-distribusi-dan-community-building.html" data-page="modul/modul-13-distribusi-dan-community-building.html"><span>Modul 13 — Distribusi dan Community Building</span></a>
+</details>
+<details class="nav-level" data-mods="modul/modul-14-affiliate-link-dan-tracking.html,modul/modul-15-conversion-rate-optimization-cro.html,modul/modul-16-analytics-dan-dashboard.html,modul/modul-17-eksperimen-dan-validasi.html"><summary><span class="lv-badge">4</span><span class="lv-name">Conversion and Analytics</span><span class="lv-count">0/4</span></summary>
+<a href="level-4.html" data-page="level-4.html"><span>Ringkasan level</span></a>
+<a href="modul/modul-14-affiliate-link-dan-tracking.html" data-page="modul/modul-14-affiliate-link-dan-tracking.html"><span>Modul 14 — Affiliate Link dan Tracking</span></a>
+<a href="modul/modul-15-conversion-rate-optimization-cro.html" data-page="modul/modul-15-conversion-rate-optimization-cro.html"><span>Modul 15 — Conversion Rate Optimization (CRO)</span></a>
+<a href="modul/modul-16-analytics-dan-dashboard.html" data-page="modul/modul-16-analytics-dan-dashboard.html"><span>Modul 16 — Analytics dan Dashboard</span></a>
+<a href="modul/modul-17-eksperimen-dan-validasi.html" data-page="modul/modul-17-eksperimen-dan-validasi.html"><span>Modul 17 — Eksperimen dan Validasi</span></a>
+</details>
+<details class="nav-level" data-mods="modul/modul-18-monetisasi-dan-pemilihan-produk-lanjutan.html,modul/modul-19-keuangan-dan-target-komisi.html,modul/modul-20-scaling-dan-sistem-produksi.html,modul/modul-21-kepatuhan-risiko-dan-reputasi.html,modul/modul-22-advanced-strategy.html,modul/modul-23-otomasi-dan-sistem-kerja.html,modul/modul-24-evaluasi-bisnis-dan-mastery.html"><summary><span class="lv-badge">5</span><span class="lv-name">Professional Growth</span><span class="lv-count">0/7</span></summary>
+<a href="level-5.html" data-page="level-5.html"><span>Ringkasan level</span></a>
+<a href="modul/modul-18-monetisasi-dan-pemilihan-produk-lanjutan.html" data-page="modul/modul-18-monetisasi-dan-pemilihan-produk-lanjutan.html"><span>Modul 18 — Monetisasi dan Pemilihan Produk Lanjutan</span></a>
+<a href="modul/modul-19-keuangan-dan-target-komisi.html" data-page="modul/modul-19-keuangan-dan-target-komisi.html"><span>Modul 19 — Keuangan dan Target Komisi</span></a>
+<a href="modul/modul-20-scaling-dan-sistem-produksi.html" data-page="modul/modul-20-scaling-dan-sistem-produksi.html"><span>Modul 20 — Scaling dan Sistem Produksi</span></a>
+<a href="modul/modul-21-kepatuhan-risiko-dan-reputasi.html" data-page="modul/modul-21-kepatuhan-risiko-dan-reputasi.html"><span>Modul 21 — Kepatuhan, Risiko, dan Reputasi</span></a>
+<a href="modul/modul-22-advanced-strategy.html" data-page="modul/modul-22-advanced-strategy.html"><span>Modul 22 — Advanced Strategy</span></a>
+<a href="modul/modul-23-otomasi-dan-sistem-kerja.html" data-page="modul/modul-23-otomasi-dan-sistem-kerja.html"><span>Modul 23 — Otomasi dan Sistem Kerja</span></a>
+<a href="modul/modul-24-evaluasi-bisnis-dan-mastery.html" data-page="modul/modul-24-evaluasi-bisnis-dan-mastery.html"><span>Modul 24 — Evaluasi Bisnis dan Mastery</span></a>
+</details>
+<div class="nav-group"><p class="nav-label">Praktik</p>
+<a href="proyek-praktik.html" data-page="proyek-praktik.html"><span>8 Project Praktik Wajib</span></a>
+<a href="database-notion.html" data-page="database-notion.html"><span>Database Notion</span></a>
+</div>
+<div class="nav-group"><p class="nav-label">Lampiran</p>
+<a href="kamus-istilah.html" data-page="kamus-istilah.html"><span>Kamus Istilah</span></a>
+<a href="rumus-template.html" data-page="rumus-template.html" aria-current="page"><span>Lembar Rumus dan Template</span></a>
+<a href="studi-kasus.html" data-page="studi-kasus.html"><span>Studi Kasus Simulasi</span></a>
+<a href="panduan-pelatih.html" data-page="panduan-pelatih.html"><span>Panduan Pelatih dan Penilaian</span></a>
+</div></nav>
+<div class="scrim" id="scrim" hidden></div>
+<main id="isi" class="content">
+<nav class="crumbs" aria-label="Jejak halaman"><a href="index.html">Beranda</a> <span>/</span> Lembar Rumus dan Template</nav>
+<details class="toc-mobile"><summary>Di halaman ini</summary><ol><li><a href="#rumus-performa-konten">Rumus performa konten</a></li><li><a href="#rumus-keuangan">Rumus keuangan</a></li><li><a href="#rumus-perencanaan-target-hitung-mundur">Rumus perencanaan target (hitung mundur)</a></li><li><a href="#rumus-riset-produk">Rumus riset produk</a></li><li><a href="#rumus-notion">Rumus Notion</a></li><li><a href="#rumus-spreadsheet-kolom-a-nama-konten-b-views-c-klik-d-pesanan-e-komisi-disetujui">Rumus spreadsheet (kolom A nama konten, B views, C klik, D pesanan, E komisi disetujui)</a></li><li><a href="#template-1-catatan-riset-peluang-modul-04">Template 1 — Catatan riset peluang (Modul 04)</a></li><li><a href="#template-2-buyer-persona-modul-05">Template 2 — Buyer persona (Modul 05)</a></li><li><a href="#template-3-positioning-modul-05">Template 3 — Positioning (Modul 05)</a></li><li><a href="#template-4-analisis-akun-kompetitor-modul-07">Template 4 — Analisis akun kompetitor (Modul 07)</a></li><li><a href="#template-5-ide-konten-modul-09">Template 5 — Ide konten (Modul 09)</a></li><li><a href="#template-6-skrip-video-modul-10">Template 6 — Skrip video (Modul 10)</a></li><li><a href="#template-7-checklist-sebelum-publikasi-modul-11-dan-21">Template 7 — Checklist sebelum publikasi (Modul 11 dan 21)</a></li><li><a href="#template-8-catatan-eksperimen-modul-17">Template 8 — Catatan eksperimen (Modul 17)</a></li><li><a href="#template-9-laporan-mingguan-modul-23">Template 9 — Laporan mingguan (Modul 23)</a></li><li><a href="#template-10-lembar-perhitungan-target-modul-19">Template 10 — Lembar perhitungan target (Modul 19)</a></li><li><a href="#template-11-rekonsiliasi-komisi-modul-14-dan-19">Template 11 — Rekonsiliasi komisi (Modul 14 dan 19)</a></li><li><a href="#template-12-laporan-performa-30-hari-modul-24">Template 12 — Laporan performa 30 hari (Modul 24)</a></li></ol></details>
+<article class="prose">
+<div class="eyebrow"><span class="chip ghost">± 5 menit baca</span></div>
+<h1 id="lembar-rumus-dan-template">Lembar Rumus dan Template</h1>
+<p>Halaman ini merangkum semua rumus dan template penting di satu tempat. Semua angka contoh adalah simulasi untuk latihan. Itu bukan tarif resmi Shopee dan bukan janji hasil.</p>
+<hr />
+<h1 id="bagian-a-rumus">BAGIAN A — RUMUS</h1>
+<section class="sec reveal"><h2 id="rumus-performa-konten"><span class="h-text">Rumus performa konten</span><a class="anchor" href="#rumus-performa-konten" aria-label="Tautan ke bagian ini">#</a></h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Metrik</th>
+<th>Rumus</th>
+<th>Contoh</th>
+<th>Modul</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Komisi</td>
+<td>Dasar komisi × Tarif komisi</td>
+<td>Rp100.000 × 5% = Rp5.000</td>
+<td>01</td>
+</tr>
+<tr>
+<td>CTR</td>
+<td>Klik ÷ Tayangan × 100%</td>
+<td>200 ÷ 10.000 = 2%</td>
+<td>01, 16</td>
+</tr>
+<tr>
+<td>CVR</td>
+<td>Pesanan ÷ Klik × 100%</td>
+<td>10 ÷ 200 = 5%</td>
+<td>01, 16</td>
+</tr>
+<tr>
+<td>CVR valid</td>
+<td>Pesanan memenuhi syarat ÷ Klik × 100%</td>
+<td>15 ÷ 400 = 3,75%</td>
+<td>16</td>
+</tr>
+<tr>
+<td>EPC</td>
+<td>Komisi ÷ Klik</td>
+<td>Rp250.000 ÷ 500 = Rp500</td>
+<td>16, 18</td>
+</tr>
+<tr>
+<td>Komisi per 1.000 views</td>
+<td>Komisi ÷ Views × 1.000</td>
+<td>Rp500.000 ÷ 50.000 × 1.000 = Rp10.000</td>
+<td>16, 18</td>
+</tr>
+<tr>
+<td>AOV</td>
+<td>Total nilai pesanan ÷ Jumlah pesanan</td>
+<td>Rp2.000.000 ÷ 40 = Rp50.000</td>
+<td>16</td>
+</tr>
+<tr>
+<td>Rasio pembatalan</td>
+<td>Pesanan dibatalkan ÷ Total pesanan × 100%</td>
+<td>10 ÷ 100 = 10%</td>
+<td>16</td>
+</tr>
+<tr>
+<td>Komisi rata-rata per pesanan</td>
+<td>Total komisi ÷ Jumlah pesanan yang sesuai</td>
+<td>Rp2.000.000 ÷ 200 = Rp10.000</td>
+<td>19</td>
+</tr>
+</tbody>
+</table></div>
+<p>Catatan penting:</p>
+<ul>
+<li><strong>Tayangan</strong> bisa berarti views atau impresi. Selalu sebutkan dasar yang kamu pakai.</li>
+<li>Pakai komisi dengan status yang sama dan periode yang sama di pembilang dan penyebut.</li>
+<li>EPC paling aman dihitung dengan komisi disetujui.</li>
+</ul>
+</section><section class="sec reveal"><h2 id="rumus-keuangan"><span class="h-text">Rumus keuangan</span><a class="anchor" href="#rumus-keuangan" aria-label="Tautan ke bagian ini">#</a></h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Hal</th>
+<th>Rumus</th>
+<th>Contoh</th>
+<th>Modul</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Hasil setelah biaya (basis kas)</td>
+<td>Komisi dibayarkan − Biaya usaha</td>
+<td>Rp6 juta − Rp1 juta = Rp5 juta</td>
+<td>01, 19</td>
+</tr>
+<tr>
+<td>Hasil setelah biaya (basis kinerja)</td>
+<td>Komisi disetujui − Biaya usaha</td>
+<td>Rp8 juta − Rp1 juta = Rp7 juta</td>
+<td>19, 24</td>
+</tr>
+<tr>
+<td>Komisi per jam kerja</td>
+<td>Komisi yang dipilih ÷ Total jam kerja</td>
+<td>Rp3.000.000 ÷ 100 jam = Rp30.000</td>
+<td>19</td>
+</tr>
+<tr>
+<td>Saldo akhir</td>
+<td>Saldo awal + Kas masuk − Kas keluar</td>
+<td>Rp500.000 + Rp1.500.000 − Rp400.000 = Rp1.600.000</td>
+<td>19</td>
+</tr>
+<tr>
+<td>Rasio komisi disetujui</td>
+<td>Komisi disetujui ÷ Komisi estimasi × 100%</td>
+<td>Gunakan hanya untuk transaksi dan periode yang sebanding</td>
+<td>18</td>
+</tr>
+<tr>
+<td>Kontribusi produk</td>
+<td>Komisi produk ÷ Total komisi × 100%</td>
+<td>Rp3.500.000 ÷ Rp5.000.000 = 70%</td>
+<td>18</td>
+</tr>
+</tbody>
+</table></div>
+<p>Istilah "profit bersih" hanya dipakai setelah pajak dan kewajiban lain dihitung.</p>
+</section><section class="sec reveal"><h2 id="rumus-perencanaan-target-hitung-mundur"><span class="h-text">Rumus perencanaan target (hitung mundur)</span><a class="anchor" href="#rumus-perencanaan-target-hitung-mundur" aria-label="Tautan ke bagian ini">#</a></h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Langkah</th>
+<th>Rumus</th>
+<th>Contoh (target Rp30 juta)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. Kebutuhan pesanan</td>
+<td>Target komisi ÷ Komisi rata-rata per pesanan (bulatkan ke atas)</td>
+<td>Rp30.000.000 ÷ Rp10.000 = 3.000 pesanan</td>
+</tr>
+<tr>
+<td>2. Kebutuhan klik</td>
+<td>Kebutuhan pesanan ÷ CVR (desimal)</td>
+<td>3.000 ÷ 0,03 = 100.000 klik</td>
+</tr>
+<tr>
+<td>3. Kebutuhan views</td>
+<td>Kebutuhan klik ÷ CTR (desimal)</td>
+<td>100.000 ÷ 0,02 = 5.000.000 views</td>
+</tr>
+</tbody>
+</table></div>
+<p>Arah maju: Pesanan = Views × CTR × CVR, lalu Komisi = Pesanan × Komisi rata-rata. Contoh: 1.000.000 × 2% × 3% = 600 pesanan.</p>
+<p>Rp30 juta hanya contoh latihan. Pakai target dan data aktualmu sendiri.</p>
+</section><section class="sec reveal"><h2 id="rumus-riset-produk"><span class="h-text">Rumus riset produk</span><a class="anchor" href="#rumus-riset-produk" aria-label="Tautan ke bagian ini">#</a></h2>
+<p><strong>Skor produk berbobot:</strong></p>
+<pre><code>Skor total = jumlah dari (Skor faktor ÷ 5 × Bobot)
+</code></pre>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Faktor</th>
+<th>Bobot</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Kesesuaian dengan kebutuhan audiens</td>
+<td>25%</td>
+</tr>
+<tr>
+<td>Kualitas dan reputasi</td>
+<td>20%</td>
+</tr>
+<tr>
+<td>Harga dan nilai guna</td>
+<td>15%</td>
+</tr>
+<tr>
+<td>Komisi dan potensi pendapatan</td>
+<td>15%</td>
+</tr>
+<tr>
+<td>Persaingan</td>
+<td>10%</td>
+</tr>
+<tr>
+<td>Potensi demonstrasi konten</td>
+<td>10%</td>
+</tr>
+<tr>
+<td>Ketersediaan</td>
+<td>5%</td>
+</tr>
+</tbody>
+</table></div>
+<p>Hasil 80–100: kandidat prioritas. 65–79: perlu diperiksa lebih lanjut. Di bawah 65: banyak kelemahan, evaluasi kembali.</p>
+</section><section class="sec reveal"><h2 id="rumus-notion"><span class="h-text">Rumus Notion</span><a class="anchor" href="#rumus-notion" aria-label="Tautan ke bagian ini">#</a></h2>
+<pre><code>CTR = if(prop(&quot;Views&quot;) &gt; 0, prop(&quot;Klik&quot;) / prop(&quot;Views&quot;), 0)
+CVR = if(prop(&quot;Klik&quot;) &gt; 0, prop(&quot;Pesanan&quot;) / prop(&quot;Klik&quot;), 0)
+EPC = if(prop(&quot;Klik&quot;) &gt; 0, prop(&quot;Komisi Disetujui&quot;) / prop(&quot;Klik&quot;), 0)
+</code></pre>
+</section><section class="sec reveal"><h2 id="rumus-spreadsheet-kolom-a-nama-konten-b-views-c-klik-d-pesanan-e-komisi-disetujui"><span class="h-text">Rumus spreadsheet (kolom A nama konten, B views, C klik, D pesanan, E komisi disetujui)</span><a class="anchor" href="#rumus-spreadsheet-kolom-a-nama-konten-b-views-c-klik-d-pesanan-e-komisi-disetujui" aria-label="Tautan ke bagian ini">#</a></h2>
+<pre><code>CTR                   =IFERROR(C2/B2,0)
+CVR                   =IFERROR(D2/C2,0)
+EPC                   =IFERROR(E2/C2,0)
+Komisi per 1.000 views =IFERROR(E2/B2*1000,0)
+</code></pre>
+<p>Format CTR dan CVR sebagai persentase.</p>
+<hr />
+<h1 id="bagian-b-template">BAGIAN B — TEMPLATE</h1>
+</section><section class="sec reveal"><h2 id="template-1-catatan-riset-peluang-modul-04"><span class="h-text">Template 1 — Catatan riset peluang (Modul 04)</span><a class="anchor" href="#template-1-catatan-riset-peluang-modul-04" aria-label="Tautan ke bagian ini">#</a></h2>
+<ul>
+<li>Nama peluang:</li>
+<li>Masalah calon pembeli:</li>
+<li>Audiens yang mungkin membutuhkan:</li>
+<li>Bukti dari sumber pertama / kedua / ketiga:</li>
+<li>Sinyal niat beli:</li>
+<li>Keterbatasan data:</li>
+<li>Hipotesis yang ingin diuji:</li>
+<li>Langkah validasi berikutnya:</li>
+</ul>
+</section><section class="sec reveal"><h2 id="template-2-buyer-persona-modul-05"><span class="h-text">Template 2 — Buyer persona (Modul 05)</span><a class="anchor" href="#template-2-buyer-persona-modul-05" aria-label="Tautan ke bagian ini">#</a></h2>
+<ul>
+<li>Nama persona:</li>
+<li>Situasi atau latar belakang:</li>
+<li>Masalah yang ingin diselesaikan:</li>
+<li>Motivasi pembelian:</li>
+<li>Batas anggaran atau sensitivitas harga:</li>
+<li>Hal yang dikhawatirkan:</li>
+<li>Pertanyaan sebelum membeli:</li>
+<li>Jenis konten yang dibutuhkan:</li>
+<li>Produk yang mungkin relevan:</li>
+<li>Bukti yang mendukung persona:</li>
+<li>Asumsi yang belum terverifikasi:</li>
+</ul>
+</section><section class="sec reveal"><h2 id="template-3-positioning-modul-05"><span class="h-text">Template 3 — Positioning (Modul 05)</span><a class="anchor" href="#template-3-positioning-modul-05" aria-label="Tautan ke bagian ini">#</a></h2>
+<blockquote class="callout">
+<p>Saya membantu [audiens utama] menyelesaikan [masalah utama] melalui [pendekatan konten] agar mereka dapat [hasil yang diinginkan].</p>
+</blockquote>
+</section><section class="sec reveal"><h2 id="template-4-analisis-akun-kompetitor-modul-07"><span class="h-text">Template 4 — Analisis akun kompetitor (Modul 07)</span><a class="anchor" href="#template-4-analisis-akun-kompetitor-modul-07" aria-label="Tautan ke bagian ini">#</a></h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Aspek</th>
+<th>Catatan</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Nama atau identitas akun</td>
+<td></td>
+</tr>
+<tr>
+<td>Niche dan audiens utama</td>
+<td></td>
+</tr>
+<tr>
+<td>Positioning</td>
+<td></td>
+</tr>
+<tr>
+<td>Format konten</td>
+<td></td>
+</tr>
+<tr>
+<td>Pola hook</td>
+<td></td>
+</tr>
+<tr>
+<td>Cara menjawab keberatan</td>
+<td></td>
+</tr>
+<tr>
+<td>CTA</td>
+<td></td>
+</tr>
+<tr>
+<td>Kekuatan dan kelemahan yang teramati</td>
+<td></td>
+</tr>
+<tr>
+<td>Peluang diferensiasi</td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p>Catat sumber dan tanggal pengamatan. Kalau datanya tidak ada, tulis "tidak diketahui".</p>
+</section><section class="sec reveal"><h2 id="template-5-ide-konten-modul-09"><span class="h-text">Template 5 — Ide konten (Modul 09)</span><a class="anchor" href="#template-5-ide-konten-modul-09" aria-label="Tautan ke bagian ini">#</a></h2>
+<ul>
+<li>Judul:</li>
+<li>Audiens:</li>
+<li>Masalah:</li>
+<li>Pilar:</li>
+<li>Angle:</li>
+<li>Format:</li>
+<li>CTA:</li>
+<li>Bukti yang diperlukan:</li>
+</ul>
+</section><section class="sec reveal"><h2 id="template-6-skrip-video-modul-10"><span class="h-text">Template 6 — Skrip video (Modul 10)</span><a class="anchor" href="#template-6-skrip-video-modul-10" aria-label="Tautan ke bagian ini">#</a></h2>
+<ul>
+<li>Nama konten:</li>
+<li>Audiens dan masalah:</li>
+<li><strong>Hook:</strong></li>
+<li><strong>Konteks:</strong></li>
+<li><strong>Isi atau demonstrasi:</strong></li>
+<li><strong>Bukti:</strong></li>
+<li><strong>Batasan:</strong></li>
+<li><strong>CTA:</strong></li>
+<li><strong>Pengungkapan affiliate:</strong> "Link ini adalah affiliate link. Saya dapat menerima komisi jika kamu membeli lewat link ini dan transaksinya memenuhi ketentuan program."</li>
+<li>Sumber informasi:</li>
+</ul>
+<p>Rumus manfaat produk: Fitur → Fungsi → Manfaat potensial → Batasan.</p>
+</section><section class="sec reveal"><h2 id="template-7-checklist-sebelum-publikasi-modul-11-dan-21"><span class="h-text">Template 7 — Checklist sebelum publikasi (Modul 11 dan 21)</span><a class="anchor" href="#template-7-checklist-sebelum-publikasi-modul-11-dan-21" aria-label="Tautan ke bagian ini">#</a></h2>
+<ul>
+<li class="task"><label><input type="checkbox" data-key="rumus-template.html#1"> <span>Produk terlihat jelas.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="rumus-template.html#2"> <span>Audio dapat dipahami.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="rumus-template.html#3"> <span>Hook sesuai dengan isi.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="rumus-template.html#4"> <span>Demonstrasi akurat.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="rumus-template.html#5"> <span>Subtitle tidak ada kesalahan.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="rumus-template.html#6"> <span>Tidak ada klaim tanpa bukti.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="rumus-template.html#7"> <span>Materi visual dan musik dipakai secara sah.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="rumus-template.html#8"> <span>CTA relevan dan tidak memakai urgensi palsu.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="rumus-template.html#9"> <span>Pengungkapan affiliate tersedia.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="rumus-template.html#10"> <span>Link dan penempatannya sesuai aturan.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="rumus-template.html#11"> <span>Harga dan stok tidak menyesatkan.</span></label></li>
+</ul>
+</section><section class="sec reveal"><h2 id="template-8-catatan-eksperimen-modul-17"><span class="h-text">Template 8 — Catatan eksperimen (Modul 17)</span><a class="anchor" href="#template-8-catatan-eksperimen-modul-17" aria-label="Tautan ke bagian ini">#</a></h2>
+<ul>
+<li>ID Eksperimen:</li>
+<li>Tanggal mulai dan tanggal evaluasi:</li>
+<li>Tujuan:</li>
+<li>Hipotesis: Jika saya melakukan ..., maka metrik ... akan berubah karena ...</li>
+<li>Variabel utama dan faktor lain yang perlu diperhatikan:</li>
+<li>Baseline (isi hanya metrik yang datanya ada):</li>
+<li>Hasil pengujian:</li>
+<li>Keterbatasan data:</li>
+<li>Kesimpulan: hipotesis didukung, belum cukup bukti, atau tidak didukung?</li>
+<li>Keputusan: Lanjutkan / Optimalkan / Uji ulang / Kurangi prioritas / Hentikan</li>
+<li>Alasan dan langkah berikutnya:</li>
+</ul>
+</section><section class="sec reveal"><h2 id="template-9-laporan-mingguan-modul-23"><span class="h-text">Template 9 — Laporan mingguan (Modul 23)</span><a class="anchor" href="#template-9-laporan-mingguan-modul-23" aria-label="Tautan ke bagian ini">#</a></h2>
+<p><strong>Ringkasan:</strong> jumlah konten terbit, total views, total klik, total pesanan, komisi estimasi, komisi pending, komisi disetujui, komisi dibayarkan.</p>
+<p><strong>Analisis:</strong> konten dengan kontribusi komisi terbesar, produk dengan EPC tertinggi, konten dengan CTR rendah, produk yang menurun, masalah tracking, perubahan komisi atau ketersediaan.</p>
+<p><strong>Tindakan berikutnya:</strong> konten yang dikembangkan, produk yang diuji, masalah yang diperbaiki, eksperimen berikutnya.</p>
+</section><section class="sec reveal"><h2 id="template-10-lembar-perhitungan-target-modul-19"><span class="h-text">Template 10 — Lembar perhitungan target (Modul 19)</span><a class="anchor" href="#template-10-lembar-perhitungan-target-modul-19" aria-label="Tautan ke bagian ini">#</a></h2>
+<ul>
+<li>Target komisi bulanan:</li>
+<li>Komisi rata-rata aktual per pesanan:</li>
+<li>Kebutuhan pesanan:</li>
+<li>CVR aktual:</li>
+<li>Kebutuhan klik:</li>
+<li>CTR aktual:</li>
+<li>Kebutuhan views:</li>
+<li>Komisi estimasi / pending / disetujui / dibayarkan:</li>
+<li>Biaya operasional:</li>
+<li>Hasil setelah biaya (sebut basisnya):</li>
+<li>Skenario konservatif, dasar, dan optimistis:</li>
+</ul>
+<p>Tandai mana yang asumsi dan mana yang data nyata.</p>
+</section><section class="sec reveal"><h2 id="template-11-rekonsiliasi-komisi-modul-14-dan-19"><span class="h-text">Template 11 — Rekonsiliasi komisi (Modul 14 dan 19)</span><a class="anchor" href="#template-11-rekonsiliasi-komisi-modul-14-dan-19" aria-label="Tautan ke bagian ini">#</a></h2>
+<ol>
+<li>Pastikan kedua laporan memakai periode yang sama.</li>
+<li>Pastikan jenis komisinya sama (estimasi, disetujui, atau dibayarkan).</li>
+<li>Periksa pembatalan dan penyesuaian.</li>
+<li>Periksa apakah semua transaksi sudah selesai diproses.</li>
+<li>Periksa apakah ada transaksi yang belum masuk laporan terbaru.</li>
+<li>Cocokkan jumlah yang dibayarkan dengan bukti penerimaan.</li>
+<li>Selisih yang belum bisa dijelaskan: tandai dan tanyakan lewat kanal resmi.</li>
+</ol>
+</section><section class="sec reveal"><h2 id="template-12-laporan-performa-30-hari-modul-24"><span class="h-text">Template 12 — Laporan performa 30 hari (Modul 24)</span><a class="anchor" href="#template-12-laporan-performa-30-hari-modul-24" aria-label="Tautan ke bagian ini">#</a></h2>
+<ol>
+<li>Periode, platform utama, niche, jumlah konten.</li>
+<li>Hasil utama: views, klik, pesanan, komisi (4 status), biaya, hasil setelah biaya, jam kerja.</li>
+<li>Performa funnel: CTR, CVR, EPC, komisi per 1.000 views, tahap paling lemah.</li>
+<li>Analisis produk dan konten.</li>
+<li>Evaluasi eksperimen.</li>
+<li>Tiga prioritas berikutnya.</li>
+<li>Rencana 30 hari ke depan.</li>
+</ol></section>
+</article>
+
+<nav class="pager" aria-label="Halaman sebelumnya dan berikutnya"><a class="prev" href="kamus-istilah.html"><small>← Sebelumnya</small><span>Kamus Istilah</span></a><a class="next" href="studi-kasus.html"><small>Berikutnya →</small><span>Studi Kasus Simulasi</span></a></nav>
+<footer class="foot">
+  <p>Materi pembelajaran, bukan nasihat hukum atau pajak. Aturan Shopee Affiliate bisa berubah, jadi selalu cek sumber resmi dan catat tanggal pemeriksaannya. Situs ini bukan situs resmi Shopee.</p>
+</footer>
+</main>
+<aside class="toc" aria-label="Isi halaman"><p class="toc-title">Di halaman ini</p><ol><li><a href="#rumus-performa-konten">Rumus performa konten</a></li><li><a href="#rumus-keuangan">Rumus keuangan</a></li><li><a href="#rumus-perencanaan-target-hitung-mundur">Rumus perencanaan target (hitung mundur)</a></li><li><a href="#rumus-riset-produk">Rumus riset produk</a></li><li><a href="#rumus-notion">Rumus Notion</a></li><li><a href="#rumus-spreadsheet-kolom-a-nama-konten-b-views-c-klik-d-pesanan-e-komisi-disetujui">Rumus spreadsheet (kolom A nama konten, B views, C klik, D pesanan, E komisi disetujui)</a></li><li><a href="#template-1-catatan-riset-peluang-modul-04">Template 1 — Catatan riset peluang (Modul 04)</a></li><li><a href="#template-2-buyer-persona-modul-05">Template 2 — Buyer persona (Modul 05)</a></li><li><a href="#template-3-positioning-modul-05">Template 3 — Positioning (Modul 05)</a></li><li><a href="#template-4-analisis-akun-kompetitor-modul-07">Template 4 — Analisis akun kompetitor (Modul 07)</a></li><li><a href="#template-5-ide-konten-modul-09">Template 5 — Ide konten (Modul 09)</a></li><li><a href="#template-6-skrip-video-modul-10">Template 6 — Skrip video (Modul 10)</a></li><li><a href="#template-7-checklist-sebelum-publikasi-modul-11-dan-21">Template 7 — Checklist sebelum publikasi (Modul 11 dan 21)</a></li><li><a href="#template-8-catatan-eksperimen-modul-17">Template 8 — Catatan eksperimen (Modul 17)</a></li><li><a href="#template-9-laporan-mingguan-modul-23">Template 9 — Laporan mingguan (Modul 23)</a></li><li><a href="#template-10-lembar-perhitungan-target-modul-19">Template 10 — Lembar perhitungan target (Modul 19)</a></li><li><a href="#template-11-rekonsiliasi-komisi-modul-14-dan-19">Template 11 — Rekonsiliasi komisi (Modul 14 dan 19)</a></li><li><a href="#template-12-laporan-performa-30-hari-modul-24">Template 12 — Laporan performa 30 hari (Modul 24)</a></li></ol></aside>
+</div>
+<nav class="bottom-nav" id="bottom-nav" aria-label="Navigasi cepat">
+  <a class="bn-item" href="index.html"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5"/><path d="M5 10v10h14V10"/></svg><span>Beranda</span></a>
+  <button class="bn-item" id="bn-menu" type="button" aria-controls="sidebar"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="7" rx="1.5"/><rect x="4" y="13" width="7" height="7" rx="1.5"/><rect x="13" y="13" width="7" height="7" rx="1.5"/></svg><span>Materi</span></button>
+  <button class="bn-item" id="bn-search" type="button"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span>Cari</span></button>
+  <a class="bn-item bn-primary" href="studi-kasus.html"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg><span>Lanjut</span></a>
+</nav>
+<button class="to-top" id="to-top" type="button" aria-label="Kembali ke atas" hidden><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5"/><path d="m5 12 7-7 7 7"/></svg></button>
+<div class="toast-wrap" id="toasts" aria-live="polite"></div>
+<script src="assets/search-index.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>

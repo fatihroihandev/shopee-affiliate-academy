@@ -1,0 +1,786 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Modul 24 — Evaluasi Bisnis dan Mastery · Shopee Affiliate Academy</title>
+<meta name="description" content="Modul terakhir ini memastikan kamu mampu mengelola Shopee Affiliate sebagai bisnis yang punya proses, data, evaluasi, dan rencana pengembangan.">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#EE4D2D">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/style.css">
+<script>(function(){var d=document.documentElement;d.classList.add('js');try{var t=localStorage.getItem('sea-theme');if(t&&t!=='auto')d.setAttribute('data-theme',t);var p=JSON.parse(localStorage.getItem('sea-prefs')||'{}');['fs','lh','font','width'].forEach(function(k){if(p[k])d.setAttribute('data-'+k,p[k]);});if(p.focus)d.setAttribute('data-focus','1');}catch(e){}})();</script>
+</head>
+<body data-root="../" data-kind="modul" data-page="modul/modul-24-evaluasi-bisnis-dan-mastery.html" data-title="Modul 24 — Evaluasi Bisnis dan Mastery">
+<a class="skip" href="#isi">Lewati ke isi</a>
+<div class="read-progress" id="read-progress" aria-hidden="true"></div>
+<div class="top" id="top">
+<header class="topbar">
+  <button class="icon-btn menu-btn" id="menu-btn" aria-label="Buka menu materi" aria-controls="sidebar" aria-expanded="false"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+  <a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true">SA</span><span class="brand-name">Shopee Affiliate Academy</span></a>
+  <div class="search" id="search">
+    <div class="search-box">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input id="search-input" type="search" placeholder="Cari materi…" autocomplete="off" aria-label="Cari materi">
+      <button class="icon-btn search-close" id="search-close" type="button" aria-label="Tutup pencarian"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+    </div>
+    <div class="search-results" id="search-results" hidden></div>
+  </div>
+  <button class="icon-btn desk-only" id="focus-btn" aria-label="Mode fokus" title="Mode fokus"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9V5h4M20 9V5h-4M4 15v4h4M20 15v4h-4"/></svg></button>
+  <button class="icon-btn aa-btn" id="aa-btn" aria-label="Pengaturan baca" aria-expanded="false" aria-controls="prefs"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20 10 5l6 15"/><path d="M6.5 14.5h7"/><path d="M15 12h5M17.5 12v8"/></svg></button>
+</header>
+<div class="subbar" id="subbar" aria-hidden="true"><span class="sb-title"></span><span class="sb-pct"></span></div>
+</div>
+<div class="prefs" id="prefs" hidden role="dialog" aria-label="Pengaturan tampilan">
+  <div class="prefs-head"><strong>Pengaturan baca</strong><button class="icon-btn sm" id="prefs-close" type="button" aria-label="Tutup"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
+  <div class="pref-row"><span>Ukuran teks</span><div class="seg" role="group" aria-label="Ukuran teks">
+    <button type="button" id="fs-down" aria-label="Perkecil teks">A−</button><output id="fs-val">3/5</output><button type="button" id="fs-up" aria-label="Perbesar teks">A+</button></div></div>
+  <div class="pref-row"><span>Jarak baris</span><div class="seg"><button type="button" data-pref="lh" data-val="tight">Rapat</button><button type="button" data-pref="lh" data-val="normal">Normal</button><button type="button" data-pref="lh" data-val="loose">Lega</button></div></div>
+  <div class="pref-row"><span>Huruf</span><div class="seg"><button type="button" data-pref="font" data-val="sans">Sans</button><button type="button" data-pref="font" data-val="serif">Serif</button></div></div>
+  <div class="pref-row"><span>Lebar teks</span><div class="seg"><button type="button" data-pref="width" data-val="normal">Standar</button><button type="button" data-pref="width" data-val="wide">Lebar</button></div></div>
+  <div class="pref-row"><span>Tema</span><div class="seg theme-seg"><button type="button" data-pref="theme" data-val="light">Terang</button><button type="button" data-pref="theme" data-val="sepia">Sepia</button><button type="button" data-pref="theme" data-val="dark">Gelap</button><button type="button" data-pref="theme" data-val="auto">Auto</button></div></div>
+  <label class="pref-switch"><input type="checkbox" id="pref-break" checked><span class="sw"></span><span>Pengingat istirahat (tiap 25 menit)</span></label>
+  <label class="pref-switch desk-only"><input type="checkbox" id="pref-focus"><span class="sw"></span><span>Mode fokus (sembunyikan menu)</span></label>
+  <button type="button" class="reset" id="prefs-reset">Kembalikan ke bawaan</button>
+</div>
+<div class="shell">
+<nav class="sidebar" id="sidebar" aria-label="Navigasi materi">
+<div class="nav-group">
+<a href="../index.html" data-page="index.html"><span>Beranda dan Pengantar</span></a>
+<a href="../master.html" data-page="master.html"><span>Rangkuman Master</span></a>
+</div>
+<details class="nav-level" data-mods="modul/modul-01-dasar-affiliate-marketing.html,modul/modul-02-shopee-affiliate-program-dan-kebijakan.html,modul/modul-03-persiapan-akun-dan-operasional.html"><summary><span class="lv-badge">1</span><span class="lv-name">Fundamentals</span><span class="lv-count">0/3</span></summary>
+<a href="../level-1.html" data-page="level-1.html"><span>Ringkasan level</span></a>
+<a href="../modul/modul-01-dasar-affiliate-marketing.html" data-page="modul/modul-01-dasar-affiliate-marketing.html"><span>Modul 01 — Dasar Affiliate Marketing</span></a>
+<a href="../modul/modul-02-shopee-affiliate-program-dan-kebijakan.html" data-page="modul/modul-02-shopee-affiliate-program-dan-kebijakan.html"><span>Modul 02 — Shopee Affiliate Program dan Kebijakan</span></a>
+<a href="../modul/modul-03-persiapan-akun-dan-operasional.html" data-page="modul/modul-03-persiapan-akun-dan-operasional.html"><span>Modul 03 — Persiapan Akun dan Operasional</span></a>
+</details>
+<details class="nav-level" data-mods="modul/modul-04-riset-pasar-dan-permintaan.html,modul/modul-05-niche-audiens-dan-positioning.html,modul/modul-06-riset-dan-evaluasi-produk.html,modul/modul-07-riset-kompetitor.html"><summary><span class="lv-badge">2</span><span class="lv-name">Market and Product Research</span><span class="lv-count">0/4</span></summary>
+<a href="../level-2.html" data-page="level-2.html"><span>Ringkasan level</span></a>
+<a href="../modul/modul-04-riset-pasar-dan-permintaan.html" data-page="modul/modul-04-riset-pasar-dan-permintaan.html"><span>Modul 04 — Riset Pasar dan Permintaan</span></a>
+<a href="../modul/modul-05-niche-audiens-dan-positioning.html" data-page="modul/modul-05-niche-audiens-dan-positioning.html"><span>Modul 05 — Niche, Audiens, dan Positioning</span></a>
+<a href="../modul/modul-06-riset-dan-evaluasi-produk.html" data-page="modul/modul-06-riset-dan-evaluasi-produk.html"><span>Modul 06 — Riset dan Evaluasi Produk</span></a>
+<a href="../modul/modul-07-riset-kompetitor.html" data-page="modul/modul-07-riset-kompetitor.html"><span>Modul 07 — Riset Kompetitor</span></a>
+</details>
+<details class="nav-level" data-mods="modul/modul-08-strategi-channel-dan-traffic-organik.html,modul/modul-09-strategi-konten.html,modul/modul-10-copywriting-dan-hook.html,modul/modul-11-produksi-video-dan-visual.html,modul/modul-12-seo-dan-konten-berbasis-pencarian.html,modul/modul-13-distribusi-dan-community-building.html"><summary><span class="lv-badge">3</span><span class="lv-name">Content and Traffic</span><span class="lv-count">0/6</span></summary>
+<a href="../level-3.html" data-page="level-3.html"><span>Ringkasan level</span></a>
+<a href="../modul/modul-08-strategi-channel-dan-traffic-organik.html" data-page="modul/modul-08-strategi-channel-dan-traffic-organik.html"><span>Modul 08 — Strategi Channel dan Traffic Organik</span></a>
+<a href="../modul/modul-09-strategi-konten.html" data-page="modul/modul-09-strategi-konten.html"><span>Modul 09 — Strategi Konten</span></a>
+<a href="../modul/modul-10-copywriting-dan-hook.html" data-page="modul/modul-10-copywriting-dan-hook.html"><span>Modul 10 — Copywriting dan Hook</span></a>
+<a href="../modul/modul-11-produksi-video-dan-visual.html" data-page="modul/modul-11-produksi-video-dan-visual.html"><span>Modul 11 — Produksi Video dan Visual</span></a>
+<a href="../modul/modul-12-seo-dan-konten-berbasis-pencarian.html" data-page="modul/modul-12-seo-dan-konten-berbasis-pencarian.html"><span>Modul 12 — SEO dan Konten Berbasis Pencarian</span></a>
+<a href="../modul/modul-13-distribusi-dan-community-building.html" data-page="modul/modul-13-distribusi-dan-community-building.html"><span>Modul 13 — Distribusi dan Community Building</span></a>
+</details>
+<details class="nav-level" data-mods="modul/modul-14-affiliate-link-dan-tracking.html,modul/modul-15-conversion-rate-optimization-cro.html,modul/modul-16-analytics-dan-dashboard.html,modul/modul-17-eksperimen-dan-validasi.html"><summary><span class="lv-badge">4</span><span class="lv-name">Conversion and Analytics</span><span class="lv-count">0/4</span></summary>
+<a href="../level-4.html" data-page="level-4.html"><span>Ringkasan level</span></a>
+<a href="../modul/modul-14-affiliate-link-dan-tracking.html" data-page="modul/modul-14-affiliate-link-dan-tracking.html"><span>Modul 14 — Affiliate Link dan Tracking</span></a>
+<a href="../modul/modul-15-conversion-rate-optimization-cro.html" data-page="modul/modul-15-conversion-rate-optimization-cro.html"><span>Modul 15 — Conversion Rate Optimization (CRO)</span></a>
+<a href="../modul/modul-16-analytics-dan-dashboard.html" data-page="modul/modul-16-analytics-dan-dashboard.html"><span>Modul 16 — Analytics dan Dashboard</span></a>
+<a href="../modul/modul-17-eksperimen-dan-validasi.html" data-page="modul/modul-17-eksperimen-dan-validasi.html"><span>Modul 17 — Eksperimen dan Validasi</span></a>
+</details>
+<details class="nav-level" data-mods="modul/modul-18-monetisasi-dan-pemilihan-produk-lanjutan.html,modul/modul-19-keuangan-dan-target-komisi.html,modul/modul-20-scaling-dan-sistem-produksi.html,modul/modul-21-kepatuhan-risiko-dan-reputasi.html,modul/modul-22-advanced-strategy.html,modul/modul-23-otomasi-dan-sistem-kerja.html,modul/modul-24-evaluasi-bisnis-dan-mastery.html" open><summary><span class="lv-badge">5</span><span class="lv-name">Professional Growth</span><span class="lv-count">0/7</span></summary>
+<a href="../level-5.html" data-page="level-5.html"><span>Ringkasan level</span></a>
+<a href="../modul/modul-18-monetisasi-dan-pemilihan-produk-lanjutan.html" data-page="modul/modul-18-monetisasi-dan-pemilihan-produk-lanjutan.html"><span>Modul 18 — Monetisasi dan Pemilihan Produk Lanjutan</span></a>
+<a href="../modul/modul-19-keuangan-dan-target-komisi.html" data-page="modul/modul-19-keuangan-dan-target-komisi.html"><span>Modul 19 — Keuangan dan Target Komisi</span></a>
+<a href="../modul/modul-20-scaling-dan-sistem-produksi.html" data-page="modul/modul-20-scaling-dan-sistem-produksi.html"><span>Modul 20 — Scaling dan Sistem Produksi</span></a>
+<a href="../modul/modul-21-kepatuhan-risiko-dan-reputasi.html" data-page="modul/modul-21-kepatuhan-risiko-dan-reputasi.html"><span>Modul 21 — Kepatuhan, Risiko, dan Reputasi</span></a>
+<a href="../modul/modul-22-advanced-strategy.html" data-page="modul/modul-22-advanced-strategy.html"><span>Modul 22 — Advanced Strategy</span></a>
+<a href="../modul/modul-23-otomasi-dan-sistem-kerja.html" data-page="modul/modul-23-otomasi-dan-sistem-kerja.html"><span>Modul 23 — Otomasi dan Sistem Kerja</span></a>
+<a href="../modul/modul-24-evaluasi-bisnis-dan-mastery.html" data-page="modul/modul-24-evaluasi-bisnis-dan-mastery.html" aria-current="page"><span>Modul 24 — Evaluasi Bisnis dan Mastery</span></a>
+</details>
+<div class="nav-group"><p class="nav-label">Praktik</p>
+<a href="../proyek-praktik.html" data-page="proyek-praktik.html"><span>8 Project Praktik Wajib</span></a>
+<a href="../database-notion.html" data-page="database-notion.html"><span>Database Notion</span></a>
+</div>
+<div class="nav-group"><p class="nav-label">Lampiran</p>
+<a href="../kamus-istilah.html" data-page="kamus-istilah.html"><span>Kamus Istilah</span></a>
+<a href="../rumus-template.html" data-page="rumus-template.html"><span>Lembar Rumus dan Template</span></a>
+<a href="../studi-kasus.html" data-page="studi-kasus.html"><span>Studi Kasus Simulasi</span></a>
+<a href="../panduan-pelatih.html" data-page="panduan-pelatih.html"><span>Panduan Pelatih dan Penilaian</span></a>
+</div></nav>
+<div class="scrim" id="scrim" hidden></div>
+<main id="isi" class="content">
+<nav class="crumbs" aria-label="Jejak halaman"><a href="../index.html">Beranda</a> <span>/</span> <a href="../level-5.html">Level 5</a> <span>/</span> Modul 24</nav>
+<details class="toc-mobile"><summary>Di halaman ini</summary><ol><li><a href="#1-tujuan-pembelajaran">Tujuan Pembelajaran</a></li><li><a href="#2-ringkasan-konsep-utama">Ringkasan Konsep Utama</a></li><li><a href="#3-penjelasan">Penjelasan</a></li><li><a href="#4-istilah-penting">Istilah Penting</a></li><li><a href="#5-langkah-praktik">Langkah Praktik</a></li><li><a href="#6-contoh-dan-perhitungan">Contoh dan Perhitungan</a></li><li><a href="#7-kesalahan-umum-dan-cara-menghindarinya">Kesalahan Umum dan Cara Menghindarinya</a></li><li><a href="#8-tugas-dan-checklist">Tugas dan Checklist</a></li><li><a href="#9-latihan-dan-kunci-jawaban">Latihan dan Kunci Jawaban</a></li><li><a href="#10-standar-kelulusan">Standar Kelulusan</a></li><li><a href="#lampiran-penutup-standar-kelulusan-level-5">Lampiran — Penutup: Standar Kelulusan Level 5</a></li></ol></details>
+<article class="prose">
+<div class="eyebrow"><a class="chip" href="../level-5.html">Level 5 · Professional Growth</a><span class="chip ghost">Modul 24 dari 24</span><span class="chip ghost">± 15 menit baca</span></div>
+<h1 id="modul-24-evaluasi-bisnis-dan-mastery">Modul 24 — Evaluasi Bisnis dan Mastery</h1>
+<section class="sec reveal"><h2 id="1-tujuan-pembelajaran"><span class="h-text">1. Tujuan Pembelajaran</span><a class="anchor" href="#1-tujuan-pembelajaran" aria-label="Tautan ke bagian ini">#</a></h2>
+<p>Modul terakhir ini memastikan kamu mampu mengelola Shopee Affiliate sebagai bisnis yang punya proses, data, evaluasi, dan rencana pengembangan.</p>
+<p>Setelah modul ini, kamu mampu:</p>
+<ul>
+<li>Melakukan audit niche dan produk.</li>
+<li>Mengevaluasi performa konten dan traffic.</li>
+<li>Menganalisis funnel dari views sampai pembayaran.</li>
+<li>Memeriksa kualitas komisi dan pembayaran.</li>
+<li>Menilai profitabilitas.</li>
+<li>Mengevaluasi eksperimen.</li>
+<li>Menyusun rencana bisnis 30, 90, dan 365 hari sesuai kebutuhan.</li>
+<li>Menetapkan prioritas berdasarkan masalah terbesar.</li>
+<li>Mendokumentasikan SOP final.</li>
+</ul>
+</section><section class="sec reveal"><h2 id="2-ringkasan-konsep-utama"><span class="h-text">2. Ringkasan Konsep Utama</span><a class="anchor" href="#2-ringkasan-konsep-utama" aria-label="Tautan ke bagian ini">#</a></h2>
+<ol>
+<li>Modul ini adalah rangkaian <strong>audit</strong>: niche → produk → konten → traffic → funnel → komisi → pembayaran → profitabilitas.</li>
+<li>Jangan mempertahankan niche hanya karena sudah banyak waktu yang kamu habiskan di dalamnya.</li>
+<li>Produk dengan komisi tertinggi tidak otomatis menjadi produk terbaik.</li>
+<li>Tujuan audit funnel adalah menemukan <strong>tahap yang paling membatasi hasil</strong>.</li>
+<li>Jangan menjumlahkan komisi estimasi dan komisi disetujui untuk transaksi yang sama. Itu penghitungan ganda.</li>
+<li>Jika modal uang Rp0, waktu tetap harus dihitung sebagai sumber daya.</li>
+<li>Eksperimen yang tidak berhasil bukan kegagalan jika memberi informasi untuk keputusan.</li>
+<li>Target baru ditetapkan dari hasil aktual, bukan karena ada target jangka panjang Rp30 juta.</li>
+<li>SOP final harus cukup jelas supaya pekerjaan bisa diulang tanpa mengandalkan ingatan.</li>
+</ol>
+</section><section class="sec reveal"><h2 id="3-penjelasan"><span class="h-text">3. Penjelasan</span><a class="anchor" href="#3-penjelasan" aria-label="Tautan ke bagian ini">#</a></h2>
+<h3 id="3-1-audit-niche"><span class="h-text">3.1 Audit Niche</span><a class="anchor" href="#3-1-audit-niche" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>Audit niche menilai apakah niche pilihanmu masih layak dikembangkan. Jangan mempertahankan niche hanya karena sudah banyak waktu yang kamu habiskan. Periksa apakah niche masih punya kebutuhan audiens dan peluang monetisasi yang sesuai.</p>
+<p><strong>A. Permintaan pasar</strong></p>
+<ul>
+<li>Apakah audiens masih punya kebutuhan yang jelas?</li>
+<li>Apakah ada masalah yang belum dijawab konten yang tersedia?</li>
+<li>Apakah permintaan terlihat konsisten atau hanya sementara?</li>
+</ul>
+<p><strong>B. Peluang monetisasi</strong></p>
+<ul>
+<li>Apakah tersedia produk yang relevan?</li>
+<li>Apakah komisinya layak?</li>
+<li>Apakah produk punya alternatif yang memadai?</li>
+</ul>
+<p><strong>C. Persaingan</strong></p>
+<ul>
+<li>Siapa kompetitor yang relevan?</li>
+<li>Konten apa yang sudah banyak tersedia?</li>
+<li>Nilai tambah apa yang bisa kamu berikan?</li>
+</ul>
+<p><strong>D. Kesesuaian dengan kemampuan</strong></p>
+<ul>
+<li>Apakah kamu mampu membuat konten secara konsisten?</li>
+<li>Apakah niche sesuai dengan waktu dan sumber dayamu?</li>
+<li>Apakah kamu bisa memeriksa informasi produk secara bertanggung jawab?</li>
+</ul>
+<p><strong>Keputusan audit niche:</strong></p>
+<p>Gunakan lima keputusan yang sama seperti di seluruh materi:</p>
+<ul>
+<li><strong>Lanjutkan</strong> jika niche menunjukkan permintaan dan peluang yang memadai.</li>
+<li><strong>Optimalkan</strong> jika kebutuhan audiens masih relevan tetapi kontenmu belum menonjol. Perbaiki positioning dan diferensiasimu.</li>
+<li><strong>Uji ulang</strong> jika datanya belum cukup atau ada kelompok kebutuhan yang lebih spesifik (subniche) yang layak dicoba.</li>
+<li><strong>Kurangi prioritas</strong> jika hasilnya kecil dibanding usahamu dan ada niche atau subniche lain yang lebih menjanjikan.</li>
+<li><strong>Hentikan</strong> (pindah niche) hanya jika bukti menunjukkan peluangnya tidak memadai setelah pengujian yang wajar.</li>
+</ul>
+<blockquote class="callout">
+<p>Jangan berpindah niche hanya karena beberapa konten pertama tidak mendapat banyak views.</p>
+</blockquote>
+<h3 id="3-2-audit-produk"><span class="h-text">3.2 Audit Produk</span><a class="anchor" href="#3-2-audit-produk" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>Audit produk memastikan produk yang kamu promosikan masih layak. Periksa:</p>
+<ul>
+<li>Relevansi dengan audiens.</li>
+<li>Kualitas dan spesifikasi.</li>
+<li>Harga terkini.</li>
+<li>Reputasi penjual.</li>
+<li>Ketersediaan.</li>
+<li>Komisi efektif.</li>
+<li>Klik dan konversi.</li>
+<li>Komisi disetujui.</li>
+<li>Keluhan yang relevan.</li>
+<li>Risiko perubahan ketentuan.</li>
+</ul>
+<p><strong>Contoh keputusan:</strong></p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Kondisi</th>
+<th>Tindakan</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Komisi baik dan transaksi konsisten</td>
+<td>Lanjutkan dan evaluasi peluang pengembangan</td>
+</tr>
+<tr>
+<td>Klik tinggi, pesanan rendah</td>
+<td>Optimalkan: periksa produk, harga, dan kecocokan audiens</td>
+</tr>
+<tr>
+<td>Komisi menurun</td>
+<td>Periksa perubahan tarif dan jumlah transaksi</td>
+</tr>
+<tr>
+<td>Produk tidak tersedia</td>
+<td>Cari alternatif yang relevan</td>
+</tr>
+<tr>
+<td>Keluhan serius atau kualitas diragukan</td>
+<td>Kurangi prioritas atau Hentikan promosi</td>
+</tr>
+<tr>
+<td>Data masih sedikit</td>
+<td>Uji ulang jika risikonya dapat diterima</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote class="callout">
+<p>Produk dengan komisi tertinggi tidak otomatis menjadi produk terbaik. Pertimbangkan kualitas, kebutuhan pembeli, hasil, dan risiko.</p>
+</blockquote>
+<h3 id="3-3-audit-konten"><span class="h-text">3.3 Audit Konten</span><a class="anchor" href="#3-3-audit-konten" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>Audit konten mencari tahu konten mana yang memberi kontribusi bisnis dan mana yang perlu diperbaiki.</p>
+<p><strong>Kategori evaluasi:</strong></p>
+<ul>
+<li><strong>Konten pemenang:</strong> memberi kontribusi komisi atau menunjukkan performa funnel yang menjanjikan, dan layak diuji pengembangannya.</li>
+<li><strong>Konten pendukung:</strong> konten edukasi yang membantu menjawab pertanyaan audiens atau membangun pemahaman sebelum pembelian.</li>
+<li><strong>Konten yang perlu dioptimalkan:</strong> punya potensi, tetapi bermasalah pada hook, CTA, relevansi produk, atau distribusi.</li>
+<li><strong>Konten yang perlu dihentikan atau diperbarui:</strong> sudah tidak relevan, berisi informasi usang, punya link bermasalah, atau tidak layak dipertahankan.</li>
+</ul>
+<p><strong>Pertanyaan audit:</strong></p>
+<ul>
+<li>Apakah konten menjawab masalah yang jelas?</li>
+<li>Apakah hook sesuai dengan isi?</li>
+<li>Apakah klaim bisa dibuktikan?</li>
+<li>Apakah produk relevan?</li>
+<li>Apakah CTA jelas?</li>
+<li>Apakah link berfungsi?</li>
+<li>Apakah komisi bisa diukur?</li>
+<li>Apakah konten bisa dikembangkan menjadi variasi yang memberi nilai baru?</li>
+</ul>
+<blockquote class="callout">
+<p>Jangan menghapus semua konten dengan views rendah. Sebagian mungkin tetap relevan untuk pencarian atau kebutuhan audiens tertentu.</p>
+</blockquote>
+<h3 id="3-4-audit-traffic"><span class="h-text">3.4 Audit Traffic</span><a class="anchor" href="#3-4-audit-traffic" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>Audit traffic membantu menemukan sumber masalah sebelum kamu mengubah strategi. Periksa:</p>
+<ul>
+<li>Views per konten.</li>
+<li>Distribusi views menurut platform.</li>
+<li>Perubahan views dari waktu ke waktu.</li>
+<li>CTR dari views ke klik affiliate.</li>
+<li>Jumlah klik yang bisa dicatat.</li>
+<li>Kontribusi konten evergreen.</li>
+<li>Ketergantungan pada konten viral.</li>
+</ul>
+<p><strong>Contoh diagnosis:</strong></p>
+<ul>
+<li><strong>Views turun 50%, CTR dan CVR relatif stabil:</strong> masalah utama kemungkinan di distribusi atau jumlah tayangan.</li>
+<li><strong>Views stabil, klik turun:</strong> periksa apakah CTA, penempatan link, atau relevansi produk berubah.</li>
+<li><strong>Klik stabil, pesanan turun:</strong> periksa produk, harga, halaman tujuan, dan karakteristik traffic.</li>
+</ul>
+<blockquote class="callout">
+<p>Gunakan data beberapa periode jika tersedia. Jangan mengubah seluruh strategi karena satu hari yang buruk.</p>
+</blockquote>
+<h3 id="3-5-audit-funnel"><span class="h-text">3.5 Audit Funnel</span><a class="anchor" href="#3-5-audit-funnel" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>Funnel adalah rangkaian tahap yang dilalui audiens dari melihat konten sampai pembayaran komisi. Funnel baku punya <strong>6 tahap</strong>:</p>
+<ol>
+<li><strong>Views:</strong> audiens melihat konten.</li>
+<li><strong>Klik:</strong> audiens tertarik dan mengeklik affiliate link.</li>
+<li><strong>Pesanan:</strong> audiens melakukan pembelian.</li>
+<li><strong>Transaksi memenuhi syarat:</strong> pesanan lolos ketentuan program.</li>
+<li><strong>Komisi disetujui:</strong> komisi transaksi itu disetujui.</li>
+<li><strong>Pembayaran:</strong> dana diterima sesuai proses pembayaran.</li>
+</ol>
+<p>Setiap tahap bisa punya masalah berbeda:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Masalah</th>
+<th>Hal yang diperiksa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Views rendah</td>
+<td>Topik, hook, format, distribusi</td>
+</tr>
+<tr>
+<td>CTR rendah</td>
+<td>Relevansi produk, CTA, penempatan link</td>
+</tr>
+<tr>
+<td>CVR rendah</td>
+<td>Kualitas produk, harga, audiens, halaman tujuan</td>
+</tr>
+<tr>
+<td>Transaksi memenuhi syarat rendah</td>
+<td>Pesanan dibatalkan atau tidak lolos ketentuan program; periksa status transaksi, jenis produk, dan syarat program</td>
+</tr>
+<tr>
+<td>Komisi per pesanan rendah</td>
+<td>Portofolio produk dan komisi efektif</td>
+</tr>
+<tr>
+<td>Komisi disetujui jauh di bawah estimasi</td>
+<td>Status transaksi dan ketentuan program</td>
+</tr>
+<tr>
+<td>Pembayaran berbeda dari laporan</td>
+<td>Periode pembayaran, penyesuaian, dan rekonsiliasi</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote class="callout">
+<p>Tujuan audit funnel adalah menemukan tahap yang paling membatasi hasil. Memperbaiki tahap yang sudah sehat, sementara masalah utama ada di tahap lain, membuang waktu.</p>
+</blockquote>
+<h3 id="3-6-audit-komisi"><span class="h-text">3.6 Audit Komisi</span><a class="anchor" href="#3-6-audit-komisi" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>Audit komisi memastikan performa bisnis dinilai dari angka yang tepat. Periksa:</p>
+<ul>
+<li>Total komisi estimasi.</li>
+<li>Total komisi disetujui.</li>
+<li>Komisi yang belum dibayarkan.</li>
+<li>Komisi dibayarkan (pembayaran aktual).</li>
+<li>Komisi per pesanan.</li>
+<li>EPC.</li>
+<li>Komisi per 1.000 views.</li>
+<li>Kontribusi setiap produk.</li>
+<li>Kontribusi setiap channel jika bisa diidentifikasi.</li>
+<li>Perubahan komisi selama periode evaluasi.</li>
+</ul>
+<p>Status komisi berurutan: Estimasi → Pending → Disetujui → Dibayarkan. Nama di dashboard Shopee bisa berbeda, misalnya "Dalam proses" untuk Pending.</p>
+<blockquote class="callout">
+<p><strong>Jangan menjumlahkan komisi estimasi dan komisi disetujui jika keduanya untuk transaksi yang sama. Itu menyebabkan penghitungan ganda.</strong></p>
+</blockquote>
+<h3 id="3-7-audit-profitabilitas"><span class="h-text">3.7 Audit Profitabilitas</span><a class="anchor" href="#3-7-audit-profitabilitas" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>Profitabilitas menjawab apakah bisnis menghasilkan nilai setelah biaya yang relevan dihitung. Ada dua basis, dan kamu harus selalu menyebut basis yang dipakai:</p>
+<pre><code>Basis kinerja: Hasil setelah biaya = Komisi disetujui − Biaya usaha
+Basis kas:     Hasil setelah biaya = Komisi dibayarkan − Biaya usaha
+</code></pre>
+<p>Contoh basis kinerja: komisi disetujui Rp10.000.000 − biaya Rp1.500.000 = Rp8.500.000. Basis kas memakai komisi yang sudah dibayarkan, jadi angkanya mengikuti uang yang benar-benar masuk.</p>
+<p>Istilah "profit bersih" baru dipakai setelah pajak dan kewajiban lain dihitung. Sebelum itu, pakai "hasil setelah biaya".</p>
+<p><strong>Pertanyaan audit:</strong></p>
+<ul>
+<li>Berapa biaya operasional bulanan?</li>
+<li>Berapa jam kerja yang dipakai?</li>
+<li>Berapa komisi disetujui?</li>
+<li>Berapa komisi yang sudah dibayarkan?</li>
+<li>Apakah ada biaya yang tidak dicatat?</li>
+<li>Apakah pendapatan berasal dari satu produk atau beberapa produk?</li>
+<li>Apakah hasil bisa diulang dengan proses yang tersedia?</li>
+</ul>
+<blockquote class="callout">
+<p>Jika modal uang Rp0, waktu tetap harus dihitung sebagai sumber daya. Bisnis yang menghasilkan komisi tetapi butuh waktu berlebihan mungkin perlu diperbaiki prosesnya.</p>
+</blockquote>
+<h3 id="3-8-menentukan-target-berikutnya"><span class="h-text">3.8 Menentukan Target Berikutnya</span><a class="anchor" href="#3-8-menentukan-target-berikutnya" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>Tetapkan target baru dari hasil aktual. Misalnya komisi disetujui bulan ini Rp2 juta. <strong>Jangan langsung membuat proyeksi Rp30 juta bulan depan hanya karena target jangka panjangnya Rp30 juta.</strong> Rp30 juta hanyalah contoh target jangka panjang untuk latihan menghitung. Itu bukan janji dan bukan patokan Shopee. Pakai targetmu sendiri.</p>
+<p>Periksa:</p>
+<ul>
+<li>Pertumbuhan klik.</li>
+<li>Perubahan CVR.</li>
+<li>Perubahan komisi rata-rata.</li>
+<li>Kapasitas produksi.</li>
+<li>Konsistensi hasil.</li>
+<li>Risiko produk dan platform.</li>
+</ul>
+<p>Tentukan target dari beberapa skenario. Target boleh menantang, tetapi kebutuhan sumber daya dan metriknya harus bisa dijelaskan.</p>
+<h3 id="3-9-dokumentasi-sop-final"><span class="h-text">3.9 Dokumentasi SOP Final</span><a class="anchor" href="#3-9-dokumentasi-sop-final" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>Di akhir Level 5, susun satu dokumen operasional yang merangkum:</p>
+<ul>
+<li>SOP riset produk.</li>
+<li>SOP pemeriksaan kualitas produk.</li>
+<li>SOP pembuatan konten.</li>
+<li>SOP pemeriksaan kepatuhan.</li>
+<li>SOP pembuatan dan pengujian link.</li>
+<li>SOP publikasi.</li>
+<li>SOP pencatatan performa.</li>
+<li>SOP evaluasi mingguan.</li>
+<li>SOP rekonsiliasi komisi.</li>
+<li>SOP backup data.</li>
+<li>SOP penanganan risiko.</li>
+<li>SOP evaluasi bulanan.</li>
+</ul>
+<blockquote class="callout">
+<p>SOP harus cukup jelas supaya pekerjaan bisa diulang tanpa mengandalkan ingatan. Perbarui SOP jika ada perubahan aturan, alat, proses, atau bukti bahwa metode lama tidak lagi efektif.</p>
+</blockquote>
+</section><section class="sec reveal"><h2 id="4-istilah-penting"><span class="h-text">4. Istilah Penting</span><a class="anchor" href="#4-istilah-penting" aria-label="Tautan ke bagian ini">#</a></h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Istilah</th>
+<th>Definisi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Audit niche</td>
+<td>Mengevaluasi apakah niche yang dipilih masih layak dikembangkan</td>
+</tr>
+<tr>
+<td>Audit produk</td>
+<td>Memastikan produk yang dipromosikan masih layak</td>
+</tr>
+<tr>
+<td>Audit konten</td>
+<td>Mencari tahu konten mana yang memberi kontribusi bisnis dan mana yang perlu diperbaiki</td>
+</tr>
+<tr>
+<td>Audit traffic</td>
+<td>Menemukan sumber masalah sebelum mengubah strategi</td>
+</tr>
+<tr>
+<td>Funnel</td>
+<td>Rangkaian tahap dari melihat konten sampai pembayaran (6 tahap baku)</td>
+</tr>
+<tr>
+<td>Audit pembayaran</td>
+<td>Memeriksa dana yang seharusnya diterima dan dana yang benar-benar masuk</td>
+</tr>
+<tr>
+<td>Profitabilitas</td>
+<td>Apakah bisnis menghasilkan nilai setelah biaya yang relevan dihitung</td>
+</tr>
+<tr>
+<td>Hasil setelah biaya</td>
+<td>Komisi (disetujui atau dibayarkan, sebut basisnya) dikurangi Biaya usaha</td>
+</tr>
+<tr>
+<td>Perencanaan kuartalan</td>
+<td>Menyusun prioritas untuk periode sekitar tiga bulan</td>
+</tr>
+<tr>
+<td>Konten pemenang</td>
+<td>Konten yang memberi kontribusi komisi atau performa funnel yang menjanjikan</td>
+</tr>
+<tr>
+<td>Konten pendukung</td>
+<td>Konten edukasi yang membantu menjawab pertanyaan atau membangun pemahaman sebelum pembelian</td>
+</tr>
+</tbody>
+</table></div>
+</section><section class="sec reveal"><h2 id="5-langkah-praktik"><span class="h-text">5. Langkah Praktik</span><a class="anchor" href="#5-langkah-praktik" aria-label="Tautan ke bagian ini">#</a></h2>
+<h3 id="5-1-audit-pembayaran-7-langkah"><span class="h-text">5.1 Audit Pembayaran (7 langkah)</span><a class="anchor" href="#5-1-audit-pembayaran-7-langkah" aria-label="Tautan ke bagian ini">#</a></h3>
+<ol>
+<li>Ambil laporan komisi dari sistem affiliate.</li>
+<li>Identifikasi komisi yang sudah disetujui.</li>
+<li>Periksa status pembayaran.</li>
+<li>Cocokkan jumlah yang dibayarkan dengan mutasi atau bukti penerimaan.</li>
+<li>Catat selisih.</li>
+<li>Periksa penyesuaian dan periode pembayaran.</li>
+<li>Ajukan pertanyaan lewat kanal resmi jika ada selisih yang belum bisa dijelaskan.</li>
+</ol>
+<blockquote class="callout">
+<p>Simpan bukti laporan dan pembayaran secara teratur supaya audit berikutnya lebih mudah.</p>
+</blockquote>
+<h3 id="5-2-evaluasi-eksperimen"><span class="h-text">5.2 Evaluasi Eksperimen</span><a class="anchor" href="#5-2-evaluasi-eksperimen" aria-label="Tautan ke bagian ini">#</a></h3>
+<p><strong>Format dokumentasi (contoh):</strong></p>
+<ul>
+<li><strong>Nama eksperimen:</strong> Menguji hook video.</li>
+<li><strong>Masalah:</strong> CTR lebih rendah daripada target internal.</li>
+<li><strong>Hipotesis:</strong> Hook yang menjelaskan masalah audiens secara spesifik akan menaikkan klik.</li>
+<li><strong>Variabel:</strong> Hook.</li>
+<li><strong>Metrik utama:</strong> CTR.</li>
+<li><strong>Metrik pendukung:</strong> Views, CVR, komisi disetujui.</li>
+<li><strong>Periode:</strong> Ditentukan sebelum pengujian, sesuai volume traffic.</li>
+<li><strong>Hasil:</strong> Dicatat setelah data tersedia.</li>
+<li><strong>Keputusan:</strong> Lanjutkan, Optimalkan, Uji ulang, Kurangi prioritas, atau Hentikan.</li>
+</ul>
+<p><strong>Cara mengevaluasi:</strong></p>
+<ul>
+<li>Hasil membaik dan data memadai: pertimbangkan penerapan yang lebih luas.</li>
+<li>Hasil memburuk: periksa apakah hipotesis salah atau pelaksanaan tidak konsisten.</li>
+<li>Hasil belum jelas: tambah data atau sederhanakan eksperimen (Uji ulang).</li>
+<li>Beberapa variabel berubah bersamaan: jangan menyimpulkan penyebabnya dari hasil itu saja.</li>
+</ul>
+<blockquote class="callout">
+<p>Eksperimen yang tidak berhasil bukan kegagalan jika memberi informasi untuk keputusan.</p>
+</blockquote>
+<h3 id="5-3-perencanaan-kuartalan-contoh-kerangka"><span class="h-text">5.3 Perencanaan Kuartalan (contoh kerangka)</span><a class="anchor" href="#5-3-perencanaan-kuartalan-contoh-kerangka" aria-label="Tautan ke bagian ini">#</a></h3>
+<p><strong>Bulan pertama: Validasi</strong></p>
+<ul>
+<li>Audit niche dan produk.</li>
+<li>Bangun database.</li>
+<li>Uji beberapa format konten.</li>
+<li>Catat funnel.</li>
+<li>Tentukan masalah utama.</li>
+</ul>
+<p><strong>Bulan kedua: Optimasi</strong></p>
+<ul>
+<li>Perbaiki tahap funnel yang paling lemah.</li>
+<li>Kembangkan konten yang menunjukkan hasil baik.</li>
+<li>Evaluasi produk pelengkap.</li>
+<li>Perbaiki SOP.</li>
+<li>Tingkatkan kualitas pencatatan.</li>
+</ul>
+<p><strong>Bulan ketiga: Pengembangan</strong></p>
+<ul>
+<li>Evaluasi apakah hasil cukup konsisten.</li>
+<li>Tingkatkan produksi jika kapasitas dan data mendukung.</li>
+<li>Uji diversifikasi yang relevan.</li>
+<li>Perbarui proyeksi komisi.</li>
+<li>Tentukan prioritas kuartal berikutnya.</li>
+</ul>
+<blockquote class="callout">
+<p>Ini contoh rencana, <strong>bukan jaminan pertumbuhan dalam tiga bulan</strong>. Jika validasi belum selesai, fokus pada perbaikan, jangan memaksakan scaling.</p>
+</blockquote>
+</section><section class="sec reveal"><h2 id="6-contoh-dan-perhitungan"><span class="h-text">6. Contoh dan Perhitungan</span><a class="anchor" href="#6-contoh-dan-perhitungan" aria-label="Tautan ke bagian ini">#</a></h2>
+<p>Angka berikut adalah simulasi, bukan tarif resmi Shopee.</p>
+<h3 id="6-1-audit-profitabilitas"><span class="h-text">6.1 Audit profitabilitas</span><a class="anchor" href="#6-1-audit-profitabilitas" aria-label="Tautan ke bagian ini">#</a></h3>
+<pre><code>Basis kinerja: Hasil setelah biaya = Komisi disetujui − Biaya usaha
+Basis kas:     Hasil setelah biaya = Komisi dibayarkan − Biaya usaha
+</code></pre>
+<p>Contoh basis kinerja:</p>
+<ul>
+<li>Komisi disetujui: <strong>Rp10.000.000</strong></li>
+<li>Biaya operasional: <strong>Rp1.500.000</strong></li>
+<li>Hasil setelah biaya: Rp10.000.000 − Rp1.500.000 = <strong>Rp8.500.000</strong>, sebelum pajak dan kewajiban lain yang belum dihitung.</li>
+</ul>
+<p>Basis kas memakai komisi yang sudah dibayarkan sebagai pengganti komisi disetujui.</p>
+<h3 id="6-2-contoh-penetapan-target-berikutnya"><span class="h-text">6.2 Contoh penetapan target berikutnya</span><a class="anchor" href="#6-2-contoh-penetapan-target-berikutnya" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>Komisi disetujui bulan ini Rp2 juta. Jangan langsung memproyeksikan Rp30 juta bulan depan hanya karena itu contoh target jangka panjang untuk latihan. Periksa dulu pertumbuhan klik, perubahan CVR, perubahan komisi rata-rata, kapasitas produksi, konsistensi hasil, serta risiko produk dan platform.</p>
+<h3 id="6-3-contoh-diagnosis-traffic"><span class="h-text">6.3 Contoh diagnosis traffic</span><a class="anchor" href="#6-3-contoh-diagnosis-traffic" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>Views turun 50% sementara CTR dan CVR relatif stabil. Masalah utamanya kemungkinan di distribusi atau jumlah tayangan, bukan di konversi.</p>
+<h3 id="6-4-template-laporan-performa-30-hari"><span class="h-text">6.4 Template Laporan Performa 30 Hari</span><a class="anchor" href="#6-4-template-laporan-performa-30-hari" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>Salin format ini ke Notion dan isi dengan data aktual.</p>
+<p><strong># Laporan Performa Shopee Affiliate — 30 Hari</strong></p>
+<p><strong>1. Periode Evaluasi</strong></p>
+<ul>
+<li>Tanggal mulai:</li>
+<li>Tanggal selesai:</li>
+<li>Platform utama:</li>
+<li>Niche:</li>
+<li>Jumlah konten yang diterbitkan:</li>
+</ul>
+<p><strong>2. Hasil Utama</strong></p>
+<ul>
+<li>Total views:</li>
+<li>Total klik affiliate:</li>
+<li>Total pesanan:</li>
+<li>Komisi estimasi:</li>
+<li>Komisi disetujui:</li>
+<li>Komisi dibayarkan:</li>
+<li>Biaya operasional:</li>
+<li>Hasil setelah biaya (sebut basis: kinerja atau kas):</li>
+<li>Total jam kerja:</li>
+</ul>
+<p><strong>3. Performa Funnel</strong></p>
+<ul>
+<li>CTR:</li>
+<li>CVR:</li>
+<li>EPC:</li>
+<li>Komisi per 1.000 views:</li>
+<li>Tahap funnel yang paling lemah:</li>
+</ul>
+<p><strong>4. Analisis Produk</strong></p>
+<ul>
+<li>Produk dengan kontribusi komisi terbesar:</li>
+<li>Produk dengan EPC tertinggi:</li>
+<li>Produk dengan performa menurun:</li>
+<li>Produk yang perlu diuji:</li>
+<li>Risiko utama portofolio:</li>
+</ul>
+<p><strong>5. Analisis Konten</strong></p>
+<ul>
+<li>Konten dengan hasil terbaik:</li>
+<li>Konten dengan views tinggi tetapi komisi rendah:</li>
+<li>Konten dengan klik tinggi tetapi pesanan rendah:</li>
+<li>Konten evergreen:</li>
+<li>Format yang perlu dikembangkan:</li>
+</ul>
+<p><strong>6. Evaluasi Eksperimen</strong></p>
+<ul>
+<li>Hipotesis:</li>
+<li>Perubahan yang diuji:</li>
+<li>Metrik utama:</li>
+<li>Hasil:</li>
+<li>Kesimpulan:</li>
+<li>Tindakan berikutnya:</li>
+</ul>
+<p><strong>7. Tiga Prioritas Berikutnya</strong></p>
+<p>1.
+2.
+3.</p>
+<p><strong>8. Rencana 30 Hari</strong></p>
+<ul>
+<li>Target yang realistis:</li>
+<li>Produk yang diprioritaskan:</li>
+<li>Konten yang dikembangkan:</li>
+<li>Perbaikan funnel:</li>
+<li>Jadwal evaluasi:</li>
+<li>Risiko yang perlu dipantau:</li>
+</ul>
+<h3 id="6-5-template-evaluasi-90-hari"><span class="h-text">6.5 Template Evaluasi 90 Hari</span><a class="anchor" href="#6-5-template-evaluasi-90-hari" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>Evaluasi 90 hari menunjukkan apakah bisnis berkembang secara berkelanjutan, bukan hanya melonjak sesaat.</p>
+<p>Bandingkan:</p>
+<ul>
+<li>Total komisi disetujui.</li>
+<li>Komisi dibayarkan.</li>
+<li>Jumlah transaksi.</li>
+<li>Komisi rata-rata.</li>
+<li>EPC.</li>
+<li>CTR dan CVR.</li>
+<li>Kontribusi produk terbesar.</li>
+<li>Kontribusi konten evergreen.</li>
+<li>Waktu kerja.</li>
+<li>Biaya operasional.</li>
+<li>Konsistensi hasil antarperiode.</li>
+</ul>
+<blockquote class="callout">
+<p>Pakai tiga periode bulanan atau kelompok periode yang konsisten. Jangan membandingkan bulan yang berbeda tanpa memperhitungkan jumlah hari, perubahan musim, promosi, atau perubahan ketentuan program.</p>
+</blockquote>
+<p><strong>Keputusan akhir.</strong> Setelah evaluasi, tentukan apakah bisnis perlu:</p>
+<ul>
+<li><strong>Lanjutkan:</strong> proses menunjukkan hasil yang layak.</li>
+<li><strong>Optimalkan:</strong> ada peluang, tetapi ada hambatan yang bisa diperbaiki.</li>
+<li><strong>Uji ulang:</strong> bukti belum cukup untuk memutuskan.</li>
+<li><strong>Kurangi prioritas:</strong> aktivitas tertentu butuh usaha besar dengan hasil yang tidak memadai.</li>
+<li><strong>Hentikan:</strong> produk, metode, atau channel tidak lagi layak atau berisiko tidak dapat diterima.</li>
+</ul>
+<p>"Perluas" adalah keputusan scaling terpisah (Modul 20). Pertimbangkan hanya setelah ada bukti.</p>
+</section><section class="sec reveal"><h2 id="7-kesalahan-umum-dan-cara-menghindarinya"><span class="h-text">7. Kesalahan Umum dan Cara Menghindarinya</span><a class="anchor" href="#7-kesalahan-umum-dan-cara-menghindarinya" aria-label="Tautan ke bagian ini">#</a></h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Kesalahan</th>
+<th>Cara menghindari</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mempertahankan niche karena sudah banyak waktu dihabiskan</td>
+<td>Evaluasi kebutuhan audiens dan peluang monetisasi secara objektif</td>
+</tr>
+<tr>
+<td>Berpindah niche karena beberapa konten pertama sepi views</td>
+<td>Lakukan pengujian yang wajar lebih dulu</td>
+</tr>
+<tr>
+<td>Menganggap produk komisi tertinggi pasti terbaik</td>
+<td>Pertimbangkan kualitas, kebutuhan pembeli, hasil, dan risiko</td>
+</tr>
+<tr>
+<td>Menghapus semua konten dengan views rendah</td>
+<td>Sebagian mungkin tetap relevan untuk pencarian atau audiens tertentu</td>
+</tr>
+<tr>
+<td>Mengubah seluruh strategi karena satu hari buruk</td>
+<td>Pakai data beberapa periode</td>
+</tr>
+<tr>
+<td>Memperbaiki tahap funnel yang sudah sehat</td>
+<td>Temukan tahap yang paling membatasi hasil</td>
+</tr>
+<tr>
+<td>Menjumlahkan komisi estimasi dan komisi disetujui untuk transaksi yang sama</td>
+<td>Hindari penghitungan ganda</td>
+</tr>
+<tr>
+<td>Memakai satu angka "hasil" tanpa menyebut basisnya</td>
+<td>Selalu sebut basis kinerja (disetujui) atau basis kas (dibayarkan)</td>
+</tr>
+<tr>
+<td>Mengabaikan waktu kerja karena modal uang Rp0</td>
+<td>Waktu tetap sumber daya; perbaiki proses yang terlalu memakan waktu</td>
+</tr>
+<tr>
+<td>Menyimpulkan penyebab saat beberapa variabel berubah bersamaan</td>
+<td>Jangan menyimpulkan dari hasil itu saja</td>
+</tr>
+<tr>
+<td>Memproyeksikan Rp30 juta dari hasil Rp2 juta</td>
+<td>Tetapkan target dari hasil aktual dan beberapa skenario</td>
+</tr>
+<tr>
+<td>Membandingkan bulan berbeda tanpa penyesuaian</td>
+<td>Perhitungkan jumlah hari, musim, promosi, dan perubahan ketentuan</td>
+</tr>
+</tbody>
+</table></div>
+</section><section class="sec reveal"><h2 id="8-tugas-dan-checklist"><span class="h-text">8. Tugas dan Checklist</span><a class="anchor" href="#8-tugas-dan-checklist" aria-label="Tautan ke bagian ini">#</a></h2>
+<p><strong>A. Audit niche dan produk</strong></p>
+<ul>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-24-evaluasi-bisnis-dan-mastery.html#1"> <span>Tugas 1: Identifikasi niche utama.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-24-evaluasi-bisnis-dan-mastery.html#2"> <span>Tugas 2: Identifikasi kebutuhan audiens.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-24-evaluasi-bisnis-dan-mastery.html#3"> <span>Tugas 3: Periksa kelayakan produk.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-24-evaluasi-bisnis-dan-mastery.html#4"> <span>Tugas 4: Evaluasi kontribusi komisi.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-24-evaluasi-bisnis-dan-mastery.html#5"> <span>Tugas 5: Identifikasi risiko konsentrasi.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-24-evaluasi-bisnis-dan-mastery.html#6"> <span>Tugas 6: Tentukan produk yang dilanjutkan atau dihentikan.</span></label></li>
+</ul>
+<p><strong>B. Audit konten dan traffic</strong></p>
+<ul>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-24-evaluasi-bisnis-dan-mastery.html#7"> <span>Tugas 7: Kumpulkan data konten.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-24-evaluasi-bisnis-dan-mastery.html#8"> <span>Tugas 8: Identifikasi konten dengan kontribusi komisi terbesar.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-24-evaluasi-bisnis-dan-mastery.html#9"> <span>Tugas 9: Hitung CTR dan EPC jika datanya tersedia.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-24-evaluasi-bisnis-dan-mastery.html#10"> <span>Tugas 10: Periksa konten dengan views tinggi tetapi klik rendah.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-24-evaluasi-bisnis-dan-mastery.html#11"> <span>Tugas 11: Periksa konten dengan klik tinggi tetapi pesanan rendah.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-24-evaluasi-bisnis-dan-mastery.html#12"> <span>Tugas 12: Identifikasi peluang evergreen.</span></label></li>
+</ul>
+<p><strong>C. Audit keuangan</strong></p>
+<ul>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-24-evaluasi-bisnis-dan-mastery.html#13"> <span>Tugas 13: Catat komisi estimasi.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-24-evaluasi-bisnis-dan-mastery.html#14"> <span>Tugas 14: Catat komisi disetujui.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-24-evaluasi-bisnis-dan-mastery.html#15"> <span>Tugas 15: Catat komisi dibayarkan.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-24-evaluasi-bisnis-dan-mastery.html#16"> <span>Tugas 16: Catat biaya operasional.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-24-evaluasi-bisnis-dan-mastery.html#17"> <span>Tugas 17: Rekonsiliasi pembayaran.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-24-evaluasi-bisnis-dan-mastery.html#18"> <span>Tugas 18: Hitung hasil setelah biaya (sebut basisnya).</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-24-evaluasi-bisnis-dan-mastery.html#19"> <span>Tugas 19: Bandingkan proyeksi dan realisasi.</span></label></li>
+</ul>
+<p><strong>D. Audit strategi</strong></p>
+<ul>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-24-evaluasi-bisnis-dan-mastery.html#20"> <span>Tugas 20: Evaluasi eksperimen.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-24-evaluasi-bisnis-dan-mastery.html#21"> <span>Tugas 21: Identifikasi tiga masalah terbesar.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-24-evaluasi-bisnis-dan-mastery.html#22"> <span>Tugas 22: Tentukan tiga prioritas berikutnya.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-24-evaluasi-bisnis-dan-mastery.html#23"> <span>Tugas 23: Susun rencana 30 hari.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-24-evaluasi-bisnis-dan-mastery.html#24"> <span>Tugas 24: Susun rencana 90 hari jika data tersedia.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-24-evaluasi-bisnis-dan-mastery.html#25"> <span>Tugas 25: Perbarui SOP final.</span></label></li>
+</ul>
+</section><section class="sec reveal sec-latihan"><h2 id="9-latihan-dan-kunci-jawaban"><span class="h-text">9. Latihan dan Kunci Jawaban</span><a class="anchor" href="#9-latihan-dan-kunci-jawaban" aria-label="Tautan ke bagian ini">#</a></h2>
+<div class="qa"><p class="q"><strong>1. Sebutkan empat aspek yang diperiksa dalam audit niche.</strong></p><details class="ans"><summary>Lihat jawaban</summary><div class="a"><p>Kunci: Permintaan pasar; peluang monetisasi; persaingan; kesesuaian dengan kemampuan.</p></div></details></div>
+<div class="qa"><p class="q"><strong>2. Klik tinggi tetapi pesanan rendah pada audit produk. Apa tindakannya?</strong></p><details class="ans"><summary>Lihat jawaban</summary><div class="a"><p>Kunci: Periksa produk, harga, dan kecocokan audiens.</p></div></details></div>
+<div class="qa"><p class="q"><strong>3. Sebutkan enam tahap funnel baku.</strong></p><details class="ans"><summary>Lihat jawaban</summary><div class="a"><p>Kunci: Views → Klik → Pesanan → Transaksi memenuhi syarat → Komisi disetujui → Pembayaran.</p></div></details></div>
+<div class="qa"><p class="q"><strong>4. Komisi disetujui jauh di bawah estimasi. Apa yang diperiksa?</strong></p><details class="ans"><summary>Lihat jawaban</summary><div class="a"><p>Kunci: Status transaksi dan ketentuan program.</p></div></details></div>
+<div class="qa"><p class="q"><strong>5. Pembayaran berbeda dari laporan. Apa yang diperiksa?</strong></p><details class="ans"><summary>Lihat jawaban</summary><div class="a"><p>Kunci: Periode pembayaran, penyesuaian, dan rekonsiliasi.</p></div></details></div>
+<div class="qa"><p class="q"><strong>6. Mengapa komisi estimasi dan komisi disetujui tidak boleh dijumlahkan?</strong></p><details class="ans"><summary>Lihat jawaban</summary><div class="a"><p>Kunci: Jika keduanya untuk transaksi yang sama, terjadi penghitungan ganda.</p></div></details></div>
+<div class="qa"><p class="q"><strong>7. Komisi disetujui Rp10.000.000 dan biaya operasional Rp1.500.000. Berapa hasil setelah biaya, dan basis apa yang dipakai?</strong></p><details class="ans"><summary>Lihat jawaban</summary><div class="a"><p>Kunci: Rp8.500.000 (basis kinerja), sebelum pajak dan kewajiban lain. Basis kas memakai komisi dibayarkan.</p></div></details></div>
+<div class="qa"><p class="q"><strong>8. Views turun 50% tetapi CTR dan CVR stabil. Di mana masalah utamanya kemungkinan terletak?</strong></p><details class="ans"><summary>Lihat jawaban</summary><div class="a"><p>Kunci: Pada distribusi atau jumlah tayangan.</p></div></details></div>
+<div class="qa"><p class="q"><strong>9. Hasil eksperimen belum jelas. Apa langkah berikutnya?</strong></p><details class="ans"><summary>Lihat jawaban</summary><div class="a"><p>Kunci: Tambah data atau sederhanakan eksperimen (Uji ulang).</p></div></details></div>
+<div class="qa"><p class="q"><strong>10. Sebutkan lima opsi keputusan akhir pada evaluasi 90 hari.</strong></p><details class="ans"><summary>Lihat jawaban</summary><div class="a"><p>Kunci: Lanjutkan; Optimalkan; Uji ulang; Kurangi prioritas; Hentikan.</p></div></details></div>
+<div class="qa"><p class="q"><strong>11. Tahap funnel mana yang bermasalah jika banyak pesanan tidak lolos ketentuan program?</strong></p><details class="ans"><summary>Lihat jawaban</summary><div class="a"><p>Kunci: Transaksi memenuhi syarat (tahap 4). Periksa status transaksi, jenis produk, dan syarat program.</p></div></details></div>
+</section><section class="sec reveal"><h2 id="10-standar-kelulusan"><span class="h-text">10. Standar Kelulusan</span><a class="anchor" href="#10-standar-kelulusan" aria-label="Tautan ke bagian ini">#</a></h2>
+<p>Kamu dianggap menguasai modul ini jika mampu melakukan audit bisnis, mengidentifikasi masalah utama, menyusun prioritas, mengevaluasi eksperimen, dan membuat rencana pengembangan berdasarkan data aktual.</p>
+<hr />
+</section><section class="sec reveal"><h2 id="lampiran-penutup-standar-kelulusan-level-5"><span class="h-text">Lampiran — Penutup: Standar Kelulusan Level 5</span><a class="anchor" href="#lampiran-penutup-standar-kelulusan-level-5" aria-label="Tautan ke bagian ini">#</a></h2>
+<p>Bagian ini berlaku untuk seluruh Level 5.</p>
+<p>Level 5 tidak selesai hanya karena semua materi sudah dibaca. Penguasaan harus dibuktikan lewat penerapan dan evaluasi.</p>
+<p><strong>Checklist akhir (gunakan di Notion):</strong></p>
+<ul>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-24-evaluasi-bisnis-dan-mastery.html#26"> <span>Saya mampu membandingkan produk berdasarkan komisi dan konversi.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-24-evaluasi-bisnis-dan-mastery.html#27"> <span>Saya mampu mengukur kontribusi setiap produk.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-24-evaluasi-bisnis-dan-mastery.html#28"> <span>Saya memahami risiko ketergantungan pendapatan.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-24-evaluasi-bisnis-dan-mastery.html#29"> <span>Saya mampu menghitung kebutuhan pesanan, klik, dan views.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-24-evaluasi-bisnis-dan-mastery.html#30"> <span>Saya dapat membedakan komisi estimasi, komisi disetujui, pembayaran, dan hasil setelah biaya.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-24-evaluasi-bisnis-dan-mastery.html#31"> <span>Saya memiliki SOP produksi konten.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-24-evaluasi-bisnis-dan-mastery.html#32"> <span>Saya dapat mengembangkan konten berdasarkan data.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-24-evaluasi-bisnis-dan-mastery.html#33"> <span>Saya memahami aturan affiliate dan platform yang digunakan.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-24-evaluasi-bisnis-dan-mastery.html#34"> <span>Saya memiliki prosedur pengelolaan risiko.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-24-evaluasi-bisnis-dan-mastery.html#35"> <span>Saya menggunakan database untuk mengelola produk dan konten.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-24-evaluasi-bisnis-dan-mastery.html#36"> <span>Saya mampu mengevaluasi eksperimen.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-24-evaluasi-bisnis-dan-mastery.html#37"> <span>Saya memiliki laporan performa 30 hari.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-24-evaluasi-bisnis-dan-mastery.html#38"> <span>Saya memiliki rencana pengembangan berdasarkan hasil aktual.</span></label></li>
+</ul>
+<p><strong>Prinsip yang harus diingat:</strong></p>
+<ol>
+<li>Komisi tinggi tidak selalu berarti produk terbaik. Periksa konversi, kualitas, dan risiko.</li>
+<li>Views tinggi tidak selalu berarti bisnis sehat. Periksa klik, transaksi, dan komisi.</li>
+<li>Banyak konten tidak selalu berarti pertumbuhan. Prioritaskan kualitas dan hasil.</li>
+<li>Diversifikasi tidak berarti mempromosikan semua produk. Pilih alternatif yang relevan.</li>
+<li>Target Rp30 juta (contoh target jangka panjang untuk latihan) harus dibuktikan dengan angka. Hitung kebutuhan transaksi dan traffic dari data aktual.</li>
+<li>Otomasi bukan pengganti strategi. Otomatisasi proses yang sudah jelas dan sesuai aturan.</li>
+<li>Evaluasi harus menghasilkan keputusan. Data tanpa tindakan tidak banyak membantu bisnis.</li>
+<li>Reputasi adalah aset bisnis. Pertahankan kejujuran dan kepatuhan saat bisnis berkembang.</li>
+</ol>
+<p><strong>Hasil akhir yang dituju:</strong> kamu punya sistem Shopee Affiliate yang terdokumentasi, mampu mengukur komisi secara akurat, memahami sumber pertumbuhan, mengelola risiko, dan bisa menentukan langkah berikutnya berdasarkan data, bukan sekadar asumsi.</p></section>
+</article>
+<div class="complete reveal"><button type="button" id="mark-done" data-page="modul/modul-24-evaluasi-bisnis-dan-mastery.html">Tandai modul ini selesai</button><span class="hint">Tersimpan di browser kamu.</span></div>
+<nav class="pager" aria-label="Halaman sebelumnya dan berikutnya"><a class="prev" href="../modul/modul-23-otomasi-dan-sistem-kerja.html"><small>← Sebelumnya</small><span>23. Otomasi dan Sistem Kerja</span></a><a class="next" href="../proyek-praktik.html"><small>Berikutnya →</small><span>8 Project Praktik Wajib</span></a></nav>
+<footer class="foot">
+  <p>Materi pembelajaran, bukan nasihat hukum atau pajak. Aturan Shopee Affiliate bisa berubah, jadi selalu cek sumber resmi dan catat tanggal pemeriksaannya. Situs ini bukan situs resmi Shopee.</p>
+</footer>
+</main>
+<aside class="toc" aria-label="Isi halaman"><p class="toc-title">Di halaman ini</p><ol><li><a href="#1-tujuan-pembelajaran">Tujuan Pembelajaran</a></li><li><a href="#2-ringkasan-konsep-utama">Ringkasan Konsep Utama</a></li><li><a href="#3-penjelasan">Penjelasan</a></li><li><a href="#4-istilah-penting">Istilah Penting</a></li><li><a href="#5-langkah-praktik">Langkah Praktik</a></li><li><a href="#6-contoh-dan-perhitungan">Contoh dan Perhitungan</a></li><li><a href="#7-kesalahan-umum-dan-cara-menghindarinya">Kesalahan Umum dan Cara Menghindarinya</a></li><li><a href="#8-tugas-dan-checklist">Tugas dan Checklist</a></li><li><a href="#9-latihan-dan-kunci-jawaban">Latihan dan Kunci Jawaban</a></li><li><a href="#10-standar-kelulusan">Standar Kelulusan</a></li><li><a href="#lampiran-penutup-standar-kelulusan-level-5">Lampiran — Penutup: Standar Kelulusan Level 5</a></li></ol></aside>
+</div>
+<nav class="bottom-nav" id="bottom-nav" aria-label="Navigasi cepat">
+  <a class="bn-item" href="../index.html"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5"/><path d="M5 10v10h14V10"/></svg><span>Beranda</span></a>
+  <button class="bn-item" id="bn-menu" type="button" aria-controls="sidebar"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="7" rx="1.5"/><rect x="4" y="13" width="7" height="7" rx="1.5"/><rect x="13" y="13" width="7" height="7" rx="1.5"/></svg><span>Materi</span></button>
+  <button class="bn-item" id="bn-search" type="button"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span>Cari</span></button>
+  <a class="bn-item bn-primary" href="../proyek-praktik.html"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg><span>Lanjut</span></a>
+</nav>
+<button class="to-top" id="to-top" type="button" aria-label="Kembali ke atas" hidden><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5"/><path d="m5 12 7-7 7 7"/></svg></button>
+<div class="toast-wrap" id="toasts" aria-live="polite"></div>
+<script src="../assets/search-index.js"></script>
+<script src="../assets/app.js"></script>
+</body>
+</html>

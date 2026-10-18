@@ -1,0 +1,666 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Modul 22 — Advanced Strategy · Shopee Affiliate Academy</title>
+<meta name="description" content="Modul ini mengajarkan cara mengambil keputusan bisnis yang lebih strategis. Dasarnya adalah data produk, konten, traffic, konversi, dan komisi.">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#EE4D2D">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/style.css">
+<script>(function(){var d=document.documentElement;d.classList.add('js');try{var t=localStorage.getItem('sea-theme');if(t&&t!=='auto')d.setAttribute('data-theme',t);var p=JSON.parse(localStorage.getItem('sea-prefs')||'{}');['fs','lh','font','width'].forEach(function(k){if(p[k])d.setAttribute('data-'+k,p[k]);});if(p.focus)d.setAttribute('data-focus','1');}catch(e){}})();</script>
+</head>
+<body data-root="../" data-kind="modul" data-page="modul/modul-22-advanced-strategy.html" data-title="Modul 22 — Advanced Strategy">
+<a class="skip" href="#isi">Lewati ke isi</a>
+<div class="read-progress" id="read-progress" aria-hidden="true"></div>
+<div class="top" id="top">
+<header class="topbar">
+  <button class="icon-btn menu-btn" id="menu-btn" aria-label="Buka menu materi" aria-controls="sidebar" aria-expanded="false"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+  <a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true">SA</span><span class="brand-name">Shopee Affiliate Academy</span></a>
+  <div class="search" id="search">
+    <div class="search-box">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input id="search-input" type="search" placeholder="Cari materi…" autocomplete="off" aria-label="Cari materi">
+      <button class="icon-btn search-close" id="search-close" type="button" aria-label="Tutup pencarian"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+    </div>
+    <div class="search-results" id="search-results" hidden></div>
+  </div>
+  <button class="icon-btn desk-only" id="focus-btn" aria-label="Mode fokus" title="Mode fokus"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9V5h4M20 9V5h-4M4 15v4h4M20 15v4h-4"/></svg></button>
+  <button class="icon-btn aa-btn" id="aa-btn" aria-label="Pengaturan baca" aria-expanded="false" aria-controls="prefs"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20 10 5l6 15"/><path d="M6.5 14.5h7"/><path d="M15 12h5M17.5 12v8"/></svg></button>
+</header>
+<div class="subbar" id="subbar" aria-hidden="true"><span class="sb-title"></span><span class="sb-pct"></span></div>
+</div>
+<div class="prefs" id="prefs" hidden role="dialog" aria-label="Pengaturan tampilan">
+  <div class="prefs-head"><strong>Pengaturan baca</strong><button class="icon-btn sm" id="prefs-close" type="button" aria-label="Tutup"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
+  <div class="pref-row"><span>Ukuran teks</span><div class="seg" role="group" aria-label="Ukuran teks">
+    <button type="button" id="fs-down" aria-label="Perkecil teks">A−</button><output id="fs-val">3/5</output><button type="button" id="fs-up" aria-label="Perbesar teks">A+</button></div></div>
+  <div class="pref-row"><span>Jarak baris</span><div class="seg"><button type="button" data-pref="lh" data-val="tight">Rapat</button><button type="button" data-pref="lh" data-val="normal">Normal</button><button type="button" data-pref="lh" data-val="loose">Lega</button></div></div>
+  <div class="pref-row"><span>Huruf</span><div class="seg"><button type="button" data-pref="font" data-val="sans">Sans</button><button type="button" data-pref="font" data-val="serif">Serif</button></div></div>
+  <div class="pref-row"><span>Lebar teks</span><div class="seg"><button type="button" data-pref="width" data-val="normal">Standar</button><button type="button" data-pref="width" data-val="wide">Lebar</button></div></div>
+  <div class="pref-row"><span>Tema</span><div class="seg theme-seg"><button type="button" data-pref="theme" data-val="light">Terang</button><button type="button" data-pref="theme" data-val="sepia">Sepia</button><button type="button" data-pref="theme" data-val="dark">Gelap</button><button type="button" data-pref="theme" data-val="auto">Auto</button></div></div>
+  <label class="pref-switch"><input type="checkbox" id="pref-break" checked><span class="sw"></span><span>Pengingat istirahat (tiap 25 menit)</span></label>
+  <label class="pref-switch desk-only"><input type="checkbox" id="pref-focus"><span class="sw"></span><span>Mode fokus (sembunyikan menu)</span></label>
+  <button type="button" class="reset" id="prefs-reset">Kembalikan ke bawaan</button>
+</div>
+<div class="shell">
+<nav class="sidebar" id="sidebar" aria-label="Navigasi materi">
+<div class="nav-group">
+<a href="../index.html" data-page="index.html"><span>Beranda dan Pengantar</span></a>
+<a href="../master.html" data-page="master.html"><span>Rangkuman Master</span></a>
+</div>
+<details class="nav-level" data-mods="modul/modul-01-dasar-affiliate-marketing.html,modul/modul-02-shopee-affiliate-program-dan-kebijakan.html,modul/modul-03-persiapan-akun-dan-operasional.html"><summary><span class="lv-badge">1</span><span class="lv-name">Fundamentals</span><span class="lv-count">0/3</span></summary>
+<a href="../level-1.html" data-page="level-1.html"><span>Ringkasan level</span></a>
+<a href="../modul/modul-01-dasar-affiliate-marketing.html" data-page="modul/modul-01-dasar-affiliate-marketing.html"><span>Modul 01 — Dasar Affiliate Marketing</span></a>
+<a href="../modul/modul-02-shopee-affiliate-program-dan-kebijakan.html" data-page="modul/modul-02-shopee-affiliate-program-dan-kebijakan.html"><span>Modul 02 — Shopee Affiliate Program dan Kebijakan</span></a>
+<a href="../modul/modul-03-persiapan-akun-dan-operasional.html" data-page="modul/modul-03-persiapan-akun-dan-operasional.html"><span>Modul 03 — Persiapan Akun dan Operasional</span></a>
+</details>
+<details class="nav-level" data-mods="modul/modul-04-riset-pasar-dan-permintaan.html,modul/modul-05-niche-audiens-dan-positioning.html,modul/modul-06-riset-dan-evaluasi-produk.html,modul/modul-07-riset-kompetitor.html"><summary><span class="lv-badge">2</span><span class="lv-name">Market and Product Research</span><span class="lv-count">0/4</span></summary>
+<a href="../level-2.html" data-page="level-2.html"><span>Ringkasan level</span></a>
+<a href="../modul/modul-04-riset-pasar-dan-permintaan.html" data-page="modul/modul-04-riset-pasar-dan-permintaan.html"><span>Modul 04 — Riset Pasar dan Permintaan</span></a>
+<a href="../modul/modul-05-niche-audiens-dan-positioning.html" data-page="modul/modul-05-niche-audiens-dan-positioning.html"><span>Modul 05 — Niche, Audiens, dan Positioning</span></a>
+<a href="../modul/modul-06-riset-dan-evaluasi-produk.html" data-page="modul/modul-06-riset-dan-evaluasi-produk.html"><span>Modul 06 — Riset dan Evaluasi Produk</span></a>
+<a href="../modul/modul-07-riset-kompetitor.html" data-page="modul/modul-07-riset-kompetitor.html"><span>Modul 07 — Riset Kompetitor</span></a>
+</details>
+<details class="nav-level" data-mods="modul/modul-08-strategi-channel-dan-traffic-organik.html,modul/modul-09-strategi-konten.html,modul/modul-10-copywriting-dan-hook.html,modul/modul-11-produksi-video-dan-visual.html,modul/modul-12-seo-dan-konten-berbasis-pencarian.html,modul/modul-13-distribusi-dan-community-building.html"><summary><span class="lv-badge">3</span><span class="lv-name">Content and Traffic</span><span class="lv-count">0/6</span></summary>
+<a href="../level-3.html" data-page="level-3.html"><span>Ringkasan level</span></a>
+<a href="../modul/modul-08-strategi-channel-dan-traffic-organik.html" data-page="modul/modul-08-strategi-channel-dan-traffic-organik.html"><span>Modul 08 — Strategi Channel dan Traffic Organik</span></a>
+<a href="../modul/modul-09-strategi-konten.html" data-page="modul/modul-09-strategi-konten.html"><span>Modul 09 — Strategi Konten</span></a>
+<a href="../modul/modul-10-copywriting-dan-hook.html" data-page="modul/modul-10-copywriting-dan-hook.html"><span>Modul 10 — Copywriting dan Hook</span></a>
+<a href="../modul/modul-11-produksi-video-dan-visual.html" data-page="modul/modul-11-produksi-video-dan-visual.html"><span>Modul 11 — Produksi Video dan Visual</span></a>
+<a href="../modul/modul-12-seo-dan-konten-berbasis-pencarian.html" data-page="modul/modul-12-seo-dan-konten-berbasis-pencarian.html"><span>Modul 12 — SEO dan Konten Berbasis Pencarian</span></a>
+<a href="../modul/modul-13-distribusi-dan-community-building.html" data-page="modul/modul-13-distribusi-dan-community-building.html"><span>Modul 13 — Distribusi dan Community Building</span></a>
+</details>
+<details class="nav-level" data-mods="modul/modul-14-affiliate-link-dan-tracking.html,modul/modul-15-conversion-rate-optimization-cro.html,modul/modul-16-analytics-dan-dashboard.html,modul/modul-17-eksperimen-dan-validasi.html"><summary><span class="lv-badge">4</span><span class="lv-name">Conversion and Analytics</span><span class="lv-count">0/4</span></summary>
+<a href="../level-4.html" data-page="level-4.html"><span>Ringkasan level</span></a>
+<a href="../modul/modul-14-affiliate-link-dan-tracking.html" data-page="modul/modul-14-affiliate-link-dan-tracking.html"><span>Modul 14 — Affiliate Link dan Tracking</span></a>
+<a href="../modul/modul-15-conversion-rate-optimization-cro.html" data-page="modul/modul-15-conversion-rate-optimization-cro.html"><span>Modul 15 — Conversion Rate Optimization (CRO)</span></a>
+<a href="../modul/modul-16-analytics-dan-dashboard.html" data-page="modul/modul-16-analytics-dan-dashboard.html"><span>Modul 16 — Analytics dan Dashboard</span></a>
+<a href="../modul/modul-17-eksperimen-dan-validasi.html" data-page="modul/modul-17-eksperimen-dan-validasi.html"><span>Modul 17 — Eksperimen dan Validasi</span></a>
+</details>
+<details class="nav-level" data-mods="modul/modul-18-monetisasi-dan-pemilihan-produk-lanjutan.html,modul/modul-19-keuangan-dan-target-komisi.html,modul/modul-20-scaling-dan-sistem-produksi.html,modul/modul-21-kepatuhan-risiko-dan-reputasi.html,modul/modul-22-advanced-strategy.html,modul/modul-23-otomasi-dan-sistem-kerja.html,modul/modul-24-evaluasi-bisnis-dan-mastery.html" open><summary><span class="lv-badge">5</span><span class="lv-name">Professional Growth</span><span class="lv-count">0/7</span></summary>
+<a href="../level-5.html" data-page="level-5.html"><span>Ringkasan level</span></a>
+<a href="../modul/modul-18-monetisasi-dan-pemilihan-produk-lanjutan.html" data-page="modul/modul-18-monetisasi-dan-pemilihan-produk-lanjutan.html"><span>Modul 18 — Monetisasi dan Pemilihan Produk Lanjutan</span></a>
+<a href="../modul/modul-19-keuangan-dan-target-komisi.html" data-page="modul/modul-19-keuangan-dan-target-komisi.html"><span>Modul 19 — Keuangan dan Target Komisi</span></a>
+<a href="../modul/modul-20-scaling-dan-sistem-produksi.html" data-page="modul/modul-20-scaling-dan-sistem-produksi.html"><span>Modul 20 — Scaling dan Sistem Produksi</span></a>
+<a href="../modul/modul-21-kepatuhan-risiko-dan-reputasi.html" data-page="modul/modul-21-kepatuhan-risiko-dan-reputasi.html"><span>Modul 21 — Kepatuhan, Risiko, dan Reputasi</span></a>
+<a href="../modul/modul-22-advanced-strategy.html" data-page="modul/modul-22-advanced-strategy.html" aria-current="page"><span>Modul 22 — Advanced Strategy</span></a>
+<a href="../modul/modul-23-otomasi-dan-sistem-kerja.html" data-page="modul/modul-23-otomasi-dan-sistem-kerja.html"><span>Modul 23 — Otomasi dan Sistem Kerja</span></a>
+<a href="../modul/modul-24-evaluasi-bisnis-dan-mastery.html" data-page="modul/modul-24-evaluasi-bisnis-dan-mastery.html"><span>Modul 24 — Evaluasi Bisnis dan Mastery</span></a>
+</details>
+<div class="nav-group"><p class="nav-label">Praktik</p>
+<a href="../proyek-praktik.html" data-page="proyek-praktik.html"><span>8 Project Praktik Wajib</span></a>
+<a href="../database-notion.html" data-page="database-notion.html"><span>Database Notion</span></a>
+</div>
+<div class="nav-group"><p class="nav-label">Lampiran</p>
+<a href="../kamus-istilah.html" data-page="kamus-istilah.html"><span>Kamus Istilah</span></a>
+<a href="../rumus-template.html" data-page="rumus-template.html"><span>Lembar Rumus dan Template</span></a>
+<a href="../studi-kasus.html" data-page="studi-kasus.html"><span>Studi Kasus Simulasi</span></a>
+<a href="../panduan-pelatih.html" data-page="panduan-pelatih.html"><span>Panduan Pelatih dan Penilaian</span></a>
+</div></nav>
+<div class="scrim" id="scrim" hidden></div>
+<main id="isi" class="content">
+<nav class="crumbs" aria-label="Jejak halaman"><a href="../index.html">Beranda</a> <span>/</span> <a href="../level-5.html">Level 5</a> <span>/</span> Modul 22</nav>
+<details class="toc-mobile"><summary>Di halaman ini</summary><ol><li><a href="#1-tujuan-pembelajaran">Tujuan Pembelajaran</a></li><li><a href="#2-ringkasan-konsep-utama">Ringkasan Konsep Utama</a></li><li><a href="#3-penjelasan">Penjelasan</a></li><li><a href="#4-istilah-penting">Istilah Penting</a></li><li><a href="#5-langkah-praktik">Langkah Praktik</a></li><li><a href="#6-contoh-dan-perhitungan">Contoh dan Perhitungan</a></li><li><a href="#7-kesalahan-umum-dan-cara-menghindarinya">Kesalahan Umum dan Cara Menghindarinya</a></li><li><a href="#8-tugas-dan-checklist">Tugas dan Checklist</a></li><li><a href="#9-latihan-dan-kunci-jawaban">Latihan dan Kunci Jawaban</a></li><li><a href="#10-standar-kelulusan">Standar Kelulusan</a></li></ol></details>
+<article class="prose">
+<div class="eyebrow"><a class="chip" href="../level-5.html">Level 5 · Professional Growth</a><span class="chip ghost">Modul 22 dari 24</span><span class="chip ghost">± 13 menit baca</span></div>
+<h1 id="modul-22-advanced-strategy">Modul 22 — Advanced Strategy</h1>
+<section class="sec reveal"><h2 id="1-tujuan-pembelajaran"><span class="h-text">1. Tujuan Pembelajaran</span><a class="anchor" href="#1-tujuan-pembelajaran" aria-label="Tautan ke bagian ini">#</a></h2>
+<p>Modul ini mengajarkan cara mengambil keputusan bisnis yang lebih strategis. Dasarnya adalah data produk, konten, traffic, konversi, dan komisi.</p>
+<p>Setelah modul ini, kamu mampu:</p>
+<ul>
+<li>Menilai kontribusi setiap konten terhadap komisi.</li>
+<li>Menemukan pola produk dan audiens yang menghasilkan.</li>
+<li>Mengidentifikasi pola musiman.</li>
+<li>Mengembangkan konten evergreen.</li>
+<li>Mengelola katalog konten di Database Konten Affiliate.</li>
+<li>Mengidentifikasi kejenuhan audiens.</li>
+<li>Melakukan diversifikasi traffic.</li>
+<li>Menghitung opportunity cost.</li>
+<li>Menentukan prioritas berdasarkan dampak dan usaha.</li>
+<li>Membangun positioning yang jelas.</li>
+<li>Menggunakan data sebagai dasar keputusan.</li>
+</ul>
+</section><section class="sec reveal"><h2 id="2-ringkasan-konsep-utama"><span class="h-text">2. Ringkasan Konsep Utama</span><a class="anchor" href="#2-ringkasan-konsep-utama" aria-label="Tautan ke bagian ini">#</a></h2>
+<ol>
+<li>Tidak semua konten memberi kontribusi yang sama. Pola views, klik, dan pesanan bisa sangat berbeda.</li>
+<li>Satu produk bisa menghasilkan performa berbeda pada audiens berbeda. Anggap perbedaan itu <strong>hipotesis yang perlu diuji</strong>.</li>
+<li>Pola musiman harus dibuktikan dengan data historis, bukan diasumsikan.</li>
+<li>Konten evergreen relevan lebih lama, tetapi <strong>evergreen tidak berarti abadi</strong>.</li>
+<li>Katalog konten dipakai untuk mengambil keputusan, bukan sekadar menyimpan daftar link. Katalog ini adalah Database Konten Affiliate yang sudah kamu punya.</li>
+<li>Pembaruan konten adalah eksperimen yang hasilnya perlu diukur.</li>
+<li>Kejenuhan audiens punya tanda-tanda, tetapi tanda itu tidak otomatis membuktikan kejenuhan.</li>
+<li>Opportunity cost: waktu untuk satu produk berarti waktu itu tidak dipakai untuk produk lain.</li>
+<li>Prioritas ditentukan dengan matriks dampak × usaha.</li>
+<li>Positioning harus terlihat dalam pemilihan produk, gaya konten, kualitas informasi, dan konsistensi audiens. Nama akun atau slogan saja tidak cukup.</li>
+<li>Setiap keputusan penting punya alasan dan bukti yang bisa ditinjau. Hasil negatif juga dicatat.</li>
+</ol>
+</section><section class="sec reveal"><h2 id="3-penjelasan"><span class="h-text">3. Penjelasan</span><a class="anchor" href="#3-penjelasan" aria-label="Tautan ke bagian ini">#</a></h2>
+<h3 id="3-1-analisis-kontribusi-konten-terhadap-komisi"><span class="h-text">3.1 Analisis Kontribusi Konten terhadap Komisi</span><a class="anchor" href="#3-1-analisis-kontribusi-konten-terhadap-komisi" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>Ada konten dengan banyak views tetapi sedikit klik. Ada konten dengan banyak klik tetapi sedikit pesanan. Ada pula konten dengan views rendah yang menghasilkan komisi cukup besar.</p>
+<p><strong>Data yang dikumpulkan untuk setiap konten:</strong></p>
+<ul>
+<li>ID konten.</li>
+<li>Produk yang dipromosikan.</li>
+<li>Tanggal publikasi.</li>
+<li>Views.</li>
+<li>Klik affiliate yang dapat diatribusikan.</li>
+<li>Pesanan.</li>
+<li>Komisi estimasi.</li>
+<li>Komisi disetujui.</li>
+<li>Waktu produksi.</li>
+<li>Catatan eksperimen.</li>
+</ul>
+<p><strong>Cara mengambil keputusan:</strong></p>
+<ul>
+<li><strong>Views tinggi dan komisi tinggi:</strong> evaluasi kemungkinan pengembangan.</li>
+<li><strong>Views tinggi, klik rendah:</strong> evaluasi relevansi produk dan CTA.</li>
+<li><strong>Klik tinggi, pesanan rendah:</strong> periksa produk, harga, audiens, dan halaman tujuan.</li>
+<li><strong>Views rendah, konversi baik:</strong> uji cara meningkatkan distribusi tanpa mengubah faktor yang sudah bekerja.</li>
+<li><strong>Semua metrik rendah:</strong> periksa kembali kebutuhan audiens dan kualitas ide.</li>
+</ul>
+<blockquote class="callout">
+<p>Jangan menganggap setiap konten harus langsung menghasilkan komisi. Konten edukasi yang membantu audiens memahami masalah juga bisa berkontribusi secara tidak langsung.</p>
+</blockquote>
+<h3 id="3-2-analisis-performa-berdasarkan-produk-dan-audiens"><span class="h-text">3.2 Analisis Performa Berdasarkan Produk dan Audiens</span><a class="anchor" href="#3-2-analisis-performa-berdasarkan-produk-dan-audiens" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>Satu produk bisa menghasilkan performa berbeda pada audiens berbeda. Stand laptop, misalnya, relevan untuk mahasiswa, pekerja jarak jauh, pengguna meja kerja kecil, dan pengguna laptop untuk belajar.</p>
+<p>Mahasiswa mungkin lebih memperhatikan harga dan portabilitas. Pekerja jarak jauh mungkin lebih memperhatikan kenyamanan dan kesesuaian dengan ruang kerja.</p>
+<blockquote class="callout">
+<p>Ini <strong>hipotesis yang perlu diuji</strong>, bukan fakta untuk semua anggota kelompok tersebut. Jangan menyimpulkan satu segmen pasti lebih menguntungkan hanya dari satu konten.</p>
+</blockquote>
+<h3 id="3-3-analisis-pola-musiman"><span class="h-text">3.3 Analisis Pola Musiman</span><a class="anchor" href="#3-3-analisis-pola-musiman" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>Permintaan produk bisa berubah menurut waktu. Contoh kemungkinan pola musiman:</p>
+<ul>
+<li>Perlengkapan sekolah menjelang tahun ajaran baru.</li>
+<li>Produk hadiah menjelang hari besar.</li>
+<li>Peralatan rumah menjelang periode pindahan.</li>
+<li>Produk tertentu saat ada promosi besar.</li>
+</ul>
+<p>Pola musiman berbeda menurut produk, harga, audiens, dan periode.</p>
+<blockquote class="callout">
+<p>Jika belum punya data historis, jangan menyebut suatu produk pasti laku pada musim tertentu. Catat sebagai hipotesis untuk diuji.</p>
+</blockquote>
+<h3 id="3-4-pengembangan-konten-evergreen"><span class="h-text">3.4 Pengembangan Konten Evergreen</span><a class="anchor" href="#3-4-pengembangan-konten-evergreen" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>Konten evergreen tetap relevan dalam waktu relatif panjang. Contoh:</p>
+<ul>
+<li>Cara memilih ukuran produk.</li>
+<li>Panduan memeriksa spesifikasi.</li>
+<li>Perbedaan beberapa tipe produk.</li>
+<li>Kesalahan saat membeli.</li>
+<li>Cara menggunakan fitur.</li>
+<li>Panduan memilih produk sesuai kebutuhan.</li>
+</ul>
+<p>Konten tentang harga promo hari ini atau stok terbatas lebih cepat kehilangan relevansi.</p>
+<p><strong>Mengapa penting.</strong> Konten evergreen tetap membantu audiens setelah tanggal publikasi, selama informasi dan produknya masih relevan. <strong>Namun evergreen tidak berarti abadi.</strong> Harga, spesifikasi, aturan, dan ketersediaan bisa berubah.</p>
+<p><strong>Cara mengembangkan katalog evergreen:</strong></p>
+<ul>
+<li>Identifikasi pertanyaan pembeli yang sering muncul.</li>
+<li>Buat konten yang menjawab pertanyaan itu.</li>
+<li>Cantumkan informasi yang bisa diperiksa.</li>
+<li>Hindari klaim harga yang tidak bertanggal.</li>
+<li>Periksa ulang link dan informasi secara berkala.</li>
+<li>Perbarui konten jika platform mengizinkan dan pembaruan memberi nilai baru.</li>
+</ul>
+<h3 id="3-5-mengelola-katalog-konten"><span class="h-text">3.5 Mengelola Katalog Konten</span><a class="anchor" href="#3-5-mengelola-katalog-konten" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>Katalog konten adalah daftar terstruktur dari semua konten yang sudah kamu buat. Katalog membantu kamu tahu konten mana yang dipertahankan, dikembangkan, diperbarui, atau dihentikan.</p>
+<p><strong>Katalog konten bukan database baru.</strong> Ia adalah <strong>Database Konten Affiliate</strong> yang kamu bangun sejak Modul 03 dan lengkapi di Modul 16. Kamu cukup membuat tampilan (view) atau filter dari database itu. Jangan membuat tabel kedua yang berisi data yang sama.</p>
+<p>Kolom yang dipakai memakai nama baku Database Konten Affiliate:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Kolom</th>
+<th>Fungsi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ID Konten</td>
+<td>Identitas unik</td>
+</tr>
+<tr>
+<td>Judul Konten</td>
+<td>Memudahkan pencarian</td>
+</tr>
+<tr>
+<td>Produk</td>
+<td>Mengetahui produk yang dipromosikan</td>
+</tr>
+<tr>
+<td>Format</td>
+<td>Mengetahui bentuk konten</td>
+</tr>
+<tr>
+<td>Tanggal Publikasi</td>
+<td>Mengukur umur konten</td>
+</tr>
+<tr>
+<td>URL Konten</td>
+<td>Membuka konten</td>
+</tr>
+<tr>
+<td>Views</td>
+<td>Mengukur distribusi</td>
+</tr>
+<tr>
+<td>Klik</td>
+<td>Mengukur tindakan audiens</td>
+</tr>
+<tr>
+<td>Komisi Disetujui</td>
+<td>Mengukur kontribusi</td>
+</tr>
+<tr>
+<td>Status Konten</td>
+<td>Posisi konten dalam alur kerja (Ide sampai Selesai)</td>
+</tr>
+<tr>
+<td>Catatan Evaluasi</td>
+<td>Menyimpan pelajaran</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Status katalog.</strong> Untuk keperluan keputusan, kamu bisa mengelompokkan konten ke tiga label: Aktif, perlu diperbarui, dan dihentikan. Label ini adalah tampilan atau filter, bukan kolom baru. Dasarnya adalah Status Konten (misalnya Terbit atau Evaluasi) dan keputusan evaluasi baku:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Label katalog</th>
+<th>Dasarnya</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Aktif</td>
+<td>Konten Terbit yang masih relevan; keputusannya Lanjutkan</td>
+</tr>
+<tr>
+<td>Perlu diperbarui</td>
+<td>Keputusan Optimalkan atau Uji ulang (informasi usang, link bermasalah, hasil belum jelas)</td>
+</tr>
+<tr>
+<td>Dihentikan</td>
+<td>Keputusan Hentikan; Status Konten bisa dipindah ke Selesai</td>
+</tr>
+</tbody>
+</table></div>
+<p>Keputusan baku setelah evaluasi selalu salah satu dari: Lanjutkan, Optimalkan, Uji ulang, Kurangi prioritas, Hentikan.</p>
+<blockquote class="callout">
+<p>Gunakan katalog untuk mengambil keputusan, bukan hanya menyimpan daftar link.</p>
+</blockquote>
+<h3 id="3-6-memperbarui-konten-lama"><span class="h-text">3.6 Memperbarui Konten Lama</span><a class="anchor" href="#3-6-memperbarui-konten-lama" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>Konten lama bisa diperbarui jika masih relevan dan perubahannya memberi manfaat nyata. Contoh pembaruan:</p>
+<ul>
+<li>Mengganti informasi harga yang sudah tidak berlaku.</li>
+<li>Memperbaiki spesifikasi yang salah.</li>
+<li>Memperbarui alternatif produk.</li>
+<li>Mengganti link yang tidak lagi valid.</li>
+<li>Menambahkan jawaban atas pertanyaan audiens.</li>
+<li>Memperjelas keterbatasan produk.</li>
+</ul>
+<blockquote class="callout">
+<p>Jangan menganggap pembaruan pasti menaikkan views atau komisi. Pembaruan adalah eksperimen yang hasilnya perlu diukur.</p>
+</blockquote>
+<h3 id="3-7-analisis-kejenuhan-audiens"><span class="h-text">3.7 Analisis Kejenuhan Audiens</span><a class="anchor" href="#3-7-analisis-kejenuhan-audiens" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>Kejenuhan audiens terjadi ketika topik, format, atau promosi yang sama disampaikan terlalu sering tanpa nilai baru.</p>
+<p><strong>Tanda yang mungkin muncul:</strong></p>
+<ul>
+<li>Engagement menurun.</li>
+<li>CTR menurun.</li>
+<li>Komentar menunjukkan kebosanan.</li>
+<li>Audiens berulang kali melihat promosi yang sama.</li>
+<li>Views menurun meskipun jumlah publikasi bertambah.</li>
+</ul>
+<blockquote class="callout">
+<p>Tanda-tanda ini tidak selalu membuktikan kejenuhan. Penurunan bisa disebabkan faktor lain.</p>
+</blockquote>
+<p><strong>Cara mengatasinya:</strong></p>
+<ul>
+<li>Ubah sudut pembahasan.</li>
+<li>Jawab pertanyaan audiens.</li>
+<li>Tambahkan informasi tentang keterbatasan produk.</li>
+<li>Gunakan format demonstrasi atau perbandingan.</li>
+<li>Kurangi promosi yang tidak relevan.</li>
+<li>Periksa data sebelum memutuskan mengganti niche.</li>
+</ul>
+<p>Tujuannya bukan selalu mengganti produk. Tujuannya menemukan cara yang lebih berguna untuk menjelaskan kebutuhan yang sama.</p>
+<h3 id="3-8-diversifikasi-sumber-traffic"><span class="h-text">3.8 Diversifikasi Sumber Traffic</span><a class="anchor" href="#3-8-diversifikasi-sumber-traffic" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>Sumber traffic adalah tempat audiens menemukan konten atau affiliate link kamu. Contoh:</p>
+<ul>
+<li>TikTok.</li>
+<li>Instagram.</li>
+<li>YouTube.</li>
+<li>Mesin pencari.</li>
+<li>Website atau blog.</li>
+<li>Komunitas yang mengizinkan promosi sesuai aturan.</li>
+</ul>
+<p>Setiap sumber punya karakteristik, kebutuhan produksi, dan kebijakan berbeda.</p>
+<blockquote class="callout">
+<p>Jika waktumu terbatas, kuasai satu channel utama lebih dulu daripada membagi tenaga terlalu tipis.</p>
+</blockquote>
+<h3 id="3-9-opportunity-cost"><span class="h-text">3.9 Opportunity Cost</span><a class="anchor" href="#3-9-opportunity-cost" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>Opportunity cost adalah nilai dari alternatif terbaik yang kamu lepaskan saat memilih suatu aktivitas. Dalam affiliate marketing, waktu untuk satu produk berarti waktu itu tidak dipakai untuk produk atau konten lain.</p>
+<p>Contoh:</p>
+<ul>
+<li><strong>Opsi A:</strong> membuat 10 konten produk berkomisi rendah.</li>
+<li><strong>Opsi B:</strong> membuat 5 konten untuk produk dengan kebutuhan audiens lebih jelas.</li>
+</ul>
+<blockquote class="callout">
+<p>Opsi B belum tentu lebih baik. Bandingkan hasil aktual atau lakukan pengujian.</p>
+</blockquote>
+<p><strong>Yang perlu dipertimbangkan:</strong> waktu yang diperlukan, peluang komisi, ketidakpastian hasil, potensi penggunaan ulang konten, risiko produk, dan peluang lain yang harus ditunda.</p>
+<p>Jangan hanya membandingkan nominal komisi. Bandingkan juga waktu, risiko, dan kemungkinan hasil berulang.</p>
+<h3 id="3-10-prioritas-berdasarkan-dampak-dan-usaha"><span class="h-text">3.10 Prioritas Berdasarkan Dampak dan Usaha</span><a class="anchor" href="#3-10-prioritas-berdasarkan-dampak-dan-usaha" aria-label="Tautan ke bagian ini">#</a></h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Dampak potensial</th>
+<th>Usaha</th>
+<th>Prioritas awal</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tinggi</td>
+<td>Rendah</td>
+<td>Kerjakan lebih dahulu</td>
+</tr>
+<tr>
+<td>Tinggi</td>
+<td>Tinggi</td>
+<td>Rencanakan dan ukur</td>
+</tr>
+<tr>
+<td>Rendah</td>
+<td>Rendah</td>
+<td>Kerjakan jika relevan</td>
+</tr>
+<tr>
+<td>Rendah</td>
+<td>Tinggi</td>
+<td>Tunda atau hindari</td>
+</tr>
+</tbody>
+</table></div>
+<p>Contoh:</p>
+<ul>
+<li>Memperbaiki link rusak pada konten yang sudah menghasilkan: dampak tinggi, usaha rendah.</li>
+<li>Mengubah seluruh niche tanpa data: usaha tinggi, hasil tidak pasti.</li>
+<li>Membuat laporan otomatis sederhana: bisa mengurangi pekerjaan administratif.</li>
+<li>Membuat banyak akun sekaligus: menambah beban dan risiko kepatuhan.</li>
+</ul>
+<blockquote class="callout">
+<p>Prioritas harus mempertimbangkan urgensi, dampak terhadap komisi, dan risiko.</p>
+</blockquote>
+<h3 id="3-11-pengembangan-positioning"><span class="h-text">3.11 Pengembangan Positioning</span><a class="anchor" href="#3-11-pengembangan-positioning" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>Positioning adalah cara kamu ingin dikenal oleh audiens. Positioning yang jelas membantu audiens memahami alasan mengikuti kontenmu.</p>
+<p>Contoh positioning:</p>
+<ul>
+<li>Panduan memilih perlengkapan kerja terjangkau.</li>
+<li>Rekomendasi alat belajar untuk mahasiswa.</li>
+<li>Perbandingan perlengkapan rumah berdasarkan fungsi dan harga.</li>
+<li>Panduan memilih produk teknologi berdasarkan kebutuhan.</li>
+</ul>
+<blockquote class="callout">
+<p>Positioning bukan sekadar nama akun atau slogan. Ia harus terlihat dalam pemilihan produk, gaya konten, kualitas informasi, dan konsistensi audiens yang dilayani.</p>
+<p>Jangan memilih positioning hanya karena suatu niche sedang populer. Pastikan kamu bisa membuat konten relevan secara konsisten.</p>
+</blockquote>
+<h3 id="3-12-sistem-keputusan-berbasis-data"><span class="h-text">3.12 Sistem Keputusan Berbasis Data</span><a class="anchor" href="#3-12-sistem-keputusan-berbasis-data" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>Sistem ini berarti setiap keputusan penting punya alasan dan bukti yang bisa ditinjau. Format yang dipakai:</p>
+<ul>
+<li><strong>Masalah:</strong> klik affiliate menurun.</li>
+<li><strong>Hipotesis:</strong> CTA kurang jelas.</li>
+<li><strong>Bukti awal:</strong> views relatif stabil, tetapi CTR turun.</li>
+<li><strong>Eksperimen:</strong> uji dua variasi CTA pada konten dengan topik sebanding.</li>
+<li><strong>Metrik:</strong> CTR, klik, CVR, dan komisi disetujui.</li>
+<li><strong>Periode:</strong> tentukan sebelum pengujian, sesuai volume traffic.</li>
+<li><strong>Keputusan:</strong> Lanjutkan variasi yang lebih baik bila datanya memadai, atau Uji ulang bila hasil belum meyakinkan.</li>
+</ul>
+<blockquote class="callout">
+<p>Catat hasil negatif juga. Eksperimen yang gagal tetap berguna jika membantu menyingkirkan hipotesis yang lemah.</p>
+</blockquote>
+</section><section class="sec reveal"><h2 id="4-istilah-penting"><span class="h-text">4. Istilah Penting</span><a class="anchor" href="#4-istilah-penting" aria-label="Tautan ke bagian ini">#</a></h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Istilah</th>
+<th>Definisi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Konten evergreen</td>
+<td>Konten yang tetap relevan dalam waktu relatif panjang</td>
+</tr>
+<tr>
+<td>Katalog konten</td>
+<td>Tampilan terstruktur dari Database Konten Affiliate, berisi semua konten yang sudah dibuat</td>
+</tr>
+<tr>
+<td>Kejenuhan audiens</td>
+<td>Kondisi ketika topik, format, atau promosi yang sama disampaikan terlalu sering tanpa nilai baru</td>
+</tr>
+<tr>
+<td>Sumber traffic</td>
+<td>Tempat audiens menemukan konten atau affiliate link</td>
+</tr>
+<tr>
+<td>Opportunity cost</td>
+<td>Nilai dari alternatif terbaik yang dilepaskan saat memilih suatu aktivitas</td>
+</tr>
+<tr>
+<td>Positioning</td>
+<td>Cara kamu ingin dikenal oleh audiens</td>
+</tr>
+<tr>
+<td>Sistem keputusan berbasis data</td>
+<td>Setiap keputusan penting punya alasan dan bukti yang bisa ditinjau</td>
+</tr>
+</tbody>
+</table></div>
+</section><section class="sec reveal"><h2 id="5-langkah-praktik"><span class="h-text">5. Langkah Praktik</span><a class="anchor" href="#5-langkah-praktik" aria-label="Tautan ke bagian ini">#</a></h2>
+<h3 id="a-analisis-performa-per-produk-dan-audiens"><span class="h-text">A. Analisis performa per produk dan audiens</span><a class="anchor" href="#a-analisis-performa-per-produk-dan-audiens" aria-label="Tautan ke bagian ini">#</a></h3>
+<ol>
+<li>Tentukan segmen audiens yang ingin diuji.</li>
+<li>Buat konten dengan pesan yang relevan bagi segmen itu.</li>
+<li>Gunakan produk yang sesuai.</li>
+<li>Catat views, klik, konversi, dan komisi.</li>
+<li>Bandingkan hasil dengan segmen lain jika data tersedia.</li>
+<li>Tentukan segmen yang layak diprioritaskan.</li>
+</ol>
+<h3 id="b-analisis-pola-musiman"><span class="h-text">B. Analisis pola musiman</span><a class="anchor" href="#b-analisis-pola-musiman" aria-label="Tautan ke bagian ini">#</a></h3>
+<ol>
+<li>Kumpulkan data performa menurut tanggal.</li>
+<li>Kelompokkan per minggu atau bulan.</li>
+<li>Catat perubahan views, klik, pesanan, dan komisi.</li>
+<li>Bandingkan periode yang sejenis jika tersedia.</li>
+<li>Periksa apakah perubahan berkaitan dengan promosi, perubahan harga, atau ketersediaan.</li>
+<li>Gunakan hasilnya untuk merencanakan konten berikutnya.</li>
+</ol>
+<h3 id="c-memperbarui-konten-lama"><span class="h-text">C. Memperbarui konten lama</span><a class="anchor" href="#c-memperbarui-konten-lama" aria-label="Tautan ke bagian ini">#</a></h3>
+<ol>
+<li>Periksa performa sebelumnya.</li>
+<li>Identifikasi informasi yang sudah usang.</li>
+<li>Pastikan perubahan diperbolehkan oleh platform.</li>
+<li>Perbarui informasi yang diperlukan.</li>
+<li>Periksa link.</li>
+<li>Catat tanggal pembaruan di Catatan Evaluasi.</li>
+<li>Evaluasi performa setelah perubahan.</li>
+</ol>
+<h3 id="d-menentukan-sumber-traffic-kedua"><span class="h-text">D. Menentukan sumber traffic kedua</span><a class="anchor" href="#d-menentukan-sumber-traffic-kedua" aria-label="Tautan ke bagian ini">#</a></h3>
+<ol>
+<li>Pelajari perilaku audiens.</li>
+<li>Pilih channel yang sesuai dengan format konten.</li>
+<li>Periksa aturan promosi affiliate.</li>
+<li>Adaptasi konten, jangan sekadar menyalin.</li>
+<li>Ukur klik dan komisi secara terpisah.</li>
+<li>Bandingkan kontribusi dan waktu kerja.</li>
+</ol>
+<h3 id="e-membangun-positioning"><span class="h-text">E. Membangun positioning</span><a class="anchor" href="#e-membangun-positioning" aria-label="Tautan ke bagian ini">#</a></h3>
+<ol>
+<li>Pilih kelompok audiens.</li>
+<li>Identifikasi masalah utama mereka.</li>
+<li>Tentukan jenis bantuan yang akan kamu berikan.</li>
+<li>Tentukan kriteria produk yang akan dipromosikan.</li>
+<li>Tentukan format konten utama.</li>
+<li>Uji respons audiens.</li>
+<li>Perbaiki positioning berdasarkan data.</li>
+</ol>
+</section><section class="sec reveal"><h2 id="6-contoh-dan-perhitungan"><span class="h-text">6. Contoh dan Perhitungan</span><a class="anchor" href="#6-contoh-dan-perhitungan" aria-label="Tautan ke bagian ini">#</a></h2>
+<p>Rumus:</p>
+<pre><code>Komisi per 1.000 views = Komisi disetujui ÷ Views × 1.000
+</code></pre>
+<p>Data berikut adalah simulasi, bukan tarif resmi Shopee.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Konten</th>
+<th>Views</th>
+<th>Klik</th>
+<th>Komisi disetujui</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>100.000</td>
+<td>1.000</td>
+<td>Rp100.000</td>
+</tr>
+<tr>
+<td>B</td>
+<td>20.000</td>
+<td>600</td>
+<td>Rp180.000</td>
+</tr>
+<tr>
+<td>C</td>
+<td>50.000</td>
+<td>500</td>
+<td>Rp50.000</td>
+</tr>
+</tbody>
+</table></div>
+<p>Komisi per 1.000 views:</p>
+<ul>
+<li>Konten A: Rp100.000 ÷ 100.000 × 1.000 = <strong>Rp1.000</strong></li>
+<li>Konten B: Rp180.000 ÷ 20.000 × 1.000 = <strong>Rp9.000</strong></li>
+<li>Konten C: Rp50.000 ÷ 50.000 × 1.000 = <strong>Rp1.000</strong></li>
+</ul>
+<p>Konten B menghasilkan komisi per 1.000 views tertinggi dalam contoh ini. Sebelum menyimpulkan B adalah format terbaik, periksa tiga hal. Apakah klik dan komisi bisa dihubungkan wajar dengan konten itu? Apakah periode pengukurannya sama? Apakah datanya cukup?</p>
+<p>Untuk memilih pekerjaan, pakai matriks dampak × usaha di bagian 3.10.</p>
+</section><section class="sec reveal"><h2 id="7-kesalahan-umum-dan-cara-menghindarinya"><span class="h-text">7. Kesalahan Umum dan Cara Menghindarinya</span><a class="anchor" href="#7-kesalahan-umum-dan-cara-menghindarinya" aria-label="Tautan ke bagian ini">#</a></h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Kesalahan</th>
+<th>Cara menghindari</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Menganggap setiap konten harus langsung menghasilkan komisi</td>
+<td>Konten edukasi bisa berkontribusi secara tidak langsung</td>
+</tr>
+<tr>
+<td>Menyimpulkan konten B format terbaik dari satu tabel</td>
+<td>Periksa hubungan data, kesamaan periode, dan kecukupan data</td>
+</tr>
+<tr>
+<td>Menganggap karakteristik segmen audiens sebagai fakta</td>
+<td>Perlakukan sebagai hipotesis yang diuji</td>
+</tr>
+<tr>
+<td>Menyimpulkan segmen lebih menguntungkan dari satu konten</td>
+<td>Bandingkan dengan segmen lain jika data tersedia</td>
+</tr>
+<tr>
+<td>Menyebut produk pasti laku pada musim tertentu tanpa data historis</td>
+<td>Catat sebagai hipotesis untuk diuji</td>
+</tr>
+<tr>
+<td>Menganggap konten evergreen abadi</td>
+<td>Periksa berkala; harga, spesifikasi, aturan, dan ketersediaan bisa berubah</td>
+</tr>
+<tr>
+<td>Menjadikan katalog sekadar daftar link, atau membuat database kedua</td>
+<td>Pakai Database Konten Affiliate sebagai katalog dan ambil keputusan darinya</td>
+</tr>
+<tr>
+<td>Menganggap pembaruan pasti menaikkan views atau komisi</td>
+<td>Perlakukan pembaruan sebagai eksperimen yang diukur</td>
+</tr>
+<tr>
+<td>Menyimpulkan kejenuhan dari satu indikator</td>
+<td>Periksa data sebelum mengganti niche</td>
+</tr>
+<tr>
+<td>Menyalin konten apa adanya ke channel kedua</td>
+<td>Adaptasi sesuai format dan aturan channel</td>
+</tr>
+<tr>
+<td>Membagi tenaga ke banyak channel saat waktu terbatas</td>
+<td>Kuasai satu channel utama lebih dulu</td>
+</tr>
+<tr>
+<td>Membandingkan hanya nominal komisi antar opsi</td>
+<td>Bandingkan juga waktu, risiko, dan kemungkinan hasil berulang</td>
+</tr>
+<tr>
+<td>Mengubah seluruh niche tanpa data</td>
+<td>Usaha tinggi dengan hasil tidak pasti; putuskan dengan data</td>
+</tr>
+<tr>
+<td>Memilih positioning karena niche sedang populer</td>
+<td>Pastikan kamu bisa memproduksi konten relevan secara konsisten</td>
+</tr>
+<tr>
+<td>Membuang hasil eksperimen negatif</td>
+<td>Catat juga; berguna untuk menyingkirkan hipotesis lemah</td>
+</tr>
+</tbody>
+</table></div>
+</section><section class="sec reveal"><h2 id="8-tugas-dan-checklist"><span class="h-text">8. Tugas dan Checklist</span><a class="anchor" href="#8-tugas-dan-checklist" aria-label="Tautan ke bagian ini">#</a></h2>
+<ul>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-22-advanced-strategy.html#1"> <span>Tugas 1: Buat tampilan katalog konten dari Database Konten Affiliate.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-22-advanced-strategy.html#2"> <span>Tugas 2: Hitung komisi per 1.000 views untuk konten yang datanya tersedia.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-22-advanced-strategy.html#3"> <span>Tugas 3: Identifikasi produk dan audiens yang menunjukkan hasil baik.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-22-advanced-strategy.html#4"> <span>Tugas 4: Tentukan konten evergreen.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-22-advanced-strategy.html#5"> <span>Tugas 5: Tandai konten yang perlu diperbarui.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-22-advanced-strategy.html#6"> <span>Tugas 6: Periksa tanda-tanda kejenuhan.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-22-advanced-strategy.html#7"> <span>Tugas 7: Evaluasi peluang sumber traffic kedua.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-22-advanced-strategy.html#8"> <span>Tugas 8: Buat matriks dampak dan usaha.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-22-advanced-strategy.html#9"> <span>Tugas 9: Rumuskan positioning akunmu.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-22-advanced-strategy.html#10"> <span>Tugas 10: Buat tiga eksperimen dengan hipotesis dan metrik jelas (catat di Database Eksperimen).</span></label></li>
+</ul>
+</section><section class="sec reveal sec-latihan"><h2 id="9-latihan-dan-kunci-jawaban"><span class="h-text">9. Latihan dan Kunci Jawaban</span><a class="anchor" href="#9-latihan-dan-kunci-jawaban" aria-label="Tautan ke bagian ini">#</a></h2>
+<div class="qa"><p class="q"><strong>1. Konten A: 100.000 views, komisi Rp100.000. Konten B: 20.000 views, komisi Rp180.000. Hitung komisi per 1.000 views masing-masing.</strong></p><details class="ans"><summary>Lihat jawaban</summary><div class="a"><p>Kunci: A = Rp1.000; B = Rp9.000.</p></div></details></div>
+<div class="qa"><p class="q"><strong>2. Views tinggi tetapi klik rendah. Apa yang dievaluasi?</strong></p><details class="ans"><summary>Lihat jawaban</summary><div class="a"><p>Kunci: Relevansi produk dan CTA.</p></div></details></div>
+<div class="qa"><p class="q"><strong>3. Klik tinggi tetapi pesanan rendah. Apa yang diperiksa?</strong></p><details class="ans"><summary>Lihat jawaban</summary><div class="a"><p>Kunci: Produk, harga, audiens, dan halaman tujuan.</p></div></details></div>
+<div class="qa"><p class="q"><strong>4. Views rendah tetapi konversi baik. Apa langkahnya?</strong></p><details class="ans"><summary>Lihat jawaban</summary><div class="a"><p>Kunci: Uji cara meningkatkan distribusi tanpa mengubah faktor yang sudah bekerja.</p></div></details></div>
+<div class="qa"><p class="q"><strong>5. Sebutkan lima tanda kemungkinan kejenuhan audiens.</strong></p><details class="ans"><summary>Lihat jawaban</summary><div class="a"><p>Kunci: Engagement menurun; CTR menurun; komentar menunjukkan kebosanan; audiens berulang kali melihat promosi yang sama; views menurun meskipun jumlah publikasi bertambah. Tanda ini tidak otomatis membuktikan kejenuhan.</p></div></details></div>
+<div class="qa"><p class="q"><strong>6. Apa prioritas awal untuk pekerjaan berdampak tinggi dengan usaha rendah?</strong></p><details class="ans"><summary>Lihat jawaban</summary><div class="a"><p>Kunci: Kerjakan lebih dahulu. Contoh: memperbaiki link rusak pada konten yang sudah menghasilkan.</p></div></details></div>
+<div class="qa"><p class="q"><strong>7. Opsi A (10 konten produk komisi rendah) atau Opsi B (5 konten produk dengan kebutuhan audiens lebih jelas): mana yang lebih baik?</strong></p><details class="ans"><summary>Lihat jawaban</summary><div class="a"><p>Kunci: Opsi B belum tentu lebih baik. Bandingkan hasil aktual atau lakukan pengujian. Pertimbangkan waktu, peluang komisi, ketidakpastian hasil, potensi penggunaan ulang konten, risiko produk, dan peluang yang tertunda.</p></div></details></div>
+<div class="qa"><p class="q"><strong>8. Tuliskan format keputusan berbasis data untuk masalah "klik affiliate menurun".</strong></p><details class="ans"><summary>Lihat jawaban</summary><div class="a"><p>Kunci: Masalah: klik affiliate menurun. Hipotesis: CTA kurang jelas. Bukti awal: views relatif stabil tetapi CTR turun. Eksperimen: uji dua variasi CTA pada konten topik sebanding. Metrik: CTR, klik, CVR, komisi disetujui. Periode: ditentukan sebelum pengujian sesuai volume traffic. Keputusan: Lanjutkan variasi yang lebih baik bila datanya memadai, atau Uji ulang bila belum meyakinkan.</p></div></details></div>
+<div class="qa"><p class="q"><strong>9. Apakah katalog konten adalah database baru? Jelaskan.</strong></p><details class="ans"><summary>Lihat jawaban</summary><div class="a"><p>Kunci: Bukan. Katalog konten adalah Database Konten Affiliate (dengan kolom baku). Label Aktif, perlu diperbarui, dan dihentikan hanyalah tampilan atau filter dari Status Konten dan keputusan baku.</p></div></details></div>
+</section><section class="sec reveal"><h2 id="10-standar-kelulusan"><span class="h-text">10. Standar Kelulusan</span><a class="anchor" href="#10-standar-kelulusan" aria-label="Tautan ke bagian ini">#</a></h2>
+<p>Kamu dianggap menguasai modul ini jika mampu menilai kontribusi konten, mengidentifikasi peluang pertumbuhan, dan menetapkan prioritas berdasarkan dampak bisnis, bukan sekadar views atau jumlah publikasi.</p></section>
+</article>
+<div class="complete reveal"><button type="button" id="mark-done" data-page="modul/modul-22-advanced-strategy.html">Tandai modul ini selesai</button><span class="hint">Tersimpan di browser kamu.</span></div>
+<nav class="pager" aria-label="Halaman sebelumnya dan berikutnya"><a class="prev" href="../modul/modul-21-kepatuhan-risiko-dan-reputasi.html"><small>← Sebelumnya</small><span>21. Kepatuhan, Risiko, dan Reputasi</span></a><a class="next" href="../modul/modul-23-otomasi-dan-sistem-kerja.html"><small>Berikutnya →</small><span>23. Otomasi dan Sistem Kerja</span></a></nav>
+<footer class="foot">
+  <p>Materi pembelajaran, bukan nasihat hukum atau pajak. Aturan Shopee Affiliate bisa berubah, jadi selalu cek sumber resmi dan catat tanggal pemeriksaannya. Situs ini bukan situs resmi Shopee.</p>
+</footer>
+</main>
+<aside class="toc" aria-label="Isi halaman"><p class="toc-title">Di halaman ini</p><ol><li><a href="#1-tujuan-pembelajaran">Tujuan Pembelajaran</a></li><li><a href="#2-ringkasan-konsep-utama">Ringkasan Konsep Utama</a></li><li><a href="#3-penjelasan">Penjelasan</a></li><li><a href="#4-istilah-penting">Istilah Penting</a></li><li><a href="#5-langkah-praktik">Langkah Praktik</a></li><li><a href="#6-contoh-dan-perhitungan">Contoh dan Perhitungan</a></li><li><a href="#7-kesalahan-umum-dan-cara-menghindarinya">Kesalahan Umum dan Cara Menghindarinya</a></li><li><a href="#8-tugas-dan-checklist">Tugas dan Checklist</a></li><li><a href="#9-latihan-dan-kunci-jawaban">Latihan dan Kunci Jawaban</a></li><li><a href="#10-standar-kelulusan">Standar Kelulusan</a></li></ol></aside>
+</div>
+<nav class="bottom-nav" id="bottom-nav" aria-label="Navigasi cepat">
+  <a class="bn-item" href="../index.html"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5"/><path d="M5 10v10h14V10"/></svg><span>Beranda</span></a>
+  <button class="bn-item" id="bn-menu" type="button" aria-controls="sidebar"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="7" rx="1.5"/><rect x="4" y="13" width="7" height="7" rx="1.5"/><rect x="13" y="13" width="7" height="7" rx="1.5"/></svg><span>Materi</span></button>
+  <button class="bn-item" id="bn-search" type="button"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span>Cari</span></button>
+  <a class="bn-item bn-primary" href="../modul/modul-23-otomasi-dan-sistem-kerja.html"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg><span>Lanjut</span></a>
+</nav>
+<button class="to-top" id="to-top" type="button" aria-label="Kembali ke atas" hidden><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5"/><path d="m5 12 7-7 7 7"/></svg></button>
+<div class="toast-wrap" id="toasts" aria-live="polite"></div>
+<script src="../assets/search-index.js"></script>
+<script src="../assets/app.js"></script>
+</body>
+</html>

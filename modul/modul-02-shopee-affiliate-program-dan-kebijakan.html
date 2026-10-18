@@ -1,0 +1,770 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Modul 02: Shopee Affiliate Program dan Kebijakan · Shopee Affiliate Academy</title>
+<meta name="description" content="Setelah modul ini, kamu mampu:">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#EE4D2D">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/style.css">
+<script>(function(){var d=document.documentElement;d.classList.add('js');try{var t=localStorage.getItem('sea-theme');if(t&&t!=='auto')d.setAttribute('data-theme',t);var p=JSON.parse(localStorage.getItem('sea-prefs')||'{}');['fs','lh','font','width'].forEach(function(k){if(p[k])d.setAttribute('data-'+k,p[k]);});if(p.focus)d.setAttribute('data-focus','1');}catch(e){}})();</script>
+</head>
+<body data-root="../" data-kind="modul" data-page="modul/modul-02-shopee-affiliate-program-dan-kebijakan.html" data-title="Modul 02: Shopee Affiliate Program dan Kebijakan">
+<a class="skip" href="#isi">Lewati ke isi</a>
+<div class="read-progress" id="read-progress" aria-hidden="true"></div>
+<div class="top" id="top">
+<header class="topbar">
+  <button class="icon-btn menu-btn" id="menu-btn" aria-label="Buka menu materi" aria-controls="sidebar" aria-expanded="false"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+  <a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true">SA</span><span class="brand-name">Shopee Affiliate Academy</span></a>
+  <div class="search" id="search">
+    <div class="search-box">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input id="search-input" type="search" placeholder="Cari materi…" autocomplete="off" aria-label="Cari materi">
+      <button class="icon-btn search-close" id="search-close" type="button" aria-label="Tutup pencarian"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+    </div>
+    <div class="search-results" id="search-results" hidden></div>
+  </div>
+  <button class="icon-btn desk-only" id="focus-btn" aria-label="Mode fokus" title="Mode fokus"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9V5h4M20 9V5h-4M4 15v4h4M20 15v4h-4"/></svg></button>
+  <button class="icon-btn aa-btn" id="aa-btn" aria-label="Pengaturan baca" aria-expanded="false" aria-controls="prefs"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20 10 5l6 15"/><path d="M6.5 14.5h7"/><path d="M15 12h5M17.5 12v8"/></svg></button>
+</header>
+<div class="subbar" id="subbar" aria-hidden="true"><span class="sb-title"></span><span class="sb-pct"></span></div>
+</div>
+<div class="prefs" id="prefs" hidden role="dialog" aria-label="Pengaturan tampilan">
+  <div class="prefs-head"><strong>Pengaturan baca</strong><button class="icon-btn sm" id="prefs-close" type="button" aria-label="Tutup"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
+  <div class="pref-row"><span>Ukuran teks</span><div class="seg" role="group" aria-label="Ukuran teks">
+    <button type="button" id="fs-down" aria-label="Perkecil teks">A−</button><output id="fs-val">3/5</output><button type="button" id="fs-up" aria-label="Perbesar teks">A+</button></div></div>
+  <div class="pref-row"><span>Jarak baris</span><div class="seg"><button type="button" data-pref="lh" data-val="tight">Rapat</button><button type="button" data-pref="lh" data-val="normal">Normal</button><button type="button" data-pref="lh" data-val="loose">Lega</button></div></div>
+  <div class="pref-row"><span>Huruf</span><div class="seg"><button type="button" data-pref="font" data-val="sans">Sans</button><button type="button" data-pref="font" data-val="serif">Serif</button></div></div>
+  <div class="pref-row"><span>Lebar teks</span><div class="seg"><button type="button" data-pref="width" data-val="normal">Standar</button><button type="button" data-pref="width" data-val="wide">Lebar</button></div></div>
+  <div class="pref-row"><span>Tema</span><div class="seg theme-seg"><button type="button" data-pref="theme" data-val="light">Terang</button><button type="button" data-pref="theme" data-val="sepia">Sepia</button><button type="button" data-pref="theme" data-val="dark">Gelap</button><button type="button" data-pref="theme" data-val="auto">Auto</button></div></div>
+  <label class="pref-switch"><input type="checkbox" id="pref-break" checked><span class="sw"></span><span>Pengingat istirahat (tiap 25 menit)</span></label>
+  <label class="pref-switch desk-only"><input type="checkbox" id="pref-focus"><span class="sw"></span><span>Mode fokus (sembunyikan menu)</span></label>
+  <button type="button" class="reset" id="prefs-reset">Kembalikan ke bawaan</button>
+</div>
+<div class="shell">
+<nav class="sidebar" id="sidebar" aria-label="Navigasi materi">
+<div class="nav-group">
+<a href="../index.html" data-page="index.html"><span>Beranda dan Pengantar</span></a>
+<a href="../master.html" data-page="master.html"><span>Rangkuman Master</span></a>
+</div>
+<details class="nav-level" data-mods="modul/modul-01-dasar-affiliate-marketing.html,modul/modul-02-shopee-affiliate-program-dan-kebijakan.html,modul/modul-03-persiapan-akun-dan-operasional.html" open><summary><span class="lv-badge">1</span><span class="lv-name">Fundamentals</span><span class="lv-count">0/3</span></summary>
+<a href="../level-1.html" data-page="level-1.html"><span>Ringkasan level</span></a>
+<a href="../modul/modul-01-dasar-affiliate-marketing.html" data-page="modul/modul-01-dasar-affiliate-marketing.html"><span>Modul 01 — Dasar Affiliate Marketing</span></a>
+<a href="../modul/modul-02-shopee-affiliate-program-dan-kebijakan.html" data-page="modul/modul-02-shopee-affiliate-program-dan-kebijakan.html" aria-current="page"><span>Modul 02 — Shopee Affiliate Program dan Kebijakan</span></a>
+<a href="../modul/modul-03-persiapan-akun-dan-operasional.html" data-page="modul/modul-03-persiapan-akun-dan-operasional.html"><span>Modul 03 — Persiapan Akun dan Operasional</span></a>
+</details>
+<details class="nav-level" data-mods="modul/modul-04-riset-pasar-dan-permintaan.html,modul/modul-05-niche-audiens-dan-positioning.html,modul/modul-06-riset-dan-evaluasi-produk.html,modul/modul-07-riset-kompetitor.html"><summary><span class="lv-badge">2</span><span class="lv-name">Market and Product Research</span><span class="lv-count">0/4</span></summary>
+<a href="../level-2.html" data-page="level-2.html"><span>Ringkasan level</span></a>
+<a href="../modul/modul-04-riset-pasar-dan-permintaan.html" data-page="modul/modul-04-riset-pasar-dan-permintaan.html"><span>Modul 04 — Riset Pasar dan Permintaan</span></a>
+<a href="../modul/modul-05-niche-audiens-dan-positioning.html" data-page="modul/modul-05-niche-audiens-dan-positioning.html"><span>Modul 05 — Niche, Audiens, dan Positioning</span></a>
+<a href="../modul/modul-06-riset-dan-evaluasi-produk.html" data-page="modul/modul-06-riset-dan-evaluasi-produk.html"><span>Modul 06 — Riset dan Evaluasi Produk</span></a>
+<a href="../modul/modul-07-riset-kompetitor.html" data-page="modul/modul-07-riset-kompetitor.html"><span>Modul 07 — Riset Kompetitor</span></a>
+</details>
+<details class="nav-level" data-mods="modul/modul-08-strategi-channel-dan-traffic-organik.html,modul/modul-09-strategi-konten.html,modul/modul-10-copywriting-dan-hook.html,modul/modul-11-produksi-video-dan-visual.html,modul/modul-12-seo-dan-konten-berbasis-pencarian.html,modul/modul-13-distribusi-dan-community-building.html"><summary><span class="lv-badge">3</span><span class="lv-name">Content and Traffic</span><span class="lv-count">0/6</span></summary>
+<a href="../level-3.html" data-page="level-3.html"><span>Ringkasan level</span></a>
+<a href="../modul/modul-08-strategi-channel-dan-traffic-organik.html" data-page="modul/modul-08-strategi-channel-dan-traffic-organik.html"><span>Modul 08 — Strategi Channel dan Traffic Organik</span></a>
+<a href="../modul/modul-09-strategi-konten.html" data-page="modul/modul-09-strategi-konten.html"><span>Modul 09 — Strategi Konten</span></a>
+<a href="../modul/modul-10-copywriting-dan-hook.html" data-page="modul/modul-10-copywriting-dan-hook.html"><span>Modul 10 — Copywriting dan Hook</span></a>
+<a href="../modul/modul-11-produksi-video-dan-visual.html" data-page="modul/modul-11-produksi-video-dan-visual.html"><span>Modul 11 — Produksi Video dan Visual</span></a>
+<a href="../modul/modul-12-seo-dan-konten-berbasis-pencarian.html" data-page="modul/modul-12-seo-dan-konten-berbasis-pencarian.html"><span>Modul 12 — SEO dan Konten Berbasis Pencarian</span></a>
+<a href="../modul/modul-13-distribusi-dan-community-building.html" data-page="modul/modul-13-distribusi-dan-community-building.html"><span>Modul 13 — Distribusi dan Community Building</span></a>
+</details>
+<details class="nav-level" data-mods="modul/modul-14-affiliate-link-dan-tracking.html,modul/modul-15-conversion-rate-optimization-cro.html,modul/modul-16-analytics-dan-dashboard.html,modul/modul-17-eksperimen-dan-validasi.html"><summary><span class="lv-badge">4</span><span class="lv-name">Conversion and Analytics</span><span class="lv-count">0/4</span></summary>
+<a href="../level-4.html" data-page="level-4.html"><span>Ringkasan level</span></a>
+<a href="../modul/modul-14-affiliate-link-dan-tracking.html" data-page="modul/modul-14-affiliate-link-dan-tracking.html"><span>Modul 14 — Affiliate Link dan Tracking</span></a>
+<a href="../modul/modul-15-conversion-rate-optimization-cro.html" data-page="modul/modul-15-conversion-rate-optimization-cro.html"><span>Modul 15 — Conversion Rate Optimization (CRO)</span></a>
+<a href="../modul/modul-16-analytics-dan-dashboard.html" data-page="modul/modul-16-analytics-dan-dashboard.html"><span>Modul 16 — Analytics dan Dashboard</span></a>
+<a href="../modul/modul-17-eksperimen-dan-validasi.html" data-page="modul/modul-17-eksperimen-dan-validasi.html"><span>Modul 17 — Eksperimen dan Validasi</span></a>
+</details>
+<details class="nav-level" data-mods="modul/modul-18-monetisasi-dan-pemilihan-produk-lanjutan.html,modul/modul-19-keuangan-dan-target-komisi.html,modul/modul-20-scaling-dan-sistem-produksi.html,modul/modul-21-kepatuhan-risiko-dan-reputasi.html,modul/modul-22-advanced-strategy.html,modul/modul-23-otomasi-dan-sistem-kerja.html,modul/modul-24-evaluasi-bisnis-dan-mastery.html"><summary><span class="lv-badge">5</span><span class="lv-name">Professional Growth</span><span class="lv-count">0/7</span></summary>
+<a href="../level-5.html" data-page="level-5.html"><span>Ringkasan level</span></a>
+<a href="../modul/modul-18-monetisasi-dan-pemilihan-produk-lanjutan.html" data-page="modul/modul-18-monetisasi-dan-pemilihan-produk-lanjutan.html"><span>Modul 18 — Monetisasi dan Pemilihan Produk Lanjutan</span></a>
+<a href="../modul/modul-19-keuangan-dan-target-komisi.html" data-page="modul/modul-19-keuangan-dan-target-komisi.html"><span>Modul 19 — Keuangan dan Target Komisi</span></a>
+<a href="../modul/modul-20-scaling-dan-sistem-produksi.html" data-page="modul/modul-20-scaling-dan-sistem-produksi.html"><span>Modul 20 — Scaling dan Sistem Produksi</span></a>
+<a href="../modul/modul-21-kepatuhan-risiko-dan-reputasi.html" data-page="modul/modul-21-kepatuhan-risiko-dan-reputasi.html"><span>Modul 21 — Kepatuhan, Risiko, dan Reputasi</span></a>
+<a href="../modul/modul-22-advanced-strategy.html" data-page="modul/modul-22-advanced-strategy.html"><span>Modul 22 — Advanced Strategy</span></a>
+<a href="../modul/modul-23-otomasi-dan-sistem-kerja.html" data-page="modul/modul-23-otomasi-dan-sistem-kerja.html"><span>Modul 23 — Otomasi dan Sistem Kerja</span></a>
+<a href="../modul/modul-24-evaluasi-bisnis-dan-mastery.html" data-page="modul/modul-24-evaluasi-bisnis-dan-mastery.html"><span>Modul 24 — Evaluasi Bisnis dan Mastery</span></a>
+</details>
+<div class="nav-group"><p class="nav-label">Praktik</p>
+<a href="../proyek-praktik.html" data-page="proyek-praktik.html"><span>8 Project Praktik Wajib</span></a>
+<a href="../database-notion.html" data-page="database-notion.html"><span>Database Notion</span></a>
+</div>
+<div class="nav-group"><p class="nav-label">Lampiran</p>
+<a href="../kamus-istilah.html" data-page="kamus-istilah.html"><span>Kamus Istilah</span></a>
+<a href="../rumus-template.html" data-page="rumus-template.html"><span>Lembar Rumus dan Template</span></a>
+<a href="../studi-kasus.html" data-page="studi-kasus.html"><span>Studi Kasus Simulasi</span></a>
+<a href="../panduan-pelatih.html" data-page="panduan-pelatih.html"><span>Panduan Pelatih dan Penilaian</span></a>
+</div></nav>
+<div class="scrim" id="scrim" hidden></div>
+<main id="isi" class="content">
+<nav class="crumbs" aria-label="Jejak halaman"><a href="../index.html">Beranda</a> <span>/</span> <a href="../level-1.html">Level 1</a> <span>/</span> Modul 02</nav>
+<details class="toc-mobile"><summary>Di halaman ini</summary><ol><li><a href="#1-tujuan-pembelajaran">Tujuan Pembelajaran</a></li><li><a href="#2-ringkasan-konsep-utama">Ringkasan Konsep Utama</a></li><li><a href="#3-penjelasan">Penjelasan</a></li><li><a href="#4-istilah-penting">Istilah Penting</a></li><li><a href="#5-langkah-praktik">Langkah Praktik</a></li><li><a href="#6-contoh-dan-perhitungan">Contoh dan Perhitungan</a></li><li><a href="#7-kesalahan-umum-dan-cara-menghindarinya">Kesalahan Umum dan Cara Menghindarinya</a></li><li><a href="#8-tugas-dan-checklist">Tugas dan Checklist</a></li><li><a href="#9-latihan-dan-kunci-jawaban">Latihan dan Kunci Jawaban</a></li><li><a href="#10-standar-kelulusan">Standar Kelulusan</a></li></ol></details>
+<article class="prose">
+<div class="eyebrow"><a class="chip" href="../level-1.html">Level 1 · Fundamentals</a><span class="chip ghost">Modul 02 dari 24</span><span class="chip ghost">± 17 menit baca</span></div>
+<h1 id="modul-02-shopee-affiliate-program-dan-kebijakan">Modul 02: Shopee Affiliate Program dan Kebijakan</h1>
+<section class="sec reveal"><h2 id="1-tujuan-pembelajaran"><span class="h-text">1. Tujuan Pembelajaran</span><a class="anchor" href="#1-tujuan-pembelajaran" aria-label="Tautan ke bagian ini">#</a></h2>
+<p>Setelah modul ini, kamu mampu:</p>
+<ul>
+<li>Menjelaskan cara kerja Shopee Affiliate Indonesia.</li>
+<li>Memeriksa langkah dan persyaratan pendaftaran yang berlaku.</li>
+<li>Memahami peninjauan dan aktivasi akun.</li>
+<li>Memahami ketentuan kanal promosi.</li>
+<li>Membuat affiliate link lewat mekanisme resmi.</li>
+<li>Memeriksa skema komisi dan aturan atribusi.</li>
+<li>Mengenali transaksi yang memenuhi atau tidak memenuhi syarat.</li>
+<li>Memahami validasi, pembayaran, dan pajak.</li>
+<li>Menemukan sumber resmi untuk memeriksa perubahan kebijakan.</li>
+</ul>
+</section><section class="sec reveal"><h2 id="2-ringkasan-konsep-utama"><span class="h-text">2. Ringkasan Konsep Utama</span><a class="anchor" href="#2-ringkasan-konsep-utama" aria-label="Tautan ke bagian ini">#</a></h2>
+<ol>
+<li>Shopee Affiliate Program memungkinkan kamu memperoleh penghasilan tambahan dengan mempromosikan produk Shopee lewat media sosial dan fitur konten Shopee yang didukung program.</li>
+<li><strong>Sumber resmi adalah acuan utama</strong>, bukan unggahan kreator yang belum tentu sesuai kebijakan terbaru. Sumber resmi di materi ini diperiksa pada <strong>9 Oktober 2026</strong>. Periksa ulang sebelum kamu bertindak.</li>
+<li>Pendaftaran butuh akun Shopee yang sesuai ketentuan, kanal promosi yang memenuhi kriteria, dan formulir yang diisi benar. Akun yang didaftarkan harus akun pribadi, bukan akun toko atau penjual.</li>
+<li>Tidak semua kanal atau metode promosi otomatis diizinkan. Pakai kanal yang kamu daftarkan atau yang disetujui Shopee.</li>
+<li>Komisi bisa berasal dari Shopee, dari penjual, dan dari skema tambahan (misalnya produk bertanda Komisi XTRA). Jangan mengasumsikan tarif.</li>
+<li>Atribusi menentukan apakah pembelian bisa dikaitkan dengan affiliate link tertentu. Panduan komisi sosial media Shopee menyebut jendela tujuh hari setelah klik. Cocokkan dengan jenis program dan kanalmu.</li>
+<li>Pesanan yang tercatat belum tentu transaksi yang memenuhi syarat. Pembatalan, retur, penipuan, dan pelanggaran bisa menggugurkan komisi.</li>
+<li>Status komisi (Estimasi, Pending, Disetujui, Dibayarkan), jadwal atau ambang pembayaran, dan ketentuan pajak harus kamu periksa di dokumen resmi terbaru dan dashboard akunmu.</li>
+</ol>
+</section><section class="sec reveal"><h2 id="3-penjelasan"><span class="h-text">3. Penjelasan</span><a class="anchor" href="#3-penjelasan" aria-label="Tautan ke bagian ini">#</a></h2>
+<h3 id="3-1-apa-itu-shopee-affiliate-program"><span class="h-text">3.1 Apa itu Shopee Affiliate Program?</span><a class="anchor" href="#3-1-apa-itu-shopee-affiliate-program" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>Menurut penjelasan resmi Shopee, Shopee Affiliate Program memungkinkan pengguna memperoleh penghasilan tambahan dengan mempromosikan produk Shopee lewat media sosial dan fitur konten Shopee yang didukung program.</p>
+<p>Sebagai affiliate, kamu membantu calon pembeli menemukan produk. Jika transaksi berasal dari link atau mekanisme promosi yang sah dan memenuhi persyaratan, kamu berpeluang menerima komisi.</p>
+<p>Tidak semua pesanan otomatis menghasilkan komisi. Syarat dan ketentuan resmi menyatakan bahwa komisi bergantung pada transaksi yang memenuhi persyaratan program.</p>
+<h3 id="3-2-sumber-resmi-yang-wajib-dipelajari"><span class="h-text">3.2 Sumber resmi yang wajib dipelajari</span><a class="anchor" href="#3-2-sumber-resmi-yang-wajib-dipelajari" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>Jadikan sumber resmi sebagai acuan utama, bukan unggahan kreator yang belum tentu sesuai kebijakan terbaru.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Dokumen</th>
+<th>Fungsinya</th>
+<th>Link</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Syarat dan Ketentuan Shopee Affiliate untuk Individu</td>
+<td>Acuan untuk memahami kewajiban affiliate, transaksi yang memenuhi syarat, pembayaran, dan kepatuhan</td>
+<td><a href="https://help.shopee.co.id/portal/4/article/71217-Syarat-dan-Ketentuan-Program-Afiliasi-Shopee-untuk-Individu">https://help.shopee.co.id/portal/4/article/71217-Syarat-dan-Ketentuan-Program-Afiliasi-Shopee-untuk-Individu</a></td>
+</tr>
+<tr>
+<td>Panduan perhitungan komisi</td>
+<td>Acuan untuk memahami skema komisi dan atribusi pembelian</td>
+<td><a href="https://help.shopee.co.id/portal/10/article/123866">https://help.shopee.co.id/portal/10/article/123866</a></td>
+</tr>
+<tr>
+<td>Panduan pendaftaran</td>
+<td>Acuan untuk langkah awal bergabung dan membagikan link</td>
+<td><a href="https://shopee.co.id/m/daftar-affiliate">https://shopee.co.id/m/daftar-affiliate</a></td>
+</tr>
+<tr>
+<td>Halaman utama Shopee Affiliate</td>
+<td>Acuan untuk informasi program dan ketentuan promosi</td>
+<td><a href="https://shopee.co.id/m/affiliates">https://shopee.co.id/m/affiliates</a></td>
+</tr>
+</tbody>
+</table></div>
+<blockquote class="callout">
+<p><strong>Keempat sumber di atas diperiksa pada 9 Oktober 2026.</strong> Informasi di halaman program bisa diperbarui. Periksa kembali sebelum mengambil keputusan atau mempublikasikan promosi.</p>
+</blockquote>
+<h3 id="3-3-persyaratan-pendaftaran"><span class="h-text">3.3 Persyaratan pendaftaran</span><a class="anchor" href="#3-3-persyaratan-pendaftaran" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>Periksa hal-hal berikut:</p>
+<ul>
+<li>Kamu punya akun Shopee yang sesuai ketentuan program.</li>
+<li>Kamu punya kanal promosi yang memenuhi kriteria.</li>
+<li>Kamu mengisi formulir pendaftaran dengan benar.</li>
+<li>Kamu memberikan informasi yang diminta program.</li>
+<li>Kamu mematuhi persyaratan konten, kanal, dan produk.</li>
+<li>Kamu memenuhi ketentuan tambahan yang berlaku saat mendaftar.</li>
+</ul>
+<p>Halaman resmi Shopee menyebut bahwa kanal media sosial yang kamu pakai perlu <strong>aktif, terbuka untuk umum, dan punya konten orisinal</strong>. Halaman itu juga menyatakan bahwa akun Shopee yang didaftarkan harus <strong>akun pribadi, bukan akun toko atau penjual Shopee</strong>. Verifikasi lagi persyaratan aktual saat kamu mendaftar.</p>
+<p>Jangan menganggap jumlah pengikut tertentu sebagai syarat universal. Periksa persyaratan yang benar-benar tampil untuk akun dan jalur pendaftaranmu.</p>
+<h3 id="3-4-proses-peninjauan-dan-aktivasi-akun"><span class="h-text">3.4 Proses peninjauan dan aktivasi akun</span><a class="anchor" href="#3-4-proses-peninjauan-dan-aktivasi-akun" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>Pendaftaran umumnya berupa pengisian formulir lalu peninjauan oleh Shopee. Panduan pendaftaran Shopee menjelaskan adanya peninjauan dan pemberitahuan lewat notifikasi atau email. Cek informasi resmi untuk waktu penyelesaian yang berlaku.</p>
+<p><strong>Jika pendaftaran belum disetujui.</strong> Jangan langsung membuat banyak akun atau mendaftar ulang sebelum tahu penyebabnya. Periksa:</p>
+<ul>
+<li>Apakah data yang kamu isi benar?</li>
+<li>Apakah kanal promosi sesuai ketentuan?</li>
+<li>Apakah akun dan kontenmu bisa diakses?</li>
+<li>Apakah ada notifikasi yang perlu kamu tindak lanjuti?</li>
+<li>Apakah ada ketentuan khusus yang belum terpenuhi?</li>
+</ul>
+<p>Jika penyebabnya tidak jelas, hubungi dukungan resmi Shopee Affiliate.</p>
+<h3 id="3-5-ketentuan-kanal-promosi"><span class="h-text">3.5 Ketentuan kanal promosi</span><a class="anchor" href="#3-5-ketentuan-kanal-promosi" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>Kanal promosi adalah tempat kamu menyampaikan konten dan menempatkan affiliate link. Tabel berikut adalah daftar resmi kanal yang bisa dipakai di materi ini.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Kanal</th>
+<th>Bentuk promosi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TikTok</td>
+<td>Video, caption, atau penempatan link yang diizinkan</td>
+</tr>
+<tr>
+<td>Instagram</td>
+<td>Reels, Stories, atau bio sesuai fitur yang tersedia</td>
+</tr>
+<tr>
+<td>YouTube</td>
+<td>Video dan deskripsi</td>
+</tr>
+<tr>
+<td>Facebook</td>
+<td>Feed atau Reels sesuai fitur dan ketentuan</td>
+</tr>
+<tr>
+<td>Shopee Video</td>
+<td>Konten video lewat fitur Shopee</td>
+</tr>
+<tr>
+<td>Shopee Live</td>
+<td>Siaran langsung lewat fitur Shopee</td>
+</tr>
+<tr>
+<td>Website</td>
+<td>Artikel atau halaman konten jika diperbolehkan oleh ketentuan program</td>
+</tr>
+</tbody>
+</table></div>
+<p>Tidak semua kanal atau metode promosi otomatis diizinkan untuk setiap jenis program. Pakai kanal yang kamu daftarkan atau yang disetujui Shopee, dan periksa aturan khusus tiap fitur.</p>
+<p><strong>Prinsip promosi yang aman:</strong></p>
+<ul>
+<li>Gunakan kanal yang sah dan sesuai ketentuan.</li>
+<li>Buat konten orisinal dan relevan.</li>
+<li>Jangan menyamarkan tujuan link.</li>
+<li>Jangan membuat klaim produk yang menyesatkan.</li>
+<li>Jangan memakai cara promosi yang dilarang.</li>
+<li>Ungkapkan hubungan affiliate dengan jelas kepada audiens.</li>
+<li>Jangan melakukan spam atau memanipulasi transaksi.</li>
+</ul>
+<p><strong>Contoh kalimat pengungkapan:</strong></p>
+<blockquote class="callout">
+<p>Link ini adalah affiliate link. Saya dapat menerima komisi jika kamu membeli lewat link ini dan transaksinya memenuhi ketentuan program.</p>
+</blockquote>
+<p>Variasi pendek juga boleh, misalnya: "Sebagian link di panduan ini adalah affiliate link."</p>
+<p>Jangan menjanjikan soal harga atau biaya, misalnya "harga tidak berubah" atau "tanpa biaya tambahan", kecuali hal itu tertulis di ketentuan resmi. Kamu tidak mengendalikan harga dan biaya di Shopee, jadi janji itu bisa menyesatkan audiens.</p>
+<p>Sesuaikan pengungkapan dengan kondisi sebenarnya dan ketentuan platform.</p>
+<h3 id="3-6-struktur-dan-dasar-perhitungan-komisi"><span class="h-text">3.6 Struktur dan dasar perhitungan komisi</span><a class="anchor" href="#3-6-struktur-dan-dasar-perhitungan-komisi" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>Shopee punya komisi dari program dan dari penjual, serta kemungkinan komisi tambahan lewat skema khusus. Ketentuan resmi menjelaskan bahwa komisi dihitung dari tarif yang berlaku dan <strong>nilai pembelian bersih sesuai definisi program</strong>.</p>
+<p><strong>Jenis komisi yang perlu kamu kenali:</strong></p>
+<ol>
+<li><strong>Komisi dari Shopee.</strong> Berasal dari skema program Shopee, sesuai kategori dan ketentuan yang berlaku.</li>
+<li><strong>Komisi dari penjual.</strong> Berasal dari penjual yang ikut serta dalam program affiliate.</li>
+<li><strong>Komisi tambahan.</strong> Bisa tersedia lewat program tertentu, misalnya produk bertanda <strong>Komisi XTRA</strong>, jika memenuhi syaratnya.</li>
+</ol>
+<h3 id="3-7-atribusi-pembelian-dan-masa-atribusi"><span class="h-text">3.7 Atribusi pembelian dan masa atribusi</span><a class="anchor" href="#3-7-atribusi-pembelian-dan-masa-atribusi" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>Atribusi menentukan apakah suatu pembelian bisa dikaitkan dengan affiliate link tertentu.</p>
+<p>Panduan komisi sosial media yang dipublikasikan Shopee (diperiksa 9 Oktober 2026) menyebut bahwa komisi dihitung untuk pembelian yang selesai dalam <strong>tujuh hari setelah klik affiliate link</strong>. Cocokkan ketentuan yang tepat dengan jenis program dan kanal yang kamu pakai, dan cek ulang secara berkala.</p>
+<p><strong>Contoh sederhana:</strong></p>
+<ol>
+<li>Senin: calon pembeli mengeklik affiliate link.</li>
+<li>Selasa: calon pembeli membandingkan produk.</li>
+<li>Rabu: calon pembeli membeli.</li>
+</ol>
+<p>Pembelian ini berpeluang masuk jangka waktu atribusi. Namun, komisi tetap bergantung pada aturan yang berlaku, pelacakan sistem, dan validasi transaksi.</p>
+<p><strong>Hal yang harus diperhatikan:</strong></p>
+<ul>
+<li>Masa atribusi bukan jaminan pembelian menghasilkan komisi.</li>
+<li>Klik affiliate lain bisa memengaruhi atribusi.</li>
+<li>Setiap kanal atau fitur bisa punya ketentuan khusus.</li>
+<li>Transaksi harus memenuhi persyaratan program.</li>
+<li>Jangan menganggap semua metode pembelian punya aturan yang sama.</li>
+</ul>
+<h3 id="3-8-transaksi-yang-memenuhi-atau-tidak-memenuhi-syarat"><span class="h-text">3.8 Transaksi yang memenuhi atau tidak memenuhi syarat</span><a class="anchor" href="#3-8-transaksi-yang-memenuhi-atau-tidak-memenuhi-syarat" aria-label="Tautan ke bagian ini">#</a></h3>
+<p><strong>Transaksi yang berpeluang memenuhi syarat:</strong></p>
+<ul>
+<li>Berasal dari link atau mekanisme promosi yang sah.</li>
+<li>Terjadi sesuai aturan atribusi.</li>
+<li>Memenuhi definisi transaksi selesai yang berlaku.</li>
+<li>Tidak teridentifikasi sebagai transaksi curang.</li>
+<li>Mematuhi ketentuan program dan kebijakan Shopee.</li>
+</ul>
+<p><strong>Transaksi yang berisiko tidak menghasilkan komisi:</strong></p>
+<ul>
+<li>Pesanan dibatalkan.</li>
+<li>Transaksi tidak memenuhi persyaratan pembelian selesai.</li>
+<li>Transaksi teridentifikasi sebagai penipuan.</li>
+<li>Pembelian lewat link sendiri atau pola transaksi yang dilarang.</li>
+<li>Promosi melanggar kebijakan.</li>
+<li>Sumber transaksi tidak bisa dilacak sesuai ketentuan.</li>
+<li>Terjadi retur atau kondisi lain yang memengaruhi kelayakan.</li>
+</ul>
+<p>Ketentuan resmi Shopee mengatur transaksi yang tidak memenuhi syarat dan konsekuensi pelanggaran. Daftar di atas hanya ringkasan untuk belajar, bukan pengganti dokumen lengkap.</p>
+<p><strong>Mengapa membeli lewat link sendiri berisiko?</strong> Program affiliate dirancang untuk memberi komisi atas promosi yang memenuhi ketentuan. Program ini bukan untuk membuat komisi lewat transaksi sendiri atau transaksi rekayasa.</p>
+<p>Hindari:</p>
+<ul>
+<li>Membeli produk lewat link sendiri untuk mendapat komisi.</li>
+<li>Meminta orang membuat transaksi palsu.</li>
+<li>Memakai metode yang melanggar ketentuan untuk menaikkan komisi.</li>
+<li>Memakai sumber traffic yang dilarang.</li>
+</ul>
+<h3 id="3-9-pembatalan-retur-dan-validasi-transaksi"><span class="h-text">3.9 Pembatalan, retur, dan validasi transaksi</span><a class="anchor" href="#3-9-pembatalan-retur-dan-validasi-transaksi" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>Pesanan yang tercatat belum tentu menjadi transaksi yang memenuhi syarat komisi.</p>
+<p><strong>Contoh alur:</strong> pesanan dibuat → pembayaran atau pemenuhan pesanan berlangsung → transaksi selesai sesuai ketentuan → validasi dilakukan → komisi diproses.</p>
+<p>Jika pesanan dibatalkan, diretur, atau tidak memenuhi syarat lain, komisi bisa berubah atau tidak diberikan.</p>
+<p><strong>Yang harus kamu lakukan:</strong></p>
+<ul>
+<li>Periksa status pesanan dan komisi di dashboard.</li>
+<li>Catat perubahan status yang relevan.</li>
+<li>Jangan menganggap komisi estimasi sebagai uang yang sudah diterima.</li>
+<li>Jika ada ketidaksesuaian, kumpulkan informasi transaksi yang diperlukan.</li>
+<li>Hubungi dukungan resmi untuk meminta penjelasan.</li>
+</ul>
+<p>Jangan menyimpulkan sistem salah hanya karena estimasi komisi berbeda dari jumlah yang dibayarkan.</p>
+<h3 id="3-10-status-komisi"><span class="h-text">3.10 Status komisi</span><a class="anchor" href="#3-10-status-komisi" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>Status komisi punya empat tahap berurutan.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Tahap</th>
+<th>Status</th>
+<th>Makna</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Estimasi</td>
+<td>Perkiraan penghasilan</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Pending</td>
+<td>Menunggu tahap pemrosesan</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Disetujui</td>
+<td>Memenuhi tahap persetujuan yang ditentukan</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Dibayarkan</td>
+<td>Dana sudah diproses sesuai informasi pembayaran</td>
+</tr>
+</tbody>
+</table></div>
+<p>Nama status di dashboard bisa berbeda (misalnya "Dalam proses" untuk Pending). Pakai nama status aktual di dashboard sebagai acuan utama.</p>
+<h3 id="3-11-jadwal-ambang-dan-metode-pembayaran"><span class="h-text">3.11 Jadwal, ambang, dan metode pembayaran</span><a class="anchor" href="#3-11-jadwal-ambang-dan-metode-pembayaran" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>Ketentuan pembayaran bisa mencakup periode pembayaran, rekening atau dompet yang dipakai, ambang nominal, dan persyaratan administrasi.</p>
+<p>Syarat dan ketentuan resmi Shopee Affiliate untuk individu menjelaskan mekanisme pembayaran dan pemotongan pajak. Untuk ketentuan di akunmu, pakai dokumen resmi terbaru dan informasi pembayaran di dashboard.</p>
+<p>Jangan memakai jadwal atau ambang pembayaran dari artikel lama tanpa verifikasi ulang.</p>
+<h3 id="3-12-ketentuan-pajak"><span class="h-text">3.12 Ketentuan pajak</span><a class="anchor" href="#3-12-ketentuan-pajak" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>Penghasilan dari affiliate bisa punya kewajiban pajak sesuai hukum Indonesia dan kondisi masing-masing penerima.</p>
+<p>Dokumen resmi Shopee Affiliate individu menjelaskan ketentuan pemotongan pajak dan dokumen identitas atau perpajakan untuk pembayaran. Periksa persyaratan aktual di dokumen terbaru.</p>
+<p><strong>Yang perlu kamu lakukan:</strong></p>
+<ul>
+<li>Periksa informasi identitas dan perpajakan yang diminta Shopee.</li>
+<li>Pastikan data yang kamu berikan benar.</li>
+<li>Simpan catatan komisi dan pembayaran.</li>
+<li>Simpan bukti pemotongan pajak jika tersedia.</li>
+<li>Periksa kewajiban pelaporan sesuai situasi pribadimu.</li>
+<li>Jika kamu tidak paham kewajibanmu, konsultasikan dengan pihak yang kompeten atau otoritas pajak.</li>
+</ul>
+<p>Materi ini bukan pengganti nasihat pajak pribadi. Kewajiban tiap affiliate bisa berbeda.</p>
+<h3 id="3-13-perubahan-kebijakan-program"><span class="h-text">3.13 Perubahan kebijakan program</span><a class="anchor" href="#3-13-perubahan-kebijakan-program" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>Shopee bisa memperbarui syarat, ketentuan, skema komisi, dan mekanisme program. Informasi yang benar hari ini belum tentu berlaku bulan depan.</p>
+<p><strong>Kebiasaan yang perlu kamu bangun:</strong></p>
+<ul>
+<li>Periksa informasi resmi sebelum mulai promosi.</li>
+<li>Periksa ulang tarif sebelum memilih produk.</li>
+<li>Simpan link sumber dan tanggal pemeriksaan.</li>
+<li>Catat perubahan kebijakan yang memengaruhi strategimu.</li>
+<li>Jangan menjadikan screenshot lama sebagai satu-satunya acuan.</li>
+<li>Jangan mengikuti instruksi pihak tidak dikenal yang meminta data sensitif.</li>
+</ul>
+</section><section class="sec reveal"><h2 id="4-istilah-penting"><span class="h-text">4. Istilah Penting</span><a class="anchor" href="#4-istilah-penting" aria-label="Tautan ke bagian ini">#</a></h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Istilah</th>
+<th>Definisi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Shopee Affiliate Program</td>
+<td>Program yang memungkinkan pengguna memperoleh penghasilan tambahan dengan mempromosikan produk Shopee lewat media sosial dan fitur konten Shopee yang didukung program</td>
+</tr>
+<tr>
+<td>Kanal promosi</td>
+<td>Tempat kamu menyampaikan konten dan menempatkan affiliate link</td>
+</tr>
+<tr>
+<td>Komisi dari Shopee</td>
+<td>Komisi dari skema program Shopee, sesuai kategori dan ketentuan yang berlaku</td>
+</tr>
+<tr>
+<td>Komisi dari penjual</td>
+<td>Komisi dari penjual yang ikut serta dalam program affiliate</td>
+</tr>
+<tr>
+<td>Komisi tambahan</td>
+<td>Komisi yang bisa tersedia lewat program tertentu, misalnya produk bertanda Komisi XTRA, jika memenuhi syarat</td>
+</tr>
+<tr>
+<td>Nilai pembelian bersih</td>
+<td>Dasar perhitungan komisi menurut definisi program, dipakai bersama tarif yang berlaku</td>
+</tr>
+<tr>
+<td>Atribusi</td>
+<td>Proses yang menentukan apakah suatu pembelian bisa dikaitkan dengan affiliate link tertentu</td>
+</tr>
+<tr>
+<td>Masa atribusi</td>
+<td>Jangka waktu atribusi; panduan komisi sosial media Shopee menyebut tujuh hari setelah klik (cocokkan dengan program dan kanal)</td>
+</tr>
+<tr>
+<td>Transaksi memenuhi syarat</td>
+<td>Transaksi dari link atau mekanisme sah, sesuai aturan atribusi, memenuhi definisi transaksi selesai, tidak curang, dan patuh kebijakan</td>
+</tr>
+<tr>
+<td>Estimasi (status komisi)</td>
+<td>Perkiraan penghasilan</td>
+</tr>
+<tr>
+<td>Pending (status komisi)</td>
+<td>Menunggu tahap pemrosesan</td>
+</tr>
+<tr>
+<td>Disetujui (status komisi)</td>
+<td>Memenuhi tahap persetujuan yang ditentukan</td>
+</tr>
+<tr>
+<td>Dibayarkan (status komisi)</td>
+<td>Dana sudah diproses sesuai informasi pembayaran</td>
+</tr>
+</tbody>
+</table></div>
+</section><section class="sec reveal"><h2 id="5-langkah-praktik"><span class="h-text">5. Langkah Praktik</span><a class="anchor" href="#5-langkah-praktik" aria-label="Tautan ke bagian ini">#</a></h2>
+<h3 id="5-1-bagaimana-affiliate-memperoleh-komisi-alur-umum"><span class="h-text">5.1 Bagaimana affiliate memperoleh komisi (alur umum)</span><a class="anchor" href="#5-1-bagaimana-affiliate-memperoleh-komisi-alur-umum" aria-label="Tautan ke bagian ini">#</a></h3>
+<ol>
+<li>Kamu mengikuti program dan akunmu memenuhi persyaratan.</li>
+<li>Kamu memilih produk yang layak dipromosikan.</li>
+<li>Kamu membuat link atau konten lewat mekanisme yang tersedia.</li>
+<li>Kamu mempromosikannya lewat kanal yang diizinkan.</li>
+<li>Pembeli mengeklik atau membuka link itu.</li>
+<li>Pembeli menyelesaikan transaksi.</li>
+<li>Sistem memeriksa kelayakan dan atribusi.</li>
+<li>Komisi diproses sesuai ketentuan pembayaran.</li>
+</ol>
+<h3 id="5-2-langkah-pendaftaran"><span class="h-text">5.2 Langkah pendaftaran</span><a class="anchor" href="#5-2-langkah-pendaftaran" aria-label="Tautan ke bagian ini">#</a></h3>
+<ol>
+<li>Masuk ke akun Shopee yang akan dipakai.</li>
+<li>Buka halaman pendaftaran resmi.</li>
+<li>Isi informasi yang diminta.</li>
+<li>Pilih atau masukkan kanal promosi sesuai instruksi.</li>
+<li>Periksa kembali seluruh data.</li>
+<li>Kirim pendaftaran.</li>
+<li>Pantau notifikasi dan email.</li>
+<li>Periksa dashboard untuk melihat status akun.</li>
+<li>Jika ada permintaan tambahan, ikuti instruksi resmi.</li>
+</ol>
+<h3 id="5-3-alur-umum-membuat-affiliate-link"><span class="h-text">5.3 Alur umum membuat affiliate link</span><a class="anchor" href="#5-3-alur-umum-membuat-affiliate-link" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>Nama menu dan tampilan aplikasi bisa berubah. Pakai panduan resmi atau instruksi di dashboardmu sebagai acuan.</p>
+<ol>
+<li>Masuk ke Shopee Affiliate lewat akun yang sudah terdaftar.</li>
+<li>Pilih produk yang ingin kamu promosikan.</li>
+<li>Buka fitur untuk membuat atau mengambil affiliate link.</li>
+<li>Salin link yang dibuat sistem.</li>
+<li>Tempatkan link di kanal promosi yang diperbolehkan.</li>
+<li>Uji link untuk memastikan produk yang terbuka sudah benar.</li>
+<li>Catat produk, link, kanal, dan tanggal publikasi.</li>
+</ol>
+<p>Jangan memodifikasi link dengan cara yang merusak pelacakan atau melanggar kebijakan.</p>
+<h3 id="5-4-cara-membaca-laporan-komisi"><span class="h-text">5.4 Cara membaca laporan komisi</span><a class="anchor" href="#5-4-cara-membaca-laporan-komisi" aria-label="Tautan ke bagian ini">#</a></h3>
+<ol>
+<li>Pilih periode laporan.</li>
+<li>Periksa total pesanan dan transaksi yang memenuhi syarat.</li>
+<li>Periksa komisi berdasarkan status.</li>
+<li>Periksa apakah ada koreksi atau pembatalan.</li>
+<li>Cocokkan jumlah pembayaran dengan bukti pembayaran.</li>
+<li>Catat perbedaan yang belum terjelaskan.</li>
+</ol>
+<h3 id="5-5-proses-bantuan-dan-penyelesaian-masalah"><span class="h-text">5.5 Proses bantuan dan penyelesaian masalah</span><a class="anchor" href="#5-5-proses-bantuan-dan-penyelesaian-masalah" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>Jika ada masalah pada pendaftaran, link, transaksi, atau pembayaran, periksa secara sistematis.</p>
+<ol>
+<li><strong>Identifikasi masalah.</strong> Contoh: link tidak mengarah ke produk, komisi tidak muncul, atau pembayaran belum diterima.</li>
+<li><strong>Kumpulkan informasi.</strong> Catat tanggal kejadian, produk, link, status komisi, dan bukti yang relevan. Jangan membagikan data sensitif ke pihak yang tidak berwenang.</li>
+<li><strong>Periksa sumber resmi.</strong> Baca syarat dan ketentuan atau artikel bantuan yang terkait.</li>
+<li><strong>Hubungi dukungan resmi.</strong> Sampaikan masalah dengan spesifik dan sertakan informasi yang diperlukan.</li>
+<li><strong>Simpan hasil penyelesaian.</strong> Catat jawaban dukungan dan tindakan yang perlu kamu lakukan.</li>
+</ol>
+</section><section class="sec reveal"><h2 id="6-contoh-dan-perhitungan"><span class="h-text">6. Contoh dan Perhitungan</span><a class="anchor" href="#6-contoh-dan-perhitungan" aria-label="Tautan ke bagian ini">#</a></h2>
+<h3 id="6-1-mengapa-tarif-komisi-tidak-boleh-diasumsikan"><span class="h-text">6.1 Mengapa tarif komisi tidak boleh diasumsikan?</span><a class="anchor" href="#6-1-mengapa-tarif-komisi-tidak-boleh-diasumsikan" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>Dua produk dengan harga sama belum tentu memberi komisi yang sama.</p>
+<p>Contoh simulasi (bukan tarif resmi Shopee):</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Produk</th>
+<th>Dasar komisi</th>
+<th>Tarif asumsi</th>
+<th>Komisi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Produk A</td>
+<td>Rp100.000</td>
+<td>2%</td>
+<td>Rp2.000</td>
+</tr>
+<tr>
+<td>Produk B</td>
+<td>Rp100.000</td>
+<td>5%</td>
+<td>Rp5.000</td>
+</tr>
+<tr>
+<td>Produk C</td>
+<td>Rp100.000</td>
+<td>8%</td>
+<td>Rp8.000</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote class="callout">
+<p>Tabel ini hanya menunjukkan perbedaan hasil hitungan <strong>berdasarkan asumsi tarif</strong>. Periksa tarif aktual di informasi produk, program, atau dashboard Shopee yang berlaku.</p>
+</blockquote>
+<h3 id="6-2-template-tabel-catatan-kebijakan"><span class="h-text">6.2 Template tabel catatan kebijakan</span><a class="anchor" href="#6-2-template-tabel-catatan-kebijakan" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>Gunakan tabel ini di Notion.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Topik</th>
+<th>Ketentuan resmi</th>
+<th>Sumber</th>
+<th>Tanggal diperiksa</th>
+<th>Perlu diperiksa ulang?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Pendaftaran</td>
+<td>Isi setelah membaca sumber</td>
+<td>URL resmi</td>
+<td>9 Okt 2026</td>
+<td>Ya</td>
+</tr>
+<tr>
+<td>Kanal promosi</td>
+<td>Isi sesuai aturan terbaru</td>
+<td>URL resmi</td>
+<td>9 Okt 2026</td>
+<td>Ya</td>
+</tr>
+<tr>
+<td>Komisi</td>
+<td>Isi berdasarkan program aktual</td>
+<td>Dashboard/sumber resmi</td>
+<td>9 Okt 2026</td>
+<td>Ya</td>
+</tr>
+<tr>
+<td>Atribusi</td>
+<td>Isi sesuai program dan kanal</td>
+<td>URL resmi</td>
+<td>9 Okt 2026</td>
+<td>Ya</td>
+</tr>
+<tr>
+<td>Pembayaran</td>
+<td>Isi sesuai akun dan aturan terbaru</td>
+<td>Dashboard/sumber resmi</td>
+<td>9 Okt 2026</td>
+<td>Ya</td>
+</tr>
+<tr>
+<td>Pajak</td>
+<td>Isi sesuai dokumen resmi</td>
+<td>URL resmi</td>
+<td>9 Okt 2026</td>
+<td>Ya</td>
+</tr>
+</tbody>
+</table></div>
+<p>Jangan mengisi kolom ketentuan dengan angka perkiraan atau informasi dari kreator lain tanpa verifikasi.</p>
+</section><section class="sec reveal"><h2 id="7-kesalahan-umum-dan-cara-menghindarinya"><span class="h-text">7. Kesalahan Umum dan Cara Menghindarinya</span><a class="anchor" href="#7-kesalahan-umum-dan-cara-menghindarinya" aria-label="Tautan ke bagian ini">#</a></h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Kesalahan</th>
+<th>Cara menghindari</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Menjadikan unggahan kreator sebagai acuan kebijakan</td>
+<td>Jadikan sumber resmi sebagai acuan utama dan catat tanggal pemeriksaan</td>
+</tr>
+<tr>
+<td>Menganggap jumlah pengikut tertentu sebagai syarat universal</td>
+<td>Periksa persyaratan yang benar-benar tampil untuk akun dan jalur pendaftaranmu</td>
+</tr>
+<tr>
+<td>Membuat banyak akun atau mendaftar ulang saat ditolak</td>
+<td>Periksa dulu data, kanal, akses konten, notifikasi, dan ketentuan khusus; hubungi dukungan resmi jika tidak jelas</td>
+</tr>
+<tr>
+<td>Menganggap semua kanal otomatis diizinkan</td>
+<td>Pakai kanal yang didaftarkan atau disetujui dan periksa aturan khusus tiap fitur</td>
+</tr>
+<tr>
+<td>Menyamarkan tujuan link atau membuat klaim menyesatkan</td>
+<td>Buat konten orisinal, jujur, dan ungkapkan hubungan affiliate dengan jelas</td>
+</tr>
+<tr>
+<td>Menjanjikan "harga tidak berubah" atau "tanpa biaya tambahan" di pengungkapan</td>
+<td>Pakai kalimat pengungkapan baku; janji soal harga atau biaya hanya boleh jika tertulis di ketentuan resmi</td>
+</tr>
+<tr>
+<td>Memodifikasi link sehingga merusak pelacakan</td>
+<td>Pakai link dari mekanisme resmi tanpa modifikasi yang melanggar kebijakan</td>
+</tr>
+<tr>
+<td>Mengasumsikan tarif komisi</td>
+<td>Periksa komisi aktual di dashboard dan catat tanggal pemeriksaan</td>
+</tr>
+<tr>
+<td>Menganggap masa atribusi menjamin komisi</td>
+<td>Komisi tetap bergantung pada aturan, pelacakan sistem, dan validasi transaksi</td>
+</tr>
+<tr>
+<td>Membeli lewat link sendiri atau membuat transaksi rekayasa</td>
+<td>Hindari sepenuhnya, termasuk transaksi palsu dan sumber traffic yang dilarang</td>
+</tr>
+<tr>
+<td>Menganggap komisi estimasi sebagai uang yang sudah diterima</td>
+<td>Periksa status di dashboard dan cocokkan dengan bukti pembayaran</td>
+</tr>
+<tr>
+<td>Menyimpulkan sistem salah karena estimasi tidak sama dengan pembayaran</td>
+<td>Kumpulkan informasi transaksi dan minta penjelasan ke dukungan resmi</td>
+</tr>
+<tr>
+<td>Memakai jadwal atau ambang pembayaran dari artikel lama</td>
+<td>Verifikasi lewat dokumen resmi terbaru dan dashboard</td>
+</tr>
+<tr>
+<td>Menebak kewajiban pajak</td>
+<td>Periksa dokumen resmi; konsultasikan dengan pihak kompeten atau otoritas pajak</td>
+</tr>
+<tr>
+<td>Menjadikan screenshot lama sebagai satu-satunya acuan</td>
+<td>Periksa ulang sumber resmi dan catat perubahan kebijakan</td>
+</tr>
+<tr>
+<td>Mengikuti instruksi pihak tak dikenal yang meminta data sensitif</td>
+<td>Verifikasi hanya lewat kanal resmi</td>
+</tr>
+</tbody>
+</table></div>
+</section><section class="sec reveal"><h2 id="8-tugas-dan-checklist"><span class="h-text">8. Tugas dan Checklist</span><a class="anchor" href="#8-tugas-dan-checklist" aria-label="Tautan ke bagian ini">#</a></h2>
+<h3 id="tugas-1-baca-syarat-dan-ketentuan"><span class="h-text">Tugas 1: Baca syarat dan ketentuan</span><a class="anchor" href="#tugas-1-baca-syarat-dan-ketentuan" aria-label="Tautan ke bagian ini">#</a></h3>
+<ul>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-02-shopee-affiliate-program-dan-kebijakan.html#1"> <span>Buka dokumen syarat dan ketentuan individu.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-02-shopee-affiliate-program-dan-kebijakan.html#2"> <span>Baca bagian definisi program.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-02-shopee-affiliate-program-dan-kebijakan.html#3"> <span>Baca aturan promosi dan link.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-02-shopee-affiliate-program-dan-kebijakan.html#4"> <span>Baca aturan transaksi yang memenuhi syarat.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-02-shopee-affiliate-program-dan-kebijakan.html#5"> <span>Baca ketentuan pembayaran.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-02-shopee-affiliate-program-dan-kebijakan.html#6"> <span>Baca bagian pajak.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-02-shopee-affiliate-program-dan-kebijakan.html#7"> <span>Baca aturan pelanggaran dan konsekuensinya.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-02-shopee-affiliate-program-dan-kebijakan.html#8"> <span>Catat tanggal pemeriksaan.</span></label></li>
+</ul>
+<h3 id="tugas-2-isi-tabel-catatan-kebijakan"><span class="h-text">Tugas 2: Isi tabel catatan kebijakan</span><a class="anchor" href="#tugas-2-isi-tabel-catatan-kebijakan" aria-label="Tautan ke bagian ini">#</a></h3>
+<ul>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-02-shopee-affiliate-program-dan-kebijakan.html#9"> <span>Salin template di bagian 6.2 ke Notion.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-02-shopee-affiliate-program-dan-kebijakan.html#10"> <span>Isi tiap baris dari sumber resmi, bukan dari kreator lain.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-02-shopee-affiliate-program-dan-kebijakan.html#11"> <span>Catat URL dan tanggal pemeriksaan di tiap baris.</span></label></li>
+</ul>
+<h3 id="tugas-3-siapkan-checklist-sebelum-mendaftar"><span class="h-text">Tugas 3: Siapkan checklist sebelum mendaftar</span><a class="anchor" href="#tugas-3-siapkan-checklist-sebelum-mendaftar" aria-label="Tautan ke bagian ini">#</a></h3>
+<ul>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-02-shopee-affiliate-program-dan-kebijakan.html#12"> <span>Akun Shopee bisa diakses.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-02-shopee-affiliate-program-dan-kebijakan.html#13"> <span>Data akun sesuai dengan identitas yang diperlukan.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-02-shopee-affiliate-program-dan-kebijakan.html#14"> <span>Kanal promosi yang ingin dipakai sudah ditentukan.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-02-shopee-affiliate-program-dan-kebijakan.html#15"> <span>Kanal bisa diakses publik jika diwajibkan.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-02-shopee-affiliate-program-dan-kebijakan.html#16"> <span>Konten yang tersedia tidak melanggar ketentuan.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-02-shopee-affiliate-program-dan-kebijakan.html#17"> <span>Informasi yang diminta formulir sudah disiapkan.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-02-shopee-affiliate-program-dan-kebijakan.html#18"> <span>Syarat dan ketentuan terbaru sudah dibaca.</span></label></li>
+</ul>
+<h3 id="tugas-4-periksa-komisi-aktual"><span class="h-text">Tugas 4: Periksa komisi aktual</span><a class="anchor" href="#tugas-4-periksa-komisi-aktual" aria-label="Tautan ke bagian ini">#</a></h3>
+<ul>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-02-shopee-affiliate-program-dan-kebijakan.html#19"> <span>Buka dashboard affiliate.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-02-shopee-affiliate-program-dan-kebijakan.html#20"> <span>Cari produk yang ingin dipromosikan.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-02-shopee-affiliate-program-dan-kebijakan.html#21"> <span>Periksa informasi komisi yang tampil.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-02-shopee-affiliate-program-dan-kebijakan.html#22"> <span>Periksa apakah komisi berasal dari Shopee, penjual, atau program tambahan.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-02-shopee-affiliate-program-dan-kebijakan.html#23"> <span>Periksa syarat produk dan transaksi.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-02-shopee-affiliate-program-dan-kebijakan.html#24"> <span>Catat tanggal pemeriksaan.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-02-shopee-affiliate-program-dan-kebijakan.html#25"> <span>Periksa lagi jika kamu akan mempromosikan produk di periode berikutnya.</span></label></li>
+</ul>
+<h3 id="tugas-5-siapkan-checklist-pembayaran"><span class="h-text">Tugas 5: Siapkan checklist pembayaran</span><a class="anchor" href="#tugas-5-siapkan-checklist-pembayaran" aria-label="Tautan ke bagian ini">#</a></h3>
+<ul>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-02-shopee-affiliate-program-dan-kebijakan.html#26"> <span>Data penerima pembayaran sesuai.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-02-shopee-affiliate-program-dan-kebijakan.html#27"> <span>Rekening atau akun pembayaran yang diperlukan sudah terdaftar.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-02-shopee-affiliate-program-dan-kebijakan.html#28"> <span>Persyaratan identitas sudah dipenuhi.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-02-shopee-affiliate-program-dan-kebijakan.html#29"> <span>Persyaratan pajak sudah diperiksa.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-02-shopee-affiliate-program-dan-kebijakan.html#30"> <span>Status komisi sudah diperiksa.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-02-shopee-affiliate-program-dan-kebijakan.html#31"> <span>Jadwal pembayaran sudah diperiksa.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-02-shopee-affiliate-program-dan-kebijakan.html#32"> <span>Bukti pembayaran disimpan.</span></label></li>
+</ul>
+<h3 id="tugas-6-pemeriksaan-sebelum-membagikan-link"><span class="h-text">Tugas 6: Pemeriksaan sebelum membagikan link</span><a class="anchor" href="#tugas-6-pemeriksaan-sebelum-membagikan-link" aria-label="Tautan ke bagian ini">#</a></h3>
+<ul>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-02-shopee-affiliate-program-dan-kebijakan.html#33"> <span>Link berasal dari mekanisme resmi.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-02-shopee-affiliate-program-dan-kebijakan.html#34"> <span>Link mengarah ke produk yang benar.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-02-shopee-affiliate-program-dan-kebijakan.html#35"> <span>Produk masih tersedia atau layak dipromosikan.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-02-shopee-affiliate-program-dan-kebijakan.html#36"> <span>Harga dan informasi produk sudah diperiksa.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-02-shopee-affiliate-program-dan-kebijakan.html#37"> <span>Kanal penempatan link sesuai ketentuan.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-02-shopee-affiliate-program-dan-kebijakan.html#38"> <span>Konten tidak membuat klaim yang menyesatkan.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-02-shopee-affiliate-program-dan-kebijakan.html#39"> <span>Link tercatat di database operasional (lihat Modul 03).</span></label></li>
+</ul>
+<h3 id="tugas-7-checklist-kepatuhan"><span class="h-text">Tugas 7: Checklist kepatuhan</span><a class="anchor" href="#tugas-7-checklist-kepatuhan" aria-label="Tautan ke bagian ini">#</a></h3>
+<ul>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-02-shopee-affiliate-program-dan-kebijakan.html#40"> <span>Produk boleh dipromosikan.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-02-shopee-affiliate-program-dan-kebijakan.html#41"> <span>Konten tidak menyesatkan.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-02-shopee-affiliate-program-dan-kebijakan.html#42"> <span>Kanal promosi sesuai ketentuan.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-02-shopee-affiliate-program-dan-kebijakan.html#43"> <span>Link dibuat lewat mekanisme yang sah.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-02-shopee-affiliate-program-dan-kebijakan.html#44"> <span>Pengungkapan affiliate tersedia.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-02-shopee-affiliate-program-dan-kebijakan.html#45"> <span>Tidak ada transaksi sendiri atau transaksi rekayasa.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-02-shopee-affiliate-program-dan-kebijakan.html#46"> <span>Data pribadi dan informasi pembayaran dijaga.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-02-shopee-affiliate-program-dan-kebijakan.html#47"> <span>Sumber resmi dan tanggal pemeriksaan tercatat.</span></label></li>
+</ul>
+</section><section class="sec reveal sec-latihan"><h2 id="9-latihan-dan-kunci-jawaban"><span class="h-text">9. Latihan dan Kunci Jawaban</span><a class="anchor" href="#9-latihan-dan-kunci-jawaban" aria-label="Tautan ke bagian ini">#</a></h2>
+<div class="qa"><p class="q"><strong>Soal 1.</strong> Sebutkan empat sumber resmi yang wajib dipelajari.</p><details class="ans"><summary>Lihat jawaban</summary><div class="a"><p><strong>Jawaban:</strong> (1) Syarat dan Ketentuan Shopee Affiliate untuk Individu; (2) Panduan perhitungan komisi; (3) Panduan pendaftaran; (4) Halaman utama Shopee Affiliate. Keempatnya diperiksa pada 9 Oktober 2026 dan perlu diperiksa ulang.</p></div></details></div>
+<div class="qa"><p class="q"><strong>Soal 2.</strong> Menurut halaman resmi Shopee yang dikutip modul ini, akun Shopee seperti apa yang boleh didaftarkan ke program affiliate?</p><details class="ans"><summary>Lihat jawaban</summary><div class="a"><p><strong>Jawaban:</strong> Akun pribadi, bukan akun toko atau penjual Shopee. Kanal media sosial yang kamu pakai juga perlu aktif, terbuka untuk umum, dan punya konten orisinal.</p></div></details></div>
+<div class="qa"><p class="q"><strong>Soal 3.</strong> Tiga jenis komisi apa yang perlu kamu kenali?</p><details class="ans"><summary>Lihat jawaban</summary><div class="a"><p><strong>Jawaban:</strong> Komisi dari Shopee, komisi dari penjual, dan komisi tambahan lewat program tertentu (misalnya produk bertanda Komisi XTRA).</p></div></details></div>
+<div class="qa"><p class="q"><strong>Soal 4.</strong> Produk A, B, dan C punya dasar komisi Rp100.000 dengan tarif asumsi 2%, 5%, dan 8%. Berapa komisi masing-masing, dan apa peringatan yang menyertai tabelnya?</p><details class="ans"><summary>Lihat jawaban</summary><div class="a"><p><strong>Jawaban:</strong> Rp2.000, Rp5.000, dan Rp8.000. Peringatannya: tabel hanya menunjukkan perbedaan hasil hitungan berdasarkan asumsi tarif. Tarif aktual harus diperiksa di informasi produk, program, atau dashboard Shopee yang berlaku.</p></div></details></div>
+<div class="qa"><p class="q"><strong>Soal 5.</strong> Berapa jendela atribusi yang disebut di panduan komisi sosial media Shopee, dan apa catatannya?</p><details class="ans"><summary>Lihat jawaban</summary><div class="a"><p><strong>Jawaban:</strong> Komisi dihitung untuk pembelian yang selesai dalam tujuh hari setelah klik affiliate link. Catatannya: cocokkan dengan jenis program dan kanal yang dipakai, dan masa atribusi bukan jaminan komisi.</p></div></details></div>
+<div class="qa"><p class="q"><strong>Soal 6.</strong> Sebutkan empat status komisi beserta maknanya.</p><details class="ans"><summary>Lihat jawaban</summary><div class="a"><p><strong>Jawaban:</strong> Estimasi (perkiraan penghasilan), Pending (menunggu tahap pemrosesan), Disetujui (memenuhi tahap persetujuan yang ditentukan), Dibayarkan (dana sudah diproses sesuai informasi pembayaran). Nama di dashboard bisa berbeda; pakai nama aktual di dashboard sebagai acuan.</p></div></details></div>
+<div class="qa"><p class="q"><strong>Soal 7.</strong> Mengapa membeli lewat link sendiri berisiko?</p><details class="ans"><summary>Lihat jawaban</summary><div class="a"><p><strong>Jawaban:</strong> Program affiliate dirancang untuk memberi komisi atas promosi yang memenuhi ketentuan, bukan untuk membuat komisi lewat transaksi sendiri atau transaksi rekayasa.</p></div></details></div>
+<div class="qa"><p class="q"><strong>Soal 8.</strong> Mengapa kalimat pengungkapan sebaiknya tidak berisi "tanpa biaya tambahan"?</p><details class="ans"><summary>Lihat jawaban</summary><div class="a"><p><strong>Jawaban:</strong> Kamu tidak boleh menjanjikan soal harga atau biaya kecuali hal itu tertulis di ketentuan resmi. Pakai kalimat baku: "Link ini adalah affiliate link. Saya dapat menerima komisi jika kamu membeli lewat link ini dan transaksinya memenuhi ketentuan program."</p></div></details></div>
+</section><section class="sec reveal"><h2 id="10-standar-kelulusan"><span class="h-text">10. Standar Kelulusan</span><a class="anchor" href="#10-standar-kelulusan" aria-label="Tautan ke bagian ini">#</a></h2>
+<p>Kamu dianggap menguasai modul ini jika kamu bisa menemukan dokumen resmi, menjelaskan alur pendaftaran, atribusi, validasi, dan status komisi, serta mengenali pelanggaran yang berisiko. Kamu juga harus menjawab minimal 80% soal pemahaman dengan benar dan punya catatan aturan resmi beserta tanggal pemeriksaan.</p></section>
+</article>
+<div class="complete reveal"><button type="button" id="mark-done" data-page="modul/modul-02-shopee-affiliate-program-dan-kebijakan.html">Tandai modul ini selesai</button><span class="hint">Tersimpan di browser kamu.</span></div>
+<nav class="pager" aria-label="Halaman sebelumnya dan berikutnya"><a class="prev" href="../modul/modul-01-dasar-affiliate-marketing.html"><small>← Sebelumnya</small><span>01. Dasar Affiliate Marketing</span></a><a class="next" href="../modul/modul-03-persiapan-akun-dan-operasional.html"><small>Berikutnya →</small><span>03. Persiapan Akun dan Operasional</span></a></nav>
+<footer class="foot">
+  <p>Materi pembelajaran, bukan nasihat hukum atau pajak. Aturan Shopee Affiliate bisa berubah, jadi selalu cek sumber resmi dan catat tanggal pemeriksaannya. Situs ini bukan situs resmi Shopee.</p>
+</footer>
+</main>
+<aside class="toc" aria-label="Isi halaman"><p class="toc-title">Di halaman ini</p><ol><li><a href="#1-tujuan-pembelajaran">Tujuan Pembelajaran</a></li><li><a href="#2-ringkasan-konsep-utama">Ringkasan Konsep Utama</a></li><li><a href="#3-penjelasan">Penjelasan</a></li><li><a href="#4-istilah-penting">Istilah Penting</a></li><li><a href="#5-langkah-praktik">Langkah Praktik</a></li><li><a href="#6-contoh-dan-perhitungan">Contoh dan Perhitungan</a></li><li><a href="#7-kesalahan-umum-dan-cara-menghindarinya">Kesalahan Umum dan Cara Menghindarinya</a></li><li><a href="#8-tugas-dan-checklist">Tugas dan Checklist</a></li><li><a href="#9-latihan-dan-kunci-jawaban">Latihan dan Kunci Jawaban</a></li><li><a href="#10-standar-kelulusan">Standar Kelulusan</a></li></ol></aside>
+</div>
+<nav class="bottom-nav" id="bottom-nav" aria-label="Navigasi cepat">
+  <a class="bn-item" href="../index.html"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5"/><path d="M5 10v10h14V10"/></svg><span>Beranda</span></a>
+  <button class="bn-item" id="bn-menu" type="button" aria-controls="sidebar"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="7" rx="1.5"/><rect x="4" y="13" width="7" height="7" rx="1.5"/><rect x="13" y="13" width="7" height="7" rx="1.5"/></svg><span>Materi</span></button>
+  <button class="bn-item" id="bn-search" type="button"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span>Cari</span></button>
+  <a class="bn-item bn-primary" href="../modul/modul-03-persiapan-akun-dan-operasional.html"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg><span>Lanjut</span></a>
+</nav>
+<button class="to-top" id="to-top" type="button" aria-label="Kembali ke atas" hidden><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5"/><path d="m5 12 7-7 7 7"/></svg></button>
+<div class="toast-wrap" id="toasts" aria-live="polite"></div>
+<script src="../assets/search-index.js"></script>
+<script src="../assets/app.js"></script>
+</body>
+</html>

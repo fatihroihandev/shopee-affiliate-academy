@@ -1,0 +1,641 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Modul 14 — Affiliate Link dan Tracking · Shopee Affiliate Academy</title>
+<meta name="description" content="Tujuan Level 4 bukan sekadar mendapat banyak views atau klik. Kamu perlu tahu konten mana yang menghasilkan transaksi, produk mana yang menguntungkan, dan perubahan apa yang benar-benar menaikkan komi">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#EE4D2D">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/style.css">
+<script>(function(){var d=document.documentElement;d.classList.add('js');try{var t=localStorage.getItem('sea-theme');if(t&&t!=='auto')d.setAttribute('data-theme',t);var p=JSON.parse(localStorage.getItem('sea-prefs')||'{}');['fs','lh','font','width'].forEach(function(k){if(p[k])d.setAttribute('data-'+k,p[k]);});if(p.focus)d.setAttribute('data-focus','1');}catch(e){}})();</script>
+</head>
+<body data-root="../" data-kind="modul" data-page="modul/modul-14-affiliate-link-dan-tracking.html" data-title="Modul 14 — Affiliate Link dan Tracking">
+<a class="skip" href="#isi">Lewati ke isi</a>
+<div class="read-progress" id="read-progress" aria-hidden="true"></div>
+<div class="top" id="top">
+<header class="topbar">
+  <button class="icon-btn menu-btn" id="menu-btn" aria-label="Buka menu materi" aria-controls="sidebar" aria-expanded="false"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+  <a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true">SA</span><span class="brand-name">Shopee Affiliate Academy</span></a>
+  <div class="search" id="search">
+    <div class="search-box">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input id="search-input" type="search" placeholder="Cari materi…" autocomplete="off" aria-label="Cari materi">
+      <button class="icon-btn search-close" id="search-close" type="button" aria-label="Tutup pencarian"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+    </div>
+    <div class="search-results" id="search-results" hidden></div>
+  </div>
+  <button class="icon-btn desk-only" id="focus-btn" aria-label="Mode fokus" title="Mode fokus"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9V5h4M20 9V5h-4M4 15v4h4M20 15v4h-4"/></svg></button>
+  <button class="icon-btn aa-btn" id="aa-btn" aria-label="Pengaturan baca" aria-expanded="false" aria-controls="prefs"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20 10 5l6 15"/><path d="M6.5 14.5h7"/><path d="M15 12h5M17.5 12v8"/></svg></button>
+</header>
+<div class="subbar" id="subbar" aria-hidden="true"><span class="sb-title"></span><span class="sb-pct"></span></div>
+</div>
+<div class="prefs" id="prefs" hidden role="dialog" aria-label="Pengaturan tampilan">
+  <div class="prefs-head"><strong>Pengaturan baca</strong><button class="icon-btn sm" id="prefs-close" type="button" aria-label="Tutup"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
+  <div class="pref-row"><span>Ukuran teks</span><div class="seg" role="group" aria-label="Ukuran teks">
+    <button type="button" id="fs-down" aria-label="Perkecil teks">A−</button><output id="fs-val">3/5</output><button type="button" id="fs-up" aria-label="Perbesar teks">A+</button></div></div>
+  <div class="pref-row"><span>Jarak baris</span><div class="seg"><button type="button" data-pref="lh" data-val="tight">Rapat</button><button type="button" data-pref="lh" data-val="normal">Normal</button><button type="button" data-pref="lh" data-val="loose">Lega</button></div></div>
+  <div class="pref-row"><span>Huruf</span><div class="seg"><button type="button" data-pref="font" data-val="sans">Sans</button><button type="button" data-pref="font" data-val="serif">Serif</button></div></div>
+  <div class="pref-row"><span>Lebar teks</span><div class="seg"><button type="button" data-pref="width" data-val="normal">Standar</button><button type="button" data-pref="width" data-val="wide">Lebar</button></div></div>
+  <div class="pref-row"><span>Tema</span><div class="seg theme-seg"><button type="button" data-pref="theme" data-val="light">Terang</button><button type="button" data-pref="theme" data-val="sepia">Sepia</button><button type="button" data-pref="theme" data-val="dark">Gelap</button><button type="button" data-pref="theme" data-val="auto">Auto</button></div></div>
+  <label class="pref-switch"><input type="checkbox" id="pref-break" checked><span class="sw"></span><span>Pengingat istirahat (tiap 25 menit)</span></label>
+  <label class="pref-switch desk-only"><input type="checkbox" id="pref-focus"><span class="sw"></span><span>Mode fokus (sembunyikan menu)</span></label>
+  <button type="button" class="reset" id="prefs-reset">Kembalikan ke bawaan</button>
+</div>
+<div class="shell">
+<nav class="sidebar" id="sidebar" aria-label="Navigasi materi">
+<div class="nav-group">
+<a href="../index.html" data-page="index.html"><span>Beranda dan Pengantar</span></a>
+<a href="../master.html" data-page="master.html"><span>Rangkuman Master</span></a>
+</div>
+<details class="nav-level" data-mods="modul/modul-01-dasar-affiliate-marketing.html,modul/modul-02-shopee-affiliate-program-dan-kebijakan.html,modul/modul-03-persiapan-akun-dan-operasional.html"><summary><span class="lv-badge">1</span><span class="lv-name">Fundamentals</span><span class="lv-count">0/3</span></summary>
+<a href="../level-1.html" data-page="level-1.html"><span>Ringkasan level</span></a>
+<a href="../modul/modul-01-dasar-affiliate-marketing.html" data-page="modul/modul-01-dasar-affiliate-marketing.html"><span>Modul 01 — Dasar Affiliate Marketing</span></a>
+<a href="../modul/modul-02-shopee-affiliate-program-dan-kebijakan.html" data-page="modul/modul-02-shopee-affiliate-program-dan-kebijakan.html"><span>Modul 02 — Shopee Affiliate Program dan Kebijakan</span></a>
+<a href="../modul/modul-03-persiapan-akun-dan-operasional.html" data-page="modul/modul-03-persiapan-akun-dan-operasional.html"><span>Modul 03 — Persiapan Akun dan Operasional</span></a>
+</details>
+<details class="nav-level" data-mods="modul/modul-04-riset-pasar-dan-permintaan.html,modul/modul-05-niche-audiens-dan-positioning.html,modul/modul-06-riset-dan-evaluasi-produk.html,modul/modul-07-riset-kompetitor.html"><summary><span class="lv-badge">2</span><span class="lv-name">Market and Product Research</span><span class="lv-count">0/4</span></summary>
+<a href="../level-2.html" data-page="level-2.html"><span>Ringkasan level</span></a>
+<a href="../modul/modul-04-riset-pasar-dan-permintaan.html" data-page="modul/modul-04-riset-pasar-dan-permintaan.html"><span>Modul 04 — Riset Pasar dan Permintaan</span></a>
+<a href="../modul/modul-05-niche-audiens-dan-positioning.html" data-page="modul/modul-05-niche-audiens-dan-positioning.html"><span>Modul 05 — Niche, Audiens, dan Positioning</span></a>
+<a href="../modul/modul-06-riset-dan-evaluasi-produk.html" data-page="modul/modul-06-riset-dan-evaluasi-produk.html"><span>Modul 06 — Riset dan Evaluasi Produk</span></a>
+<a href="../modul/modul-07-riset-kompetitor.html" data-page="modul/modul-07-riset-kompetitor.html"><span>Modul 07 — Riset Kompetitor</span></a>
+</details>
+<details class="nav-level" data-mods="modul/modul-08-strategi-channel-dan-traffic-organik.html,modul/modul-09-strategi-konten.html,modul/modul-10-copywriting-dan-hook.html,modul/modul-11-produksi-video-dan-visual.html,modul/modul-12-seo-dan-konten-berbasis-pencarian.html,modul/modul-13-distribusi-dan-community-building.html"><summary><span class="lv-badge">3</span><span class="lv-name">Content and Traffic</span><span class="lv-count">0/6</span></summary>
+<a href="../level-3.html" data-page="level-3.html"><span>Ringkasan level</span></a>
+<a href="../modul/modul-08-strategi-channel-dan-traffic-organik.html" data-page="modul/modul-08-strategi-channel-dan-traffic-organik.html"><span>Modul 08 — Strategi Channel dan Traffic Organik</span></a>
+<a href="../modul/modul-09-strategi-konten.html" data-page="modul/modul-09-strategi-konten.html"><span>Modul 09 — Strategi Konten</span></a>
+<a href="../modul/modul-10-copywriting-dan-hook.html" data-page="modul/modul-10-copywriting-dan-hook.html"><span>Modul 10 — Copywriting dan Hook</span></a>
+<a href="../modul/modul-11-produksi-video-dan-visual.html" data-page="modul/modul-11-produksi-video-dan-visual.html"><span>Modul 11 — Produksi Video dan Visual</span></a>
+<a href="../modul/modul-12-seo-dan-konten-berbasis-pencarian.html" data-page="modul/modul-12-seo-dan-konten-berbasis-pencarian.html"><span>Modul 12 — SEO dan Konten Berbasis Pencarian</span></a>
+<a href="../modul/modul-13-distribusi-dan-community-building.html" data-page="modul/modul-13-distribusi-dan-community-building.html"><span>Modul 13 — Distribusi dan Community Building</span></a>
+</details>
+<details class="nav-level" data-mods="modul/modul-14-affiliate-link-dan-tracking.html,modul/modul-15-conversion-rate-optimization-cro.html,modul/modul-16-analytics-dan-dashboard.html,modul/modul-17-eksperimen-dan-validasi.html" open><summary><span class="lv-badge">4</span><span class="lv-name">Conversion and Analytics</span><span class="lv-count">0/4</span></summary>
+<a href="../level-4.html" data-page="level-4.html"><span>Ringkasan level</span></a>
+<a href="../modul/modul-14-affiliate-link-dan-tracking.html" data-page="modul/modul-14-affiliate-link-dan-tracking.html" aria-current="page"><span>Modul 14 — Affiliate Link dan Tracking</span></a>
+<a href="../modul/modul-15-conversion-rate-optimization-cro.html" data-page="modul/modul-15-conversion-rate-optimization-cro.html"><span>Modul 15 — Conversion Rate Optimization (CRO)</span></a>
+<a href="../modul/modul-16-analytics-dan-dashboard.html" data-page="modul/modul-16-analytics-dan-dashboard.html"><span>Modul 16 — Analytics dan Dashboard</span></a>
+<a href="../modul/modul-17-eksperimen-dan-validasi.html" data-page="modul/modul-17-eksperimen-dan-validasi.html"><span>Modul 17 — Eksperimen dan Validasi</span></a>
+</details>
+<details class="nav-level" data-mods="modul/modul-18-monetisasi-dan-pemilihan-produk-lanjutan.html,modul/modul-19-keuangan-dan-target-komisi.html,modul/modul-20-scaling-dan-sistem-produksi.html,modul/modul-21-kepatuhan-risiko-dan-reputasi.html,modul/modul-22-advanced-strategy.html,modul/modul-23-otomasi-dan-sistem-kerja.html,modul/modul-24-evaluasi-bisnis-dan-mastery.html"><summary><span class="lv-badge">5</span><span class="lv-name">Professional Growth</span><span class="lv-count">0/7</span></summary>
+<a href="../level-5.html" data-page="level-5.html"><span>Ringkasan level</span></a>
+<a href="../modul/modul-18-monetisasi-dan-pemilihan-produk-lanjutan.html" data-page="modul/modul-18-monetisasi-dan-pemilihan-produk-lanjutan.html"><span>Modul 18 — Monetisasi dan Pemilihan Produk Lanjutan</span></a>
+<a href="../modul/modul-19-keuangan-dan-target-komisi.html" data-page="modul/modul-19-keuangan-dan-target-komisi.html"><span>Modul 19 — Keuangan dan Target Komisi</span></a>
+<a href="../modul/modul-20-scaling-dan-sistem-produksi.html" data-page="modul/modul-20-scaling-dan-sistem-produksi.html"><span>Modul 20 — Scaling dan Sistem Produksi</span></a>
+<a href="../modul/modul-21-kepatuhan-risiko-dan-reputasi.html" data-page="modul/modul-21-kepatuhan-risiko-dan-reputasi.html"><span>Modul 21 — Kepatuhan, Risiko, dan Reputasi</span></a>
+<a href="../modul/modul-22-advanced-strategy.html" data-page="modul/modul-22-advanced-strategy.html"><span>Modul 22 — Advanced Strategy</span></a>
+<a href="../modul/modul-23-otomasi-dan-sistem-kerja.html" data-page="modul/modul-23-otomasi-dan-sistem-kerja.html"><span>Modul 23 — Otomasi dan Sistem Kerja</span></a>
+<a href="../modul/modul-24-evaluasi-bisnis-dan-mastery.html" data-page="modul/modul-24-evaluasi-bisnis-dan-mastery.html"><span>Modul 24 — Evaluasi Bisnis dan Mastery</span></a>
+</details>
+<div class="nav-group"><p class="nav-label">Praktik</p>
+<a href="../proyek-praktik.html" data-page="proyek-praktik.html"><span>8 Project Praktik Wajib</span></a>
+<a href="../database-notion.html" data-page="database-notion.html"><span>Database Notion</span></a>
+</div>
+<div class="nav-group"><p class="nav-label">Lampiran</p>
+<a href="../kamus-istilah.html" data-page="kamus-istilah.html"><span>Kamus Istilah</span></a>
+<a href="../rumus-template.html" data-page="rumus-template.html"><span>Lembar Rumus dan Template</span></a>
+<a href="../studi-kasus.html" data-page="studi-kasus.html"><span>Studi Kasus Simulasi</span></a>
+<a href="../panduan-pelatih.html" data-page="panduan-pelatih.html"><span>Panduan Pelatih dan Penilaian</span></a>
+</div></nav>
+<div class="scrim" id="scrim" hidden></div>
+<main id="isi" class="content">
+<nav class="crumbs" aria-label="Jejak halaman"><a href="../index.html">Beranda</a> <span>/</span> <a href="../level-4.html">Level 4</a> <span>/</span> Modul 14</nav>
+<details class="toc-mobile"><summary>Di halaman ini</summary><ol><li><a href="#1-tujuan-pembelajaran">Tujuan Pembelajaran</a></li><li><a href="#2-ringkasan-konsep-utama">Ringkasan Konsep Utama</a></li><li><a href="#3-penjelasan">Penjelasan</a></li><li><a href="#4-istilah-penting">Istilah Penting</a></li><li><a href="#5-langkah-praktik">Langkah Praktik</a></li><li><a href="#6-contoh-dan-perhitungan">Contoh dan Perhitungan</a></li><li><a href="#7-kesalahan-umum-dan-cara-menghindarinya">Kesalahan Umum dan Cara Menghindarinya</a></li><li><a href="#8-tugas-dan-checklist">Tugas dan Checklist</a></li><li><a href="#9-latihan-dan-kunci-jawaban">Latihan dan Kunci Jawaban</a></li><li><a href="#10-standar-kelulusan">Standar Kelulusan</a></li></ol></details>
+<article class="prose">
+<div class="eyebrow"><a class="chip" href="../level-4.html">Level 4 · Conversion and Analytics</a><span class="chip ghost">Modul 14 dari 24</span><span class="chip ghost">± 14 menit baca</span></div>
+<h1 id="modul-14-affiliate-link-dan-tracking">Modul 14 — Affiliate Link dan Tracking</h1>
+<section class="sec reveal"><h2 id="1-tujuan-pembelajaran"><span class="h-text">1. Tujuan Pembelajaran</span><a class="anchor" href="#1-tujuan-pembelajaran" aria-label="Tautan ke bagian ini">#</a></h2>
+<p>Tujuan Level 4 bukan sekadar mendapat banyak views atau klik. Kamu perlu tahu konten mana yang menghasilkan transaksi, produk mana yang menguntungkan, dan perubahan apa yang benar-benar menaikkan komisi.</p>
+<p>Setelah modul ini, kamu mampu:</p>
+<ul>
+<li>Menemukan link yang dipakai oleh suatu konten.</li>
+<li>Menentukan produk yang dipromosikan oleh link tersebut.</li>
+<li>Memeriksa apakah link dan halaman tujuan masih benar.</li>
+<li>Membedakan klik, pesanan, transaksi yang memenuhi syarat, dan komisi.</li>
+<li>Menjelaskan perbedaan data internal dan data resmi.</li>
+<li>Mengenali keterbatasan tracking yang tersedia.</li>
+</ul>
+</section><section class="sec reveal"><h2 id="2-ringkasan-konsep-utama"><span class="h-text">2. Ringkasan Konsep Utama</span><a class="anchor" href="#2-ringkasan-konsep-utama" aria-label="Tautan ke bagian ini">#</a></h2>
+<ol>
+<li><strong>Affiliate link</strong> adalah link khusus yang mengandung informasi pelacakan, sehingga sistem affiliate bisa menghubungkan aktivitas dengan akun affiliate-mu.</li>
+<li><strong>Klik tidak otomatis menghasilkan komisi.</strong> Hasilnya dipengaruhi aturan atribusi, kelayakan produk, status transaksi, pembatalan, dan ketentuan program.</li>
+<li>Buat link lewat <strong>mekanisme resmi</strong> Shopee Affiliate. Simpan ke Database Link Affiliate, lalu uji sebelum dipublikasikan.</li>
+<li>Pengujian link punya tiga aspek: <strong>pemeriksaan teknis, pemeriksaan tujuan, dan pemeriksaan tracking</strong>. Link yang bisa dibuka belum membuktikan atribusi berfungsi.</li>
+<li><strong>ID Konten, ID Produk, dan ID Link adalah tiga hal berbeda.</strong> Jangan menyamakannya.</li>
+<li><strong>Atribusi</strong> menentukan aktivitas mana yang mendapat kredit atas konversi. Salah satu faktornya adalah <em>attribution window</em>.</li>
+<li>Pisahkan rantai metrik: klik → pesanan tercatat → pesanan dibatalkan atau masih diproses → pesanan memenuhi syarat → komisi (Estimasi → Pending → Disetujui → Dibayarkan).</li>
+<li><strong>Rekonsiliasi</strong> membandingkan catatan internal dengan laporan resmi. Selisih tidak otomatis berarti komisi hilang.</li>
+</ol>
+</section><section class="sec reveal"><h2 id="3-penjelasan"><span class="h-text">3. Penjelasan</span><a class="anchor" href="#3-penjelasan" aria-label="Tautan ke bagian ini">#</a></h2>
+<h3 id="3-1-pengertian-affiliate-link"><span class="h-text">3.1 Pengertian Affiliate Link</span><a class="anchor" href="#3-1-pengertian-affiliate-link" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>Affiliate link adalah link khusus untuk mengarahkan calon pembeli ke produk atau halaman tertentu. Link ini mengandung identitas atau informasi pelacakan yang menghubungkan aktivitas dengan akun affiliate-mu.</p>
+<p>Contoh alur sederhana:</p>
+<ul>
+<li>Kamu membuat video tentang rak sepatu.</li>
+<li>Penonton tertarik dan mengeklik link produk.</li>
+<li>Penonton membuka halaman produk di Shopee.</li>
+<li>Penonton membeli.</li>
+<li>Jika transaksi memenuhi persyaratan program, kamu berpotensi mendapat komisi.</li>
+</ul>
+<p>Tracking membantu kamu mengetahui hubungan antara konten, link, produk, klik, transaksi, dan komisi berdasarkan data yang tersedia.</p>
+<h3 id="3-2-pembuatan-affiliate-link"><span class="h-text">3.2 Pembuatan Affiliate Link</span><a class="anchor" href="#3-2-pembuatan-affiliate-link" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>Buat affiliate link hanya lewat mekanisme resmi program Shopee Affiliate. Nama menu, tampilan, dan prosedur bisa berubah sesuai versi platform dan ketentuan program. Langkah lengkapnya ada di bagian 5.</p>
+<h3 id="3-3-pengujian-affiliate-link-tiga-aspek"><span class="h-text">3.3 Pengujian Affiliate Link: Tiga Aspek</span><a class="anchor" href="#3-3-pengujian-affiliate-link-tiga-aspek" aria-label="Tautan ke bagian ini">#</a></h3>
+<p><strong>A. Pemeriksaan teknis</strong></p>
+<ul>
+<li>Link bisa dibuka.</li>
+<li>Tidak ada error.</li>
+<li>Link tidak mengarah ke halaman yang tidak ditemukan.</li>
+<li>Tidak ada pengalihan yang mencurigakan.</li>
+<li>Link bisa dibuka di perangkat yang umum dipakai audiens.</li>
+</ul>
+<p><strong>B. Pemeriksaan tujuan</strong></p>
+<ul>
+<li>Produk yang muncul sesuai konten.</li>
+<li>Varian, ukuran, warna, atau tipe produk sesuai, jika relevan.</li>
+<li>Toko yang dituju benar.</li>
+<li>Harga dan informasi produk masih masuk akal.</li>
+<li>Halaman tujuan bukan produk lain yang tidak sengaja tertaut.</li>
+</ul>
+<p><strong>C. Pemeriksaan tracking</strong></p>
+<ul>
+<li>Link dibuat lewat sistem affiliate resmi.</li>
+<li>Link yang dipublikasikan sama dengan link yang dicatat.</li>
+<li>Informasi klik diperiksa lewat dashboard resmi, jika tersedia.</li>
+<li>Jangan langsung menyimpulkan tracking gagal hanya karena laporan belum diperbarui.</li>
+</ul>
+<p>Keberhasilan membuka halaman <strong>tidak</strong> membuktikan atribusi berfungsi. Pemeriksaan teknis dan pemeriksaan tracking adalah dua hal berbeda.</p>
+<h3 id="3-4-pemeriksaan-halaman-tujuan-landing-page"><span class="h-text">3.4 Pemeriksaan Halaman Tujuan (Landing Page)</span><a class="anchor" href="#3-4-pemeriksaan-halaman-tujuan-landing-page" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>Halaman tujuan adalah halaman yang terbuka setelah seseorang mengeklik affiliate link. Di Shopee Affiliate, biasanya berupa halaman produk atau toko di Shopee. Halaman ini penting karena calon pembeli mengambil keputusan dari informasi di sana.</p>
+<p>Periksa:</p>
+<ul>
+<li>Judul produk sesuai yang dijanjikan konten.</li>
+<li>Foto produk jelas.</li>
+<li>Harga masih sesuai dengan informasi di konten.</li>
+<li>Varian yang dibutuhkan tersedia.</li>
+<li>Deskripsi produk cukup jelas.</li>
+<li>Ulasan dan penilaian pembeli bisa diperiksa.</li>
+<li>Reputasi penjual layak dipertimbangkan.</li>
+<li>Stok tersedia, jika informasinya ditampilkan.</li>
+<li>Biaya pengiriman dan ketentuan pembelian tidak membuat penawaran kurang menarik.</li>
+</ul>
+<h3 id="3-5-pelacakan-produk-per-konten"><span class="h-text">3.5 Pelacakan Produk per Konten</span><a class="anchor" href="#3-5-pelacakan-produk-per-konten" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>Catat setiap konten bersama produk dan link yang dipromosikannya. Dengan begitu kamu tahu konten mana yang menghasilkan klik dan transaksi.</p>
+<p>Jika dua konten memakai link yang sama dan dashboard tidak menyediakan data per konten, kamu mungkin tidak bisa mengetahui kontribusi masing-masing secara akurat. Karena itu pisahkan tiga identitas:</p>
+<ul>
+<li><strong>ID Konten:</strong> identitas konten yang kamu publikasikan.</li>
+<li><strong>ID Produk:</strong> identitas produk yang dipromosikan.</li>
+<li><strong>ID Link:</strong> identitas link yang dipakai.</li>
+</ul>
+<h3 id="3-6-atribusi-affiliate"><span class="h-text">3.6 Atribusi Affiliate</span><a class="anchor" href="#3-6-atribusi-affiliate" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>Atribusi adalah proses menentukan sumber atau aktivitas yang mendapat kredit atas suatu konversi, misalnya pembelian. Dalam affiliate marketing, atribusi menjelaskan apakah suatu transaksi dikaitkan dengan aktivitas affiliate tertentu berdasarkan aturan program.</p>
+<p>Alur contoh:</p>
+<ol>
+<li>Seseorang melihat videomu.</li>
+<li>Orang itu mengeklik affiliate link.</li>
+<li>Orang itu membeli produk.</li>
+<li>Sistem mencatat atau mengaitkan transaksi berdasarkan aturan yang berlaku.</li>
+</ol>
+<p>Tidak semua pembelian setelah klik otomatis menjadi transaksi affiliate yang memenuhi syarat. Faktor yang memengaruhi:</p>
+<ul>
+<li>jendela atribusi (<em>attribution window</em>);</li>
+<li>ketentuan sumber traffic;</li>
+<li>interaksi dengan affiliate link lain;</li>
+<li>produk yang memenuhi syarat komisi;</li>
+<li>aturan atribusi yang dipakai program;</li>
+<li>pembatalan, retur, atau status transaksi;</li>
+<li>ketentuan khusus program affiliate.</li>
+</ul>
+<p><strong>Attribution window</strong> adalah rentang waktu yang ditetapkan program untuk mengaitkan suatu tindakan, seperti pembelian, dengan interaksi sebelumnya. Contohnya: pembelian hanya dihitung jika terjadi dalam rentang waktu tertentu setelah klik. Ketentuan resmi saat ini dijelaskan di Modul 02. Cek ulang sebelum kamu memakainya.</p>
+<p><strong>Jangan berasumsi bahwa:</strong></p>
+<ul>
+<li>semua orang yang mengeklik link akan menghasilkan komisi;</li>
+<li>semua pembelian berikutnya pasti dikaitkan denganmu;</li>
+<li>semua produk punya ketentuan komisi yang sama;</li>
+<li>transaksi yang muncul langsung berstatus final.</li>
+</ul>
+<p>Pahami atribusi dari aturan aktual program, bukan dari perkiraan pribadi.</p>
+<h3 id="3-7-perbedaan-klik-pembelian-dan-status-komisi"><span class="h-text">3.7 Perbedaan Klik, Pembelian, dan Status Komisi</span><a class="anchor" href="#3-7-perbedaan-klik-pembelian-dan-status-komisi" aria-label="Tautan ke bagian ini">#</a></h3>
+<ul>
+<li><strong>Klik:</strong> seseorang membuka atau mengeklik link.</li>
+<li><strong>Pembelian (pesanan):</strong> seseorang memesan sesuai definisi sistem pelaporan.</li>
+<li><strong>Transaksi memenuhi syarat:</strong> pesanan yang lolos ketentuan program.</li>
+</ul>
+<p>Komisi melewati empat status berurutan:</p>
+<ol>
+<li><strong>Estimasi:</strong> perkiraan komisi dari pesanan yang tercatat.</li>
+<li><strong>Pending:</strong> menunggu validasi.</li>
+<li><strong>Disetujui:</strong> sudah melewati validasi sesuai ketentuan program.</li>
+<li><strong>Dibayarkan:</strong> sudah dibayarkan kepadamu.</li>
+</ol>
+<p>Nama di dashboard Shopee bisa berbeda (misalnya "Dalam proses" untuk Pending). Cocokkan dengan dashboard yang kamu pakai.</p>
+<p>Pisahkan semua ini: klik, pesanan tercatat, pesanan dibatalkan, pesanan masih diproses, pesanan memenuhi syarat, dan keempat status komisi. Pemisahan ini mencegah salah menilai performa bisnis.</p>
+<h3 id="3-8-pemeriksaan-kelayakan-transaksi"><span class="h-text">3.8 Pemeriksaan Kelayakan Transaksi</span><a class="anchor" href="#3-8-pemeriksaan-kelayakan-transaksi" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>Transaksi di laporan belum tentu memenuhi semua syarat komisi. Periksa:</p>
+<ul>
+<li>Apakah pesanan tercatat di sistem?</li>
+<li>Apakah produk termasuk produk yang memenuhi syarat?</li>
+<li>Apakah transaksi dibatalkan atau diretur?</li>
+<li>Apakah pesanan sudah menyelesaikan tahap validasi?</li>
+<li>Apakah nilai komisi masih berstatus Estimasi?</li>
+<li>Apakah ada ketentuan program yang membuat transaksi tidak memenuhi syarat?</li>
+<li>Apakah data yang dibandingkan berasal dari periode pelaporan yang sama?</li>
+</ul>
+<h3 id="3-9-parameter-tracking-jika-diizinkan"><span class="h-text">3.9 Parameter Tracking (Jika Diizinkan)</span><a class="anchor" href="#3-9-parameter-tracking-jika-diizinkan" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>Parameter tracking adalah informasi tambahan yang ditempel pada URL untuk membedakan sumber traffic atau kampanye. Dalam pemasaran digital, parameter seperti UTM sering dipakai untuk analisis traffic. Pada affiliate link, penggunaannya harus mengikuti aturan program dan platform.</p>
+<p>Contoh URL dengan parameter:</p>
+<p><code>&lt;https://contoh.com/produk?utm_source=tiktok&amp;utm_medium=organic&amp;utm_campaign=rak_sepatu</code>&gt;</p>
+<p>URL ini <strong>hanya ilustrasi format tracking, bukan link produk Shopee yang valid.</strong></p>
+<p>Ingat:</p>
+<ul>
+<li>Menambah parameter tidak otomatis membuat transaksi teratribusi.</li>
+<li>Parameter tambahan bisa memengaruhi cara URL diproses.</li>
+<li>Parameter yang tidak didukung bisa dihapus atau membuat link tidak bekerja.</li>
+<li>Parameter eksternal tidak menggantikan tracking resmi Shopee Affiliate.</li>
+</ul>
+<p>Jika Shopee tidak mendukung parameter yang kamu butuhkan, pakai alternatif aman: ID Konten dan pencatatan manual di database.</p>
+<h3 id="3-10-pengarsipan-affiliate-link"><span class="h-text">3.10 Pengarsipan Affiliate Link</span><a class="anchor" href="#3-10-pengarsipan-affiliate-link" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>Pengarsipan link adalah menyimpan dan mengelola semua affiliate link secara terstruktur. Manfaatnya:</p>
+<ul>
+<li>link mudah ditemukan dan tidak tertukar;</li>
+<li>produk yang dipromosikan bisa diperiksa lagi;</li>
+<li>perubahan harga dan stok bisa dicatat;</li>
+<li>link yang tidak dipakai mudah dikenali;</li>
+<li>data performa konten lebih mudah dianalisis.</li>
+</ul>
+<p>Kamu menyimpan link di Database Link Affiliate. Struktur kolomnya ada di bagian 6.4.</p>
+<h3 id="3-11-pemeriksaan-link-rusak"><span class="h-text">3.11 Pemeriksaan Link Rusak</span><a class="anchor" href="#3-11-pemeriksaan-link-rusak" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>Link rusak adalah link yang tidak lagi membawa pengguna ke tujuan semestinya atau tidak bisa dipakai sebagaimana diharapkan. Penyebabnya:</p>
+<ul>
+<li>produk dihapus;</li>
+<li>halaman produk tidak tersedia;</li>
+<li>link salah disalin;</li>
+<li>URL berubah;</li>
+<li>halaman error;</li>
+<li>pengalihan tidak bekerja;</li>
+<li>produk atau toko berubah.</li>
+</ul>
+<p><strong>Jangan langsung menghapus catatan link lama.</strong> Simpan riwayatnya supaya kamu tahu konten mana yang pernah memakai link itu.</p>
+<h3 id="3-12-pelacakan-perubahan-harga-dan-stok"><span class="h-text">3.12 Pelacakan Perubahan Harga dan Stok</span><a class="anchor" href="#3-12-pelacakan-perubahan-harga-dan-stok" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>Harga dan stok memengaruhi keputusan calon pembeli. Contoh: produk dipromosikan seharga Rp50.000, tetapi saat audiens membuka link harganya Rp75.000. Sebagian calon pembeli mungkin batal karena penawaran tidak sesuai lagi. Perubahan stok juga mengurangi peluang pembelian.</p>
+<p>Catat:</p>
+<ul>
+<li>harga saat konten dibuat;</li>
+<li>harga saat konten dipublikasikan;</li>
+<li>harga saat link diperiksa ulang;</li>
+<li>ketersediaan produk;</li>
+<li>varian yang tersedia;</li>
+<li>tanggal pemeriksaan terakhir;</li>
+<li>perubahan penting pada produk.</li>
+</ul>
+<p>Kamu tidak perlu memeriksa setiap produk tiap jam. Prioritaskan produk yang sering dipromosikan, banyak diklik, atau besar kontribusinya pada komisi.</p>
+<h3 id="3-13-rekonsiliasi-laporan"><span class="h-text">3.13 Rekonsiliasi Laporan</span><a class="anchor" href="#3-13-rekonsiliasi-laporan" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>Rekonsiliasi adalah membandingkan beberapa catatan untuk memastikan data bisa dipahami dan perbedaannya bisa dijelaskan. Bandingkan:</p>
+<ul>
+<li>catatan performa konten;</li>
+<li>data klik yang tersedia;</li>
+<li>laporan pesanan;</li>
+<li>status transaksi;</li>
+<li>laporan komisi;</li>
+<li>catatan pembayaran komisi.</li>
+</ul>
+</section><section class="sec reveal"><h2 id="4-istilah-penting"><span class="h-text">4. Istilah Penting</span><a class="anchor" href="#4-istilah-penting" aria-label="Tautan ke bagian ini">#</a></h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Istilah</th>
+<th>Definisi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Affiliate link</td>
+<td>Link khusus untuk mengarahkan calon pembeli ke produk atau halaman tertentu, berisi informasi pelacakan yang menghubungkan aktivitas dengan akun affiliate</td>
+</tr>
+<tr>
+<td>Halaman tujuan (landing page)</td>
+<td>Halaman yang terbuka setelah seseorang mengeklik affiliate link; di Shopee Affiliate biasanya halaman produk atau toko</td>
+</tr>
+<tr>
+<td>ID Konten</td>
+<td>Identitas konten yang kamu publikasikan</td>
+</tr>
+<tr>
+<td>ID Produk</td>
+<td>Identitas produk yang dipromosikan</td>
+</tr>
+<tr>
+<td>ID Link</td>
+<td>Identitas link yang dipakai</td>
+</tr>
+<tr>
+<td>Atribusi</td>
+<td>Proses menentukan sumber atau aktivitas yang mendapat kredit atas suatu konversi</td>
+</tr>
+<tr>
+<td>Attribution window</td>
+<td>Rentang waktu yang ditetapkan program untuk mengaitkan suatu tindakan, seperti pembelian, dengan interaksi sebelumnya</td>
+</tr>
+<tr>
+<td>Klik</td>
+<td>Seseorang membuka atau mengeklik link</td>
+</tr>
+<tr>
+<td>Pembelian (pesanan)</td>
+<td>Seseorang memesan sesuai definisi sistem pelaporan</td>
+</tr>
+<tr>
+<td>Komisi Estimasi, Pending, Disetujui, Dibayarkan</td>
+<td>Empat status komisi berurutan; Disetujui adalah komisi yang sudah lolos validasi</td>
+</tr>
+<tr>
+<td>Parameter tracking</td>
+<td>Informasi tambahan pada URL untuk membedakan sumber traffic atau kampanye</td>
+</tr>
+<tr>
+<td>Pengarsipan link</td>
+<td>Menyimpan dan mengelola semua affiliate link secara terstruktur</td>
+</tr>
+<tr>
+<td>Link rusak</td>
+<td>Link yang tidak lagi membawa pengguna ke tujuan semestinya</td>
+</tr>
+<tr>
+<td>Rekonsiliasi</td>
+<td>Membandingkan beberapa catatan agar perbedaannya bisa dijelaskan</td>
+</tr>
+</tbody>
+</table></div>
+</section><section class="sec reveal"><h2 id="5-langkah-praktik"><span class="h-text">5. Langkah Praktik</span><a class="anchor" href="#5-langkah-praktik" aria-label="Tautan ke bagian ini">#</a></h2>
+<h3 id="a-membuat-dan-menyimpan-affiliate-link"><span class="h-text">A. Membuat dan menyimpan affiliate link</span><a class="anchor" href="#a-membuat-dan-menyimpan-affiliate-link" aria-label="Tautan ke bagian ini">#</a></h3>
+<ol>
+<li>Pilih produk yang ingin kamu promosikan.</li>
+<li>Buka fitur pembuatan affiliate link yang resmi.</li>
+<li>Pilih atau masukkan produk sesuai petunjuk.</li>
+<li>Buat affiliate link.</li>
+<li>Salin link yang dihasilkan.</li>
+<li>Simpan link ke Database Link Affiliate.</li>
+<li>Hubungkan link dengan konten yang mempromosikan produk. Hubungan ini ada di kolom Link pada Database Konten Affiliate.</li>
+<li>Uji link sebelum dipublikasikan.</li>
+</ol>
+<h3 id="b-memindahkan-kolom-affiliate-link-dari-modul-03"><span class="h-text">B. Memindahkan kolom Affiliate Link dari Modul 03</span><a class="anchor" href="#b-memindahkan-kolom-affiliate-link-dari-modul-03" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>Di Modul 03, Database Konten Affiliate sementara punya kolom "Affiliate Link" bertipe URL. Sekarang pindahkan:</p>
+<ol>
+<li>Salin setiap URL dari kolom "Affiliate Link" ke Database Link Affiliate (satu baris per link unik, dengan ID Link).</li>
+<li>Di Database Konten Affiliate, buat kolom Link bertipe Relation ke Database Link Affiliate.</li>
+<li>Isi kolom Link pada setiap konten dengan link yang sesuai.</li>
+<li>Pastikan semua konten sudah terhubung, lalu hapus kolom "Affiliate Link" yang lama.</li>
+</ol>
+<h3 id="c-memeriksa-link-rusak"><span class="h-text">C. Memeriksa link rusak</span><a class="anchor" href="#c-memeriksa-link-rusak" aria-label="Tautan ke bagian ini">#</a></h3>
+<ol>
+<li>Buka link dari database.</li>
+<li>Periksa apakah halaman bisa diakses.</li>
+<li>Cocokkan produk dan toko dengan catatan.</li>
+<li>Periksa harga dan ketersediaan produk.</li>
+<li>Jika bermasalah, catat tanggal dan jenis masalah.</li>
+<li>Cari produk pengganti jika perlu.</li>
+<li>Buat affiliate link baru lewat mekanisme resmi.</li>
+<li>Perbarui database.</li>
+<li>Periksa lagi semua konten yang memakai link lama.</li>
+</ol>
+<h3 id="d-rekonsiliasi-saat-ada-selisih"><span class="h-text">D. Rekonsiliasi saat ada selisih</span><a class="anchor" href="#d-rekonsiliasi-saat-ada-selisih" aria-label="Tautan ke bagian ini">#</a></h3>
+<ol>
+<li>Apakah kedua laporan memakai periode yang sama?</li>
+<li>Apakah satu laporan berisi Estimasi dan yang lain berisi Komisi Disetujui?</li>
+<li>Apakah ada pembatalan atau penyesuaian?</li>
+<li>Apakah semua transaksi sudah selesai diproses?</li>
+<li>Apakah ada transaksi yang belum masuk laporan terbaru?</li>
+</ol>
+<p>Jika selisih belum bisa dijelaskan, tandai sebagai masalah yang perlu ditindaklanjuti.</p>
+</section><section class="sec reveal"><h2 id="6-contoh-dan-perhitungan"><span class="h-text">6. Contoh dan Perhitungan</span><a class="anchor" href="#6-contoh-dan-perhitungan" aria-label="Tautan ke bagian ini">#</a></h2>
+<p>Modul ini tidak punya rumus metrik. Rumus dasar ada di Modul 01, 15, dan 16. Berikut tabel contoh dan struktur data. Angka di dalamnya simulasi, bukan tarif resmi Shopee.</p>
+<h3 id="6-1-isi-database-konten-affiliate-contoh"><span class="h-text">6.1 Isi Database Konten Affiliate (contoh)</span><a class="anchor" href="#6-1-isi-database-konten-affiliate-contoh" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>Tabel ini adalah contoh isi Database Konten Affiliate. Kolom Link berisi relasi ke Database Link Affiliate.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>ID Konten</th>
+<th>Judul Konten</th>
+<th>Produk</th>
+<th>Link</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C001</td>
+<td>Rak sepatu untuk kamar sempit</td>
+<td>Rak sepatu A</td>
+<td>L001</td>
+</tr>
+<tr>
+<td>C002</td>
+<td>Perbandingan dua rak sepatu</td>
+<td>Rak sepatu A</td>
+<td>L001</td>
+</tr>
+<tr>
+<td>C003</td>
+<td>Organizer meja kerja</td>
+<td>Organizer B</td>
+<td>L002</td>
+</tr>
+</tbody>
+</table></div>
+<p>Dua konten (C001 dan C002) memakai produk dan link yang sama. Konten C003 mempromosikan produk lain. Jika dashboard tidak menyediakan data per konten, kontribusi C001 dan C002 bisa tidak terbaca.</p>
+<h3 id="6-2-contoh-corong-klik-sampai-pesanan"><span class="h-text">6.2 Contoh corong klik sampai pesanan</span><a class="anchor" href="#6-2-contoh-corong-klik-sampai-pesanan" aria-label="Tautan ke bagian ini">#</a></h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Metrik</th>
+<th>Jumlah</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Klik affiliate link</td>
+<td>500</td>
+</tr>
+<tr>
+<td>Pesanan tercatat</td>
+<td>20</td>
+</tr>
+<tr>
+<td>Pesanan dibatalkan</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Pesanan masih diproses</td>
+<td>5</td>
+</tr>
+<tr>
+<td>Pesanan selesai dan memenuhi syarat</td>
+<td>12</td>
+</tr>
+</tbody>
+</table></div>
+<p>Cek: 12 + 3 + 5 = 20, jadi semua pesanan tercatat sudah terhitung. Angka ini hanya contoh ilustratif.</p>
+<p>500 klik tidak sama dengan 500 pembelian. 20 pesanan tercatat juga tidak otomatis berarti 20 pesanan menghasilkan komisi final.</p>
+<h3 id="6-3-contoh-estimasi-vs-disetujui"><span class="h-text">6.3 Contoh Estimasi vs Disetujui</span><a class="anchor" href="#6-3-contoh-estimasi-vs-disetujui" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>Kamu melihat Komisi Estimasi sebesar <strong>Rp500.000</strong>. Beberapa hari kemudian, setelah sebagian transaksi dibatalkan atau divalidasi, Komisi Disetujui menjadi <strong>Rp350.000</strong>.</p>
+<p>Estimasi awal belum tentu sama dengan komisi final. Selisih ini tidak selalu berarti sistem salah. Periksa status transaksi dan rincian laporan dulu.</p>
+<h3 id="6-4-struktur-database-link-affiliate"><span class="h-text">6.4 Struktur Database Link Affiliate</span><a class="anchor" href="#6-4-struktur-database-link-affiliate" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>Satu link bisa dipakai banyak konten. Karena itu relasi link ke konten diletakkan di Database Konten Affiliate (kolom Link), bukan di database ini.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Kolom</th>
+<th>Tipe</th>
+<th>Fungsi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ID Link</td>
+<td>Title</td>
+<td>Identitas unik link, mis. L001</td>
+</tr>
+<tr>
+<td>Produk</td>
+<td>Relation</td>
+<td>Produk yang dipromosikan (ke Database Produk Affiliate)</td>
+</tr>
+<tr>
+<td>Nama Toko</td>
+<td>Text</td>
+<td>Identitas penjual</td>
+</tr>
+<tr>
+<td>Affiliate Link</td>
+<td>URL</td>
+<td>Link resmi yang dipakai</td>
+</tr>
+<tr>
+<td>Tanggal Dibuat</td>
+<td>Date</td>
+<td>Waktu pembuatan link</td>
+</tr>
+<tr>
+<td>Platform</td>
+<td>Select</td>
+<td>Tempat link dipakai</td>
+</tr>
+<tr>
+<td>Status Link</td>
+<td>Select</td>
+<td>Aktif, Perlu Diperiksa, atau Tidak Digunakan</td>
+</tr>
+<tr>
+<td>Tanggal Pemeriksaan</td>
+<td>Date</td>
+<td>Waktu terakhir link diperiksa</td>
+</tr>
+<tr>
+<td>Catatan</td>
+<td>Text</td>
+<td>Informasi tambahan</td>
+</tr>
+</tbody>
+</table></div>
+<p>Contoh isi: baris L001 (Rak sepatu A) dan L002 (Organizer B) dari tabel 6.1.</p>
+<h3 id="6-5-contoh-rekonsiliasi"><span class="h-text">6.5 Contoh rekonsiliasi</span><a class="anchor" href="#6-5-contoh-rekonsiliasi" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>Catatan internalmu menunjukkan Komisi Estimasi <strong>Rp800.000</strong>, sedangkan dashboard terbaru menunjukkan <strong>Rp650.000</strong>. Jangan langsung menganggap selisih <strong>Rp150.000</strong> sebagai komisi yang hilang. Jalankan lima pemeriksaan di bagian 5.D.</p>
+<h3 id="6-6-contoh-relevansi-halaman-tujuan"><span class="h-text">6.6 Contoh relevansi halaman tujuan</span><a class="anchor" href="#6-6-contoh-relevansi-halaman-tujuan" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>Konten berjudul "Rak sepatu minimalis untuk kamar sempit" memakai link yang mengarah ke rak besar yang butuh banyak ruang. Link berfungsi secara teknis, tetapi relevansinya rendah. Orang mungkin mengeklik, lalu batal membeli.</p>
+<p>Link yang benar bukan hanya yang bisa dibuka, tetapi yang membawa audiens ke produk sesuai ekspektasi mereka.</p>
+<h3 id="6-7-contoh-perubahan-harga"><span class="h-text">6.7 Contoh perubahan harga</span><a class="anchor" href="#6-7-contoh-perubahan-harga" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>Produk dipromosikan seharga <strong>Rp50.000</strong>. Saat audiens membuka link, harganya menjadi <strong>Rp75.000</strong>. Catat perubahan ini dan perbarui kontenmu.</p>
+</section><section class="sec reveal"><h2 id="7-kesalahan-umum-dan-cara-menghindarinya"><span class="h-text">7. Kesalahan Umum dan Cara Menghindarinya</span><a class="anchor" href="#7-kesalahan-umum-dan-cara-menghindarinya" aria-label="Tautan ke bagian ini">#</a></h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Kesalahan</th>
+<th>Cara menghindari</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Memakai link produk biasa dan menganggapnya affiliate link</td>
+<td>Buat link lewat mekanisme resmi Shopee Affiliate</td>
+</tr>
+<tr>
+<td>Menyalin link yang salah</td>
+<td>Cocokkan link yang dipublikasikan dengan yang tercatat</td>
+</tr>
+<tr>
+<td>Tidak memeriksa apakah link masih mengarah ke produk yang benar</td>
+<td>Jadwalkan pemeriksaan dan catat Tanggal Pemeriksaan</td>
+</tr>
+<tr>
+<td>Memakai satu link tanpa mencatat konten yang memakainya</td>
+<td>Isi kolom Link di Database Konten Affiliate</td>
+</tr>
+<tr>
+<td>Mengubah link tanpa catatan perubahan</td>
+<td>Simpan riwayat di kolom Catatan</td>
+</tr>
+<tr>
+<td>Menganggap semua klik pasti tercatat atau menghasilkan komisi</td>
+<td>Pisahkan klik, pesanan, dan komisi</td>
+</tr>
+<tr>
+<td>Menyimpulkan tracking gagal hanya karena laporan belum diperbarui</td>
+<td>Tunggu pembaruan laporan, lalu periksa lagi</td>
+</tr>
+<tr>
+<td>Menganggap link yang bisa dibuka berarti atribusi berfungsi</td>
+<td>Lakukan pemeriksaan teknis dan pemeriksaan tracking</td>
+</tr>
+<tr>
+<td>Menganggap selisih dengan dashboard sebagai komisi hilang</td>
+<td>Lakukan rekonsiliasi lima langkah</td>
+</tr>
+<tr>
+<td>Menghapus catatan link lama saat mengganti link</td>
+<td>Ubah Status Link menjadi Tidak Digunakan, jangan hapus barisnya</td>
+</tr>
+</tbody>
+</table></div>
+</section><section class="sec reveal"><h2 id="8-tugas-dan-checklist"><span class="h-text">8. Tugas dan Checklist</span><a class="anchor" href="#8-tugas-dan-checklist" aria-label="Tautan ke bagian ini">#</a></h2>
+<ul>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-14-affiliate-link-dan-tracking.html#1"> <span><strong>Tugas 1 — Buat Database Link Affiliate</strong> dengan kolom baku di bagian 6.4.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-14-affiliate-link-dan-tracking.html#2"> <span><strong>Tugas 2 — Beri ID unik</strong> untuk setiap produk, link, dan konten.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-14-affiliate-link-dan-tracking.html#3"> <span><strong>Tugas 3 — Simpan link resmi</strong> yang dihasilkan program.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-14-affiliate-link-dan-tracking.html#4"> <span><strong>Tugas 4 — Pindahkan kolom "Affiliate Link"</strong> dari Modul 03 ke database ini dan ganti dengan relasi (bagian 5.B).</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-14-affiliate-link-dan-tracking.html#5"> <span><strong>Tugas 5 — Hubungkan setiap konten</strong> dengan produk dan link yang dipromosikan.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-14-affiliate-link-dan-tracking.html#6"> <span><strong>Tugas 6 — Uji link</strong> dan periksa halaman tujuan.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-14-affiliate-link-dan-tracking.html#7"> <span><strong>Tugas 7 — Catat tanggal pemeriksaan</strong> link.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-14-affiliate-link-dan-tracking.html#8"> <span><strong>Tugas 8 — Periksa perubahan harga dan stok.</strong></span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-14-affiliate-link-dan-tracking.html#9"> <span><strong>Tugas 9 — Catat masalah atribusi</strong> yang kamu temukan.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-14-affiliate-link-dan-tracking.html#10"> <span><strong>Tugas 10 — Bandingkan catatan internal</strong> dengan dashboard resmi.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-14-affiliate-link-dan-tracking.html#11"> <span><strong>Tugas 11 — Pisahkan empat status komisi:</strong> Estimasi, Pending, Disetujui, Dibayarkan.</span></label></li>
+</ul>
+</section><section class="sec reveal sec-latihan"><h2 id="9-latihan-dan-kunci-jawaban"><span class="h-text">9. Latihan dan Kunci Jawaban</span><a class="anchor" href="#9-latihan-dan-kunci-jawaban" aria-label="Tautan ke bagian ini">#</a></h2>
+<div class="qa"><p class="q"><strong>Soal 1.</strong> Sebuah affiliate link berhasil dibuka dan menampilkan halaman produk tanpa error. Apakah ini membuktikan atribusi berfungsi?</p><details class="ans"><summary>Lihat jawaban</summary><div class="a"><p><strong>Jawaban:</strong> Tidak. Pemeriksaan teknis dan pemeriksaan tracking adalah dua hal berbeda.</p></div></details></div>
+<div class="qa"><p class="q"><strong>Soal 2.</strong> Data contoh: 500 klik, 20 pesanan tercatat, 3 dibatalkan, 5 masih diproses, 12 selesai dan memenuhi syarat. Angka mana yang paling dekat dengan dasar komisi final?</p><details class="ans"><summary>Lihat jawaban</summary><div class="a"><p><strong>Jawaban:</strong> 12 pesanan yang selesai dan memenuhi syarat. Ketiga angka tersambung: 12 + 3 + 5 = 20 pesanan tercatat. Pesanan yang masih diproses (5) bisa menambah jumlah yang memenuhi syarat nanti, sedangkan yang dibatalkan (3) tidak. 500 klik bukan 500 pembelian. (Angka ilustratif.)</p></div></details></div>
+<div class="qa"><p class="q"><strong>Soal 3.</strong> Dua konten (C001 dan C002) memakai ID Link yang sama (L001). Apa risikonya untuk analisis?</p><details class="ans"><summary>Lihat jawaban</summary><div class="a"><p><strong>Jawaban:</strong> Jika dashboard tidak menyediakan data per konten, kontribusi transaksi masing-masing konten tidak bisa diketahui secara akurat.</p></div></details></div>
+<div class="qa"><p class="q"><strong>Soal 4.</strong> Estimasi komisi di catatan internal Rp800.000, dashboard menunjukkan Rp650.000. Apa langkah pertamamu?</p><details class="ans"><summary>Lihat jawaban</summary><div class="a"><p><strong>Jawaban:</strong> Jangan langsung menganggap Rp150.000 hilang. Periksa kesamaan periode, apakah satu laporan Estimasi dan lainnya Disetujui, adanya pembatalan atau penyesuaian, apakah semua transaksi selesai diproses, dan apakah ada transaksi yang belum masuk laporan terbaru.</p></div></details></div>
+<div class="qa"><p class="q"><strong>Soal 5.</strong> Bolehkah menambah parameter UTM pada affiliate link agar transaksi pasti teratribusi?</p><details class="ans"><summary>Lihat jawaban</summary><div class="a"><p><strong>Jawaban:</strong> Tidak bisa diasumsikan. Parameter harus mengikuti aturan program dan platform. Parameter tidak otomatis membuat transaksi teratribusi, yang tidak didukung bisa dihapus atau merusak link, dan parameter eksternal tidak menggantikan tracking resmi Shopee Affiliate.</p></div></details></div>
+</section><section class="sec reveal"><h2 id="10-standar-kelulusan"><span class="h-text">10. Standar Kelulusan</span><a class="anchor" href="#10-standar-kelulusan" aria-label="Tautan ke bagian ini">#</a></h2>
+<p>Kamu dianggap menguasai modul ini jika mampu menemukan link dan produk yang dipakai suatu konten, memeriksa link dan halaman tujuannya, membedakan klik, pesanan, transaksi memenuhi syarat, dan empat status komisi, serta menjelaskan beda data internal dan data resmi beserta keterbatasan tracking.</p></section>
+</article>
+<div class="complete reveal"><button type="button" id="mark-done" data-page="modul/modul-14-affiliate-link-dan-tracking.html">Tandai modul ini selesai</button><span class="hint">Tersimpan di browser kamu.</span></div>
+<nav class="pager" aria-label="Halaman sebelumnya dan berikutnya"><a class="prev" href="../level-4.html"><small>← Sebelumnya</small><span>Level 4 — Conversion and Analytics</span></a><a class="next" href="../modul/modul-15-conversion-rate-optimization-cro.html"><small>Berikutnya →</small><span>15. Conversion Rate Optimization (CRO)</span></a></nav>
+<footer class="foot">
+  <p>Materi pembelajaran, bukan nasihat hukum atau pajak. Aturan Shopee Affiliate bisa berubah, jadi selalu cek sumber resmi dan catat tanggal pemeriksaannya. Situs ini bukan situs resmi Shopee.</p>
+</footer>
+</main>
+<aside class="toc" aria-label="Isi halaman"><p class="toc-title">Di halaman ini</p><ol><li><a href="#1-tujuan-pembelajaran">Tujuan Pembelajaran</a></li><li><a href="#2-ringkasan-konsep-utama">Ringkasan Konsep Utama</a></li><li><a href="#3-penjelasan">Penjelasan</a></li><li><a href="#4-istilah-penting">Istilah Penting</a></li><li><a href="#5-langkah-praktik">Langkah Praktik</a></li><li><a href="#6-contoh-dan-perhitungan">Contoh dan Perhitungan</a></li><li><a href="#7-kesalahan-umum-dan-cara-menghindarinya">Kesalahan Umum dan Cara Menghindarinya</a></li><li><a href="#8-tugas-dan-checklist">Tugas dan Checklist</a></li><li><a href="#9-latihan-dan-kunci-jawaban">Latihan dan Kunci Jawaban</a></li><li><a href="#10-standar-kelulusan">Standar Kelulusan</a></li></ol></aside>
+</div>
+<nav class="bottom-nav" id="bottom-nav" aria-label="Navigasi cepat">
+  <a class="bn-item" href="../index.html"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5"/><path d="M5 10v10h14V10"/></svg><span>Beranda</span></a>
+  <button class="bn-item" id="bn-menu" type="button" aria-controls="sidebar"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="7" rx="1.5"/><rect x="4" y="13" width="7" height="7" rx="1.5"/><rect x="13" y="13" width="7" height="7" rx="1.5"/></svg><span>Materi</span></button>
+  <button class="bn-item" id="bn-search" type="button"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span>Cari</span></button>
+  <a class="bn-item bn-primary" href="../modul/modul-15-conversion-rate-optimization-cro.html"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg><span>Lanjut</span></a>
+</nav>
+<button class="to-top" id="to-top" type="button" aria-label="Kembali ke atas" hidden><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5"/><path d="m5 12 7-7 7 7"/></svg></button>
+<div class="toast-wrap" id="toasts" aria-live="polite"></div>
+<script src="../assets/search-index.js"></script>
+<script src="../assets/app.js"></script>
+</body>
+</html>

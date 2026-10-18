@@ -1,0 +1,822 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Modul 04 — Riset Pasar dan Permintaan · Shopee Affiliate Academy</title>
+<meta name="description" content="Setelah modul ini, kamu mampu:">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#EE4D2D">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/style.css">
+<script>(function(){var d=document.documentElement;d.classList.add('js');try{var t=localStorage.getItem('sea-theme');if(t&&t!=='auto')d.setAttribute('data-theme',t);var p=JSON.parse(localStorage.getItem('sea-prefs')||'{}');['fs','lh','font','width'].forEach(function(k){if(p[k])d.setAttribute('data-'+k,p[k]);});if(p.focus)d.setAttribute('data-focus','1');}catch(e){}})();</script>
+</head>
+<body data-root="../" data-kind="modul" data-page="modul/modul-04-riset-pasar-dan-permintaan.html" data-title="Modul 04 — Riset Pasar dan Permintaan">
+<a class="skip" href="#isi">Lewati ke isi</a>
+<div class="read-progress" id="read-progress" aria-hidden="true"></div>
+<div class="top" id="top">
+<header class="topbar">
+  <button class="icon-btn menu-btn" id="menu-btn" aria-label="Buka menu materi" aria-controls="sidebar" aria-expanded="false"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+  <a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true">SA</span><span class="brand-name">Shopee Affiliate Academy</span></a>
+  <div class="search" id="search">
+    <div class="search-box">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input id="search-input" type="search" placeholder="Cari materi…" autocomplete="off" aria-label="Cari materi">
+      <button class="icon-btn search-close" id="search-close" type="button" aria-label="Tutup pencarian"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+    </div>
+    <div class="search-results" id="search-results" hidden></div>
+  </div>
+  <button class="icon-btn desk-only" id="focus-btn" aria-label="Mode fokus" title="Mode fokus"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9V5h4M20 9V5h-4M4 15v4h4M20 15v4h-4"/></svg></button>
+  <button class="icon-btn aa-btn" id="aa-btn" aria-label="Pengaturan baca" aria-expanded="false" aria-controls="prefs"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20 10 5l6 15"/><path d="M6.5 14.5h7"/><path d="M15 12h5M17.5 12v8"/></svg></button>
+</header>
+<div class="subbar" id="subbar" aria-hidden="true"><span class="sb-title"></span><span class="sb-pct"></span></div>
+</div>
+<div class="prefs" id="prefs" hidden role="dialog" aria-label="Pengaturan tampilan">
+  <div class="prefs-head"><strong>Pengaturan baca</strong><button class="icon-btn sm" id="prefs-close" type="button" aria-label="Tutup"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
+  <div class="pref-row"><span>Ukuran teks</span><div class="seg" role="group" aria-label="Ukuran teks">
+    <button type="button" id="fs-down" aria-label="Perkecil teks">A−</button><output id="fs-val">3/5</output><button type="button" id="fs-up" aria-label="Perbesar teks">A+</button></div></div>
+  <div class="pref-row"><span>Jarak baris</span><div class="seg"><button type="button" data-pref="lh" data-val="tight">Rapat</button><button type="button" data-pref="lh" data-val="normal">Normal</button><button type="button" data-pref="lh" data-val="loose">Lega</button></div></div>
+  <div class="pref-row"><span>Huruf</span><div class="seg"><button type="button" data-pref="font" data-val="sans">Sans</button><button type="button" data-pref="font" data-val="serif">Serif</button></div></div>
+  <div class="pref-row"><span>Lebar teks</span><div class="seg"><button type="button" data-pref="width" data-val="normal">Standar</button><button type="button" data-pref="width" data-val="wide">Lebar</button></div></div>
+  <div class="pref-row"><span>Tema</span><div class="seg theme-seg"><button type="button" data-pref="theme" data-val="light">Terang</button><button type="button" data-pref="theme" data-val="sepia">Sepia</button><button type="button" data-pref="theme" data-val="dark">Gelap</button><button type="button" data-pref="theme" data-val="auto">Auto</button></div></div>
+  <label class="pref-switch"><input type="checkbox" id="pref-break" checked><span class="sw"></span><span>Pengingat istirahat (tiap 25 menit)</span></label>
+  <label class="pref-switch desk-only"><input type="checkbox" id="pref-focus"><span class="sw"></span><span>Mode fokus (sembunyikan menu)</span></label>
+  <button type="button" class="reset" id="prefs-reset">Kembalikan ke bawaan</button>
+</div>
+<div class="shell">
+<nav class="sidebar" id="sidebar" aria-label="Navigasi materi">
+<div class="nav-group">
+<a href="../index.html" data-page="index.html"><span>Beranda dan Pengantar</span></a>
+<a href="../master.html" data-page="master.html"><span>Rangkuman Master</span></a>
+</div>
+<details class="nav-level" data-mods="modul/modul-01-dasar-affiliate-marketing.html,modul/modul-02-shopee-affiliate-program-dan-kebijakan.html,modul/modul-03-persiapan-akun-dan-operasional.html"><summary><span class="lv-badge">1</span><span class="lv-name">Fundamentals</span><span class="lv-count">0/3</span></summary>
+<a href="../level-1.html" data-page="level-1.html"><span>Ringkasan level</span></a>
+<a href="../modul/modul-01-dasar-affiliate-marketing.html" data-page="modul/modul-01-dasar-affiliate-marketing.html"><span>Modul 01 — Dasar Affiliate Marketing</span></a>
+<a href="../modul/modul-02-shopee-affiliate-program-dan-kebijakan.html" data-page="modul/modul-02-shopee-affiliate-program-dan-kebijakan.html"><span>Modul 02 — Shopee Affiliate Program dan Kebijakan</span></a>
+<a href="../modul/modul-03-persiapan-akun-dan-operasional.html" data-page="modul/modul-03-persiapan-akun-dan-operasional.html"><span>Modul 03 — Persiapan Akun dan Operasional</span></a>
+</details>
+<details class="nav-level" data-mods="modul/modul-04-riset-pasar-dan-permintaan.html,modul/modul-05-niche-audiens-dan-positioning.html,modul/modul-06-riset-dan-evaluasi-produk.html,modul/modul-07-riset-kompetitor.html" open><summary><span class="lv-badge">2</span><span class="lv-name">Market and Product Research</span><span class="lv-count">0/4</span></summary>
+<a href="../level-2.html" data-page="level-2.html"><span>Ringkasan level</span></a>
+<a href="../modul/modul-04-riset-pasar-dan-permintaan.html" data-page="modul/modul-04-riset-pasar-dan-permintaan.html" aria-current="page"><span>Modul 04 — Riset Pasar dan Permintaan</span></a>
+<a href="../modul/modul-05-niche-audiens-dan-positioning.html" data-page="modul/modul-05-niche-audiens-dan-positioning.html"><span>Modul 05 — Niche, Audiens, dan Positioning</span></a>
+<a href="../modul/modul-06-riset-dan-evaluasi-produk.html" data-page="modul/modul-06-riset-dan-evaluasi-produk.html"><span>Modul 06 — Riset dan Evaluasi Produk</span></a>
+<a href="../modul/modul-07-riset-kompetitor.html" data-page="modul/modul-07-riset-kompetitor.html"><span>Modul 07 — Riset Kompetitor</span></a>
+</details>
+<details class="nav-level" data-mods="modul/modul-08-strategi-channel-dan-traffic-organik.html,modul/modul-09-strategi-konten.html,modul/modul-10-copywriting-dan-hook.html,modul/modul-11-produksi-video-dan-visual.html,modul/modul-12-seo-dan-konten-berbasis-pencarian.html,modul/modul-13-distribusi-dan-community-building.html"><summary><span class="lv-badge">3</span><span class="lv-name">Content and Traffic</span><span class="lv-count">0/6</span></summary>
+<a href="../level-3.html" data-page="level-3.html"><span>Ringkasan level</span></a>
+<a href="../modul/modul-08-strategi-channel-dan-traffic-organik.html" data-page="modul/modul-08-strategi-channel-dan-traffic-organik.html"><span>Modul 08 — Strategi Channel dan Traffic Organik</span></a>
+<a href="../modul/modul-09-strategi-konten.html" data-page="modul/modul-09-strategi-konten.html"><span>Modul 09 — Strategi Konten</span></a>
+<a href="../modul/modul-10-copywriting-dan-hook.html" data-page="modul/modul-10-copywriting-dan-hook.html"><span>Modul 10 — Copywriting dan Hook</span></a>
+<a href="../modul/modul-11-produksi-video-dan-visual.html" data-page="modul/modul-11-produksi-video-dan-visual.html"><span>Modul 11 — Produksi Video dan Visual</span></a>
+<a href="../modul/modul-12-seo-dan-konten-berbasis-pencarian.html" data-page="modul/modul-12-seo-dan-konten-berbasis-pencarian.html"><span>Modul 12 — SEO dan Konten Berbasis Pencarian</span></a>
+<a href="../modul/modul-13-distribusi-dan-community-building.html" data-page="modul/modul-13-distribusi-dan-community-building.html"><span>Modul 13 — Distribusi dan Community Building</span></a>
+</details>
+<details class="nav-level" data-mods="modul/modul-14-affiliate-link-dan-tracking.html,modul/modul-15-conversion-rate-optimization-cro.html,modul/modul-16-analytics-dan-dashboard.html,modul/modul-17-eksperimen-dan-validasi.html"><summary><span class="lv-badge">4</span><span class="lv-name">Conversion and Analytics</span><span class="lv-count">0/4</span></summary>
+<a href="../level-4.html" data-page="level-4.html"><span>Ringkasan level</span></a>
+<a href="../modul/modul-14-affiliate-link-dan-tracking.html" data-page="modul/modul-14-affiliate-link-dan-tracking.html"><span>Modul 14 — Affiliate Link dan Tracking</span></a>
+<a href="../modul/modul-15-conversion-rate-optimization-cro.html" data-page="modul/modul-15-conversion-rate-optimization-cro.html"><span>Modul 15 — Conversion Rate Optimization (CRO)</span></a>
+<a href="../modul/modul-16-analytics-dan-dashboard.html" data-page="modul/modul-16-analytics-dan-dashboard.html"><span>Modul 16 — Analytics dan Dashboard</span></a>
+<a href="../modul/modul-17-eksperimen-dan-validasi.html" data-page="modul/modul-17-eksperimen-dan-validasi.html"><span>Modul 17 — Eksperimen dan Validasi</span></a>
+</details>
+<details class="nav-level" data-mods="modul/modul-18-monetisasi-dan-pemilihan-produk-lanjutan.html,modul/modul-19-keuangan-dan-target-komisi.html,modul/modul-20-scaling-dan-sistem-produksi.html,modul/modul-21-kepatuhan-risiko-dan-reputasi.html,modul/modul-22-advanced-strategy.html,modul/modul-23-otomasi-dan-sistem-kerja.html,modul/modul-24-evaluasi-bisnis-dan-mastery.html"><summary><span class="lv-badge">5</span><span class="lv-name">Professional Growth</span><span class="lv-count">0/7</span></summary>
+<a href="../level-5.html" data-page="level-5.html"><span>Ringkasan level</span></a>
+<a href="../modul/modul-18-monetisasi-dan-pemilihan-produk-lanjutan.html" data-page="modul/modul-18-monetisasi-dan-pemilihan-produk-lanjutan.html"><span>Modul 18 — Monetisasi dan Pemilihan Produk Lanjutan</span></a>
+<a href="../modul/modul-19-keuangan-dan-target-komisi.html" data-page="modul/modul-19-keuangan-dan-target-komisi.html"><span>Modul 19 — Keuangan dan Target Komisi</span></a>
+<a href="../modul/modul-20-scaling-dan-sistem-produksi.html" data-page="modul/modul-20-scaling-dan-sistem-produksi.html"><span>Modul 20 — Scaling dan Sistem Produksi</span></a>
+<a href="../modul/modul-21-kepatuhan-risiko-dan-reputasi.html" data-page="modul/modul-21-kepatuhan-risiko-dan-reputasi.html"><span>Modul 21 — Kepatuhan, Risiko, dan Reputasi</span></a>
+<a href="../modul/modul-22-advanced-strategy.html" data-page="modul/modul-22-advanced-strategy.html"><span>Modul 22 — Advanced Strategy</span></a>
+<a href="../modul/modul-23-otomasi-dan-sistem-kerja.html" data-page="modul/modul-23-otomasi-dan-sistem-kerja.html"><span>Modul 23 — Otomasi dan Sistem Kerja</span></a>
+<a href="../modul/modul-24-evaluasi-bisnis-dan-mastery.html" data-page="modul/modul-24-evaluasi-bisnis-dan-mastery.html"><span>Modul 24 — Evaluasi Bisnis dan Mastery</span></a>
+</details>
+<div class="nav-group"><p class="nav-label">Praktik</p>
+<a href="../proyek-praktik.html" data-page="proyek-praktik.html"><span>8 Project Praktik Wajib</span></a>
+<a href="../database-notion.html" data-page="database-notion.html"><span>Database Notion</span></a>
+</div>
+<div class="nav-group"><p class="nav-label">Lampiran</p>
+<a href="../kamus-istilah.html" data-page="kamus-istilah.html"><span>Kamus Istilah</span></a>
+<a href="../rumus-template.html" data-page="rumus-template.html"><span>Lembar Rumus dan Template</span></a>
+<a href="../studi-kasus.html" data-page="studi-kasus.html"><span>Studi Kasus Simulasi</span></a>
+<a href="../panduan-pelatih.html" data-page="panduan-pelatih.html"><span>Panduan Pelatih dan Penilaian</span></a>
+</div></nav>
+<div class="scrim" id="scrim" hidden></div>
+<main id="isi" class="content">
+<nav class="crumbs" aria-label="Jejak halaman"><a href="../index.html">Beranda</a> <span>/</span> <a href="../level-2.html">Level 2</a> <span>/</span> Modul 04</nav>
+<details class="toc-mobile"><summary>Di halaman ini</summary><ol><li><a href="#1-tujuan-pembelajaran">Tujuan Pembelajaran</a></li><li><a href="#2-ringkasan-konsep-utama">Ringkasan Konsep Utama</a></li><li><a href="#3-penjelasan">Penjelasan</a></li><li><a href="#4-istilah-penting">Istilah Penting</a></li><li><a href="#5-langkah-praktik">Langkah Praktik</a></li><li><a href="#6-contoh-dan-perhitungan">Contoh dan Perhitungan</a></li><li><a href="#7-kesalahan-umum-dan-cara-menghindarinya">Kesalahan Umum dan Cara Menghindarinya</a></li><li><a href="#8-tugas-dan-checklist">Tugas dan Checklist</a></li><li><a href="#9-latihan-dan-kunci-jawaban">Latihan dan Kunci Jawaban</a></li><li><a href="#10-standar-kelulusan">Standar Kelulusan</a></li></ol></details>
+<article class="prose">
+<div class="eyebrow"><a class="chip" href="../level-2.html">Level 2 · Market and Product Research</a><span class="chip ghost">Modul 04 dari 24</span><span class="chip ghost">± 15 menit baca</span></div>
+<h1 id="modul-04-riset-pasar-dan-permintaan">Modul 04 — Riset Pasar dan Permintaan</h1>
+<section class="sec reveal"><h2 id="1-tujuan-pembelajaran"><span class="h-text">1. Tujuan Pembelajaran</span><a class="anchor" href="#1-tujuan-pembelajaran" aria-label="Tautan ke bagian ini">#</a></h2>
+<p>Setelah modul ini, kamu mampu:</p>
+<ul>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-04-riset-pasar-dan-permintaan.html#1"> <span>Menjelaskan siapa calon pembeli dan masalah yang mereka hadapi.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-04-riset-pasar-dan-permintaan.html#2"> <span>Mengumpulkan 20 masalah pembeli dan mengenali pertanyaan serta keluhan yang berulang.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-04-riset-pasar-dan-permintaan.html#3"> <span>Menjelaskan perbedaan popularitas dan niat beli.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-04-riset-pasar-dan-permintaan.html#4"> <span>Memvalidasi satu peluang dengan minimal tiga sumber yang relevan.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-04-riset-pasar-dan-permintaan.html#5"> <span>Memisahkan fakta, estimasi, dan hipotesis.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-04-riset-pasar-dan-permintaan.html#6"> <span>Menyusun daftar peluang konten dari hasil riset.</span></label></li>
+</ul>
+<p>Hasil akhir modul: daftar masalah pembeli, bukti permintaan, kata kunci, dan peluang konten. Semua ini kamu pakai untuk menentukan niche dan produk di modul berikutnya.</p>
+</section><section class="sec reveal"><h2 id="2-ringkasan-konsep-utama"><span class="h-text">2. Ringkasan Konsep Utama</span><a class="anchor" href="#2-ringkasan-konsep-utama" aria-label="Tautan ke bagian ini">#</a></h2>
+<ul>
+<li>Riset pasar dilakukan <strong>sebelum</strong> kamu menentukan produk yang akan dipromosikan.</li>
+<li>Jangan mulai dari "Produk apa yang ingin saya jual?". Mulailah dari "Masalah apa yang ingin diselesaikan calon pembeli?"</li>
+<li>Tren dan permintaan berkaitan, tetapi tidak sama. Viral belum tentu dibeli.</li>
+<li>Masalah yang berulang di banyak sumber adalah sinyal kebutuhan yang belum terselesaikan dengan baik.</li>
+<li>Pertanyaan calon pembeli adalah bahan baku ide konten.</li>
+<li>Setiap sumber data punya keterbatasan. Pakai beberapa sumber untuk memeriksa konsistensi temuanmu.</li>
+<li>Popularitas (views) berbeda dari niat beli. Klik dan transaksi lebih dekat dengan hasil bisnis.</li>
+<li>Pisahkan fakta, estimasi, dan hipotesis. Jangan mengarang data.</li>
+</ul>
+</section><section class="sec reveal"><h2 id="3-penjelasan"><span class="h-text">3. Penjelasan</span><a class="anchor" href="#3-penjelasan" aria-label="Tautan ke bagian ini">#</a></h2>
+<h3 id="3-1-apa-itu-riset-pasar"><span class="h-text">3.1 Apa itu riset pasar</span><a class="anchor" href="#3-1-apa-itu-riset-pasar" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>Riset pasar adalah proses mencari informasi. Kamu mencari tahu apa yang dibutuhkan orang, masalah yang mereka hadapi, produk yang mereka cari, dan alasan mereka mau membeli. Dalam Shopee Affiliate, kamu melakukannya sebelum memilih produk.</p>
+<p>Contoh: kamu tertarik mempromosikan rak penyimpanan meja. Sebelum membuat video, cari tahu dulu:</p>
+<ul>
+<li>Apakah banyak orang mengalami masalah meja berantakan?</li>
+<li>Apakah mereka butuh rak tambahan, atau sebenarnya butuh kotak penyimpanan?</li>
+<li>Apakah mereka mencari produk murah, atau lebih mementingkan kekuatan bahan?</li>
+<li>Apakah mereka sudah membeli produk serupa?</li>
+<li>Apa yang membuat mereka ragu membeli?</li>
+<li>Apakah produk itu benar-benar menyelesaikan masalah mereka?</li>
+</ul>
+<h3 id="3-2-jenis-kebutuhan-pembeli"><span class="h-text">3.2 Jenis kebutuhan pembeli</span><a class="anchor" href="#3-2-jenis-kebutuhan-pembeli" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>Kebutuhan pembeli adalah sesuatu yang ingin mereka dapatkan, atau masalah yang ingin mereka selesaikan lewat suatu produk.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Jenis kebutuhan</th>
+<th>Penjelasan</th>
+<th>Contoh</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fungsional</td>
+<td>Membantu menyelesaikan pekerjaan</td>
+<td>Blender untuk menghaluskan bahan makanan</td>
+</tr>
+<tr>
+<td>Kenyamanan</td>
+<td>Membuat aktivitas lebih praktis</td>
+<td>Pel lantai dengan sistem pemeras</td>
+</tr>
+<tr>
+<td>Penghematan</td>
+<td>Mengurangi biaya atau pemborosan</td>
+<td>Botol minum isi ulang</td>
+</tr>
+<tr>
+<td>Estetika</td>
+<td>Membuat sesuatu terlihat lebih menarik</td>
+<td>Lampu dekorasi kamar</td>
+</tr>
+<tr>
+<td>Keamanan</td>
+<td>Membantu mengurangi risiko</td>
+<td>Pelindung sudut meja</td>
+</tr>
+<tr>
+<td>Produktivitas</td>
+<td>Membantu pekerjaan lebih teratur</td>
+<td>Stand laptop</td>
+</tr>
+<tr>
+<td>Penggantian</td>
+<td>Mengganti barang yang rusak atau habis masa pakainya</td>
+<td>Kabel charger pengganti</td>
+</tr>
+</tbody>
+</table></div>
+<p>Satu produk bisa memenuhi beberapa kebutuhan sekaligus. Stand laptop, misalnya, memperbaiki posisi layar, merapikan meja, dan membuat ruang kerja lebih nyaman.</p>
+<h3 id="3-3-tren-versus-permintaan"><span class="h-text">3.3 Tren versus permintaan</span><a class="anchor" href="#3-3-tren-versus-permintaan" aria-label="Tautan ke bagian ini">#</a></h3>
+<ul>
+<li><strong>Tren</strong> adalah perubahan minat atau perhatian masyarakat terhadap topik, produk, atau kebutuhan tertentu.</li>
+<li><strong>Permintaan</strong> adalah kebutuhan atau keinginan pasar terhadap suatu produk atau solusi.</li>
+</ul>
+<p>Contoh: botol minum viral karena desainnya unik. Banyak orang menonton videonya, tetapi belum tentu membeli. Sebaliknya, kebutuhan mengganti botol minum yang bocor mungkin tidak viral, tetapi muncul sepanjang tahun.</p>
+<p>Dalam affiliate marketing, cari tren yang relevan. Lalu periksa apakah ada kebutuhan nyata di balik tren itu.</p>
+<h3 id="3-4-sumber-untuk-mencari-tren-dan-permintaan"><span class="h-text">3.4 Sumber untuk mencari tren dan permintaan</span><a class="anchor" href="#3-4-sumber-untuk-mencari-tren-dan-permintaan" aria-label="Tautan ke bagian ini">#</a></h3>
+<p><strong>1. Pencarian Shopee</strong></p>
+<ul>
+<li>Ketik kata kunci produk di kolom pencarian.</li>
+<li>Amati saran pencarian yang muncul.</li>
+<li>Periksa produk yang relevan, harga, variasi, ulasan, dan indikator penjualan.</li>
+<li>Baca ulasan terbaru dan ulasan negatif.</li>
+<li>Bandingkan beberapa produk, bukan hanya satu.</li>
+</ul>
+<blockquote class="callout">
+<p>Saran pencarian dan indikator penjualan adalah <strong>petunjuk</strong>, bukan bukti lengkap tentang besarnya pasar.</p>
+</blockquote>
+<p><strong>2. TikTok</strong></p>
+<ul>
+<li>Cari video tentang masalah yang ingin kamu pelajari.</li>
+<li>Perhatikan komentar yang menanyakan nama produk, harga, ukuran, atau cara membeli.</li>
+<li>Amati pertanyaan yang berulang.</li>
+<li>Periksa apakah video hanya menarik perhatian, atau juga mendorong orang mempertimbangkan pembelian.</li>
+</ul>
+<blockquote class="callout">
+<p>Views tinggi tidak otomatis berarti penjualan tinggi.</p>
+</blockquote>
+<p><strong>3. Google Trends</strong></p>
+<p>Google Trends membandingkan minat pencarian suatu topik dari waktu ke waktu. Contoh: membandingkan "rak meja" dengan "organizer meja".</p>
+<blockquote class="callout">
+<p>Google Trends menampilkan <strong>indeks minat relatif</strong>, bukan jumlah pencarian absolut. Data ini juga tidak langsung menunjukkan jumlah pembelian di Shopee.</p>
+</blockquote>
+<p><strong>4. Google Search dan forum publik</strong></p>
+<p>Pakai pencarian untuk menemukan pertanyaan, keluhan, dan pengalaman pengguna. Contoh kata kunci:</p>
+<ul>
+<li>"cara mengatasi meja berantakan"</li>
+<li>"rak meja yang kuat"</li>
+<li>"rak meja kecil kekurangan"</li>
+<li>"organizer meja worth it atau tidak"</li>
+</ul>
+<p><strong>5. Ulasan produk</strong></p>
+<p>Ulasan menunjukkan pengalaman nyata pembeli, termasuk hal yang tidak terlihat di foto produk. Cari pola keluhan, misalnya bahan terlalu tipis, ukuran tidak sesuai, pemasangan sulit, atau produk tidak cocok untuk kebutuhan tertentu.</p>
+<blockquote class="callout">
+<p>Semua sumber di atas punya keterbatasan. Pakai beberapa sumber untuk memeriksa apakah temuanmu konsisten.</p>
+</blockquote>
+<h3 id="3-5-analisis-masalah-yang-berulang"><span class="h-text">3.5 Analisis masalah yang berulang</span><a class="anchor" href="#3-5-analisis-masalah-yang-berulang" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>Masalah berulang adalah masalah yang disebut banyak orang atau muncul berkali-kali dalam situasi berbeda. Masalah ini layak diteliti karena bisa menunjukkan kebutuhan yang belum terselesaikan dengan baik.</p>
+<p>Contoh keluhan dari ulasan organizer meja:</p>
+<ul>
+<li>"Terlalu kecil untuk barang saya."</li>
+<li>"Tidak cukup untuk menyimpan kabel."</li>
+<li>"Meja masih terlihat berantakan."</li>
+<li>"Ukuran tidak sesuai dengan meja."</li>
+<li>"Bahannya terasa kurang kokoh."</li>
+</ul>
+<p>Keluhan ini dikelompokkan menjadi tiga kategori:</p>
+<ol>
+<li>Kapasitas penyimpanan.</li>
+<li>Kesesuaian ukuran.</li>
+<li>Kualitas bahan.</li>
+</ol>
+<p>Ide konten yang bisa diturunkan:</p>
+<ul>
+<li>Cara memilih organizer berdasarkan ukuran meja.</li>
+<li>Perbandingan organizer kecil dan besar.</li>
+<li>Hal yang perlu diperiksa sebelum membeli organizer.</li>
+<li>Demonstrasi kapasitas organizer dengan barang sehari-hari.</li>
+</ul>
+<blockquote class="callout">
+<p>Jangan menyimpulkan bahwa semua pembeli mengalami masalah yang sama. Catat jumlah sumber yang kamu periksa dan berapa kali setiap masalah ditemukan.</p>
+</blockquote>
+<h3 id="3-6-analisis-pertanyaan-calon-pembeli"><span class="h-text">3.6 Analisis pertanyaan calon pembeli</span><a class="anchor" href="#3-6-analisis-pertanyaan-calon-pembeli" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>Pertanyaan calon pembeli sering menunjukkan apa yang mereka butuhkan sebelum memutuskan membeli. Contohnya: apakah produk ini muat untuk laptop 15 inci, apakah bahannya mudah patah, apakah bisa dipakai di meja kecil, apakah pemasangannya butuh alat, apakah ada ukuran lebih besar, apakah mudah dibersihkan.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Kategori pertanyaan</th>
+<th>Contoh</th>
+<th>Ide konten</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ukuran</td>
+<td>Apakah muat di meja kecil?</td>
+<td>Demonstrasi ukuran</td>
+</tr>
+<tr>
+<td>Kualitas</td>
+<td>Apakah mudah patah?</td>
+<td>Tunjukkan bahan dan konstruksi</td>
+</tr>
+<tr>
+<td>Fungsi</td>
+<td>Apakah bisa menahan beban tertentu?</td>
+<td>Uji sesuai spesifikasi aman</td>
+</tr>
+<tr>
+<td>Penggunaan</td>
+<td>Bagaimana cara memasangnya?</td>
+<td>Tutorial pemasangan</td>
+</tr>
+<tr>
+<td>Harga</td>
+<td>Apakah ada alternatif lebih murah?</td>
+<td>Perbandingan harga dan fitur</td>
+</tr>
+<tr>
+<td>Kesesuaian</td>
+<td>Apakah cocok untuk kebutuhan saya?</td>
+<td>Panduan memilih produk</td>
+</tr>
+<tr>
+<td>Perawatan</td>
+<td>Bagaimana cara membersihkannya?</td>
+<td>Tutorial perawatan</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote class="callout">
+<p>Jangan menjawab pertanyaan teknis dengan dugaan. Periksa spesifikasi, dokumentasi produk, atau lakukan pengujian yang wajar jika memungkinkan.</p>
+</blockquote>
+<h3 id="3-7-riset-kata-kunci"><span class="h-text">3.7 Riset kata kunci</span><a class="anchor" href="#3-7-riset-kata-kunci" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>Kata kunci adalah kata atau frasa yang dipakai orang saat mencari informasi atau produk. Riset kata kunci membantumu memahami bahasa calon pembeli dan topik yang perlu dibahas di konten.</p>
+<p>Ada empat jenis kata kunci:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Jenis</th>
+<th>Contoh</th>
+<th>Makna</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Informasional</td>
+<td>cara merapikan meja</td>
+<td>Mencari informasi atau solusi</td>
+</tr>
+<tr>
+<td>Komersial</td>
+<td>rekomendasi organizer meja; organizer meja plastik vs besi</td>
+<td>Sedang mengevaluasi pilihan, termasuk membandingkan alternatif ("A vs B")</td>
+</tr>
+<tr>
+<td>Transaksional</td>
+<td>beli organizer meja murah</td>
+<td>Niat membeli lebih kuat</td>
+</tr>
+<tr>
+<td>Navigasional</td>
+<td>toko organizer meja di Shopee</td>
+<td>Mencari toko, merek, atau halaman tertentu</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote class="callout">
+<p>Pembagian ini panduan umum. Niat pencarian yang sebenarnya bergantung pada konteks.</p>
+<p>Jangan menganggap sebuah kata kunci bervolume tinggi hanya karena terdengar populer. Jika tidak ada data volume yang bisa diperiksa, catat bahwa volumenya belum diketahui.</p>
+</blockquote>
+<h3 id="3-8-pola-musiman"><span class="h-text">3.8 Pola musiman</span><a class="anchor" href="#3-8-pola-musiman" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>Pola musiman adalah perubahan kebutuhan atau minat yang berkaitan dengan waktu tertentu.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Periode atau situasi</th>
+<th>Contoh kebutuhan</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ramadan dan Lebaran</td>
+<td>Perlengkapan mudik, kebutuhan rumah, perlengkapan ibadah</td>
+</tr>
+<tr>
+<td>Tahun ajaran baru</td>
+<td>Peralatan sekolah dan perlengkapan belajar</td>
+</tr>
+<tr>
+<td>Musim hujan</td>
+<td>Jas hujan, payung, perlengkapan pengeringan</td>
+</tr>
+<tr>
+<td>Akhir tahun</td>
+<td>Dekorasi, hadiah, perlengkapan perjalanan</td>
+</tr>
+<tr>
+<td>Periode pindahan kos</td>
+<td>Penyimpanan, perlengkapan kamar, kebutuhan rumah tangga</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote class="callout">
+<p>Daftar ini adalah <strong>hipotesis awal</strong>. Besarnya permintaan tiap produk harus kamu periksa lewat data.</p>
+</blockquote>
+<p>Cara memeriksa pola musiman:</p>
+<ul>
+<li>Bandingkan minat pencarian dari beberapa periode atau tahun.</li>
+<li>Periksa apakah kebutuhan muncul berulang pada waktu yang sama.</li>
+<li>Cari bukti dari beberapa sumber.</li>
+<li>Hitung waktu produksi konten. Audiens perlu menemukan kontenmu sebelum atau selama periode pembelian.</li>
+<li>Periksa apakah produk tetap diminati setelah musim berakhir.</li>
+</ul>
+<blockquote class="callout">
+<p>Jangan memilih produk hanya karena ada tanggal promosi. Momen promosi tidak menjamin produk itu dibutuhkan audiensmu.</p>
+</blockquote>
+<h3 id="3-9-tren-jangka-pendek-versus-kebutuhan-jangka-panjang"><span class="h-text">3.9 Tren jangka pendek versus kebutuhan jangka panjang</span><a class="anchor" href="#3-9-tren-jangka-pendek-versus-kebutuhan-jangka-panjang" aria-label="Tautan ke bagian ini">#</a></h3>
+<ul>
+<li><strong>Tren jangka pendek:</strong> minat bisa naik cepat, lalu turun ketika perhatian berpindah. Contoh: produk unik yang mendadak viral.</li>
+<li><strong>Kebutuhan jangka panjang:</strong> berhubungan dengan masalah yang terus muncul dan bisa diminati sepanjang tahun. Contoh: penyimpanan rumah dan perlengkapan kerja.</li>
+</ul>
+<p>Strategi yang masuk akal: jadikan kebutuhan jangka panjang sebagai dasar niche, lalu uji tren jangka pendek jika relevan. Misalnya niche utamamu perlengkapan ruang kerja. Kamu bisa mempromosikan organizer meja sepanjang tahun. Produk baru yang sedang populer hanya diuji jika benar-benar cocok dengan kebutuhan audiens.</p>
+<blockquote class="callout">
+<p>Produk yang tampak selalu dibutuhkan belum tentu menghasilkan komisi yang baik. Tetap periksa kualitas produk, persaingan, harga, komisi, dan kemampuan kontenmu menghasilkan pembelian.</p>
+</blockquote>
+<h3 id="3-10-membedakan-popularitas-dan-niat-beli"><span class="h-text">3.10 Membedakan popularitas dan niat beli</span><a class="anchor" href="#3-10-membedakan-popularitas-dan-niat-beli" aria-label="Tautan ke bagian ini">#</a></h3>
+<ul>
+<li>Orang menonton video botol minum karena bentuknya lucu: indikasi <strong>perhatian</strong>.</li>
+<li>Orang bertanya apakah botol itu tahan bocor: indikasi <strong>pertimbangan</strong>.</li>
+<li>Orang membandingkan ukuran, harga, dan material: indikasi <strong>evaluasi</strong>.</li>
+<li>Orang mencari produk tertentu untuk dibeli: indikasi <strong>niat membeli yang lebih kuat</strong>.</li>
+</ul>
+<p>Semua ini petunjuk, bukan jaminan transaksi.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Sinyal</th>
+<th>Apa yang mungkin ditunjukkan</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Views tinggi</td>
+<td>Konten menarik perhatian</td>
+</tr>
+<tr>
+<td>Banyak komentar umum</td>
+<td>Audiens tertarik berdiskusi</td>
+</tr>
+<tr>
+<td>Pertanyaan spesifik tentang produk</td>
+<td>Ada kebutuhan informasi</td>
+</tr>
+<tr>
+<td>Pertanyaan tentang harga dan ukuran</td>
+<td>Ada kemungkinan pertimbangan pembelian</td>
+</tr>
+<tr>
+<td>Klik affiliate link</td>
+<td>Ada tindakan menuju penawaran</td>
+</tr>
+<tr>
+<td>Transaksi valid</td>
+<td>Terjadi pembelian yang tercatat sesuai sistem program</td>
+</tr>
+</tbody>
+</table></div>
+<p>Untuk affiliate marketing, views penting sebagai jangkauan. Namun klik dan transaksi lebih dekat dengan hasil bisnis. Penilaian akhir juga perlu melihat komisi disetujui, pembatalan, dan pengembalian barang.</p>
+<h3 id="3-11-menilai-peluang-pasar-tanpa-mengarang-data"><span class="h-text">3.11 Menilai peluang pasar tanpa mengarang data</span><a class="anchor" href="#3-11-menilai-peluang-pasar-tanpa-mengarang-data" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>Pemula sering menyimpulkan terlalu cepat (lihat bagian 7). Pakai tiga kategori informasi ini:</p>
+<ul>
+<li><strong>Fakta:</strong> informasi yang benar-benar kamu amati atau peroleh dari sumber yang bisa diperiksa. Contoh: halaman produk menampilkan harga tertentu pada tanggal pengamatan.</li>
+<li><strong>Estimasi:</strong> perkiraan berdasarkan asumsi yang dijelaskan. Contoh: jika 1.000 klik menghasilkan 20 transaksi, conversion rate yang diasumsikan adalah 2%.</li>
+<li><strong>Hipotesis:</strong> dugaan yang masih harus diuji. Contoh: video demonstrasi kapasitas organizer mungkin lebih menarik daripada video yang hanya menampilkan desain.</li>
+</ul>
+</section><section class="sec reveal"><h2 id="4-istilah-penting"><span class="h-text">4. Istilah Penting</span><a class="anchor" href="#4-istilah-penting" aria-label="Tautan ke bagian ini">#</a></h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Istilah</th>
+<th>Definisi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Riset pasar</td>
+<td>Proses mencari informasi untuk memahami kebutuhan orang, masalah mereka, produk yang mereka cari, dan alasan mereka mau membeli</td>
+</tr>
+<tr>
+<td>Kebutuhan pembeli</td>
+<td>Sesuatu yang ingin mereka dapatkan atau masalah yang ingin mereka selesaikan lewat suatu produk</td>
+</tr>
+<tr>
+<td>Tren</td>
+<td>Perubahan minat atau perhatian masyarakat terhadap topik, produk, atau kebutuhan tertentu</td>
+</tr>
+<tr>
+<td>Permintaan</td>
+<td>Kebutuhan atau keinginan pasar terhadap suatu produk atau solusi</td>
+</tr>
+<tr>
+<td>Masalah berulang</td>
+<td>Masalah yang disebut banyak orang atau muncul berkali-kali dalam berbagai situasi</td>
+</tr>
+<tr>
+<td>Kata kunci</td>
+<td>Kata atau frasa yang dipakai orang saat mencari informasi atau produk</td>
+</tr>
+<tr>
+<td>Pola musiman</td>
+<td>Perubahan kebutuhan atau minat yang berkaitan dengan waktu tertentu</td>
+</tr>
+<tr>
+<td>Validasi</td>
+<td>Proses memeriksa apakah dugaanmu didukung bukti yang cukup</td>
+</tr>
+<tr>
+<td>Popularitas</td>
+<td>Seberapa banyak perhatian yang diperoleh suatu topik atau produk</td>
+</tr>
+<tr>
+<td>Niat beli</td>
+<td>Seberapa kuat seseorang mempertimbangkan untuk membeli</td>
+</tr>
+<tr>
+<td>Fakta</td>
+<td>Informasi yang benar-benar kamu amati atau peroleh dari sumber yang bisa diperiksa</td>
+</tr>
+<tr>
+<td>Estimasi</td>
+<td>Perkiraan berdasarkan asumsi yang dijelaskan</td>
+</tr>
+<tr>
+<td>Hipotesis</td>
+<td>Dugaan yang masih harus diuji</td>
+</tr>
+</tbody>
+</table></div>
+</section><section class="sec reveal"><h2 id="5-langkah-praktik"><span class="h-text">5. Langkah Praktik</span><a class="anchor" href="#5-langkah-praktik" aria-label="Tautan ke bagian ini">#</a></h2>
+<h3 id="5-1-cara-menemukan-kebutuhan"><span class="h-text">5.1 Cara menemukan kebutuhan</span><a class="anchor" href="#5-1-cara-menemukan-kebutuhan" aria-label="Tautan ke bagian ini">#</a></h3>
+<ol>
+<li><strong>Amati kehidupan sehari-hari.</strong> Cari masalah yang sering dialami orang di rumah, tempat kerja, sekolah, dapur, kamar tidur, atau saat bepergian.</li>
+<li><strong>Cari bukti bahwa masalah itu benar-benar dialami.</strong> Periksa ulasan pembeli, kolom komentar, forum publik, pertanyaan produk, dan saran pencarian.</li>
+<li><strong>Catat masalah dengan kalimat yang spesifik.</strong> Hindari catatan umum seperti "orang membutuhkan peralatan rumah". Tulis: "orang yang tinggal di kamar kos membutuhkan tempat penyimpanan tambahan karena ruang lantainya terbatas".</li>
+<li><strong>Hubungkan masalah dengan solusi yang mungkin.</strong> Satu masalah bisa punya beberapa solusi. Jangan langsung menganggap satu produk sebagai solusi terbaik.</li>
+<li><strong>Periksa apakah ada indikasi niat membeli.</strong> Orang yang hanya mengeluh belum tentu mau membeli. Perhatikan apakah mereka mencari rekomendasi, membandingkan harga, menanyakan ukuran, atau meminta link produk.</li>
+</ol>
+<h3 id="5-2-cara-melakukan-riset-kata-kunci"><span class="h-text">5.2 Cara melakukan riset kata kunci</span><a class="anchor" href="#5-2-cara-melakukan-riset-kata-kunci" aria-label="Tautan ke bagian ini">#</a></h3>
+<ol>
+<li>Tentukan masalah utama, misalnya meja yang berantakan.</li>
+<li>Catat kata kunci dasar: organizer meja.</li>
+<li>Perluas dengan kebutuhan: organizer meja kecil, organizer kabel, organizer meja kerja.</li>
+<li>Perluas dengan pertanyaan: organizer meja yang kuat, cara memilih organizer meja.</li>
+<li>Periksa saran pencarian dan konten yang muncul.</li>
+<li>Kelompokkan kata kunci berdasarkan kebutuhan pembeli dan jenisnya (informasional, komersial, transaksional, navigasional).</li>
+<li>Pilih kata kunci yang relevan dengan produk yang bisa kamu promosikan.</li>
+</ol>
+<p>Contoh pengelompokan:</p>
+<ul>
+<li>Masalah: meja berantakan.</li>
+<li>Solusi: organizer meja.</li>
+<li>Kriteria: ukuran, kapasitas, bahan.</li>
+<li>Keberatan: apakah kuat, apakah sepadan dengan harga.</li>
+<li>Niat membeli: rekomendasi dan perbandingan produk.</li>
+</ul>
+<h3 id="5-3-mengubah-pertanyaan-menjadi-konten"><span class="h-text">5.3 Mengubah pertanyaan menjadi konten</span><a class="anchor" href="#5-3-mengubah-pertanyaan-menjadi-konten" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>Pola: <strong>Pertanyaan pembeli → kebutuhan informasi → bukti yang diperlukan → format konten.</strong></p>
+<p>Contoh:</p>
+<ul>
+<li>Pertanyaan: Apakah stand laptop ini stabil?</li>
+<li>Kebutuhan: Mengetahui apakah laptop aman diletakkan di atasnya.</li>
+<li>Bukti: Spesifikasi beban dan demonstrasi stabilitas yang relevan.</li>
+<li>Konten: Video demonstrasi stabilitas dengan batas pengujian yang dijelaskan.</li>
+</ul>
+<h3 id="5-4-validasi-permintaan-melalui-beberapa-sumber"><span class="h-text">5.4 Validasi permintaan melalui beberapa sumber</span><a class="anchor" href="#5-4-validasi-permintaan-melalui-beberapa-sumber" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>Misalnya kamu menduga organizer meja kecil punya peluang. Jangan hanya mengandalkan satu video viral. Periksa:</p>
+<ul>
+<li>Apakah ada pencarian terkait kebutuhan itu?</li>
+<li>Apakah produk sejenis tersedia dan punya ulasan?</li>
+<li>Apakah orang membicarakan masalah yang sama?</li>
+<li>Apakah ada pertanyaan tentang ukuran dan fungsi?</li>
+<li>Apakah ada indikasi orang membandingkan atau ingin membeli produk?</li>
+</ul>
+<p><strong>Matriks validasi sederhana</strong></p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Sumber</th>
+<th>Bukti yang dicari</th>
+<th>Hasil</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Pencarian Shopee</td>
+<td>Produk relevan, ulasan, indikator penjualan</td>
+<td>Catat temuan</td>
+</tr>
+<tr>
+<td>Google Trends</td>
+<td>Pola minat pencarian</td>
+<td>Naik, stabil, turun, atau belum jelas</td>
+</tr>
+<tr>
+<td>TikTok</td>
+<td>Masalah dan pertanyaan berulang</td>
+<td>Catat pola</td>
+</tr>
+<tr>
+<td>Ulasan pembeli</td>
+<td>Kebutuhan, keluhan, dan pengalaman</td>
+<td>Catat pola</td>
+</tr>
+<tr>
+<td>Forum publik</td>
+<td>Diskusi kebutuhan dan solusi</td>
+<td>Catat pola</td>
+</tr>
+</tbody>
+</table></div>
+<p>Beri status pada setiap temuan:</p>
+<ul>
+<li><strong>Terdukung:</strong> ada bukti relevan dari beberapa sumber independen.</li>
+<li><strong>Perlu diperiksa:</strong> bukti baru berasal dari satu sumber atau masih lemah.</li>
+<li><strong>Belum terdukung:</strong> belum ada bukti yang cukup.</li>
+</ul>
+<blockquote class="callout">
+<p>Sumber yang berbeda belum tentu independen. Banyak video bisa membahas tren yang sama karena meniru satu video awal. Jadi banyaknya konten belum tentu berarti banyaknya permintaan.</p>
+</blockquote>
+</section><section class="sec reveal"><h2 id="6-contoh-dan-perhitungan"><span class="h-text">6. Contoh dan Perhitungan</span><a class="anchor" href="#6-contoh-dan-perhitungan" aria-label="Tautan ke bagian ini">#</a></h2>
+<h3 id="6-1-template-pencatatan-masalah"><span class="h-text">6.1 Template pencatatan masalah</span><a class="anchor" href="#6-1-template-pencatatan-masalah" aria-label="Tautan ke bagian ini">#</a></h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Masalah</th>
+<th>Sumber</th>
+<th>Frekuensi ditemukan</th>
+<th>Bukti</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ukuran terlalu kecil</td>
+<td>Ulasan produk</td>
+<td>8</td>
+<td>Ulasan pada beberapa produk</td>
+</tr>
+<tr>
+<td>Bahan kurang kokoh</td>
+<td>Ulasan produk</td>
+<td>5</td>
+<td>Keluhan mengenai bahan</td>
+</tr>
+<tr>
+<td>Sulit dipasang</td>
+<td>Komentar publik</td>
+<td>4</td>
+<td>Pertanyaan dan keluhan pengguna</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote class="callout">
+<p>Angka di tabel hanya contoh cara mencatat, bukan data riset aktual.</p>
+</blockquote>
+<h3 id="6-2-contoh-estimasi-conversion-rate"><span class="h-text">6.2 Contoh estimasi conversion rate</span><a class="anchor" href="#6-2-contoh-estimasi-conversion-rate" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>Rumus: CVR = Pesanan ÷ Klik × 100%.</p>
+<pre><code>CVR = 20 ÷ 1.000 × 100% = 2%
+</code></pre>
+<p>Jika 1.000 klik menghasilkan 20 pesanan, CVR yang <strong>diasumsikan</strong> adalah 2%. Ini termasuk <strong>estimasi</strong>, yaitu perkiraan berdasarkan asumsi, bukan fakta terverifikasi. Angka ini simulasi, bukan tarif resmi Shopee.</p>
+<h3 id="6-3-template-catatan-riset"><span class="h-text">6.3 Template catatan riset</span><a class="anchor" href="#6-3-template-catatan-riset" aria-label="Tautan ke bagian ini">#</a></h3>
+<ul>
+<li>Nama peluang:</li>
+<li>Masalah calon pembeli:</li>
+<li>Audiens yang mungkin membutuhkan:</li>
+<li>Bukti dari sumber pertama:</li>
+<li>Bukti dari sumber kedua:</li>
+<li>Bukti dari sumber ketiga:</li>
+<li>Sinyal niat beli:</li>
+<li>Keterbatasan data:</li>
+<li>Hipotesis yang ingin diuji:</li>
+<li>Langkah validasi berikutnya:</li>
+</ul>
+<h3 id="6-4-template-tugas-a-20-masalah-pembeli"><span class="h-text">6.4 Template Tugas A — 20 masalah pembeli</span><a class="anchor" href="#6-4-template-tugas-a-20-masalah-pembeli" aria-label="Tautan ke bagian ini">#</a></h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>No.</th>
+<th>Masalah pembeli</th>
+<th>Audiens</th>
+<th>Bukti awal</th>
+<th>Solusi yang mungkin</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Meja kerja berantakan</td>
+<td>Pekerja atau pelajar</td>
+<td>Ulasan dan diskusi</td>
+<td>Organizer meja</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Kabel mudah kusut</td>
+<td>Pengguna perangkat elektronik</td>
+<td>Keluhan pengguna</td>
+<td>Pengatur kabel</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Barang sulit ditemukan di kamar</td>
+<td>Penghuni kamar kecil</td>
+<td>Diskusi publik</td>
+<td>Kotak penyimpanan</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Laptop terlalu rendah saat digunakan</td>
+<td>Pekerja atau pelajar</td>
+<td>Pertanyaan pengguna</td>
+<td>Stand laptop</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote class="callout">
+<p>Empat baris di atas hanya contoh awal. Lengkapi sampai 20 baris dengan hasil risetmu sendiri.</p>
+</blockquote>
+</section><section class="sec reveal"><h2 id="7-kesalahan-umum-dan-cara-menghindarinya"><span class="h-text">7. Kesalahan Umum dan Cara Menghindarinya</span><a class="anchor" href="#7-kesalahan-umum-dan-cara-menghindarinya" aria-label="Tautan ke bagian ini">#</a></h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Kesalahan</th>
+<th>Cara menghindari</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Menyimpulkan "Produk ini pasti laku karena sedang viral"</td>
+<td>Cari bukti permintaan dari beberapa sumber, bukan dari satu video viral</td>
+</tr>
+<tr>
+<td>Menyimpulkan "Semua orang membutuhkan produk ini"</td>
+<td>Tentukan audiens dan situasi yang spesifik</td>
+</tr>
+<tr>
+<td>Menyimpulkan "Kompetitornya sedikit, jadi pasti mudah menghasilkan uang"</td>
+<td>Periksa apakah ada permintaan nyata, bukan hanya sedikit kompetitor</td>
+</tr>
+<tr>
+<td>Menyimpulkan "Banyak ulasan berarti komisinya tinggi"</td>
+<td>Periksa komisi aktual di sumber resmi Shopee Affiliate</td>
+</tr>
+<tr>
+<td>Menyamakan views tinggi dengan penjualan tinggi</td>
+<td>Lihat klik, pertanyaan beli, dan transaksi</td>
+</tr>
+<tr>
+<td>Menganggap saran pencarian dan indikator penjualan sebagai bukti lengkap besarnya pasar</td>
+<td>Pakai sebagai petunjuk, lalu cocokkan dengan sumber lain</td>
+</tr>
+<tr>
+<td>Menganggap Google Trends menunjukkan jumlah pencarian absolut atau pembelian di Shopee</td>
+<td>Ingat bahwa Google Trends adalah indeks minat relatif</td>
+</tr>
+<tr>
+<td>Menganggap banyaknya konten berarti banyaknya permintaan</td>
+<td>Cek apakah konten-konten itu hanya saling meniru</td>
+</tr>
+<tr>
+<td>Mencatat masalah dengan kalimat terlalu umum</td>
+<td>Tulis masalah lengkap dengan situasinya</td>
+</tr>
+<tr>
+<td>Menjawab pertanyaan teknis dengan dugaan</td>
+<td>Periksa spesifikasi atau uji secara wajar</td>
+</tr>
+<tr>
+<td>Menganggap kata kunci bervolume tinggi hanya karena terdengar populer</td>
+<td>Catat "volume belum diketahui" jika tidak ada datanya</td>
+</tr>
+<tr>
+<td>Memilih produk hanya karena ada tanggal promosi</td>
+<td>Pastikan produk dibutuhkan audiensmu</td>
+</tr>
+</tbody>
+</table></div>
+</section><section class="sec reveal"><h2 id="8-tugas-dan-checklist"><span class="h-text">8. Tugas dan Checklist</span><a class="anchor" href="#8-tugas-dan-checklist" aria-label="Tautan ke bagian ini">#</a></h2>
+<p><strong>Tugas 1 — Temukan 20 masalah pembeli.</strong> Cari 20 masalah yang berhubungan dengan satu atau beberapa kategori produk yang kamu minati. Pakai template di bagian 6.4.</p>
+<blockquote class="callout">
+<p>20 masalah ini adalah bahan mentah untuk Modul 05. Di sana kamu memilih 10 masalah untuk audiens utamamu.</p>
+</blockquote>
+<p><strong>Tugas 2 — Kumpulkan pertanyaan calon pembeli</strong></p>
+<ul>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-04-riset-pasar-dan-permintaan.html#7"> <span>Kumpulkan minimal 20 pertanyaan dari ulasan dan diskusi publik.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-04-riset-pasar-dan-permintaan.html#8"> <span>Catat sumber setiap pertanyaan.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-04-riset-pasar-dan-permintaan.html#9"> <span>Kelompokkan berdasarkan ukuran, kualitas, fungsi, harga, penggunaan, dan keberatan.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-04-riset-pasar-dan-permintaan.html#10"> <span>Tandai pertanyaan yang paling sering muncul dalam sampel yang kamu periksa.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-04-riset-pasar-dan-permintaan.html#11"> <span>Ubah pertanyaan itu menjadi ide konten.</span></label></li>
+</ul>
+<p><strong>Tugas 3 — Buat daftar peluang konten</strong></p>
+<ul>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-04-riset-pasar-dan-permintaan.html#12"> <span>Pilih 5 masalah yang punya bukti paling relevan.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-04-riset-pasar-dan-permintaan.html#13"> <span>Buat minimal 2 ide konten untuk setiap masalah (total minimal 10 ide).</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-04-riset-pasar-dan-permintaan.html#14"> <span>Tentukan bukti yang dibutuhkan untuk setiap konten.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-04-riset-pasar-dan-permintaan.html#15"> <span>Tentukan tujuan konten: menjangkau audiens, menjawab keberatan, atau mendorong pembelian.</span></label></li>
+</ul>
+</section><section class="sec reveal sec-latihan"><h2 id="9-latihan-dan-kunci-jawaban"><span class="h-text">9. Latihan dan Kunci Jawaban</span><a class="anchor" href="#9-latihan-dan-kunci-jawaban" aria-label="Tautan ke bagian ini">#</a></h2>
+<div class="qa"><p class="q"><strong>1. Apa perbedaan tren dan permintaan?</strong></p><details class="ans"><summary>Lihat jawaban</summary><div class="a"><p>Tren adalah perubahan minat atau perhatian masyarakat. Permintaan adalah kebutuhan atau keinginan pasar terhadap produk atau solusi. Keduanya berkaitan tetapi tidak sama. Contoh: botol minum viral banyak ditonton, tetapi belum tentu dibeli.</p></div></details></div>
+<div class="qa"><p class="q"><strong>2. Sebutkan tujuh jenis kebutuhan pembeli beserta satu contoh.</strong></p><details class="ans"><summary>Lihat jawaban</summary><div class="a"><p>Fungsional (blender), kenyamanan (pel lantai dengan sistem pemeras), penghematan (botol minum isi ulang), estetika (lampu dekorasi kamar), keamanan (pelindung sudut meja), produktivitas (stand laptop), penggantian (kabel charger pengganti).</p></div></details></div>
+<div class="qa"><p class="q"><strong>3. Mengapa banyaknya konten tentang suatu produk belum tentu berarti permintaan besar?</strong></p><details class="ans"><summary>Lihat jawaban</summary><div class="a"><p>Karena sumber yang berbeda belum tentu independen. Banyak video bisa membahas tren yang sama karena meniru satu video awal.</p></div></details></div>
+<div class="qa"><p class="q"><strong>4. Sebutkan tiga status temuan dalam matriks validasi.</strong></p><details class="ans"><summary>Lihat jawaban</summary><div class="a"><p>Terdukung (bukti relevan dari beberapa sumber independen), perlu diperiksa (bukti dari satu sumber atau masih lemah), belum terdukung (bukti belum cukup).</p></div></details></div>
+<div class="qa"><p class="q"><strong>5. Klasifikasikan pernyataan berikut sebagai fakta, estimasi, atau hipotesis.</strong></p><details class="ans"><summary>Lihat jawaban</summary><div class="a"><ul>
+<li>"Halaman produk menampilkan harga tertentu pada tanggal pengamatan." → Fakta.</li>
+<li>"Jika 1.000 klik menghasilkan 20 transaksi, conversion rate adalah 2%." → Estimasi.</li>
+<li>"Video demonstrasi kapasitas organizer mungkin lebih menarik daripada video desain." → Hipotesis.</li>
+</ul></div></details></div>
+<div class="qa"><p class="q"><strong>6. Jelaskan empat jenis kata kunci.</strong></p><details class="ans"><summary>Lihat jawaban</summary><div class="a"><p>Informasional (cara merapikan meja: mencari informasi atau solusi), komersial (rekomendasi organizer meja atau "organizer plastik vs besi": sedang mengevaluasi pilihan, termasuk membandingkan alternatif), transaksional (beli organizer meja murah: niat membeli lebih kuat), navigasional (toko organizer meja di Shopee: mencari toko, merek, atau halaman tertentu).</p></div></details></div>
+</section><section class="sec reveal"><h2 id="10-standar-kelulusan"><span class="h-text">10. Standar Kelulusan</span><a class="anchor" href="#10-standar-kelulusan" aria-label="Tautan ke bagian ini">#</a></h2>
+<p>Kamu dianggap menguasai modul ini jika kamu bisa menjelaskan calon pembeli dan masalahnya. Kamu juga sudah mengumpulkan 20 masalah pembeli, memvalidasi satu peluang dengan minimal tiga sumber, memisahkan fakta, estimasi, dan hipotesis, serta membuat daftar peluang konten dari hasil risetmu.</p></section>
+</article>
+<div class="complete reveal"><button type="button" id="mark-done" data-page="modul/modul-04-riset-pasar-dan-permintaan.html">Tandai modul ini selesai</button><span class="hint">Tersimpan di browser kamu.</span></div>
+<nav class="pager" aria-label="Halaman sebelumnya dan berikutnya"><a class="prev" href="../level-2.html"><small>← Sebelumnya</small><span>Level 2 — Market and Product Research</span></a><a class="next" href="../modul/modul-05-niche-audiens-dan-positioning.html"><small>Berikutnya →</small><span>05. Niche, Audiens, dan Positioning</span></a></nav>
+<footer class="foot">
+  <p>Materi pembelajaran, bukan nasihat hukum atau pajak. Aturan Shopee Affiliate bisa berubah, jadi selalu cek sumber resmi dan catat tanggal pemeriksaannya. Situs ini bukan situs resmi Shopee.</p>
+</footer>
+</main>
+<aside class="toc" aria-label="Isi halaman"><p class="toc-title">Di halaman ini</p><ol><li><a href="#1-tujuan-pembelajaran">Tujuan Pembelajaran</a></li><li><a href="#2-ringkasan-konsep-utama">Ringkasan Konsep Utama</a></li><li><a href="#3-penjelasan">Penjelasan</a></li><li><a href="#4-istilah-penting">Istilah Penting</a></li><li><a href="#5-langkah-praktik">Langkah Praktik</a></li><li><a href="#6-contoh-dan-perhitungan">Contoh dan Perhitungan</a></li><li><a href="#7-kesalahan-umum-dan-cara-menghindarinya">Kesalahan Umum dan Cara Menghindarinya</a></li><li><a href="#8-tugas-dan-checklist">Tugas dan Checklist</a></li><li><a href="#9-latihan-dan-kunci-jawaban">Latihan dan Kunci Jawaban</a></li><li><a href="#10-standar-kelulusan">Standar Kelulusan</a></li></ol></aside>
+</div>
+<nav class="bottom-nav" id="bottom-nav" aria-label="Navigasi cepat">
+  <a class="bn-item" href="../index.html"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5"/><path d="M5 10v10h14V10"/></svg><span>Beranda</span></a>
+  <button class="bn-item" id="bn-menu" type="button" aria-controls="sidebar"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="7" rx="1.5"/><rect x="4" y="13" width="7" height="7" rx="1.5"/><rect x="13" y="13" width="7" height="7" rx="1.5"/></svg><span>Materi</span></button>
+  <button class="bn-item" id="bn-search" type="button"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span>Cari</span></button>
+  <a class="bn-item bn-primary" href="../modul/modul-05-niche-audiens-dan-positioning.html"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg><span>Lanjut</span></a>
+</nav>
+<button class="to-top" id="to-top" type="button" aria-label="Kembali ke atas" hidden><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5"/><path d="m5 12 7-7 7 7"/></svg></button>
+<div class="toast-wrap" id="toasts" aria-live="polite"></div>
+<script src="../assets/search-index.js"></script>
+<script src="../assets/app.js"></script>
+</body>
+</html>

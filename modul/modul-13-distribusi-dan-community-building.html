@@ -1,0 +1,648 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Modul 13 — Distribusi dan Community Building · Shopee Affiliate Academy</title>
+<meta name="description" content="Setelah modul ini, kamu mampu:">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#EE4D2D">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/style.css">
+<script>(function(){var d=document.documentElement;d.classList.add('js');try{var t=localStorage.getItem('sea-theme');if(t&&t!=='auto')d.setAttribute('data-theme',t);var p=JSON.parse(localStorage.getItem('sea-prefs')||'{}');['fs','lh','font','width'].forEach(function(k){if(p[k])d.setAttribute('data-'+k,p[k]);});if(p.focus)d.setAttribute('data-focus','1');}catch(e){}})();</script>
+</head>
+<body data-root="../" data-kind="modul" data-page="modul/modul-13-distribusi-dan-community-building.html" data-title="Modul 13 — Distribusi dan Community Building">
+<a class="skip" href="#isi">Lewati ke isi</a>
+<div class="read-progress" id="read-progress" aria-hidden="true"></div>
+<div class="top" id="top">
+<header class="topbar">
+  <button class="icon-btn menu-btn" id="menu-btn" aria-label="Buka menu materi" aria-controls="sidebar" aria-expanded="false"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+  <a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true">SA</span><span class="brand-name">Shopee Affiliate Academy</span></a>
+  <div class="search" id="search">
+    <div class="search-box">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input id="search-input" type="search" placeholder="Cari materi…" autocomplete="off" aria-label="Cari materi">
+      <button class="icon-btn search-close" id="search-close" type="button" aria-label="Tutup pencarian"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+    </div>
+    <div class="search-results" id="search-results" hidden></div>
+  </div>
+  <button class="icon-btn desk-only" id="focus-btn" aria-label="Mode fokus" title="Mode fokus"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9V5h4M20 9V5h-4M4 15v4h4M20 15v4h-4"/></svg></button>
+  <button class="icon-btn aa-btn" id="aa-btn" aria-label="Pengaturan baca" aria-expanded="false" aria-controls="prefs"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20 10 5l6 15"/><path d="M6.5 14.5h7"/><path d="M15 12h5M17.5 12v8"/></svg></button>
+</header>
+<div class="subbar" id="subbar" aria-hidden="true"><span class="sb-title"></span><span class="sb-pct"></span></div>
+</div>
+<div class="prefs" id="prefs" hidden role="dialog" aria-label="Pengaturan tampilan">
+  <div class="prefs-head"><strong>Pengaturan baca</strong><button class="icon-btn sm" id="prefs-close" type="button" aria-label="Tutup"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
+  <div class="pref-row"><span>Ukuran teks</span><div class="seg" role="group" aria-label="Ukuran teks">
+    <button type="button" id="fs-down" aria-label="Perkecil teks">A−</button><output id="fs-val">3/5</output><button type="button" id="fs-up" aria-label="Perbesar teks">A+</button></div></div>
+  <div class="pref-row"><span>Jarak baris</span><div class="seg"><button type="button" data-pref="lh" data-val="tight">Rapat</button><button type="button" data-pref="lh" data-val="normal">Normal</button><button type="button" data-pref="lh" data-val="loose">Lega</button></div></div>
+  <div class="pref-row"><span>Huruf</span><div class="seg"><button type="button" data-pref="font" data-val="sans">Sans</button><button type="button" data-pref="font" data-val="serif">Serif</button></div></div>
+  <div class="pref-row"><span>Lebar teks</span><div class="seg"><button type="button" data-pref="width" data-val="normal">Standar</button><button type="button" data-pref="width" data-val="wide">Lebar</button></div></div>
+  <div class="pref-row"><span>Tema</span><div class="seg theme-seg"><button type="button" data-pref="theme" data-val="light">Terang</button><button type="button" data-pref="theme" data-val="sepia">Sepia</button><button type="button" data-pref="theme" data-val="dark">Gelap</button><button type="button" data-pref="theme" data-val="auto">Auto</button></div></div>
+  <label class="pref-switch"><input type="checkbox" id="pref-break" checked><span class="sw"></span><span>Pengingat istirahat (tiap 25 menit)</span></label>
+  <label class="pref-switch desk-only"><input type="checkbox" id="pref-focus"><span class="sw"></span><span>Mode fokus (sembunyikan menu)</span></label>
+  <button type="button" class="reset" id="prefs-reset">Kembalikan ke bawaan</button>
+</div>
+<div class="shell">
+<nav class="sidebar" id="sidebar" aria-label="Navigasi materi">
+<div class="nav-group">
+<a href="../index.html" data-page="index.html"><span>Beranda dan Pengantar</span></a>
+<a href="../master.html" data-page="master.html"><span>Rangkuman Master</span></a>
+</div>
+<details class="nav-level" data-mods="modul/modul-01-dasar-affiliate-marketing.html,modul/modul-02-shopee-affiliate-program-dan-kebijakan.html,modul/modul-03-persiapan-akun-dan-operasional.html"><summary><span class="lv-badge">1</span><span class="lv-name">Fundamentals</span><span class="lv-count">0/3</span></summary>
+<a href="../level-1.html" data-page="level-1.html"><span>Ringkasan level</span></a>
+<a href="../modul/modul-01-dasar-affiliate-marketing.html" data-page="modul/modul-01-dasar-affiliate-marketing.html"><span>Modul 01 — Dasar Affiliate Marketing</span></a>
+<a href="../modul/modul-02-shopee-affiliate-program-dan-kebijakan.html" data-page="modul/modul-02-shopee-affiliate-program-dan-kebijakan.html"><span>Modul 02 — Shopee Affiliate Program dan Kebijakan</span></a>
+<a href="../modul/modul-03-persiapan-akun-dan-operasional.html" data-page="modul/modul-03-persiapan-akun-dan-operasional.html"><span>Modul 03 — Persiapan Akun dan Operasional</span></a>
+</details>
+<details class="nav-level" data-mods="modul/modul-04-riset-pasar-dan-permintaan.html,modul/modul-05-niche-audiens-dan-positioning.html,modul/modul-06-riset-dan-evaluasi-produk.html,modul/modul-07-riset-kompetitor.html"><summary><span class="lv-badge">2</span><span class="lv-name">Market and Product Research</span><span class="lv-count">0/4</span></summary>
+<a href="../level-2.html" data-page="level-2.html"><span>Ringkasan level</span></a>
+<a href="../modul/modul-04-riset-pasar-dan-permintaan.html" data-page="modul/modul-04-riset-pasar-dan-permintaan.html"><span>Modul 04 — Riset Pasar dan Permintaan</span></a>
+<a href="../modul/modul-05-niche-audiens-dan-positioning.html" data-page="modul/modul-05-niche-audiens-dan-positioning.html"><span>Modul 05 — Niche, Audiens, dan Positioning</span></a>
+<a href="../modul/modul-06-riset-dan-evaluasi-produk.html" data-page="modul/modul-06-riset-dan-evaluasi-produk.html"><span>Modul 06 — Riset dan Evaluasi Produk</span></a>
+<a href="../modul/modul-07-riset-kompetitor.html" data-page="modul/modul-07-riset-kompetitor.html"><span>Modul 07 — Riset Kompetitor</span></a>
+</details>
+<details class="nav-level" data-mods="modul/modul-08-strategi-channel-dan-traffic-organik.html,modul/modul-09-strategi-konten.html,modul/modul-10-copywriting-dan-hook.html,modul/modul-11-produksi-video-dan-visual.html,modul/modul-12-seo-dan-konten-berbasis-pencarian.html,modul/modul-13-distribusi-dan-community-building.html" open><summary><span class="lv-badge">3</span><span class="lv-name">Content and Traffic</span><span class="lv-count">0/6</span></summary>
+<a href="../level-3.html" data-page="level-3.html"><span>Ringkasan level</span></a>
+<a href="../modul/modul-08-strategi-channel-dan-traffic-organik.html" data-page="modul/modul-08-strategi-channel-dan-traffic-organik.html"><span>Modul 08 — Strategi Channel dan Traffic Organik</span></a>
+<a href="../modul/modul-09-strategi-konten.html" data-page="modul/modul-09-strategi-konten.html"><span>Modul 09 — Strategi Konten</span></a>
+<a href="../modul/modul-10-copywriting-dan-hook.html" data-page="modul/modul-10-copywriting-dan-hook.html"><span>Modul 10 — Copywriting dan Hook</span></a>
+<a href="../modul/modul-11-produksi-video-dan-visual.html" data-page="modul/modul-11-produksi-video-dan-visual.html"><span>Modul 11 — Produksi Video dan Visual</span></a>
+<a href="../modul/modul-12-seo-dan-konten-berbasis-pencarian.html" data-page="modul/modul-12-seo-dan-konten-berbasis-pencarian.html"><span>Modul 12 — SEO dan Konten Berbasis Pencarian</span></a>
+<a href="../modul/modul-13-distribusi-dan-community-building.html" data-page="modul/modul-13-distribusi-dan-community-building.html" aria-current="page"><span>Modul 13 — Distribusi dan Community Building</span></a>
+</details>
+<details class="nav-level" data-mods="modul/modul-14-affiliate-link-dan-tracking.html,modul/modul-15-conversion-rate-optimization-cro.html,modul/modul-16-analytics-dan-dashboard.html,modul/modul-17-eksperimen-dan-validasi.html"><summary><span class="lv-badge">4</span><span class="lv-name">Conversion and Analytics</span><span class="lv-count">0/4</span></summary>
+<a href="../level-4.html" data-page="level-4.html"><span>Ringkasan level</span></a>
+<a href="../modul/modul-14-affiliate-link-dan-tracking.html" data-page="modul/modul-14-affiliate-link-dan-tracking.html"><span>Modul 14 — Affiliate Link dan Tracking</span></a>
+<a href="../modul/modul-15-conversion-rate-optimization-cro.html" data-page="modul/modul-15-conversion-rate-optimization-cro.html"><span>Modul 15 — Conversion Rate Optimization (CRO)</span></a>
+<a href="../modul/modul-16-analytics-dan-dashboard.html" data-page="modul/modul-16-analytics-dan-dashboard.html"><span>Modul 16 — Analytics dan Dashboard</span></a>
+<a href="../modul/modul-17-eksperimen-dan-validasi.html" data-page="modul/modul-17-eksperimen-dan-validasi.html"><span>Modul 17 — Eksperimen dan Validasi</span></a>
+</details>
+<details class="nav-level" data-mods="modul/modul-18-monetisasi-dan-pemilihan-produk-lanjutan.html,modul/modul-19-keuangan-dan-target-komisi.html,modul/modul-20-scaling-dan-sistem-produksi.html,modul/modul-21-kepatuhan-risiko-dan-reputasi.html,modul/modul-22-advanced-strategy.html,modul/modul-23-otomasi-dan-sistem-kerja.html,modul/modul-24-evaluasi-bisnis-dan-mastery.html"><summary><span class="lv-badge">5</span><span class="lv-name">Professional Growth</span><span class="lv-count">0/7</span></summary>
+<a href="../level-5.html" data-page="level-5.html"><span>Ringkasan level</span></a>
+<a href="../modul/modul-18-monetisasi-dan-pemilihan-produk-lanjutan.html" data-page="modul/modul-18-monetisasi-dan-pemilihan-produk-lanjutan.html"><span>Modul 18 — Monetisasi dan Pemilihan Produk Lanjutan</span></a>
+<a href="../modul/modul-19-keuangan-dan-target-komisi.html" data-page="modul/modul-19-keuangan-dan-target-komisi.html"><span>Modul 19 — Keuangan dan Target Komisi</span></a>
+<a href="../modul/modul-20-scaling-dan-sistem-produksi.html" data-page="modul/modul-20-scaling-dan-sistem-produksi.html"><span>Modul 20 — Scaling dan Sistem Produksi</span></a>
+<a href="../modul/modul-21-kepatuhan-risiko-dan-reputasi.html" data-page="modul/modul-21-kepatuhan-risiko-dan-reputasi.html"><span>Modul 21 — Kepatuhan, Risiko, dan Reputasi</span></a>
+<a href="../modul/modul-22-advanced-strategy.html" data-page="modul/modul-22-advanced-strategy.html"><span>Modul 22 — Advanced Strategy</span></a>
+<a href="../modul/modul-23-otomasi-dan-sistem-kerja.html" data-page="modul/modul-23-otomasi-dan-sistem-kerja.html"><span>Modul 23 — Otomasi dan Sistem Kerja</span></a>
+<a href="../modul/modul-24-evaluasi-bisnis-dan-mastery.html" data-page="modul/modul-24-evaluasi-bisnis-dan-mastery.html"><span>Modul 24 — Evaluasi Bisnis dan Mastery</span></a>
+</details>
+<div class="nav-group"><p class="nav-label">Praktik</p>
+<a href="../proyek-praktik.html" data-page="proyek-praktik.html"><span>8 Project Praktik Wajib</span></a>
+<a href="../database-notion.html" data-page="database-notion.html"><span>Database Notion</span></a>
+</div>
+<div class="nav-group"><p class="nav-label">Lampiran</p>
+<a href="../kamus-istilah.html" data-page="kamus-istilah.html"><span>Kamus Istilah</span></a>
+<a href="../rumus-template.html" data-page="rumus-template.html"><span>Lembar Rumus dan Template</span></a>
+<a href="../studi-kasus.html" data-page="studi-kasus.html"><span>Studi Kasus Simulasi</span></a>
+<a href="../panduan-pelatih.html" data-page="panduan-pelatih.html"><span>Panduan Pelatih dan Penilaian</span></a>
+</div></nav>
+<div class="scrim" id="scrim" hidden></div>
+<main id="isi" class="content">
+<nav class="crumbs" aria-label="Jejak halaman"><a href="../index.html">Beranda</a> <span>/</span> <a href="../level-3.html">Level 3</a> <span>/</span> Modul 13</nav>
+<details class="toc-mobile"><summary>Di halaman ini</summary><ol><li><a href="#1-tujuan-pembelajaran">Tujuan Pembelajaran</a></li><li><a href="#2-ringkasan-konsep-utama">Ringkasan Konsep Utama</a></li><li><a href="#3-penjelasan">Penjelasan</a></li><li><a href="#4-istilah-penting">Istilah Penting</a></li><li><a href="#5-langkah-praktik">Langkah Praktik</a></li><li><a href="#6-contoh-dan-perhitungan">Contoh dan Perhitungan</a></li><li><a href="#7-kesalahan-umum-dan-cara-menghindarinya">Kesalahan Umum dan Cara Menghindarinya</a></li><li><a href="#8-tugas-dan-checklist">Tugas dan Checklist</a></li><li><a href="#9-latihan-dan-kunci-jawaban">Latihan dan Kunci Jawaban</a></li><li><a href="#10-standar-kelulusan">Standar Kelulusan</a></li><li><a href="#a-proyek-akhir-level-3-sistem-konten-affiliate-30-hari">A. Proyek Akhir Level 3 — Sistem Konten Affiliate 30 Hari</a></li><li><a href="#b-checklist-kelulusan-level-3">B. Checklist Kelulusan Level 3</a></li><li><a href="#c-kesimpulan-level-3">C. Kesimpulan Level 3</a></li></ol></details>
+<article class="prose">
+<div class="eyebrow"><a class="chip" href="../level-3.html">Level 3 · Content and Traffic</a><span class="chip ghost">Modul 13 dari 24</span><span class="chip ghost">± 12 menit baca</span></div>
+<h1 id="modul-13-distribusi-dan-community-building">Modul 13 — Distribusi dan Community Building</h1>
+<section class="sec reveal"><h2 id="1-tujuan-pembelajaran"><span class="h-text">1. Tujuan Pembelajaran</span><a class="anchor" href="#1-tujuan-pembelajaran" aria-label="Tautan ke bagian ini">#</a></h2>
+<p>Setelah modul ini, kamu mampu:</p>
+<ul>
+<li>Mendistribusikan konten sesuai aturan platform.</li>
+<li>Menjawab pertanyaan audiens dengan akurat.</li>
+<li>Membangun kepercayaan.</li>
+<li>Memakai komentar sebagai sumber riset.</li>
+<li>Mengubah pertanyaan audiens menjadi ide konten.</li>
+<li>Mengelola kritik dan menjaga reputasi.</li>
+<li>Menghindari spam.</li>
+<li>Mengembangkan identitas konten.</li>
+<li>Membuat seri konten berdasarkan kebutuhan nyata.</li>
+</ul>
+<hr />
+</section><section class="sec reveal"><h2 id="2-ringkasan-konsep-utama"><span class="h-text">2. Ringkasan Konsep Utama</span><a class="anchor" href="#2-ringkasan-konsep-utama" aria-label="Tautan ke bagian ini">#</a></h2>
+<ol>
+<li>Distribusi bukan sekadar memublikasikan konten. Distribusi juga mencakup waktu, format, konteks, dan cara konten ditemukan.</li>
+<li>Kepercayaan tidak bergantung pada jumlah pengikut. Akun kecil pun bisa membantu calon pembeli jika informasinya berguna dan jujur.</li>
+<li>Komentar adalah sumber riset kebutuhan, keberatan, dan bahasa calon pembeli. Tetapi komentar satu orang bukan bukti kebutuhan pasar.</li>
+<li>Alur mengubah pertanyaan menjadi konten: pertanyaan audiens → identifikasi kebutuhan → buat konten jawaban → evaluasi respons.</li>
+<li>Jawab pertanyaan produk dengan informasi akurat. Mengaku tidak yakin lebih baik daripada memberi informasi salah.</li>
+<li>Ada tiga jenis respons audiens dengan penanganan berbeda: kritik informatif, ketidaksetujuan wajar, dan spam atau pelecehan.</li>
+<li>Ada tujuh aktivitas spam yang harus kamu hindari.</li>
+<li>Identitas konten adalah positioning yang jelas: siapa yang kamu bantu dan atas dasar apa.</li>
+<li>Community building tidak harus berupa grup khusus. Komunitas bisa tumbuh dari komentar, diskusi, dan kebiasaan audiens mengikuti kontenmu.</li>
+</ol>
+<hr />
+</section><section class="sec reveal"><h2 id="3-penjelasan"><span class="h-text">3. Penjelasan</span><a class="anchor" href="#3-penjelasan" aria-label="Tautan ke bagian ini">#</a></h2>
+<h3 id="3-1-apa-itu-distribusi-konten"><span class="h-text">3.1 Apa Itu Distribusi Konten?</span><a class="anchor" href="#3-1-apa-itu-distribusi-konten" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>Distribusi konten adalah proses membantu konten menjangkau audiens melalui channel yang relevan. Distribusi mencakup pemilihan waktu, format, konteks, dan cara konten ditemukan.</p>
+<p><strong>Contoh distribusi:</strong></p>
+<ul>
+<li>Video pendek dipublikasikan di channel utama.</li>
+<li>Artikel pendukung ditautkan jika platform mengizinkan.</li>
+<li>Pertanyaan audiens dijawab lewat konten lanjutan.</li>
+<li>Panduan yang relevan dibagikan di komunitas yang memperbolehkan promosi.</li>
+<li>Konten lama diperbarui saat informasi penting berubah.</li>
+</ul>
+<p>Setiap aktivitas harus bermanfaat dan mengikuti aturan channel.</p>
+<h3 id="3-2-membangun-kepercayaan"><span class="h-text">3.2 Membangun Kepercayaan</span><a class="anchor" href="#3-2-membangun-kepercayaan" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>Kepercayaan memengaruhi apakah audiens mau mempertimbangkan rekomendasimu. <strong>Akun kecil pun bisa membantu calon pembeli jika informasinya berguna dan jujur.</strong></p>
+<p><strong>Tujuh prinsip membangun kepercayaan:</strong></p>
+<ol>
+<li>Jelaskan apa yang kamu ketahui dan yang belum kamu ketahui.</li>
+<li>Bedakan pengalaman pribadi dari informasi penjual.</li>
+<li>Tampilkan bukti jika membuat klaim.</li>
+<li>Jelaskan kekurangan atau batasan yang relevan.</li>
+<li>Hindari tekanan pembelian.</li>
+<li>Ungkapkan hubungan affiliate.</li>
+<li>Perbarui informasi yang sudah tidak akurat.</li>
+</ol>
+<p>Jangan menyamarkan promosi sebagai rekomendasi independen jika kamu menerima komisi dari pembelian.</p>
+<h3 id="3-3-komentar-sebagai-sumber-riset"><span class="h-text">3.3 Komentar sebagai Sumber Riset</span><a class="anchor" href="#3-3-komentar-sebagai-sumber-riset" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>Komentar memberi tahu kamu kebutuhan, keberatan, dan bahasa yang dipakai calon pembeli.</p>
+<p><strong>Contoh:</strong> pada video tentang stand laptop, audiens bertanya:</p>
+<ul>
+<li>Apakah produk bisa dilipat?</li>
+<li>Apakah cocok untuk perangkat tertentu?</li>
+<li>Berapa ukuran dudukannya?</li>
+<li>Apakah pemasangan memerlukan alat?</li>
+<li>Apakah ada pilihan dengan harga lebih rendah?</li>
+</ul>
+<p>Pertanyaan seperti ini bisa menjadi ide konten berikutnya.</p>
+<p>Komentar satu orang tidak membuktikan seluruh pasar punya kebutuhan yang sama. <strong>Catat pertanyaan yang berulang dan validasi dengan sumber lain sebelum menjadikannya prioritas.</strong></p>
+<h3 id="3-4-mengubah-pertanyaan-menjadi-konten"><span class="h-text">3.4 Mengubah Pertanyaan Menjadi Konten</span><a class="anchor" href="#3-4-mengubah-pertanyaan-menjadi-konten" aria-label="Tautan ke bagian ini">#</a></h3>
+<ol>
+<li><strong>Pertanyaan audiens</strong> — "Apakah produk ini cocok untuk meja kecil?"</li>
+<li><strong>Identifikasi kebutuhan</strong> — audiens ingin memastikan kecocokan ukuran.</li>
+<li><strong>Buat konten jawaban</strong> — tutorial mengukur ruang dan memeriksa dimensi produk.</li>
+<li><strong>Evaluasi respons</strong> — periksa apakah konten menjawab pertanyaan dan memicu tindakan yang relevan.</li>
+</ol>
+<p>Cara ini menghasilkan konten berdasarkan kebutuhan nyata, bukan sekadar mengikuti tren.</p>
+<h3 id="3-5-mengelola-pertanyaan-produk"><span class="h-text">3.5 Mengelola Pertanyaan Produk</span><a class="anchor" href="#3-5-mengelola-pertanyaan-produk" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>Jawab pertanyaan produk dengan informasi akurat.</p>
+<p><strong>Pertanyaan tentang harga:</strong></p>
+<ul>
+<li>Periksa harga terkini.</li>
+<li>Jelaskan bahwa harga bisa berubah, jika relevan.</li>
+<li>Jangan menjanjikan diskon yang belum terverifikasi.</li>
+</ul>
+<p><strong>Pertanyaan tentang spesifikasi:</strong></p>
+<ul>
+<li>Periksa halaman produk atau sumber resmi.</li>
+<li>Jangan menebak jika data tidak tersedia.</li>
+<li>Jelaskan apa yang perlu diperiksa pembeli.</li>
+</ul>
+<p><strong>Pertanyaan tentang pengalaman penggunaan:</strong></p>
+<ul>
+<li>Jawab dari pengalaman nyata jika kamu memang pernah mencoba.</li>
+<li>Jika belum, katakan bahwa kamu hanya bisa memberi analisis berdasarkan informasi yang tersedia.</li>
+</ul>
+<p><strong>Jika kamu tidak tahu jawabannya, lebih baik menyampaikan ketidakpastian daripada memberi informasi yang salah.</strong></p>
+<h3 id="3-6-mengelola-kritik"><span class="h-text">3.6 Mengelola Kritik</span><a class="anchor" href="#3-6-mengelola-kritik" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>Kritik bisa membantu kamu menemukan masalah pada konten atau rekomendasi. Bedakan tiga jenis respons:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Jenis respons</th>
+<th>Contoh</th>
+<th>Tindakan</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A. Kritik yang memberi informasi</td>
+<td>Audiens menunjukkan dimensi produk di kontenmu tidak sesuai dengan halaman produk</td>
+<td>Verifikasi, koreksi informasi, dan perbarui konten jika perlu</td>
+</tr>
+<tr>
+<td>B. Ketidaksetujuan yang wajar</td>
+<td>Audiens merasa produk terlalu mahal untuk kebutuhan mereka</td>
+<td>Jelaskan alternatif atau kriteria pemilihan tanpa memaksakan pembelian</td>
+</tr>
+<tr>
+<td>C. Spam atau pelecehan</td>
+<td>Komentar promosi acak atau serangan pribadi</td>
+<td>Pakai fitur moderasi platform sesuai kebijakan. Tidak semua komentar harus ditanggapi</td>
+</tr>
+</tbody>
+</table></div>
+<p>Jangan menghapus kritik yang valid hanya karena menurunkan kesan positif terhadap produk.</p>
+<h3 id="3-7-menghindari-spam"><span class="h-text">3.7 Menghindari Spam</span><a class="anchor" href="#3-7-menghindari-spam" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>Spam adalah promosi berulang atau tidak relevan yang mengganggu pengguna atau melanggar aturan platform.</p>
+<p><strong>Hindari:</strong></p>
+<ul>
+<li>mengirim link promosi massal tanpa diminta;</li>
+<li>membanjiri komentar dengan link yang sama;</li>
+<li>mengulang komentar promosi di banyak unggahan;</li>
+<li>mengirim pesan pribadi kepada orang yang tidak meminta rekomendasi;</li>
+<li>memakai bot atau interaksi palsu;</li>
+<li>memanipulasi views, klik, atau transaksi;</li>
+<li>menyamar sebagai pembeli yang puas.</li>
+</ul>
+<p>Cara yang lebih baik: buat konten yang menjawab pertanyaan, bagikan informasi di komunitas yang relevan, dan patuhi aturan promosi.</p>
+<h3 id="3-8-identitas-konten"><span class="h-text">3.8 Identitas Konten</span><a class="anchor" href="#3-8-identitas-konten" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>Identitas konten membantu audiens memahami fokus dan nilai yang ditawarkan akunmu. Identitas bisa mencakup:</p>
+<ul>
+<li>kategori topik;</li>
+<li>jenis masalah yang diselesaikan;</li>
+<li>gaya penyampaian;</li>
+<li>standar bukti;</li>
+<li>format konten;</li>
+<li>pola visual;</li>
+<li>cara berinteraksi dengan audiens.</li>
+</ul>
+<p><strong>Contoh positioning:</strong></p>
+<blockquote class="callout">
+<p>"Konten yang membantu pekerja dan pelajar memilih perlengkapan meja kerja berdasarkan fungsi, ukuran, dan anggaran."</p>
+</blockquote>
+<p>Positioning ini lebih jelas daripada "akun rekomendasi produk murah".</p>
+<p>Semua video tidak harus terlihat sama. <strong>Konsistensi terutama ada pada manfaat yang diberikan dan jenis kebutuhan yang dilayani.</strong></p>
+<h3 id="3-9-seri-konten-berbasis-pertanyaan"><span class="h-text">3.9 Seri Konten Berbasis Pertanyaan</span><a class="anchor" href="#3-9-seri-konten-berbasis-pertanyaan" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>Misalnya kamu menemukan banyak pertanyaan tentang ukuran produk. Kamu bisa membuat seri:</p>
+<ol>
+<li>Cara membaca dimensi produk.</li>
+<li>Cara mengukur ruang yang tersedia.</li>
+<li>Kesalahan memilih ukuran.</li>
+<li>Cara membandingkan dimensi dua produk.</li>
+<li>Cara memastikan produk cocok dengan kebutuhan.</li>
+</ol>
+<p>Simpan pertanyaan audiens di <strong>bank ide konten</strong>.</p>
+<p><strong>Format bank pertanyaan:</strong></p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Pertanyaan</th>
+<th>Frekuensi</th>
+<th>Jenis kebutuhan</th>
+<th>Ide konten</th>
+<th>Prioritas</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Apakah ukurannya cocok?</td>
+<td>Catat</td>
+<td>Kecocokan</td>
+<td>Tutorial pengukuran</td>
+<td>Sesuai data</td>
+</tr>
+<tr>
+<td>Apakah ada pilihan murah?</td>
+<td>Catat</td>
+<td>Anggaran</td>
+<td>Perbandingan harga</td>
+<td>Sesuai data</td>
+</tr>
+<tr>
+<td>Bagaimana cara memasang?</td>
+<td>Catat</td>
+<td>Penggunaan</td>
+<td>Demonstrasi pemasangan</td>
+<td>Sesuai data</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Jangan mengarang frekuensi.</strong> Catat jumlah pertanyaan yang benar-benar kamu temukan.</p>
+<h3 id="3-10-community-building"><span class="h-text">3.10 Community Building</span><a class="anchor" href="#3-10-community-building" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>Community building adalah proses membangun hubungan berkelanjutan dengan orang yang punya kebutuhan atau minat serupa. Komunitas tidak harus berupa grup khusus. Komunitas juga bisa berkembang lewat komentar, diskusi, pertanyaan, dan kebiasaan audiens mengikuti kontenmu.</p>
+<p><strong>Cara membangun hubungan:</strong></p>
+<ul>
+<li>Jawab pertanyaan yang relevan.</li>
+<li>Buat konten lanjutan berdasarkan kebutuhan audiens.</li>
+<li>Pakai bahasa yang konsisten.</li>
+<li>Akui kesalahan saat terjadi.</li>
+<li>Jangan menghakimi pilihan pembeli.</li>
+<li>Beri rekomendasi sesuai kebutuhan, bukan sekadar komisi.</li>
+<li>Dorong diskusi yang bermanfaat.</li>
+</ul>
+<p>Jangan memaksakan pembentukan grup jika audiens belum menunjukkan kebutuhan untuk bergabung. Mulailah dari interaksi yang sudah ada.</p>
+<hr />
+</section><section class="sec reveal"><h2 id="4-istilah-penting"><span class="h-text">4. Istilah Penting</span><a class="anchor" href="#4-istilah-penting" aria-label="Tautan ke bagian ini">#</a></h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Istilah</th>
+<th>Definisi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Distribusi konten</td>
+<td>Proses membantu konten menjangkau audiens melalui channel yang relevan; mencakup waktu, format, konteks, dan cara konten ditemukan</td>
+</tr>
+<tr>
+<td>Spam</td>
+<td>Promosi berulang atau tidak relevan yang mengganggu pengguna atau melanggar aturan platform</td>
+</tr>
+<tr>
+<td>Identitas konten</td>
+<td>Hal yang membantu audiens memahami fokus dan nilai yang ditawarkan akun</td>
+</tr>
+<tr>
+<td>Bank ide konten (bank pertanyaan)</td>
+<td>Catatan pertanyaan audiens beserta frekuensi, jenis kebutuhan, ide konten, dan prioritas</td>
+</tr>
+<tr>
+<td>Community building</td>
+<td>Proses membangun hubungan berkelanjutan dengan orang yang punya kebutuhan atau minat serupa</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section><section class="sec reveal"><h2 id="5-langkah-praktik"><span class="h-text">5. Langkah Praktik</span><a class="anchor" href="#5-langkah-praktik" aria-label="Tautan ke bagian ini">#</a></h2>
+<p><strong>Mengubah pertanyaan menjadi konten:</strong> pertanyaan audiens → identifikasi kebutuhan → buat konten jawaban → evaluasi respons.</p>
+<p><strong>Menangani kritik:</strong> klasifikasikan jenis respons (informatif, ketidaksetujuan wajar, atau spam/pelecehan). Lalu verifikasi dan koreksi, jelaskan alternatif, atau pakai fitur moderasi.</p>
+<p><strong>Membangun bank pertanyaan:</strong> catat pertanyaan → kelompokkan berdasarkan masalah → tandai pertanyaan berulang → verifikasi dengan sumber lain → pilih pertanyaan paling relevan untuk dijadikan konten.</p>
+<hr />
+</section><section class="sec reveal"><h2 id="6-contoh-dan-perhitungan"><span class="h-text">6. Contoh dan Perhitungan</span><a class="anchor" href="#6-contoh-dan-perhitungan" aria-label="Tautan ke bagian ini">#</a></h2>
+<p>Modul ini tidak punya rumus. Berikut contoh dan templatenya:</p>
+<ul>
+<li><strong>Pertanyaan audiens pada video stand laptop:</strong> apakah bisa dilipat; apakah cocok untuk perangkat tertentu; berapa ukuran dudukannya; apakah pemasangan memerlukan alat; apakah ada pilihan lebih murah.</li>
+<li><strong>Alur pertanyaan ke konten:</strong> "Apakah produk ini cocok untuk meja kecil?" → kebutuhan: memastikan kecocokan ukuran → konten: tutorial mengukur ruang dan memeriksa dimensi produk.</li>
+<li><strong>Contoh positioning:</strong> "Konten yang membantu pekerja dan pelajar memilih perlengkapan meja kerja berdasarkan fungsi, ukuran, dan anggaran."</li>
+<li><strong>Contoh seri berbasis pertanyaan ukuran:</strong> lima bagian di bagian 3.9.</li>
+<li><strong>Template bank pertanyaan:</strong> tabel di bagian 3.9.</li>
+</ul>
+<hr />
+</section><section class="sec reveal"><h2 id="7-kesalahan-umum-dan-cara-menghindarinya"><span class="h-text">7. Kesalahan Umum dan Cara Menghindarinya</span><a class="anchor" href="#7-kesalahan-umum-dan-cara-menghindarinya" aria-label="Tautan ke bagian ini">#</a></h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Kesalahan</th>
+<th>Cara menghindari</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mengukur kepercayaan dari jumlah pengikut</td>
+<td>Fokus pada informasi yang berguna dan jujur</td>
+</tr>
+<tr>
+<td>Menyamarkan promosi sebagai rekomendasi independen padahal menerima komisi</td>
+<td>Ungkapkan hubungan affiliate</td>
+</tr>
+<tr>
+<td>Menjadikan komentar satu orang sebagai bukti kebutuhan pasar</td>
+<td>Catat pertanyaan berulang dan validasi dengan sumber lain</td>
+</tr>
+<tr>
+<td>Menjanjikan diskon yang belum terverifikasi</td>
+<td>Periksa harga terkini dan jelaskan bahwa harga bisa berubah</td>
+</tr>
+<tr>
+<td>Menebak spesifikasi saat data tidak tersedia</td>
+<td>Periksa halaman produk atau sumber resmi; jelaskan apa yang perlu diperiksa pembeli</td>
+</tr>
+<tr>
+<td>Menjawab seolah pernah memakai produk</td>
+<td>Jika belum mencoba, katakan bahwa jawabanmu analisis dari informasi yang tersedia</td>
+</tr>
+<tr>
+<td>Memberi informasi salah daripada mengaku tidak tahu</td>
+<td>Sampaikan ketidakpastian</td>
+</tr>
+<tr>
+<td>Menghapus kritik valid demi kesan positif</td>
+<td>Verifikasi dan koreksi</td>
+</tr>
+<tr>
+<td>Merasa wajib menanggapi semua komentar</td>
+<td>Spam dan pelecehan tidak perlu ditanggapi</td>
+</tr>
+<tr>
+<td>Spam link, DM tidak diminta, bot, manipulasi views/klik/transaksi, menyamar sebagai pembeli puas</td>
+<td>Hindari semuanya; lihat bagian 3.7</td>
+</tr>
+<tr>
+<td>Mengarang frekuensi pertanyaan di bank ide</td>
+<td>Catat jumlah pertanyaan yang benar-benar ditemukan</td>
+</tr>
+<tr>
+<td>Memaksakan pembentukan grup komunitas</td>
+<td>Mulai dari interaksi yang sudah ada</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+</section><section class="sec reveal"><h2 id="8-tugas-dan-checklist"><span class="h-text">8. Tugas dan Checklist</span><a class="anchor" href="#8-tugas-dan-checklist" aria-label="Tautan ke bagian ini">#</a></h2>
+<p><strong>Tugas 1 — Buat bank pertanyaan audiens</strong></p>
+<ul>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-13-distribusi-dan-community-building.html#1"> <span>Catat pertanyaan yang muncul pada konten.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-13-distribusi-dan-community-building.html#2"> <span>Kelompokkan berdasarkan masalah.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-13-distribusi-dan-community-building.html#3"> <span>Tandai pertanyaan yang berulang.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-13-distribusi-dan-community-building.html#4"> <span>Verifikasi kebutuhan dengan sumber lain.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-13-distribusi-dan-community-building.html#5"> <span>Pilih pertanyaan yang paling relevan untuk dijadikan konten.</span></label></li>
+</ul>
+<p><strong>Tugas 2 — Buat konten jawaban.</strong> Pilih tiga pertanyaan dan buat konten yang menjawabnya langsung.</p>
+<p><strong>Tugas 3 — Catat keberatan yang berulang.</strong> Kelompokkan berdasarkan harga, ukuran, kualitas, fitur, penggunaan, dan kecocokan.</p>
+<p><strong>Tugas 4 — Susun seri konten.</strong> Pilih satu kelompok pertanyaan dan buat seri yang menjawabnya bertahap.</p>
+<p><strong>Tugas 5 — Evaluasi kualitas interaksi.</strong> Catat bukan hanya jumlah komentar, tetapi juga:</p>
+<ul>
+<li>Apakah komentar berasal dari audiens yang relevan?</li>
+<li>Apakah ada pertanyaan produk?</li>
+<li>Apakah konten memicu diskusi yang bermanfaat?</li>
+<li>Apakah ada klik atau transaksi yang bisa diukur?</li>
+<li>Apakah ada koreksi atau keluhan yang perlu ditindaklanjuti?</li>
+</ul>
+<hr />
+</section><section class="sec reveal sec-latihan"><h2 id="9-latihan-dan-kunci-jawaban"><span class="h-text">9. Latihan dan Kunci Jawaban</span><a class="anchor" href="#9-latihan-dan-kunci-jawaban" aria-label="Tautan ke bagian ini">#</a></h2>
+<div class="qa"><p class="q"><strong>1. Apa beda "memublikasikan konten" dan "distribusi konten"?</strong></p><details class="ans"><summary>Lihat jawaban</summary><div class="a"><p>Distribusi tidak sekadar memublikasikan. Distribusi juga mencakup waktu, format, konteks, dan cara konten ditemukan.</p></div></details></div>
+<div class="qa"><p class="q"><strong>2. Seorang penonton menunjukkan dimensi produk di videomu tidak sesuai halaman produk. Jenis respons apa dan apa tindakannya?</strong></p><details class="ans"><summary>Lihat jawaban</summary><div class="a"><p>Kritik yang memberi informasi (jenis A). Tindakan: verifikasi, koreksi informasi, dan perbarui konten jika perlu.</p></div></details></div>
+<div class="qa"><p class="q"><strong>3. Ada yang bertanya spesifikasi yang tidak tercantum di halaman produk. Apa yang kamu lakukan?</strong></p><details class="ans"><summary>Lihat jawaban</summary><div class="a"><p>Jangan menebak. Periksa halaman produk atau sumber resmi, dan jelaskan apa yang perlu diperiksa pembeli. Jika tetap tidak tahu, sampaikan ketidakpastian.</p></div></details></div>
+<div class="qa"><p class="q"><strong>4. Sebutkan minimal lima aktivitas yang termasuk spam.</strong></p><details class="ans"><summary>Lihat jawaban</summary><div class="a"><p>Link promosi massal tanpa diminta; membanjiri komentar dengan link yang sama; mengulang komentar promosi di banyak unggahan; pesan pribadi kepada orang yang tidak meminta rekomendasi; bot atau interaksi palsu; memanipulasi views, klik, atau transaksi; menyamar sebagai pembeli yang puas.</p></div></details></div>
+<div class="qa"><p class="q"><strong>5. Mengapa positioning "akun rekomendasi produk murah" kurang baik?</strong></p><details class="ans"><summary>Lihat jawaban</summary><div class="a"><p>Karena kurang jelas. Contoh yang lebih jelas: "Konten yang membantu pekerja dan pelajar memilih perlengkapan meja kerja berdasarkan fungsi, ukuran, dan anggaran."</p></div></details></div>
+<div class="qa"><p class="q"><strong>6. Apa yang boleh dan tidak boleh diisi di kolom "Frekuensi" bank pertanyaan?</strong></p><details class="ans"><summary>Lihat jawaban</summary><div class="a"><p>Isi dengan jumlah pertanyaan yang benar-benar ditemukan. Jangan mengarang frekuensi.</p></div></details></div>
+<hr />
+</section><section class="sec reveal"><h2 id="10-standar-kelulusan"><span class="h-text">10. Standar Kelulusan</span><a class="anchor" href="#10-standar-kelulusan" aria-label="Tautan ke bagian ini">#</a></h2>
+<p>Kamu dianggap menguasai modul ini jika mampu memakai interaksi audiens sebagai sumber riset, menjawab pertanyaan dengan akurat, mengelola kritik, dan membangun kepercayaan tanpa spam atau manipulasi.</p>
+<hr />
+<h1 id="lampiran-penutup-level-3">Lampiran — Penutup Level 3</h1>
+<p>Bagian ini berlaku untuk seluruh Level 3 (Modul 08–13), bukan hanya Modul 13.</p>
+</section><section class="sec reveal"><h2 id="a-proyek-akhir-level-3-sistem-konten-affiliate-30-hari"><span class="h-text">A. Proyek Akhir Level 3 — Sistem Konten Affiliate 30 Hari</span><a class="anchor" href="#a-proyek-akhir-level-3-sistem-konten-affiliate-30-hari" aria-label="Tautan ke bagian ini">#</a></h2>
+<p>Setelah menyelesaikan Modul 08–13, gabungkan semua kemampuanmu menjadi satu sistem kerja. Proyek ini menguji apakah kamu bisa merencanakan, memproduksi, mendistribusikan, dan mengevaluasi konten affiliate secara terukur.</p>
+<h3 id="a-1-tentukan-fondasi-strategi"><span class="h-text">A.1 Tentukan fondasi strategi</span><a class="anchor" href="#a-1-tentukan-fondasi-strategi" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>Isi lembar kerja berikut. Tanda (•) di bawah menunjukkan contoh pilihan. Ganti dengan pilihanmu sendiri.</p>
+<pre><code>Target audiens
+[ Contoh: pekerja dengan meja kerja kecil ]
+
+Kategori produk
+[ Contoh: perlengkapan meja kerja ]
+
+Channel utama
+(•) Shopee Video
+( ) TikTok
+( ) Instagram Reels
+( ) YouTube Shorts
+( ) Website dan SEO
+
+Format utama
+(•) Video pendek
+( ) Artikel
+( ) Konten visual
+( ) Campuran yang sesuai aturan
+
+Waktu yang tersedia per hari
+( ) Kurang dari 1 jam
+(•) 1–2 jam
+( ) 2–4 jam
+( ) Lebih dari 4 jam
+
+Tujuan pengujian awal
+( ) Menguji konsistensi publikasi
+( ) Menjangkau audiens yang relevan
+(•) Mendapatkan klik produk yang relevan
+( ) Memvalidasi transaksi dan komisi
+
+Data performa saat ini
+(•) Belum ada data
+( ) Ada data views dan engagement
+( ) Ada data klik
+( ) Ada data transaksi dan komisi
+</code></pre>
+<h3 id="a-2-rencana-implementasi-30-hari"><span class="h-text">A.2 Rencana implementasi 30 hari</span><a class="anchor" href="#a-2-rencana-implementasi-30-hari" aria-label="Tautan ke bagian ini">#</a></h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Periode</th>
+<th>Fokus</th>
+<th>Hasil yang harus dibuat</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Hari 1–3</td>
+<td>Menentukan audiens, produk, dan channel</td>
+<td>Dokumen strategi awal</td>
+</tr>
+<tr>
+<td>Hari 4–7</td>
+<td>Riset masalah dan content pillar</td>
+<td>Enam pilar dan bank ide</td>
+</tr>
+<tr>
+<td>Hari 8–14</td>
+<td>Produksi dan publikasi awal</td>
+<td>Konten awal dan baseline</td>
+</tr>
+<tr>
+<td>Hari 15–21</td>
+<td>Pengujian format, hook, dan CTA</td>
+<td>Data pembanding</td>
+</tr>
+<tr>
+<td>Hari 22–27</td>
+<td>Memperbaiki konten berdasarkan data</td>
+<td>Konten hasil perbaikan</td>
+</tr>
+<tr>
+<td>Hari 28–30</td>
+<td>Evaluasi</td>
+<td>Keputusan (Lanjutkan, Optimalkan, Uji ulang, Kurangi prioritas, atau Hentikan) untuk tiap pendekatan</td>
+</tr>
+</tbody>
+</table></div>
+<p>Jangan menganggap 30 hari pasti cukup untuk penjualan yang konsisten. Periode ini kerangka pengujian awal, <strong>bukan jaminan hasil</strong>.</p>
+<h3 id="a-3-dashboard-evaluasi"><span class="h-text">A.3 Dashboard evaluasi</span><a class="anchor" href="#a-3-dashboard-evaluasi" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>Catat metrik yang tersedia sesuai kemampuan platform.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Metrik</th>
+<th>Pertanyaan yang dijawab</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Jumlah publikasi</td>
+<td>Apakah proses produksi berjalan?</td>
+</tr>
+<tr>
+<td>Views (tayangan)</td>
+<td>Apakah konten mendapat distribusi?</td>
+</tr>
+<tr>
+<td>Retensi</td>
+<td>Apakah konten mempertahankan perhatian?</td>
+</tr>
+<tr>
+<td>Klik produk</td>
+<td>Apakah audiens mengambil tindakan?</td>
+</tr>
+<tr>
+<td>CTR</td>
+<td>Apakah elemen yang ditampilkan mendorong klik?</td>
+</tr>
+<tr>
+<td>Pesanan dan transaksi</td>
+<td>Apakah ada pembelian yang tercatat?</td>
+</tr>
+<tr>
+<td>Komisi Estimasi</td>
+<td>Berapa komisi yang diperkirakan?</td>
+</tr>
+<tr>
+<td>Komisi Pending</td>
+<td>Berapa komisi yang masih menunggu validasi?</td>
+</tr>
+<tr>
+<td>Komisi Disetujui</td>
+<td>Berapa komisi yang sudah disetujui?</td>
+</tr>
+<tr>
+<td>Komisi Dibayarkan</td>
+<td>Berapa komisi yang benar-benar dibayarkan?</td>
+</tr>
+</tbody>
+</table></div>
+<p>Empat status komisi berurutan: Estimasi → Pending → Disetujui → Dibayarkan. Nama di dashboard Shopee bisa berbeda. <strong>Pisahkan keempatnya. Jangan memakai angka estimasi sebagai pendapatan yang pasti diterima.</strong></p>
+<h3 id="a-4-aturan-pengambilan-keputusan"><span class="h-text">A.4 Aturan pengambilan keputusan</span><a class="anchor" href="#a-4-aturan-pengambilan-keputusan" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>Pakai istilah keputusan berikut setelah mengevaluasi data.</p>
+<ul>
+<li><strong>Lanjutkan</strong> jika konten relevan, produksi realistis, dan hasil menunjukkan sinyal yang layak diuji lebih jauh.</li>
+<li><strong>Optimalkan</strong> jika ada hambatan yang bisa diidentifikasi, misalnya hook kurang jelas, demonstrasi membingungkan, atau CTA tidak sesuai.</li>
+<li><strong>Uji ulang</strong> jika hasil belum jelas atau sampelnya masih kecil.</li>
+<li><strong>Kurangi prioritas</strong> jika pendekatan itu kalah dari pendekatan lain, tetapi belum perlu dihentikan.</li>
+<li><strong>Hentikan</strong> pendekatan tertentu jika setelah pengujian yang memadai hasilnya terus buruk atau menimbulkan risiko kepatuhan.</li>
+<li><strong>Perluas</strong> hanya setelah ada bukti: proses bisa diulang, jalur konversi dipahami, dan ada alasan jelas untuk menambah channel atau format.</li>
+</ul>
+<p>Jangan mengubah banyak variabel sekaligus. Jika kamu mengubah topik, hook, durasi, CTA, dan produk bersamaan, kamu sulit tahu perubahan mana yang memengaruhi hasil.</p>
+</section><section class="sec reveal"><h2 id="b-checklist-kelulusan-level-3"><span class="h-text">B. Checklist Kelulusan Level 3</span><a class="anchor" href="#b-checklist-kelulusan-level-3" aria-label="Tautan ke bagian ini">#</a></h2>
+<p>Progres: 0/12</p>
+<ul>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-13-distribusi-dan-community-building.html#6"> <span>Memilih satu channel utama berdasarkan audiens dan produk</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-13-distribusi-dan-community-building.html#7"> <span>Membuat baseline performa dan rencana distribusi</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-13-distribusi-dan-community-building.html#8"> <span>Menentukan enam content pillar</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-13-distribusi-dan-community-building.html#9"> <span>Membuat 30 ide konten dan kalender 30 hari</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-13-distribusi-dan-community-building.html#10"> <span>Menulis 30 hook dan 10 skrip video</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-13-distribusi-dan-community-building.html#11"> <span>Membuat CTA yang relevan dan transparan</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-13-distribusi-dan-community-building.html#12"> <span>Memproduksi 10 konten orisinal</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-13-distribusi-dan-community-building.html#13"> <span>Memahami dasar riset kata kunci dan search intent</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-13-distribusi-dan-community-building.html#14"> <span>Membuat satu buying guide dan satu perbandingan produk</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-13-distribusi-dan-community-building.html#15"> <span>Membangun bank pertanyaan audiens</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-13-distribusi-dan-community-building.html#16"> <span>Mengevaluasi klik, transaksi, dan status komisi</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-13-distribusi-dan-community-building.html#17"> <span>Memeriksa hak penggunaan materi dan aturan promosi</span></label></li>
+</ul>
+</section><section class="sec reveal"><h2 id="c-kesimpulan-level-3"><span class="h-text">C. Kesimpulan Level 3</span><a class="anchor" href="#c-kesimpulan-level-3" aria-label="Tautan ke bagian ini">#</a></h2>
+<p>Di akhir level ini, kamu harus punya lebih dari sekadar kumpulan ide konten. Kamu harus punya sistem yang menghubungkan kebutuhan audiens, pemilihan channel, produksi konten, distribusi, klik produk, dan evaluasi transaksi.</p>
+<p>Fokus utamanya adalah menemukan format konten yang bisa kamu produksi secara konsisten, relevan dengan calon pembeli, dan terbukti membantu menghasilkan tindakan yang bernilai.</p>
+<p>Views dan pengikut membantu distribusi. Tetapi keputusan bisnis harus berdasarkan data yang paling dekat dengan tujuan akhir: <strong>transaksi yang memenuhi ketentuan program dan komisi yang benar-benar disetujui.</strong></p></section>
+</article>
+<div class="complete reveal"><button type="button" id="mark-done" data-page="modul/modul-13-distribusi-dan-community-building.html">Tandai modul ini selesai</button><span class="hint">Tersimpan di browser kamu.</span></div>
+<nav class="pager" aria-label="Halaman sebelumnya dan berikutnya"><a class="prev" href="../modul/modul-12-seo-dan-konten-berbasis-pencarian.html"><small>← Sebelumnya</small><span>12. SEO dan Konten Berbasis Pencarian</span></a><a class="next" href="../level-4.html"><small>Berikutnya →</small><span>Level 4 — Conversion and Analytics</span></a></nav>
+<footer class="foot">
+  <p>Materi pembelajaran, bukan nasihat hukum atau pajak. Aturan Shopee Affiliate bisa berubah, jadi selalu cek sumber resmi dan catat tanggal pemeriksaannya. Situs ini bukan situs resmi Shopee.</p>
+</footer>
+</main>
+<aside class="toc" aria-label="Isi halaman"><p class="toc-title">Di halaman ini</p><ol><li><a href="#1-tujuan-pembelajaran">Tujuan Pembelajaran</a></li><li><a href="#2-ringkasan-konsep-utama">Ringkasan Konsep Utama</a></li><li><a href="#3-penjelasan">Penjelasan</a></li><li><a href="#4-istilah-penting">Istilah Penting</a></li><li><a href="#5-langkah-praktik">Langkah Praktik</a></li><li><a href="#6-contoh-dan-perhitungan">Contoh dan Perhitungan</a></li><li><a href="#7-kesalahan-umum-dan-cara-menghindarinya">Kesalahan Umum dan Cara Menghindarinya</a></li><li><a href="#8-tugas-dan-checklist">Tugas dan Checklist</a></li><li><a href="#9-latihan-dan-kunci-jawaban">Latihan dan Kunci Jawaban</a></li><li><a href="#10-standar-kelulusan">Standar Kelulusan</a></li><li><a href="#a-proyek-akhir-level-3-sistem-konten-affiliate-30-hari">A. Proyek Akhir Level 3 — Sistem Konten Affiliate 30 Hari</a></li><li><a href="#b-checklist-kelulusan-level-3">B. Checklist Kelulusan Level 3</a></li><li><a href="#c-kesimpulan-level-3">C. Kesimpulan Level 3</a></li></ol></aside>
+</div>
+<nav class="bottom-nav" id="bottom-nav" aria-label="Navigasi cepat">
+  <a class="bn-item" href="../index.html"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5"/><path d="M5 10v10h14V10"/></svg><span>Beranda</span></a>
+  <button class="bn-item" id="bn-menu" type="button" aria-controls="sidebar"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="7" rx="1.5"/><rect x="4" y="13" width="7" height="7" rx="1.5"/><rect x="13" y="13" width="7" height="7" rx="1.5"/></svg><span>Materi</span></button>
+  <button class="bn-item" id="bn-search" type="button"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span>Cari</span></button>
+  <a class="bn-item bn-primary" href="../level-4.html"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg><span>Lanjut</span></a>
+</nav>
+<button class="to-top" id="to-top" type="button" aria-label="Kembali ke atas" hidden><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5"/><path d="m5 12 7-7 7 7"/></svg></button>
+<div class="toast-wrap" id="toasts" aria-live="polite"></div>
+<script src="../assets/search-index.js"></script>
+<script src="../assets/app.js"></script>
+</body>
+</html>

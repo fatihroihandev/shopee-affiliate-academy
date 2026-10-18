@@ -1,0 +1,795 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Modul 03: Persiapan Akun dan Operasional · Shopee Affiliate Academy</title>
+<meta name="description" content="Setelah modul ini, kamu mampu:">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#EE4D2D">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/style.css">
+<script>(function(){var d=document.documentElement;d.classList.add('js');try{var t=localStorage.getItem('sea-theme');if(t&&t!=='auto')d.setAttribute('data-theme',t);var p=JSON.parse(localStorage.getItem('sea-prefs')||'{}');['fs','lh','font','width'].forEach(function(k){if(p[k])d.setAttribute('data-'+k,p[k]);});if(p.focus)d.setAttribute('data-focus','1');}catch(e){}})();</script>
+</head>
+<body data-root="../" data-kind="modul" data-page="modul/modul-03-persiapan-akun-dan-operasional.html" data-title="Modul 03: Persiapan Akun dan Operasional">
+<a class="skip" href="#isi">Lewati ke isi</a>
+<div class="read-progress" id="read-progress" aria-hidden="true"></div>
+<div class="top" id="top">
+<header class="topbar">
+  <button class="icon-btn menu-btn" id="menu-btn" aria-label="Buka menu materi" aria-controls="sidebar" aria-expanded="false"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+  <a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true">SA</span><span class="brand-name">Shopee Affiliate Academy</span></a>
+  <div class="search" id="search">
+    <div class="search-box">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input id="search-input" type="search" placeholder="Cari materi…" autocomplete="off" aria-label="Cari materi">
+      <button class="icon-btn search-close" id="search-close" type="button" aria-label="Tutup pencarian"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+    </div>
+    <div class="search-results" id="search-results" hidden></div>
+  </div>
+  <button class="icon-btn desk-only" id="focus-btn" aria-label="Mode fokus" title="Mode fokus"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9V5h4M20 9V5h-4M4 15v4h4M20 15v4h-4"/></svg></button>
+  <button class="icon-btn aa-btn" id="aa-btn" aria-label="Pengaturan baca" aria-expanded="false" aria-controls="prefs"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20 10 5l6 15"/><path d="M6.5 14.5h7"/><path d="M15 12h5M17.5 12v8"/></svg></button>
+</header>
+<div class="subbar" id="subbar" aria-hidden="true"><span class="sb-title"></span><span class="sb-pct"></span></div>
+</div>
+<div class="prefs" id="prefs" hidden role="dialog" aria-label="Pengaturan tampilan">
+  <div class="prefs-head"><strong>Pengaturan baca</strong><button class="icon-btn sm" id="prefs-close" type="button" aria-label="Tutup"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
+  <div class="pref-row"><span>Ukuran teks</span><div class="seg" role="group" aria-label="Ukuran teks">
+    <button type="button" id="fs-down" aria-label="Perkecil teks">A−</button><output id="fs-val">3/5</output><button type="button" id="fs-up" aria-label="Perbesar teks">A+</button></div></div>
+  <div class="pref-row"><span>Jarak baris</span><div class="seg"><button type="button" data-pref="lh" data-val="tight">Rapat</button><button type="button" data-pref="lh" data-val="normal">Normal</button><button type="button" data-pref="lh" data-val="loose">Lega</button></div></div>
+  <div class="pref-row"><span>Huruf</span><div class="seg"><button type="button" data-pref="font" data-val="sans">Sans</button><button type="button" data-pref="font" data-val="serif">Serif</button></div></div>
+  <div class="pref-row"><span>Lebar teks</span><div class="seg"><button type="button" data-pref="width" data-val="normal">Standar</button><button type="button" data-pref="width" data-val="wide">Lebar</button></div></div>
+  <div class="pref-row"><span>Tema</span><div class="seg theme-seg"><button type="button" data-pref="theme" data-val="light">Terang</button><button type="button" data-pref="theme" data-val="sepia">Sepia</button><button type="button" data-pref="theme" data-val="dark">Gelap</button><button type="button" data-pref="theme" data-val="auto">Auto</button></div></div>
+  <label class="pref-switch"><input type="checkbox" id="pref-break" checked><span class="sw"></span><span>Pengingat istirahat (tiap 25 menit)</span></label>
+  <label class="pref-switch desk-only"><input type="checkbox" id="pref-focus"><span class="sw"></span><span>Mode fokus (sembunyikan menu)</span></label>
+  <button type="button" class="reset" id="prefs-reset">Kembalikan ke bawaan</button>
+</div>
+<div class="shell">
+<nav class="sidebar" id="sidebar" aria-label="Navigasi materi">
+<div class="nav-group">
+<a href="../index.html" data-page="index.html"><span>Beranda dan Pengantar</span></a>
+<a href="../master.html" data-page="master.html"><span>Rangkuman Master</span></a>
+</div>
+<details class="nav-level" data-mods="modul/modul-01-dasar-affiliate-marketing.html,modul/modul-02-shopee-affiliate-program-dan-kebijakan.html,modul/modul-03-persiapan-akun-dan-operasional.html" open><summary><span class="lv-badge">1</span><span class="lv-name">Fundamentals</span><span class="lv-count">0/3</span></summary>
+<a href="../level-1.html" data-page="level-1.html"><span>Ringkasan level</span></a>
+<a href="../modul/modul-01-dasar-affiliate-marketing.html" data-page="modul/modul-01-dasar-affiliate-marketing.html"><span>Modul 01 — Dasar Affiliate Marketing</span></a>
+<a href="../modul/modul-02-shopee-affiliate-program-dan-kebijakan.html" data-page="modul/modul-02-shopee-affiliate-program-dan-kebijakan.html"><span>Modul 02 — Shopee Affiliate Program dan Kebijakan</span></a>
+<a href="../modul/modul-03-persiapan-akun-dan-operasional.html" data-page="modul/modul-03-persiapan-akun-dan-operasional.html" aria-current="page"><span>Modul 03 — Persiapan Akun dan Operasional</span></a>
+</details>
+<details class="nav-level" data-mods="modul/modul-04-riset-pasar-dan-permintaan.html,modul/modul-05-niche-audiens-dan-positioning.html,modul/modul-06-riset-dan-evaluasi-produk.html,modul/modul-07-riset-kompetitor.html"><summary><span class="lv-badge">2</span><span class="lv-name">Market and Product Research</span><span class="lv-count">0/4</span></summary>
+<a href="../level-2.html" data-page="level-2.html"><span>Ringkasan level</span></a>
+<a href="../modul/modul-04-riset-pasar-dan-permintaan.html" data-page="modul/modul-04-riset-pasar-dan-permintaan.html"><span>Modul 04 — Riset Pasar dan Permintaan</span></a>
+<a href="../modul/modul-05-niche-audiens-dan-positioning.html" data-page="modul/modul-05-niche-audiens-dan-positioning.html"><span>Modul 05 — Niche, Audiens, dan Positioning</span></a>
+<a href="../modul/modul-06-riset-dan-evaluasi-produk.html" data-page="modul/modul-06-riset-dan-evaluasi-produk.html"><span>Modul 06 — Riset dan Evaluasi Produk</span></a>
+<a href="../modul/modul-07-riset-kompetitor.html" data-page="modul/modul-07-riset-kompetitor.html"><span>Modul 07 — Riset Kompetitor</span></a>
+</details>
+<details class="nav-level" data-mods="modul/modul-08-strategi-channel-dan-traffic-organik.html,modul/modul-09-strategi-konten.html,modul/modul-10-copywriting-dan-hook.html,modul/modul-11-produksi-video-dan-visual.html,modul/modul-12-seo-dan-konten-berbasis-pencarian.html,modul/modul-13-distribusi-dan-community-building.html"><summary><span class="lv-badge">3</span><span class="lv-name">Content and Traffic</span><span class="lv-count">0/6</span></summary>
+<a href="../level-3.html" data-page="level-3.html"><span>Ringkasan level</span></a>
+<a href="../modul/modul-08-strategi-channel-dan-traffic-organik.html" data-page="modul/modul-08-strategi-channel-dan-traffic-organik.html"><span>Modul 08 — Strategi Channel dan Traffic Organik</span></a>
+<a href="../modul/modul-09-strategi-konten.html" data-page="modul/modul-09-strategi-konten.html"><span>Modul 09 — Strategi Konten</span></a>
+<a href="../modul/modul-10-copywriting-dan-hook.html" data-page="modul/modul-10-copywriting-dan-hook.html"><span>Modul 10 — Copywriting dan Hook</span></a>
+<a href="../modul/modul-11-produksi-video-dan-visual.html" data-page="modul/modul-11-produksi-video-dan-visual.html"><span>Modul 11 — Produksi Video dan Visual</span></a>
+<a href="../modul/modul-12-seo-dan-konten-berbasis-pencarian.html" data-page="modul/modul-12-seo-dan-konten-berbasis-pencarian.html"><span>Modul 12 — SEO dan Konten Berbasis Pencarian</span></a>
+<a href="../modul/modul-13-distribusi-dan-community-building.html" data-page="modul/modul-13-distribusi-dan-community-building.html"><span>Modul 13 — Distribusi dan Community Building</span></a>
+</details>
+<details class="nav-level" data-mods="modul/modul-14-affiliate-link-dan-tracking.html,modul/modul-15-conversion-rate-optimization-cro.html,modul/modul-16-analytics-dan-dashboard.html,modul/modul-17-eksperimen-dan-validasi.html"><summary><span class="lv-badge">4</span><span class="lv-name">Conversion and Analytics</span><span class="lv-count">0/4</span></summary>
+<a href="../level-4.html" data-page="level-4.html"><span>Ringkasan level</span></a>
+<a href="../modul/modul-14-affiliate-link-dan-tracking.html" data-page="modul/modul-14-affiliate-link-dan-tracking.html"><span>Modul 14 — Affiliate Link dan Tracking</span></a>
+<a href="../modul/modul-15-conversion-rate-optimization-cro.html" data-page="modul/modul-15-conversion-rate-optimization-cro.html"><span>Modul 15 — Conversion Rate Optimization (CRO)</span></a>
+<a href="../modul/modul-16-analytics-dan-dashboard.html" data-page="modul/modul-16-analytics-dan-dashboard.html"><span>Modul 16 — Analytics dan Dashboard</span></a>
+<a href="../modul/modul-17-eksperimen-dan-validasi.html" data-page="modul/modul-17-eksperimen-dan-validasi.html"><span>Modul 17 — Eksperimen dan Validasi</span></a>
+</details>
+<details class="nav-level" data-mods="modul/modul-18-monetisasi-dan-pemilihan-produk-lanjutan.html,modul/modul-19-keuangan-dan-target-komisi.html,modul/modul-20-scaling-dan-sistem-produksi.html,modul/modul-21-kepatuhan-risiko-dan-reputasi.html,modul/modul-22-advanced-strategy.html,modul/modul-23-otomasi-dan-sistem-kerja.html,modul/modul-24-evaluasi-bisnis-dan-mastery.html"><summary><span class="lv-badge">5</span><span class="lv-name">Professional Growth</span><span class="lv-count">0/7</span></summary>
+<a href="../level-5.html" data-page="level-5.html"><span>Ringkasan level</span></a>
+<a href="../modul/modul-18-monetisasi-dan-pemilihan-produk-lanjutan.html" data-page="modul/modul-18-monetisasi-dan-pemilihan-produk-lanjutan.html"><span>Modul 18 — Monetisasi dan Pemilihan Produk Lanjutan</span></a>
+<a href="../modul/modul-19-keuangan-dan-target-komisi.html" data-page="modul/modul-19-keuangan-dan-target-komisi.html"><span>Modul 19 — Keuangan dan Target Komisi</span></a>
+<a href="../modul/modul-20-scaling-dan-sistem-produksi.html" data-page="modul/modul-20-scaling-dan-sistem-produksi.html"><span>Modul 20 — Scaling dan Sistem Produksi</span></a>
+<a href="../modul/modul-21-kepatuhan-risiko-dan-reputasi.html" data-page="modul/modul-21-kepatuhan-risiko-dan-reputasi.html"><span>Modul 21 — Kepatuhan, Risiko, dan Reputasi</span></a>
+<a href="../modul/modul-22-advanced-strategy.html" data-page="modul/modul-22-advanced-strategy.html"><span>Modul 22 — Advanced Strategy</span></a>
+<a href="../modul/modul-23-otomasi-dan-sistem-kerja.html" data-page="modul/modul-23-otomasi-dan-sistem-kerja.html"><span>Modul 23 — Otomasi dan Sistem Kerja</span></a>
+<a href="../modul/modul-24-evaluasi-bisnis-dan-mastery.html" data-page="modul/modul-24-evaluasi-bisnis-dan-mastery.html"><span>Modul 24 — Evaluasi Bisnis dan Mastery</span></a>
+</details>
+<div class="nav-group"><p class="nav-label">Praktik</p>
+<a href="../proyek-praktik.html" data-page="proyek-praktik.html"><span>8 Project Praktik Wajib</span></a>
+<a href="../database-notion.html" data-page="database-notion.html"><span>Database Notion</span></a>
+</div>
+<div class="nav-group"><p class="nav-label">Lampiran</p>
+<a href="../kamus-istilah.html" data-page="kamus-istilah.html"><span>Kamus Istilah</span></a>
+<a href="../rumus-template.html" data-page="rumus-template.html"><span>Lembar Rumus dan Template</span></a>
+<a href="../studi-kasus.html" data-page="studi-kasus.html"><span>Studi Kasus Simulasi</span></a>
+<a href="../panduan-pelatih.html" data-page="panduan-pelatih.html"><span>Panduan Pelatih dan Penilaian</span></a>
+</div></nav>
+<div class="scrim" id="scrim" hidden></div>
+<main id="isi" class="content">
+<nav class="crumbs" aria-label="Jejak halaman"><a href="../index.html">Beranda</a> <span>/</span> <a href="../level-1.html">Level 1</a> <span>/</span> Modul 03</nav>
+<details class="toc-mobile"><summary>Di halaman ini</summary><ol><li><a href="#1-tujuan-pembelajaran">Tujuan Pembelajaran</a></li><li><a href="#2-ringkasan-konsep-utama">Ringkasan Konsep Utama</a></li><li><a href="#3-penjelasan">Penjelasan</a></li><li><a href="#4-istilah-penting">Istilah Penting</a></li><li><a href="#5-langkah-praktik">Langkah Praktik</a></li><li><a href="#6-contoh-dan-perhitungan">Contoh dan Perhitungan</a></li><li><a href="#7-kesalahan-umum-dan-cara-menghindarinya">Kesalahan Umum dan Cara Menghindarinya</a></li><li><a href="#8-tugas-dan-checklist">Tugas dan Checklist</a></li><li><a href="#9-latihan-dan-kunci-jawaban">Latihan dan Kunci Jawaban</a></li><li><a href="#10-standar-kelulusan">Standar Kelulusan</a></li></ol></details>
+<article class="prose">
+<div class="eyebrow"><a class="chip" href="../level-1.html">Level 1 · Fundamentals</a><span class="chip ghost">Modul 03 dari 24</span><span class="chip ghost">± 14 menit baca</span></div>
+<h1 id="modul-03-persiapan-akun-dan-operasional">Modul 03: Persiapan Akun dan Operasional</h1>
+<section class="sec reveal"><h2 id="1-tujuan-pembelajaran"><span class="h-text">1. Tujuan Pembelajaran</span><a class="anchor" href="#1-tujuan-pembelajaran" aria-label="Tautan ke bagian ini">#</a></h2>
+<p>Setelah modul ini, kamu mampu:</p>
+<ul>
+<li>Menyiapkan akun Shopee dan akun affiliate.</li>
+<li>Memeriksa status pendaftaran.</li>
+<li>Menyiapkan kanal promosi.</li>
+<li>Memahami pengaturan pembayaran dan data administrasi.</li>
+<li>Menavigasi dashboard affiliate.</li>
+<li>Membuat dan menguji affiliate link.</li>
+<li>Mencatat produk, konten, klik, transaksi, dan komisi.</li>
+<li>Menyimpan sumber resmi dan bukti pembayaran.</li>
+<li>Mengamankan akun dan membuat cadangan data.</li>
+</ul>
+<p>Tujuan modul ini bukan langsung mendapat banyak penjualan. Tujuannya memastikan semua kebutuhan operasional siap, supaya kamu bisa mulai promosi secara teratur dan mengukur hasilnya.</p>
+</section><section class="sec reveal"><h2 id="2-ringkasan-konsep-utama"><span class="h-text">2. Ringkasan Konsep Utama</span><a class="anchor" href="#2-ringkasan-konsep-utama" aria-label="Tautan ke bagian ini">#</a></h2>
+<ol>
+<li>Akun Shopee yang kamu pakai harus bisa diakses, datanya benar, dan keamanannya disiapkan sejak awal, bukan setelah ada masalah.</li>
+<li>Formulir pendaftaran yang terkirim belum berarti akun aktif. Periksa sendiri status affiliate-mu.</li>
+<li>Di tahap awal, siapkan <strong>satu kanal utama</strong> dengan positioning konten yang jelas. Jangan mempromosikan semua kategori secara acak.</li>
+<li>Penghasilan di dashboard belum tentu berarti dana sudah ada di rekening. Periksa status komisi, kelengkapan administrasi, dan status pembayaran secara terpisah.</li>
+<li>Dashboard affiliate punya beberapa area informasi (produk, link, komisi, performa, pesanan, pembayaran, pusat bantuan). Nama menunya bisa berubah.</li>
+<li>Buat affiliate link lewat mekanisme resmi, lalu uji. Pengujian hanya memeriksa akses dan tujuan link, bukan membuktikan atribusi komisi berfungsi.</li>
+<li>Pencatatan di Notion dimulai dari tiga database versi awal: Produk, Konten, dan Komisi. Tiga database lain dibangun di modul berikutnya.</li>
+<li>Keamanan akun dan backup data adalah bagian dari operasional. Backup mengurangi risiko kehilangan catatan, tetapi tidak menjamin akun Shopee bisa dipulihkan.</li>
+</ol>
+</section><section class="sec reveal"><h2 id="3-penjelasan"><span class="h-text">3. Penjelasan</span><a class="anchor" href="#3-penjelasan" aria-label="Tautan ke bagian ini">#</a></h2>
+<h3 id="3-1-persiapan-akun-shopee"><span class="h-text">3.1 Persiapan akun Shopee</span><a class="anchor" href="#3-1-persiapan-akun-shopee" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>Sebelum promosi, pastikan akun yang kamu pakai bisa diakses dan sesuai persyaratan program.</p>
+<p><strong>Mengapa persiapan akun penting?</strong> Bayangkan kamu sudah membuat banyak konten dan mulai mendapat komisi, tetapi kehilangan akses ke email atau nomor telepon yang terhubung ke akun. Masalah akses bisa mengganggu promosi dan pengelolaan pembayaran. Siapkan keamanan akun sejak awal.</p>
+<blockquote class="callout">
+<p><strong>Catatan keamanan:</strong> jangan memberikan kata sandi, kode OTP, atau kode pemulihan kepada orang yang mengaku sebagai admin affiliate.</p>
+</blockquote>
+<h3 id="3-2-pendaftaran-dan-pemeriksaan-status-affiliate"><span class="h-text">3.2 Pendaftaran dan pemeriksaan status affiliate</span><a class="anchor" href="#3-2-pendaftaran-dan-pemeriksaan-status-affiliate" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>Jika belum mendaftar, pakai halaman resmi: <a href="https://shopee.co.id/m/daftar-affiliate">https://shopee.co.id/m/daftar-affiliate</a></p>
+<p><strong>Jika akun sudah terdaftar.</strong> Periksa apakah kamu sudah bisa mengakses fitur yang dibutuhkan untuk promosi: pencarian produk, pembuatan link, informasi komisi, dan laporan performa sesuai akses akunmu. Jangan langsung menganggap akun aktif hanya karena formulir berhasil dikirim.</p>
+<p><strong>Jika akun belum aktif.</strong> Tunda promosi yang butuh akses atau persetujuan itu sampai statusnya jelas. Periksa notifikasi dan ikuti petunjuk resmi Shopee.</p>
+<h3 id="3-3-pengaturan-kanal-promosi"><span class="h-text">3.3 Pengaturan kanal promosi</span><a class="anchor" href="#3-3-pengaturan-kanal-promosi" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>Kanal promosi adalah tempat kamu menerbitkan konten untuk menjangkau calon pembeli. Di tahap awal, siapkan satu kanal utama dulu. Contohnya:</p>
+<ul>
+<li>TikTok untuk video pendek.</li>
+<li>Instagram untuk Reels dan konten visual.</li>
+<li>YouTube untuk video pendek atau tutorial.</li>
+<li>Facebook untuk konten Feed atau Reels.</li>
+<li>Website untuk artikel dan panduan produk.</li>
+</ul>
+<p>Daftar lengkap kanal yang bisa dipakai ada di Modul 02. Kanal yang tepat bergantung pada jenis produk, audiens, kemampuan produksi, dan ketentuan program.</p>
+<p><strong>Contoh positioning akun.</strong> Kamu memilih niche perlengkapan rumah untuk orang yang tinggal di kos. Positioning yang bisa kamu pakai:</p>
+<blockquote class="callout">
+<p>Konten tips memilih perlengkapan kos yang praktis, hemat tempat, dan sesuai kebutuhan sehari-hari.</p>
+</blockquote>
+<p>Dengan positioning ini, arah kontenmu jelas. Kamu tidak perlu mempromosikan semua kategori produk secara acak.</p>
+<h3 id="3-4-pengaturan-pembayaran"><span class="h-text">3.4 Pengaturan pembayaran</span><a class="anchor" href="#3-4-pengaturan-pembayaran" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>Pengaturan pembayaran memastikan komisi yang memenuhi syarat bisa diproses sesuai ketentuan program. Data yang diminta bisa bergantung pada aturan dan status akunmu.</p>
+<p>Jangan mengisi informasi pembayaran dengan data orang lain tanpa dasar yang sah atau yang bertentangan dengan ketentuan program.</p>
+<blockquote class="callout">
+<p><strong>Perlu dipahami:</strong> penghasilan di dashboard belum tentu berarti dana sudah ada di rekening. Periksa status komisi, kelengkapan administrasi, dan status pembayaran secara terpisah.</p>
+</blockquote>
+<h3 id="3-5-informasi-pajak-yang-relevan"><span class="h-text">3.5 Informasi pajak yang relevan</span><a class="anchor" href="#3-5-informasi-pajak-yang-relevan" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>Pengaturan pajak adalah bagian dari administrasi penghasilan, bukan formalitas.</p>
+<p>Periksa persyaratan terbaru Shopee untuk dokumen identitas, informasi perpajakan, dan pemotongan pajak. Kewajiban pajak pribadimu juga bergantung pada situasimu.</p>
+<p>Jangan menebak jumlah pajak yang harus dibayar. Jangan menganggap pemotongan oleh platform selalu menyelesaikan seluruh kewajiban pajakmu.</p>
+<h3 id="3-6-mengenal-dashboard-shopee-affiliate"><span class="h-text">3.6 Mengenal dashboard Shopee Affiliate</span><a class="anchor" href="#3-6-mengenal-dashboard-shopee-affiliate" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>Dashboard adalah tempat kamu memeriksa informasi operasional dan performa akun affiliate. Nama menu bisa berubah. Pelajari fungsi tiap menu dari tampilan akunmu.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Informasi</th>
+<th>Kegunaan</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Produk</td>
+<td>Mencari produk yang bisa dipromosikan</td>
+</tr>
+<tr>
+<td>Link affiliate</td>
+<td>Membuat atau mengambil link promosi</td>
+</tr>
+<tr>
+<td>Informasi komisi</td>
+<td>Memeriksa tarif dan ketentuan yang tersedia</td>
+</tr>
+<tr>
+<td>Performa</td>
+<td>Memeriksa metrik yang dilaporkan sistem</td>
+</tr>
+<tr>
+<td>Pesanan</td>
+<td>Memeriksa pesanan yang tercatat</td>
+</tr>
+<tr>
+<td>Komisi</td>
+<td>Memeriksa komisi berdasarkan status</td>
+</tr>
+<tr>
+<td>Pembayaran</td>
+<td>Memeriksa pemrosesan dana jika tersedia</td>
+</tr>
+<tr>
+<td>Pusat bantuan</td>
+<td>Mencari informasi dan menyelesaikan masalah</td>
+</tr>
+</tbody>
+</table></div>
+<p>Tidak semua akun atau jenis program menampilkan susunan menu yang sama.</p>
+<h3 id="3-7-pembuatan-dan-pengujian-affiliate-link"><span class="h-text">3.7 Pembuatan dan pengujian affiliate link</span><a class="anchor" href="#3-7-pembuatan-dan-pengujian-affiliate-link" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>Link yang benar penting karena link itu mengarahkan pembeli dan menghubungkan promosimu dengan transaksi lewat mekanisme pelacakan program. Prosedur lengkapnya ada di bagian 5.1.</p>
+<h3 id="3-8-pencatatan-operasional-di-notion"><span class="h-text">3.8 Pencatatan operasional di Notion</span><a class="anchor" href="#3-8-pencatatan-operasional-di-notion" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>Notion bisa kamu pakai sebagai pusat pengelolaan produk, link, konten, dan hasil affiliate.</p>
+<p>Tujuan pencatatan bukan sekadar membuat administrasi rapi. Pencatatan membantu menjawab pertanyaan bisnis:</p>
+<ul>
+<li>Produk mana yang sedang dipromosikan?</li>
+<li>Konten mana yang sudah terbit?</li>
+<li>Konten mana yang menghasilkan klik?</li>
+<li>Apakah klik menghasilkan pesanan?</li>
+<li>Berapa komisi yang disetujui?</li>
+<li>Berapa dana yang sudah dibayarkan?</li>
+<li>Apa yang perlu diperbaiki?</li>
+</ul>
+<p><strong>Peta database.</strong> Sistem pencatatan lengkap terdiri dari enam database. Modul ini membangun tiga database versi awal: Produk, Konten, dan Komisi. Tiga database lain dibangun nanti: Database Link Affiliate di Modul 14, Database Eksperimen di Modul 17, dan Database SOP dan Pengetahuan di Modul 20 dan 23. Kolom tambahan untuk Produk menyusul di Modul 06, dan kolom performa untuk Konten dan Komisi menyusul di Modul 16.</p>
+<p>Pakai nama database persis seperti di bawah dan nama kolom berbahasa Indonesia, supaya modul berikutnya tetap cocok.</p>
+<h4 id="database-1-database-produk-affiliate-versi-awal">Database 1: <code>Database Produk Affiliate</code> (versi awal)</h4>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Kolom</th>
+<th>Tipe Notion</th>
+<th>Fungsi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Nama Produk</td>
+<td>Title</td>
+<td>Nama produk</td>
+</tr>
+<tr>
+<td>ID Produk</td>
+<td>Text</td>
+<td>Kode produk, misalnya P001</td>
+</tr>
+<tr>
+<td>Kategori</td>
+<td>Select</td>
+<td>Kategori produk</td>
+</tr>
+<tr>
+<td>Link Produk</td>
+<td>URL</td>
+<td>Halaman produk</td>
+</tr>
+<tr>
+<td>Harga Saat Dicek</td>
+<td>Number</td>
+<td>Harga pada saat pemeriksaan</td>
+</tr>
+<tr>
+<td>Tarif Komisi</td>
+<td>Text</td>
+<td>Tarif dan sumber verifikasi</td>
+</tr>
+<tr>
+<td>Status</td>
+<td>Select</td>
+<td>Riset, Siap Dipromosikan, Dihentikan</td>
+</tr>
+<tr>
+<td>Tanggal Pemeriksaan</td>
+<td>Date</td>
+<td>Tanggal informasi diperiksa</td>
+</tr>
+<tr>
+<td>Catatan</td>
+<td>Text</td>
+<td>Hal penting tentang produk, termasuk catatan kualitas dan ulasan</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote class="callout warn">
+<p><strong>Penting:</strong> harga dan komisi bisa berubah. Simpan tanggal pemeriksaan agar kamu tahu kapan data itu terakhir diverifikasi.</p>
+</blockquote>
+<p>Kolom lain (Rating, Jumlah Ulasan, Kualitas Penjual, Potensi Konten, Kelayakan Program, Skor Produk) ditambahkan di Modul 06.</p>
+<h4 id="database-2-database-konten-affiliate-versi-awal">Database 2: <code>Database Konten Affiliate</code> (versi awal)</h4>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Kolom</th>
+<th>Tipe Notion</th>
+<th>Fungsi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Judul Konten</td>
+<td>Title</td>
+<td>Nama atau topik konten</td>
+</tr>
+<tr>
+<td>ID Konten</td>
+<td>Text</td>
+<td>Kode konten, misalnya C001</td>
+</tr>
+<tr>
+<td>Produk</td>
+<td>Relation</td>
+<td>Produk yang dipromosikan (relasi ke Database Produk Affiliate)</td>
+</tr>
+<tr>
+<td>Kanal</td>
+<td>Select</td>
+<td>TikTok, Instagram, YouTube, dan lainnya</td>
+</tr>
+<tr>
+<td>Format</td>
+<td>Select</td>
+<td>Tutorial, Review, Perbandingan, Demonstrasi</td>
+</tr>
+<tr>
+<td>Tanggal Publikasi</td>
+<td>Date</td>
+<td>Tanggal konten terbit</td>
+</tr>
+<tr>
+<td>URL Konten</td>
+<td>URL</td>
+<td>Link konten</td>
+</tr>
+<tr>
+<td>Affiliate Link</td>
+<td>URL</td>
+<td>Link promosi (sementara bertipe URL)</td>
+</tr>
+<tr>
+<td>Views</td>
+<td>Number</td>
+<td>Jumlah tayangan (views)</td>
+</tr>
+<tr>
+<td>Klik</td>
+<td>Number</td>
+<td>Jumlah klik</td>
+</tr>
+<tr>
+<td>Pesanan</td>
+<td>Number</td>
+<td>Jumlah pesanan yang tercatat</td>
+</tr>
+<tr>
+<td>Komisi Disetujui</td>
+<td>Number</td>
+<td>Komisi yang sudah disetujui</td>
+</tr>
+<tr>
+<td>Catatan Evaluasi</td>
+<td>Text</td>
+<td>Temuan dan perbaikan</td>
+</tr>
+</tbody>
+</table></div>
+<p>Kolom "Affiliate Link" bertipe URL hanya untuk sementara. Di Modul 14, kolom ini diganti relasi ke Database Link Affiliate.</p>
+<p>Pakai definisi metrik yang konsisten. Misalnya, tentukan apakah data dicatat 24 jam, 7 hari, atau 30 hari setelah konten terbit.</p>
+<h4 id="database-3-database-komisi-affiliate-versi-awal">Database 3: <code>Database Komisi Affiliate</code> (versi awal)</h4>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Kolom</th>
+<th>Tipe Notion</th>
+<th>Fungsi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Periode</td>
+<td>Title</td>
+<td>Periode laporan, misalnya "Oktober 2026 minggu 1"</td>
+</tr>
+<tr>
+<td>Komisi Estimasi</td>
+<td>Number</td>
+<td>Estimasi yang tercatat</td>
+</tr>
+<tr>
+<td>Komisi Pending</td>
+<td>Number</td>
+<td>Komisi yang menunggu proses</td>
+</tr>
+<tr>
+<td>Komisi Disetujui</td>
+<td>Number</td>
+<td>Komisi yang disetujui</td>
+</tr>
+<tr>
+<td>Komisi Dibayarkan</td>
+<td>Number</td>
+<td>Dana yang sudah dibayarkan</td>
+</tr>
+<tr>
+<td>Biaya Usaha</td>
+<td>Number</td>
+<td>Biaya yang relevan</td>
+</tr>
+<tr>
+<td>Bukti Pembayaran</td>
+<td>URL atau Files</td>
+<td>Lokasi bukti</td>
+</tr>
+<tr>
+<td>Catatan</td>
+<td>Text</td>
+<td>Koreksi atau masalah</td>
+</tr>
+</tbody>
+</table></div>
+<p>Kolom Klik, Pesanan, dan kolom lain ditambahkan di Modul 16.</p>
+<p>Status komisi punya empat tahap berurutan: Estimasi, Pending, Disetujui, Dibayarkan. Jangan menjumlahkan komisi dari status yang saling beririsan. Jika satu nominal pindah status, catat sebagai perubahan status, bukan pendapatan baru. Pakai periode yang konsisten dan jangan menghitung nominal yang sama dua kali.</p>
+<h3 id="3-9-pengarsipan-konten-dan-data"><span class="h-text">3.9 Pengarsipan konten dan data</span><a class="anchor" href="#3-9-pengarsipan-konten-dan-data" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>Data yang kamu catat harus mudah ditemukan kembali.</p>
+<p><strong>Struktur halaman Notion yang disarankan:</strong></p>
+<ul>
+<li>Shopee Affiliate Workspace<ul>
+<li>Level 1 — Fondasi</li>
+<li>Database Produk Affiliate</li>
+<li>Database Konten Affiliate</li>
+<li>Database Komisi Affiliate</li>
+<li>Sumber Resmi dan Kebijakan</li>
+<li>Arsip dan Backup</li>
+</ul>
+</li>
+</ul>
+<p><strong>File atau informasi yang perlu disimpan:</strong></p>
+<ul>
+<li>Link sumber resmi.</li>
+<li>Tanggal pemeriksaan kebijakan.</li>
+<li>Daftar produk yang dipromosikan.</li>
+<li>Affiliate link yang dipakai.</li>
+<li>URL konten yang sudah terbit.</li>
+<li>Data performa per periode.</li>
+<li>Catatan status komisi.</li>
+<li>Bukti pembayaran dan potongan pajak jika tersedia.</li>
+<li>Catatan masalah dan hasil penyelesaiannya.</li>
+</ul>
+<blockquote class="callout">
+<p>Jangan menyimpan kata sandi atau kode OTP di database operasional.</p>
+</blockquote>
+<h3 id="3-10-pengamanan-akun"><span class="h-text">3.10 Pengamanan akun</span><a class="anchor" href="#3-10-pengamanan-akun" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>Akun affiliate dan akun media sosialmu adalah aset operasional. Kehilangan akses bisa mengganggu produksi konten dan promosi.</p>
+<p><strong>Waspadai penipuan.</strong> Hati-hati jika ada pihak yang menjanjikan komisi pasti, meminta bayaran untuk membuka akun tanpa dasar resmi, atau meminta OTP dengan alasan aktivasi. Verifikasi semua permintaan lewat kanal resmi Shopee.</p>
+<h3 id="3-11-backup-data-penting"><span class="h-text">3.11 Backup data penting</span><a class="anchor" href="#3-11-backup-data-penting" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>Backup adalah cadangan data agar informasi operasional tidak hanya bergantung pada satu tempat.</p>
+<p><strong>Data yang sebaiknya dicadangkan:</strong></p>
+<ul>
+<li>Daftar produk dan link.</li>
+<li>Daftar konten.</li>
+<li>Catatan performa.</li>
+<li>Catatan komisi.</li>
+<li>Sumber resmi.</li>
+<li>Bukti pembayaran.</li>
+<li>Catatan eksperimen konten.</li>
+</ul>
+<blockquote class="callout">
+<p>Backup tidak menjamin akun Shopee bisa dipulihkan. Tujuannya mengurangi risiko kehilangan catatan operasional.</p>
+</blockquote>
+</section><section class="sec reveal"><h2 id="4-istilah-penting"><span class="h-text">4. Istilah Penting</span><a class="anchor" href="#4-istilah-penting" aria-label="Tautan ke bagian ini">#</a></h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Istilah</th>
+<th>Definisi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Kanal promosi</td>
+<td>Tempat kamu menerbitkan konten untuk menjangkau calon pembeli</td>
+</tr>
+<tr>
+<td>Positioning akun</td>
+<td>Arah atau fokus konten akun, misalnya "konten tips memilih perlengkapan kos yang praktis, hemat tempat, dan sesuai kebutuhan sehari-hari"</td>
+</tr>
+<tr>
+<td>Dashboard affiliate</td>
+<td>Tempat kamu memeriksa informasi operasional dan performa akun affiliate</td>
+</tr>
+<tr>
+<td>Database Produk Affiliate</td>
+<td>Database Notion berisi produk, link produk, harga saat dicek, tarif komisi, status, dan tanggal pemeriksaan</td>
+</tr>
+<tr>
+<td>Database Konten Affiliate</td>
+<td>Database Notion berisi konten, kanal, format, metrik views/klik/pesanan, dan komisi disetujui</td>
+</tr>
+<tr>
+<td>Database Komisi Affiliate</td>
+<td>Database Notion berisi periode, komisi estimasi/pending/disetujui/dibayarkan, biaya usaha, dan bukti pembayaran</td>
+</tr>
+<tr>
+<td>Backup</td>
+<td>Cadangan data agar informasi operasional tidak hanya bergantung pada satu tempat</td>
+</tr>
+</tbody>
+</table></div>
+</section><section class="sec reveal"><h2 id="5-langkah-praktik"><span class="h-text">5. Langkah Praktik</span><a class="anchor" href="#5-langkah-praktik" aria-label="Tautan ke bagian ini">#</a></h2>
+<h3 id="5-1-prosedur-membuat-dan-menguji-affiliate-link"><span class="h-text">5.1 Prosedur membuat dan menguji affiliate link</span><a class="anchor" href="#5-1-prosedur-membuat-dan-menguji-affiliate-link" aria-label="Tautan ke bagian ini">#</a></h3>
+<ol>
+<li><strong>Pilih produk.</strong> Pilih satu produk yang sesuai niche dan memenuhi ketentuan promosi.</li>
+<li><strong>Buat link.</strong> Pakai fitur pembuatan link di sistem affiliate.</li>
+<li><strong>Salin dan simpan.</strong> Masukkan link ke database operasionalmu.</li>
+<li><strong>Uji link.</strong> Buka link untuk memastikan produk yang dituju benar. Pengujian ini hanya memeriksa akses dan tujuan link, bukan membuktikan atribusi komisi pasti berfungsi.</li>
+<li><strong>Periksa kanal.</strong> Pastikan cara membagikan link sesuai kebijakan Shopee dan platform tempat konten terbit.</li>
+<li><strong>Catat tanggal.</strong> Catat kapan link dibuat dan kapan dipakai di konten.</li>
+</ol>
+<h3 id="5-2-prosedur-backup-sederhana"><span class="h-text">5.2 Prosedur backup sederhana</span><a class="anchor" href="#5-2-prosedur-backup-sederhana" aria-label="Tautan ke bagian ini">#</a></h3>
+<ol>
+<li>Perbarui database Notion.</li>
+<li>Periksa kelengkapan data.</li>
+<li>Ekspor atau cadangkan data sesuai fitur yang tersedia.</li>
+<li>Simpan salinan di tempat yang aman.</li>
+<li>Lakukan pemeriksaan berkala.</li>
+<li>Pastikan salinan bisa dibuka kembali.</li>
+</ol>
+</section><section class="sec reveal"><h2 id="6-contoh-dan-perhitungan"><span class="h-text">6. Contoh dan Perhitungan</span><a class="anchor" href="#6-contoh-dan-perhitungan" aria-label="Tautan ke bagian ini">#</a></h2>
+<p>Modul ini tidak memperkenalkan rumus baru. Rumus komisi, CTR, CVR, dan hasil setelah biaya ada di Modul 01. Bagian ini berisi template pencatatan.</p>
+<h3 id="simulasi-pencatatan-contoh-isi-database"><span class="h-text">Simulasi pencatatan (contoh isi database)</span><a class="anchor" href="#simulasi-pencatatan-contoh-isi-database" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>Kamu membuat konten tentang lampu meja belajar. Angka berikut adalah simulasi, bukan laporan transaksi nyata.</p>
+<p><strong>Baris di Database Konten Affiliate:</strong></p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Kolom</th>
+<th>Isi contoh</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Judul Konten</td>
+<td>Tutorial memilih lampu meja belajar</td>
+</tr>
+<tr>
+<td>ID Konten</td>
+<td>C001</td>
+</tr>
+<tr>
+<td>Views</td>
+<td>5.000</td>
+</tr>
+<tr>
+<td>Klik</td>
+<td>100</td>
+</tr>
+<tr>
+<td>Pesanan</td>
+<td>5</td>
+</tr>
+<tr>
+<td>Komisi Disetujui</td>
+<td>Rp15.000</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Baris di Database Komisi Affiliate:</strong></p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Kolom</th>
+<th>Isi contoh</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Periode</td>
+<td>Simulasi lampu meja belajar</td>
+</tr>
+<tr>
+<td>Komisi Estimasi</td>
+<td>Rp25.000</td>
+</tr>
+<tr>
+<td>Komisi Pending</td>
+<td>Tidak diisi (atau Rp0)</td>
+</tr>
+<tr>
+<td>Komisi Disetujui</td>
+<td>Rp15.000</td>
+</tr>
+<tr>
+<td>Komisi Dibayarkan</td>
+<td>Rp10.000</td>
+</tr>
+<tr>
+<td>Catatan</td>
+<td>Data simulasi, bukan transaksi nyata</td>
+</tr>
+</tbody>
+</table></div>
+<p>Komisi Pending dikosongkan karena contoh ini hanya menyebut tiga angka. Kamu boleh mengisinya Rp0. Pada data nyata, isi sesuai dashboard.</p>
+<p>Tujuan simulasi: belajar mencatat perkembangan data tanpa mencampur estimasi dengan dana yang sudah dibayarkan. Ingat, angka Estimasi, Disetujui, dan Dibayarkan tidak dijumlahkan.</p>
+</section><section class="sec reveal"><h2 id="7-kesalahan-umum-dan-cara-menghindarinya"><span class="h-text">7. Kesalahan Umum dan Cara Menghindarinya</span><a class="anchor" href="#7-kesalahan-umum-dan-cara-menghindarinya" aria-label="Tautan ke bagian ini">#</a></h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Kesalahan</th>
+<th>Cara menghindari</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Menganggap akun aktif hanya karena formulir berhasil dikirim</td>
+<td>Periksa status pendaftaran dan akses fitur yang diperlukan di dashboard</td>
+</tr>
+<tr>
+<td>Memulai promosi padahal akun belum aktif</td>
+<td>Tunda promosi yang butuh akses atau persetujuan sampai status jelas; ikuti petunjuk resmi Shopee</td>
+</tr>
+<tr>
+<td>Menyiapkan keamanan akun setelah ada masalah</td>
+<td>Siapkan kata sandi kuat, verifikasi keamanan, dan metode pemulihan sejak awal</td>
+</tr>
+<tr>
+<td>Memberikan kata sandi, OTP, atau kode pemulihan kepada "admin affiliate"</td>
+<td>Jangan berikan; verifikasi semua permintaan lewat kanal resmi Shopee</td>
+</tr>
+<tr>
+<td>Mempromosikan semua kategori produk secara acak</td>
+<td>Tentukan satu kanal utama dan positioning konten yang jelas</td>
+</tr>
+<tr>
+<td>Mengisi data pembayaran dengan data orang lain</td>
+<td>Jangan lakukan tanpa dasar yang sah atau jika bertentangan dengan ketentuan program</td>
+</tr>
+<tr>
+<td>Menganggap angka di dashboard sama dengan dana di rekening</td>
+<td>Periksa status komisi, kelengkapan administrasi, dan status pembayaran secara terpisah</td>
+</tr>
+<tr>
+<td>Menebak jumlah pajak atau menganggap pemotongan platform menyelesaikan semua kewajiban</td>
+<td>Periksa ketentuan terbaru dan kewajiban perpajakan pribadimu</td>
+</tr>
+<tr>
+<td>Menganggap uji link membuktikan atribusi komisi berfungsi</td>
+<td>Pengujian hanya memeriksa akses dan tujuan link</td>
+</tr>
+<tr>
+<td>Menguji komisi dengan membuat transaksi sendiri</td>
+<td>Tidak perlu membuat transaksi sendiri untuk menguji komisi</td>
+</tr>
+<tr>
+<td>Menjumlahkan komisi dari status yang saling beririsan</td>
+<td>Catat perpindahan status sebagai perubahan status, bukan pendapatan baru; pakai periode konsisten</td>
+</tr>
+<tr>
+<td>Menyimpan kata sandi atau OTP di database operasional</td>
+<td>Jangan simpan di Notion; simpan informasi pemulihan di tempat yang aman</td>
+</tr>
+<tr>
+<td>Mengandalkan satu tempat penyimpanan data</td>
+<td>Lakukan backup berkala dan pastikan salinan bisa dibuka kembali</td>
+</tr>
+<tr>
+<td>Percaya pihak yang menjanjikan komisi pasti atau meminta bayaran untuk membuka akun</td>
+<td>Verifikasi lewat kanal resmi Shopee</td>
+</tr>
+</tbody>
+</table></div>
+</section><section class="sec reveal"><h2 id="8-tugas-dan-checklist"><span class="h-text">8. Tugas dan Checklist</span><a class="anchor" href="#8-tugas-dan-checklist" aria-label="Tautan ke bagian ini">#</a></h2>
+<h3 id="tugas-1-periksa-kesiapan-akun-shopee"><span class="h-text">Tugas 1: Periksa kesiapan akun Shopee</span><a class="anchor" href="#tugas-1-periksa-kesiapan-akun-shopee" aria-label="Tautan ke bagian ini">#</a></h3>
+<ul>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-03-persiapan-akun-dan-operasional.html#1"> <span>Bisa masuk ke akun Shopee.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-03-persiapan-akun-dan-operasional.html#2"> <span>Nomor telepon atau email akun bisa diakses.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-03-persiapan-akun-dan-operasional.html#3"> <span>Informasi akun benar.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-03-persiapan-akun-dan-operasional.html#4"> <span>Metode pemulihan akun tersedia.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-03-persiapan-akun-dan-operasional.html#5"> <span>Kata sandi kuat dan unik.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-03-persiapan-akun-dan-operasional.html#6"> <span>Verifikasi keamanan diaktifkan jika tersedia.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-03-persiapan-akun-dan-operasional.html#7"> <span>Akun tidak sedang dibatasi sehingga menghalangi aktivitas.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-03-persiapan-akun-dan-operasional.html#8"> <span>Persyaratan pendaftaran affiliate sudah diperiksa.</span></label></li>
+</ul>
+<h3 id="tugas-2-pendaftaran-dan-status-affiliate"><span class="h-text">Tugas 2: Pendaftaran dan status affiliate</span><a class="anchor" href="#tugas-2-pendaftaran-dan-status-affiliate" aria-label="Tautan ke bagian ini">#</a></h3>
+<ul>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-03-persiapan-akun-dan-operasional.html#9"> <span>Buka halaman resmi.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-03-persiapan-akun-dan-operasional.html#10"> <span>Baca persyaratan yang berlaku.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-03-persiapan-akun-dan-operasional.html#11"> <span>Isi formulir dengan informasi yang benar.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-03-persiapan-akun-dan-operasional.html#12"> <span>Masukkan kanal promosi sesuai instruksi.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-03-persiapan-akun-dan-operasional.html#13"> <span>Periksa kembali data.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-03-persiapan-akun-dan-operasional.html#14"> <span>Kirim formulir.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-03-persiapan-akun-dan-operasional.html#15"> <span>Periksa notifikasi dan email.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-03-persiapan-akun-dan-operasional.html#16"> <span>Periksa status pendaftaran.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-03-persiapan-akun-dan-operasional.html#17"> <span>Simpan informasi hasil pendaftaran.</span></label></li>
+</ul>
+<h3 id="tugas-3-siapkan-kanal-promosi"><span class="h-text">Tugas 3: Siapkan kanal promosi</span><a class="anchor" href="#tugas-3-siapkan-kanal-promosi" aria-label="Tautan ke bagian ini">#</a></h3>
+<ul>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-03-persiapan-akun-dan-operasional.html#18"> <span>Tentukan satu kanal utama.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-03-persiapan-akun-dan-operasional.html#19"> <span>Pastikan kanal bisa diakses.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-03-persiapan-akun-dan-operasional.html#20"> <span>Periksa persyaratan kanal dari Shopee.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-03-persiapan-akun-dan-operasional.html#21"> <span>Tentukan topik utama konten.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-03-persiapan-akun-dan-operasional.html#22"> <span>Siapkan profil yang menjelaskan fokus konten.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-03-persiapan-akun-dan-operasional.html#23"> <span>Siapkan tempat penempatan link yang diperbolehkan.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-03-persiapan-akun-dan-operasional.html#24"> <span>Periksa kebijakan platform promosi.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-03-persiapan-akun-dan-operasional.html#25"> <span>Siapkan cara mencatat performa konten.</span></label></li>
+</ul>
+<h3 id="tugas-4-periksa-pembayaran-dan-pajak"><span class="h-text">Tugas 4: Periksa pembayaran dan pajak</span><a class="anchor" href="#tugas-4-periksa-pembayaran-dan-pajak" aria-label="Tautan ke bagian ini">#</a></h3>
+<ul>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-03-persiapan-akun-dan-operasional.html#26"> <span>Buka pengaturan pembayaran atau informasi akun yang relevan.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-03-persiapan-akun-dan-operasional.html#27"> <span>Periksa metode pembayaran yang tersedia.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-03-persiapan-akun-dan-operasional.html#28"> <span>Pastikan nama dan data penerima sesuai.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-03-persiapan-akun-dan-operasional.html#29"> <span>Pastikan rekening atau akun pembayaran yang diperlukan aktif.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-03-persiapan-akun-dan-operasional.html#30"> <span>Periksa persyaratan identitas.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-03-persiapan-akun-dan-operasional.html#31"> <span>Baca ketentuan pajak di syarat dan ketentuan affiliate.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-03-persiapan-akun-dan-operasional.html#32"> <span>Periksa status kelengkapan data.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-03-persiapan-akun-dan-operasional.html#33"> <span>Simpan bukti atau konfirmasi yang tersedia, termasuk bukti pemotongan pajak jika ada.</span></label></li>
+</ul>
+<h3 id="tugas-5-kenali-dashboard"><span class="h-text">Tugas 5: Kenali dashboard</span><a class="anchor" href="#tugas-5-kenali-dashboard" aria-label="Tautan ke bagian ini">#</a></h3>
+<ul>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-03-persiapan-akun-dan-operasional.html#34"> <span>Masuk ke dashboard affiliate.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-03-persiapan-akun-dan-operasional.html#35"> <span>Cari fitur pemilihan produk.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-03-persiapan-akun-dan-operasional.html#36"> <span>Cari fitur pembuatan link.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-03-persiapan-akun-dan-operasional.html#37"> <span>Cari informasi komisi.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-03-persiapan-akun-dan-operasional.html#38"> <span>Cari laporan performa.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-03-persiapan-akun-dan-operasional.html#39"> <span>Cari informasi status transaksi.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-03-persiapan-akun-dan-operasional.html#40"> <span>Cari status pembayaran.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-03-persiapan-akun-dan-operasional.html#41"> <span>Catat nama menu yang benar-benar ada di akunmu. Catatan ini menjadi panduan operasional pribadimu.</span></label></li>
+</ul>
+<h3 id="tugas-6-buat-satu-link-pengujian"><span class="h-text">Tugas 6: Buat satu link pengujian</span><a class="anchor" href="#tugas-6-buat-satu-link-pengujian" aria-label="Tautan ke bagian ini">#</a></h3>
+<ul>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-03-persiapan-akun-dan-operasional.html#42"> <span>Pilih satu produk yang sesuai.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-03-persiapan-akun-dan-operasional.html#43"> <span>Periksa informasi produk.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-03-persiapan-akun-dan-operasional.html#44"> <span>Buat affiliate link lewat mekanisme resmi.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-03-persiapan-akun-dan-operasional.html#45"> <span>Buka link untuk memeriksa tujuan.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-03-persiapan-akun-dan-operasional.html#46"> <span>Pastikan halaman produk sesuai tujuan dan kanal promosi sesuai ketentuan.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-03-persiapan-akun-dan-operasional.html#47"> <span>Simpan link di Notion.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-03-persiapan-akun-dan-operasional.html#48"> <span>Catat tanggal pemeriksaan.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-03-persiapan-akun-dan-operasional.html#49"> <span>Catat kanal yang akan dipakai.</span></label></li>
+</ul>
+<p>Tidak perlu membuat transaksi sendiri untuk menguji komisi.</p>
+<h3 id="tugas-7-buat-database-operasional"><span class="h-text">Tugas 7: Buat database operasional</span><a class="anchor" href="#tugas-7-buat-database-operasional" aria-label="Tautan ke bagian ini">#</a></h3>
+<ul>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-03-persiapan-akun-dan-operasional.html#50"> <span>Buat Database Produk Affiliate (kolom versi awal).</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-03-persiapan-akun-dan-operasional.html#51"> <span>Buat Database Konten Affiliate (kolom versi awal).</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-03-persiapan-akun-dan-operasional.html#52"> <span>Buat Database Komisi Affiliate (kolom versi awal).</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-03-persiapan-akun-dan-operasional.html#53"> <span>Buat halaman Sumber Resmi dan Kebijakan.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-03-persiapan-akun-dan-operasional.html#54"> <span>Buat halaman Arsip dan Backup.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-03-persiapan-akun-dan-operasional.html#55"> <span>Masukkan satu contoh produk.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-03-persiapan-akun-dan-operasional.html#56"> <span>Masukkan satu contoh rencana konten.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-03-persiapan-akun-dan-operasional.html#57"> <span>Masukkan satu contoh catatan komisi memakai data simulasi di bagian 6.</span></label></li>
+</ul>
+<h3 id="tugas-8-amankan-akun-dan-siapkan-backup"><span class="h-text">Tugas 8: Amankan akun dan siapkan backup</span><a class="anchor" href="#tugas-8-amankan-akun-dan-siapkan-backup" aria-label="Tautan ke bagian ini">#</a></h3>
+<ul>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-03-persiapan-akun-dan-operasional.html#58"> <span>Pakai kata sandi unik.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-03-persiapan-akun-dan-operasional.html#59"> <span>Aktifkan fitur keamanan yang tersedia.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-03-persiapan-akun-dan-operasional.html#60"> <span>Amankan email dan nomor telepon pemulihan.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-03-persiapan-akun-dan-operasional.html#61"> <span>Jangan bagikan OTP.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-03-persiapan-akun-dan-operasional.html#62"> <span>Jangan beri akses akun kepada pihak yang tidak dipercaya.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-03-persiapan-akun-dan-operasional.html#63"> <span>Hindari link login yang mencurigakan.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-03-persiapan-akun-dan-operasional.html#64"> <span>Akses dashboard lewat kanal resmi.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-03-persiapan-akun-dan-operasional.html#65"> <span>Periksa aktivitas akun jika tersedia.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-03-persiapan-akun-dan-operasional.html#66"> <span>Simpan informasi pemulihan di tempat yang aman.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-03-persiapan-akun-dan-operasional.html#67"> <span>Jalankan prosedur backup di bagian 5.2 satu kali.</span></label></li>
+</ul>
+</section><section class="sec reveal sec-latihan"><h2 id="9-latihan-dan-kunci-jawaban"><span class="h-text">9. Latihan dan Kunci Jawaban</span><a class="anchor" href="#9-latihan-dan-kunci-jawaban" aria-label="Tautan ke bagian ini">#</a></h2>
+<div class="qa"><p class="q"><strong>Soal 1.</strong> Mengapa formulir pendaftaran yang berhasil dikirim belum berarti akunmu aktif, dan apa yang harus kamu lakukan?</p><details class="ans"><summary>Lihat jawaban</summary><div class="a"><p><strong>Jawaban:</strong> Karena status akun perlu kamu periksa sendiri. Cek apakah kamu sudah bisa mengakses fitur untuk promosi (pencarian produk, pembuatan link, informasi komisi, laporan performa). Jika belum aktif, tunda promosi yang butuh akses atau persetujuan itu sampai statusnya jelas, periksa notifikasi, dan ikuti petunjuk resmi Shopee.</p></div></details></div>
+<div class="qa"><p class="q"><strong>Soal 2.</strong> Tiga database Notion apa yang kamu buat di modul ini, dan apa nama persisnya?</p><details class="ans"><summary>Lihat jawaban</summary><div class="a"><p><strong>Jawaban:</strong> <code>Database Produk Affiliate</code>, <code>Database Konten Affiliate</code>, dan <code>Database Komisi Affiliate</code>. Ketiganya versi awal; tiga database lain dibangun di Modul 14, 17, dan 20/23.</p></div></details></div>
+<div class="qa"><p class="q"><strong>Soal 3.</strong> Di Database Produk Affiliate, pilihan apa saja pada kolom Status?</p><details class="ans"><summary>Lihat jawaban</summary><div class="a"><p><strong>Jawaban:</strong> Riset, Siap Dipromosikan, Dihentikan.</p></div></details></div>
+<div class="qa"><p class="q"><strong>Soal 4.</strong> Pada simulasi, konten lampu meja belajar mencatat 5.000 views, 100 klik, 5 pesanan, komisi estimasi Rp25.000, disetujui Rp15.000, dan dibayarkan Rp10.000. Apa catatan pentingnya?</p><details class="ans"><summary>Lihat jawaban</summary><div class="a"><p><strong>Jawaban:</strong> Angka itu data simulasi, bukan laporan transaksi nyata. Tujuannya belajar mencatat perkembangan data tanpa mencampur estimasi dengan dana yang sudah dibayarkan. Ketiga angka komisi tidak dijumlahkan.</p></div></details></div>
+<div class="qa"><p class="q"><strong>Soal 5.</strong> Apa batas pengujian affiliate link pada langkah 4 prosedur?</p><details class="ans"><summary>Lihat jawaban</summary><div class="a"><p><strong>Jawaban:</strong> Pengujian hanya memeriksa akses dan tujuan link, bukan membuktikan bahwa atribusi komisi pasti berfungsi.</p></div></details></div>
+<div class="qa"><p class="q"><strong>Soal 6.</strong> Apa yang tidak boleh disimpan di database operasional, dan apa batas manfaat backup?</p><details class="ans"><summary>Lihat jawaban</summary><div class="a"><p><strong>Jawaban:</strong> Jangan simpan kata sandi atau kode OTP di database operasional. Backup tidak menjamin akun Shopee bisa dipulihkan; tujuannya mengurangi risiko kehilangan catatan operasional.</p></div></details></div>
+<div class="qa"><p class="q"><strong>Soal 7.</strong> Sebutkan empat status komisi secara berurutan.</p><details class="ans"><summary>Lihat jawaban</summary><div class="a"><p><strong>Jawaban:</strong> Estimasi, Pending, Disetujui, Dibayarkan.</p></div></details></div>
+</section><section class="sec reveal"><h2 id="10-standar-kelulusan"><span class="h-text">10. Standar Kelulusan</span><a class="anchor" href="#10-standar-kelulusan" aria-label="Tautan ke bagian ini">#</a></h2>
+<p>Kamu dianggap menguasai modul ini jika semua tugas selesai dan kamu bisa menunjukkan alur kerja dari memilih produk sampai mencatat komisi. Kamu juga harus bisa memastikan status akun, menemukan fungsi utama dashboard, membuat dan memeriksa satu affiliate link, mengamankan akun, menyiapkan backup, dan menyimpan sumber resmi beserta tanggal pemeriksaan.</p></section>
+</article>
+<div class="complete reveal"><button type="button" id="mark-done" data-page="modul/modul-03-persiapan-akun-dan-operasional.html">Tandai modul ini selesai</button><span class="hint">Tersimpan di browser kamu.</span></div>
+<nav class="pager" aria-label="Halaman sebelumnya dan berikutnya"><a class="prev" href="../modul/modul-02-shopee-affiliate-program-dan-kebijakan.html"><small>← Sebelumnya</small><span>02. Shopee Affiliate Program dan Kebijakan</span></a><a class="next" href="../level-2.html"><small>Berikutnya →</small><span>Level 2 — Market and Product Research</span></a></nav>
+<footer class="foot">
+  <p>Materi pembelajaran, bukan nasihat hukum atau pajak. Aturan Shopee Affiliate bisa berubah, jadi selalu cek sumber resmi dan catat tanggal pemeriksaannya. Situs ini bukan situs resmi Shopee.</p>
+</footer>
+</main>
+<aside class="toc" aria-label="Isi halaman"><p class="toc-title">Di halaman ini</p><ol><li><a href="#1-tujuan-pembelajaran">Tujuan Pembelajaran</a></li><li><a href="#2-ringkasan-konsep-utama">Ringkasan Konsep Utama</a></li><li><a href="#3-penjelasan">Penjelasan</a></li><li><a href="#4-istilah-penting">Istilah Penting</a></li><li><a href="#5-langkah-praktik">Langkah Praktik</a></li><li><a href="#6-contoh-dan-perhitungan">Contoh dan Perhitungan</a></li><li><a href="#7-kesalahan-umum-dan-cara-menghindarinya">Kesalahan Umum dan Cara Menghindarinya</a></li><li><a href="#8-tugas-dan-checklist">Tugas dan Checklist</a></li><li><a href="#9-latihan-dan-kunci-jawaban">Latihan dan Kunci Jawaban</a></li><li><a href="#10-standar-kelulusan">Standar Kelulusan</a></li></ol></aside>
+</div>
+<nav class="bottom-nav" id="bottom-nav" aria-label="Navigasi cepat">
+  <a class="bn-item" href="../index.html"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5"/><path d="M5 10v10h14V10"/></svg><span>Beranda</span></a>
+  <button class="bn-item" id="bn-menu" type="button" aria-controls="sidebar"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="7" rx="1.5"/><rect x="4" y="13" width="7" height="7" rx="1.5"/><rect x="13" y="13" width="7" height="7" rx="1.5"/></svg><span>Materi</span></button>
+  <button class="bn-item" id="bn-search" type="button"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span>Cari</span></button>
+  <a class="bn-item bn-primary" href="../level-2.html"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg><span>Lanjut</span></a>
+</nav>
+<button class="to-top" id="to-top" type="button" aria-label="Kembali ke atas" hidden><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5"/><path d="m5 12 7-7 7 7"/></svg></button>
+<div class="toast-wrap" id="toasts" aria-live="polite"></div>
+<script src="../assets/search-index.js"></script>
+<script src="../assets/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,579 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Modul 23 — Otomasi dan Sistem Kerja · Shopee Affiliate Academy</title>
+<meta name="description" content="Setelah modul ini, kamu mampu:">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#EE4D2D">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/style.css">
+<script>(function(){var d=document.documentElement;d.classList.add('js');try{var t=localStorage.getItem('sea-theme');if(t&&t!=='auto')d.setAttribute('data-theme',t);var p=JSON.parse(localStorage.getItem('sea-prefs')||'{}');['fs','lh','font','width'].forEach(function(k){if(p[k])d.setAttribute('data-'+k,p[k]);});if(p.focus)d.setAttribute('data-focus','1');}catch(e){}})();</script>
+</head>
+<body data-root="../" data-kind="modul" data-page="modul/modul-23-otomasi-dan-sistem-kerja.html" data-title="Modul 23 — Otomasi dan Sistem Kerja">
+<a class="skip" href="#isi">Lewati ke isi</a>
+<div class="read-progress" id="read-progress" aria-hidden="true"></div>
+<div class="top" id="top">
+<header class="topbar">
+  <button class="icon-btn menu-btn" id="menu-btn" aria-label="Buka menu materi" aria-controls="sidebar" aria-expanded="false"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+  <a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true">SA</span><span class="brand-name">Shopee Affiliate Academy</span></a>
+  <div class="search" id="search">
+    <div class="search-box">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input id="search-input" type="search" placeholder="Cari materi…" autocomplete="off" aria-label="Cari materi">
+      <button class="icon-btn search-close" id="search-close" type="button" aria-label="Tutup pencarian"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+    </div>
+    <div class="search-results" id="search-results" hidden></div>
+  </div>
+  <button class="icon-btn desk-only" id="focus-btn" aria-label="Mode fokus" title="Mode fokus"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9V5h4M20 9V5h-4M4 15v4h4M20 15v4h-4"/></svg></button>
+  <button class="icon-btn aa-btn" id="aa-btn" aria-label="Pengaturan baca" aria-expanded="false" aria-controls="prefs"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20 10 5l6 15"/><path d="M6.5 14.5h7"/><path d="M15 12h5M17.5 12v8"/></svg></button>
+</header>
+<div class="subbar" id="subbar" aria-hidden="true"><span class="sb-title"></span><span class="sb-pct"></span></div>
+</div>
+<div class="prefs" id="prefs" hidden role="dialog" aria-label="Pengaturan tampilan">
+  <div class="prefs-head"><strong>Pengaturan baca</strong><button class="icon-btn sm" id="prefs-close" type="button" aria-label="Tutup"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
+  <div class="pref-row"><span>Ukuran teks</span><div class="seg" role="group" aria-label="Ukuran teks">
+    <button type="button" id="fs-down" aria-label="Perkecil teks">A−</button><output id="fs-val">3/5</output><button type="button" id="fs-up" aria-label="Perbesar teks">A+</button></div></div>
+  <div class="pref-row"><span>Jarak baris</span><div class="seg"><button type="button" data-pref="lh" data-val="tight">Rapat</button><button type="button" data-pref="lh" data-val="normal">Normal</button><button type="button" data-pref="lh" data-val="loose">Lega</button></div></div>
+  <div class="pref-row"><span>Huruf</span><div class="seg"><button type="button" data-pref="font" data-val="sans">Sans</button><button type="button" data-pref="font" data-val="serif">Serif</button></div></div>
+  <div class="pref-row"><span>Lebar teks</span><div class="seg"><button type="button" data-pref="width" data-val="normal">Standar</button><button type="button" data-pref="width" data-val="wide">Lebar</button></div></div>
+  <div class="pref-row"><span>Tema</span><div class="seg theme-seg"><button type="button" data-pref="theme" data-val="light">Terang</button><button type="button" data-pref="theme" data-val="sepia">Sepia</button><button type="button" data-pref="theme" data-val="dark">Gelap</button><button type="button" data-pref="theme" data-val="auto">Auto</button></div></div>
+  <label class="pref-switch"><input type="checkbox" id="pref-break" checked><span class="sw"></span><span>Pengingat istirahat (tiap 25 menit)</span></label>
+  <label class="pref-switch desk-only"><input type="checkbox" id="pref-focus"><span class="sw"></span><span>Mode fokus (sembunyikan menu)</span></label>
+  <button type="button" class="reset" id="prefs-reset">Kembalikan ke bawaan</button>
+</div>
+<div class="shell">
+<nav class="sidebar" id="sidebar" aria-label="Navigasi materi">
+<div class="nav-group">
+<a href="../index.html" data-page="index.html"><span>Beranda dan Pengantar</span></a>
+<a href="../master.html" data-page="master.html"><span>Rangkuman Master</span></a>
+</div>
+<details class="nav-level" data-mods="modul/modul-01-dasar-affiliate-marketing.html,modul/modul-02-shopee-affiliate-program-dan-kebijakan.html,modul/modul-03-persiapan-akun-dan-operasional.html"><summary><span class="lv-badge">1</span><span class="lv-name">Fundamentals</span><span class="lv-count">0/3</span></summary>
+<a href="../level-1.html" data-page="level-1.html"><span>Ringkasan level</span></a>
+<a href="../modul/modul-01-dasar-affiliate-marketing.html" data-page="modul/modul-01-dasar-affiliate-marketing.html"><span>Modul 01 — Dasar Affiliate Marketing</span></a>
+<a href="../modul/modul-02-shopee-affiliate-program-dan-kebijakan.html" data-page="modul/modul-02-shopee-affiliate-program-dan-kebijakan.html"><span>Modul 02 — Shopee Affiliate Program dan Kebijakan</span></a>
+<a href="../modul/modul-03-persiapan-akun-dan-operasional.html" data-page="modul/modul-03-persiapan-akun-dan-operasional.html"><span>Modul 03 — Persiapan Akun dan Operasional</span></a>
+</details>
+<details class="nav-level" data-mods="modul/modul-04-riset-pasar-dan-permintaan.html,modul/modul-05-niche-audiens-dan-positioning.html,modul/modul-06-riset-dan-evaluasi-produk.html,modul/modul-07-riset-kompetitor.html"><summary><span class="lv-badge">2</span><span class="lv-name">Market and Product Research</span><span class="lv-count">0/4</span></summary>
+<a href="../level-2.html" data-page="level-2.html"><span>Ringkasan level</span></a>
+<a href="../modul/modul-04-riset-pasar-dan-permintaan.html" data-page="modul/modul-04-riset-pasar-dan-permintaan.html"><span>Modul 04 — Riset Pasar dan Permintaan</span></a>
+<a href="../modul/modul-05-niche-audiens-dan-positioning.html" data-page="modul/modul-05-niche-audiens-dan-positioning.html"><span>Modul 05 — Niche, Audiens, dan Positioning</span></a>
+<a href="../modul/modul-06-riset-dan-evaluasi-produk.html" data-page="modul/modul-06-riset-dan-evaluasi-produk.html"><span>Modul 06 — Riset dan Evaluasi Produk</span></a>
+<a href="../modul/modul-07-riset-kompetitor.html" data-page="modul/modul-07-riset-kompetitor.html"><span>Modul 07 — Riset Kompetitor</span></a>
+</details>
+<details class="nav-level" data-mods="modul/modul-08-strategi-channel-dan-traffic-organik.html,modul/modul-09-strategi-konten.html,modul/modul-10-copywriting-dan-hook.html,modul/modul-11-produksi-video-dan-visual.html,modul/modul-12-seo-dan-konten-berbasis-pencarian.html,modul/modul-13-distribusi-dan-community-building.html"><summary><span class="lv-badge">3</span><span class="lv-name">Content and Traffic</span><span class="lv-count">0/6</span></summary>
+<a href="../level-3.html" data-page="level-3.html"><span>Ringkasan level</span></a>
+<a href="../modul/modul-08-strategi-channel-dan-traffic-organik.html" data-page="modul/modul-08-strategi-channel-dan-traffic-organik.html"><span>Modul 08 — Strategi Channel dan Traffic Organik</span></a>
+<a href="../modul/modul-09-strategi-konten.html" data-page="modul/modul-09-strategi-konten.html"><span>Modul 09 — Strategi Konten</span></a>
+<a href="../modul/modul-10-copywriting-dan-hook.html" data-page="modul/modul-10-copywriting-dan-hook.html"><span>Modul 10 — Copywriting dan Hook</span></a>
+<a href="../modul/modul-11-produksi-video-dan-visual.html" data-page="modul/modul-11-produksi-video-dan-visual.html"><span>Modul 11 — Produksi Video dan Visual</span></a>
+<a href="../modul/modul-12-seo-dan-konten-berbasis-pencarian.html" data-page="modul/modul-12-seo-dan-konten-berbasis-pencarian.html"><span>Modul 12 — SEO dan Konten Berbasis Pencarian</span></a>
+<a href="../modul/modul-13-distribusi-dan-community-building.html" data-page="modul/modul-13-distribusi-dan-community-building.html"><span>Modul 13 — Distribusi dan Community Building</span></a>
+</details>
+<details class="nav-level" data-mods="modul/modul-14-affiliate-link-dan-tracking.html,modul/modul-15-conversion-rate-optimization-cro.html,modul/modul-16-analytics-dan-dashboard.html,modul/modul-17-eksperimen-dan-validasi.html"><summary><span class="lv-badge">4</span><span class="lv-name">Conversion and Analytics</span><span class="lv-count">0/4</span></summary>
+<a href="../level-4.html" data-page="level-4.html"><span>Ringkasan level</span></a>
+<a href="../modul/modul-14-affiliate-link-dan-tracking.html" data-page="modul/modul-14-affiliate-link-dan-tracking.html"><span>Modul 14 — Affiliate Link dan Tracking</span></a>
+<a href="../modul/modul-15-conversion-rate-optimization-cro.html" data-page="modul/modul-15-conversion-rate-optimization-cro.html"><span>Modul 15 — Conversion Rate Optimization (CRO)</span></a>
+<a href="../modul/modul-16-analytics-dan-dashboard.html" data-page="modul/modul-16-analytics-dan-dashboard.html"><span>Modul 16 — Analytics dan Dashboard</span></a>
+<a href="../modul/modul-17-eksperimen-dan-validasi.html" data-page="modul/modul-17-eksperimen-dan-validasi.html"><span>Modul 17 — Eksperimen dan Validasi</span></a>
+</details>
+<details class="nav-level" data-mods="modul/modul-18-monetisasi-dan-pemilihan-produk-lanjutan.html,modul/modul-19-keuangan-dan-target-komisi.html,modul/modul-20-scaling-dan-sistem-produksi.html,modul/modul-21-kepatuhan-risiko-dan-reputasi.html,modul/modul-22-advanced-strategy.html,modul/modul-23-otomasi-dan-sistem-kerja.html,modul/modul-24-evaluasi-bisnis-dan-mastery.html" open><summary><span class="lv-badge">5</span><span class="lv-name">Professional Growth</span><span class="lv-count">0/7</span></summary>
+<a href="../level-5.html" data-page="level-5.html"><span>Ringkasan level</span></a>
+<a href="../modul/modul-18-monetisasi-dan-pemilihan-produk-lanjutan.html" data-page="modul/modul-18-monetisasi-dan-pemilihan-produk-lanjutan.html"><span>Modul 18 — Monetisasi dan Pemilihan Produk Lanjutan</span></a>
+<a href="../modul/modul-19-keuangan-dan-target-komisi.html" data-page="modul/modul-19-keuangan-dan-target-komisi.html"><span>Modul 19 — Keuangan dan Target Komisi</span></a>
+<a href="../modul/modul-20-scaling-dan-sistem-produksi.html" data-page="modul/modul-20-scaling-dan-sistem-produksi.html"><span>Modul 20 — Scaling dan Sistem Produksi</span></a>
+<a href="../modul/modul-21-kepatuhan-risiko-dan-reputasi.html" data-page="modul/modul-21-kepatuhan-risiko-dan-reputasi.html"><span>Modul 21 — Kepatuhan, Risiko, dan Reputasi</span></a>
+<a href="../modul/modul-22-advanced-strategy.html" data-page="modul/modul-22-advanced-strategy.html"><span>Modul 22 — Advanced Strategy</span></a>
+<a href="../modul/modul-23-otomasi-dan-sistem-kerja.html" data-page="modul/modul-23-otomasi-dan-sistem-kerja.html" aria-current="page"><span>Modul 23 — Otomasi dan Sistem Kerja</span></a>
+<a href="../modul/modul-24-evaluasi-bisnis-dan-mastery.html" data-page="modul/modul-24-evaluasi-bisnis-dan-mastery.html"><span>Modul 24 — Evaluasi Bisnis dan Mastery</span></a>
+</details>
+<div class="nav-group"><p class="nav-label">Praktik</p>
+<a href="../proyek-praktik.html" data-page="proyek-praktik.html"><span>8 Project Praktik Wajib</span></a>
+<a href="../database-notion.html" data-page="database-notion.html"><span>Database Notion</span></a>
+</div>
+<div class="nav-group"><p class="nav-label">Lampiran</p>
+<a href="../kamus-istilah.html" data-page="kamus-istilah.html"><span>Kamus Istilah</span></a>
+<a href="../rumus-template.html" data-page="rumus-template.html"><span>Lembar Rumus dan Template</span></a>
+<a href="../studi-kasus.html" data-page="studi-kasus.html"><span>Studi Kasus Simulasi</span></a>
+<a href="../panduan-pelatih.html" data-page="panduan-pelatih.html"><span>Panduan Pelatih dan Penilaian</span></a>
+</div></nav>
+<div class="scrim" id="scrim" hidden></div>
+<main id="isi" class="content">
+<nav class="crumbs" aria-label="Jejak halaman"><a href="../index.html">Beranda</a> <span>/</span> <a href="../level-5.html">Level 5</a> <span>/</span> Modul 23</nav>
+<details class="toc-mobile"><summary>Di halaman ini</summary><ol><li><a href="#1-tujuan-pembelajaran">Tujuan Pembelajaran</a></li><li><a href="#2-ringkasan-konsep-utama">Ringkasan Konsep Utama</a></li><li><a href="#3-penjelasan">Penjelasan</a></li><li><a href="#4-istilah-penting">Istilah Penting</a></li><li><a href="#5-langkah-praktik">Langkah Praktik</a></li><li><a href="#6-contoh-dan-perhitungan">Contoh dan Perhitungan</a></li><li><a href="#7-kesalahan-umum-dan-cara-menghindarinya">Kesalahan Umum dan Cara Menghindarinya</a></li><li><a href="#8-tugas-dan-checklist">Tugas dan Checklist</a></li><li><a href="#9-latihan-dan-kunci-jawaban">Latihan dan Kunci Jawaban</a></li><li><a href="#10-standar-kelulusan">Standar Kelulusan</a></li></ol></details>
+<article class="prose">
+<div class="eyebrow"><a class="chip" href="../level-5.html">Level 5 · Professional Growth</a><span class="chip ghost">Modul 23 dari 24</span><span class="chip ghost">± 9 menit baca</span></div>
+<h1 id="modul-23-otomasi-dan-sistem-kerja">Modul 23 — Otomasi dan Sistem Kerja</h1>
+<section class="sec reveal"><h2 id="1-tujuan-pembelajaran"><span class="h-text">1. Tujuan Pembelajaran</span><a class="anchor" href="#1-tujuan-pembelajaran" aria-label="Tautan ke bagian ini">#</a></h2>
+<p>Setelah modul ini, kamu mampu:</p>
+<ul>
+<li>Merapikan dan menyempurnakan database kerja di Notion.</li>
+<li>Membuat template riset, skrip, dan kalender konten.</li>
+<li>Mengurangi pekerjaan administratif yang berulang.</li>
+<li>Memakai spreadsheet untuk analisis.</li>
+<li>Menyimpan backup data.</li>
+<li>Mengelola versi konten.</li>
+<li>Menjaga otomasi tetap sesuai aturan platform.</li>
+</ul>
+</section><section class="sec reveal"><h2 id="2-ringkasan-konsep-utama"><span class="h-text">2. Ringkasan Konsep Utama</span><a class="anchor" href="#2-ringkasan-konsep-utama" aria-label="Tautan ke bagian ini">#</a></h2>
+<ol>
+<li>Otomasi = menjalankan pekerjaan berulang dengan intervensi manual yang lebih sedikit. Otomasi <strong>tidak selalu berarti memakai bot</strong>.</li>
+<li>Untuk bisnis affiliate yang baru berkembang, template dan rumus sederhana sering sudah cukup.</li>
+<li>Prinsip utama: otomasi mengurangi pekerjaan berulang, <strong>bukan menciptakan kerumitan baru</strong>.</li>
+<li>Jangan mengotomatisasi proses yang belum kamu pahami. Struktur data yang salah hanya menyebarkan kesalahan lebih cepat.</li>
+<li>Notion punya 6 database baku. Di modul ini kamu merapikan Database Produk Affiliate, Konten Affiliate, Eksperimen, Komisi Affiliate (database "keuangan"), dan SOP dan Pengetahuan.</li>
+<li>Template inti: riset produk, skrip, kalender konten, laporan mingguan.</li>
+<li>Spreadsheet dipakai menghitung CTR, CVR, EPC, dan komisi per 1.000 views.</li>
+<li>Ada batas tegas: otomasi tidak boleh dipakai untuk klik palsu, spam, atau manipulasi.</li>
+</ol>
+</section><section class="sec reveal"><h2 id="3-penjelasan"><span class="h-text">3. Penjelasan</span><a class="anchor" href="#3-penjelasan" aria-label="Tautan ke bagian ini">#</a></h2>
+<h3 id="3-1-pengertian-otomasi"><span class="h-text">3.1 Pengertian Otomasi</span><a class="anchor" href="#3-1-pengertian-otomasi" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>Otomasi adalah memakai alat atau sistem untuk menjalankan pekerjaan berulang dengan intervensi manual yang lebih sedikit. Contohnya:</p>
+<ul>
+<li>Template database.</li>
+<li>Rumus spreadsheet.</li>
+<li>Pengingat evaluasi.</li>
+<li>Laporan dari data yang sudah dikumpulkan.</li>
+<li>Penyalinan data antartabel lewat integrasi yang diizinkan.</li>
+</ul>
+<p>Otomasi tidak selalu berarti bot. Untuk bisnis yang baru berkembang, template dan rumus sederhana sering sudah membantu.</p>
+<blockquote class="callout">
+<p><strong>Prinsip utama:</strong> otomasi mengurangi pekerjaan berulang, bukan menciptakan kerumitan baru. Jangan mengotomatisasi proses yang belum dipahami. Jika struktur datanya salah, otomasi hanya menyebarkan kesalahan lebih cepat.</p>
+</blockquote>
+<h3 id="3-2-database-notion-yang-dirapikan"><span class="h-text">3.2 Database Notion yang Dirapikan</span><a class="anchor" href="#3-2-database-notion-yang-dirapikan" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>Notion punya <strong>6 database baku</strong>: Database Produk Affiliate, Database Link Affiliate, Database Konten Affiliate, Database Komisi Affiliate, Database Eksperimen, dan Database SOP dan Pengetahuan. Kamu sudah membangun sebagian besarnya di modul-modul sebelumnya. Di modul ini kamu tidak membuat database baru. Kamu merapikan dan menyempurnakan lima di antaranya, lalu menghubungkannya.</p>
+<p><strong>A. Database Produk Affiliate</strong> (kolom baku, yang paling berguna untuk kerja harian)</p>
+<ul>
+<li>Nama Produk, ID Produk, Kategori.</li>
+<li>Link Produk.</li>
+<li>Harga Saat Dicek.</li>
+<li>Tarif Komisi (tarif + sumber verifikasi).</li>
+<li>Rating, Jumlah Ulasan, Kualitas Penjual.</li>
+<li>Potensi Konten, Kelayakan Program, Skor Produk.</li>
+<li>Status (Riset / Siap Dipromosikan / Dihentikan).</li>
+<li>Tanggal Pemeriksaan.</li>
+<li>Catatan.</li>
+</ul>
+<p><strong>B. Database Konten Affiliate</strong></p>
+<ul>
+<li>Judul Konten, ID Konten.</li>
+<li>Produk (relasi) dan Link (relasi).</li>
+<li>Kanal, Format, Pilar Konten, Hook.</li>
+<li>Tanggal Publikasi, URL Konten.</li>
+<li>Views, Klik, Pesanan.</li>
+<li>Komisi Estimasi, Komisi Disetujui, Komisi Dibayarkan.</li>
+<li>Status Konten, Catatan Evaluasi.</li>
+</ul>
+<p><strong>C. Database Eksperimen</strong></p>
+<ul>
+<li>Nama Eksperimen, ID Eksperimen.</li>
+<li>Tujuan, Hipotesis.</li>
+<li>Variabel Utama, Metrik Utama, Baseline, Hasil.</li>
+<li>Tanggal Mulai, Tanggal Akhir, Ukuran Sampel, Keterbatasan.</li>
+<li>Keputusan, Alasan Keputusan, Pelajaran.</li>
+</ul>
+<p><strong>D. Database Komisi Affiliate (inilah "database keuangan")</strong></p>
+<p>Database ini mencatat satu baris per periode. Isinya komisi menurut empat tahap (Estimasi, Pending, Disetujui, Dibayarkan), biaya, bukti, dan status rekonsiliasi.</p>
+<ul>
+<li>Periode, Tanggal Mulai, Tanggal Akhir.</li>
+<li>Klik, Pesanan, Pesanan Dibatalkan.</li>
+<li>Komisi Estimasi, Komisi Pending, Komisi Disetujui, Komisi Dibayarkan.</li>
+<li>Biaya Usaha, Jam Kerja.</li>
+<li>Status Pembayaran, Bukti Pembayaran.</li>
+<li>Catatan Rekonsiliasi.</li>
+</ul>
+<p>Nama status di dashboard Shopee bisa berbeda dari empat tahap ini. Misalnya "Dalam proses" untuk Pending. Cocokkan dengan dashboard yang kamu pakai.</p>
+<p><strong>E. Database SOP dan Pengetahuan</strong></p>
+<p>Simpan template dari bagian 5 dan SOP kerjamu di sini. Kolomnya: Nama Proses, Bagian, Status SOP, Terakhir Diperbarui, Sumber, Prosedur, Catatan Tinjauan.</p>
+<blockquote class="callout">
+<p><strong>Jangan menyimpan kata sandi, OTP, atau data rahasia akun di database operasional yang tidak dirancang untuk itu.</strong></p>
+</blockquote>
+<h3 id="3-3-pengelolaan-versi-konten"><span class="h-text">3.3 Pengelolaan Versi Konten</span><a class="anchor" href="#3-3-pengelolaan-versi-konten" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>Versi konten adalah catatan perubahan pada suatu materi. Contoh:</p>
+<ul>
+<li><strong>V1:</strong> skrip awal.</li>
+<li><strong>V2:</strong> hook diperbaiki.</li>
+<li><strong>V3:</strong> spesifikasi diperbarui.</li>
+<li><strong>V4:</strong> CTA disesuaikan.</li>
+</ul>
+<p>Simpan catatan perubahan yang penting supaya kamu tahu apa yang diubah dan mengapa. Untuk konten yang sudah terbit, catat tanggal perubahan dan dampaknya pada performa jika bisa diukur.</p>
+<h3 id="3-4-pengelolaan-tugas"><span class="h-text">3.4 Pengelolaan Tugas</span><a class="anchor" href="#3-4-pengelolaan-tugas" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>Status tugas konten memakai pilihan <strong>Status Konten</strong> di Database Konten Affiliate. Ada sembilan tahap berurutan:</p>
+<ul>
+<li>Ide.</li>
+<li>Riset.</li>
+<li>Skrip.</li>
+<li>Produksi.</li>
+<li>Pemeriksaan.</li>
+<li>Siap Publikasi.</li>
+<li>Terbit.</li>
+<li>Evaluasi.</li>
+<li>Selesai.</li>
+</ul>
+<p>Setiap tugas sebaiknya punya:</p>
+<ul>
+<li>Tujuan.</li>
+<li>Tenggat waktu jika perlu.</li>
+<li>Produk atau konten terkait.</li>
+<li>Status.</li>
+<li>Langkah berikutnya.</li>
+</ul>
+<blockquote class="callout">
+<p>Jangan membuat sistem tugas yang terlalu rumit. Jangan sampai mengelolanya makan lebih banyak waktu daripada produksi.</p>
+</blockquote>
+<h3 id="3-5-backup-data"><span class="h-text">3.5 Backup Data</span><a class="anchor" href="#3-5-backup-data" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>Backup adalah salinan data yang bisa dipakai jika data utama hilang, rusak, atau tidak bisa diakses.</p>
+<p><strong>Data yang perlu dicadangkan:</strong></p>
+<ul>
+<li>Database Produk Affiliate.</li>
+<li>Database Konten Affiliate.</li>
+<li>Database Komisi Affiliate dan laporan komisi.</li>
+<li>Bukti pembayaran.</li>
+<li>SOP.</li>
+<li>Template.</li>
+<li>Hasil eksperimen.</li>
+</ul>
+<blockquote class="callout">
+<p>Backup tidak berguna jika salinannya rusak atau tidak pernah diperiksa.</p>
+</blockquote>
+</section><section class="sec reveal"><h2 id="4-istilah-penting"><span class="h-text">4. Istilah Penting</span><a class="anchor" href="#4-istilah-penting" aria-label="Tautan ke bagian ini">#</a></h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Istilah</th>
+<th>Definisi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Otomasi</td>
+<td>Memakai alat atau sistem untuk menjalankan pekerjaan berulang dengan intervensi manual yang lebih sedikit</td>
+</tr>
+<tr>
+<td>Backup</td>
+<td>Salinan data yang bisa dipakai jika data utama hilang, rusak, atau tidak bisa diakses</td>
+</tr>
+<tr>
+<td>Versi konten</td>
+<td>Catatan perubahan yang dilakukan pada suatu materi</td>
+</tr>
+<tr>
+<td>Kalender konten</td>
+<td>Alat untuk merencanakan publikasi</td>
+</tr>
+<tr>
+<td>Database "keuangan"</td>
+<td>Sebutan untuk Database Komisi Affiliate, bukan database terpisah</td>
+</tr>
+</tbody>
+</table></div>
+</section><section class="sec reveal"><h2 id="5-langkah-praktik"><span class="h-text">5. Langkah Praktik</span><a class="anchor" href="#5-langkah-praktik" aria-label="Tautan ke bagian ini">#</a></h2>
+<p>Bagian ini berisi template dan SOP yang bisa kamu simpan di Database SOP dan Pengetahuan.</p>
+<h3 id="5-1-template-riset-produk"><span class="h-text">5.1 Template Riset Produk</span><a class="anchor" href="#5-1-template-riset-produk" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>Gunakan struktur ini untuk setiap produk.</p>
+<p><strong>Identitas produk</strong></p>
+<ul>
+<li>Nama:</li>
+<li>Kategori:</li>
+<li>Link:</li>
+<li>Harga saat dicek:</li>
+<li>Tanggal pemeriksaan:</li>
+</ul>
+<p><strong>Kebutuhan audiens</strong></p>
+<ul>
+<li>Masalah yang diselesaikan:</li>
+<li>Siapa yang membutuhkan:</li>
+<li>Kapan produk dibutuhkan:</li>
+</ul>
+<p><strong>Kelayakan produk</strong></p>
+<ul>
+<li>Kualitas dan spesifikasi:</li>
+<li>Reputasi penjual:</li>
+<li>Ulasan yang relevan:</li>
+<li>Kelebihan:</li>
+<li>Kekurangan:</li>
+<li>Alternatif:</li>
+<li>Risiko:</li>
+</ul>
+<p><strong>Kelayakan affiliate</strong></p>
+<ul>
+<li>Komisi sesuai ketentuan saat dicek:</li>
+<li>Syarat promosi:</li>
+<li>Ketersediaan:</li>
+<li>Potensi format konten:</li>
+<li>Data performa jika tersedia:</li>
+</ul>
+<p><strong>Keputusan</strong> (pilih satu)</p>
+<ul>
+<li>Uji.</li>
+<li>Lanjutkan.</li>
+<li>Optimalkan.</li>
+<li>Uji ulang.</li>
+<li>Hentikan.</li>
+</ul>
+<p>"Uji" adalah status awal untuk produk yang belum punya data performa. Setelah ada hasil, pilih salah satu dari empat keputusan lainnya.</p>
+<h3 id="5-2-template-skrip"><span class="h-text">5.2 Template Skrip</span><a class="anchor" href="#5-2-template-skrip" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>Setiap skrip bisa memakai struktur ini:</p>
+<ul>
+<li>Nama konten.</li>
+<li>Audiens.</li>
+<li>Masalah.</li>
+<li>Tujuan.</li>
+<li>Hook.</li>
+<li>Penjelasan.</li>
+<li>Bukti atau demonstrasi.</li>
+<li>Keterbatasan.</li>
+<li>CTA.</li>
+<li>Pengungkapan affiliate.</li>
+<li>Sumber informasi.</li>
+<li>Checklist pemeriksaan.</li>
+</ul>
+<blockquote class="callout">
+<p>Template menjaga konsistensi. Jangan sampai semua kontenmu terasa seperti salinan satu sama lain.</p>
+</blockquote>
+<h3 id="5-3-template-kalender-konten"><span class="h-text">5.3 Template Kalender Konten</span><a class="anchor" href="#5-3-template-kalender-konten" aria-label="Tautan ke bagian ini">#</a></h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Kolom</th>
+<th>Fungsi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tanggal</td>
+<td>Rencana publikasi</td>
+</tr>
+<tr>
+<td>Platform</td>
+<td>Tempat publikasi</td>
+</tr>
+<tr>
+<td>Produk</td>
+<td>Produk yang dibahas</td>
+</tr>
+<tr>
+<td>Topik</td>
+<td>Masalah yang dibahas</td>
+</tr>
+<tr>
+<td>Format</td>
+<td>Tutorial, perbandingan, dan sebagainya</td>
+</tr>
+<tr>
+<td>Status</td>
+<td>Pilihan Status Konten (Ide sampai Selesai)</td>
+</tr>
+<tr>
+<td>URL</td>
+<td>Link konten setelah terbit</td>
+</tr>
+<tr>
+<td>Hasil</td>
+<td>Metrik performa</td>
+</tr>
+<tr>
+<td>Tindakan</td>
+<td>Keputusan berikutnya</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote class="callout">
+<p>Kalender yang penuh bukan bukti strategi berjalan baik. Kalender adalah alat perencanaan. Evaluasi hasil bisnis secara terpisah.</p>
+</blockquote>
+<h3 id="5-4-template-laporan-mingguan"><span class="h-text">5.4 Template Laporan Mingguan</span><a class="anchor" href="#5-4-template-laporan-mingguan" aria-label="Tautan ke bagian ini">#</a></h3>
+<p><strong>Ringkasan</strong></p>
+<ul>
+<li>Jumlah konten terbit.</li>
+<li>Total views.</li>
+<li>Total klik.</li>
+<li>Total pesanan.</li>
+<li>Komisi estimasi.</li>
+<li>Komisi disetujui.</li>
+<li>Komisi dibayarkan.</li>
+</ul>
+<p><strong>Analisis</strong></p>
+<ul>
+<li>Konten dengan kontribusi komisi terbesar.</li>
+<li>Produk dengan EPC tertinggi.</li>
+<li>Konten dengan CTR rendah.</li>
+<li>Produk yang performanya menurun.</li>
+<li>Masalah tracking.</li>
+<li>Perubahan komisi atau ketersediaan.</li>
+</ul>
+<p><strong>Tindakan berikutnya</strong></p>
+<ul>
+<li>Konten yang akan dikembangkan.</li>
+<li>Produk yang akan diuji.</li>
+<li>Masalah yang akan diperbaiki.</li>
+<li>Eksperimen berikutnya.</li>
+</ul>
+<h3 id="5-5-langkah-backup-data-6-langkah"><span class="h-text">5.5 Langkah Backup Data (6 langkah)</span><a class="anchor" href="#5-5-langkah-backup-data-6-langkah" aria-label="Tautan ke bagian ini">#</a></h3>
+<ol>
+<li>Tentukan data penting.</li>
+<li>Gunakan fitur ekspor atau backup yang tersedia.</li>
+<li>Simpan salinan di lokasi yang aman.</li>
+<li>Batasi akses.</li>
+<li>Perbarui backup secara berkala.</li>
+<li>Pastikan file hasil backup bisa dibuka.</li>
+</ol>
+</section><section class="sec reveal"><h2 id="6-contoh-dan-perhitungan"><span class="h-text">6. Contoh dan Perhitungan</span><a class="anchor" href="#6-contoh-dan-perhitungan" aria-label="Tautan ke bagian ini">#</a></h2>
+<h3 id="6-1-struktur-kolom-spreadsheet"><span class="h-text">6.1 Struktur kolom spreadsheet</span><a class="anchor" href="#6-1-struktur-kolom-spreadsheet" aria-label="Tautan ke bagian ini">#</a></h3>
+<ul>
+<li><strong>A:</strong> Nama konten.</li>
+<li><strong>B:</strong> Views.</li>
+<li><strong>C:</strong> Klik.</li>
+<li><strong>D:</strong> Pesanan.</li>
+<li><strong>E:</strong> Komisi disetujui.</li>
+</ul>
+<h3 id="6-2-rumus-spreadsheet"><span class="h-text">6.2 Rumus spreadsheet</span><a class="anchor" href="#6-2-rumus-spreadsheet" aria-label="Tautan ke bagian ini">#</a></h3>
+<p><strong>CTR</strong> (Klik ÷ Views)</p>
+<pre><code>=IFERROR(C2/B2,0)
+</code></pre>
+<p>Format hasil sebagai persentase.</p>
+<p><strong>CVR</strong> (Pesanan ÷ Klik)</p>
+<pre><code>=IFERROR(D2/C2,0)
+</code></pre>
+<p>Format hasil sebagai persentase.</p>
+<p><strong>EPC</strong> (Komisi disetujui ÷ Klik)</p>
+<pre><code>=IFERROR(E2/C2,0)
+</code></pre>
+<p><strong>Komisi per 1.000 views</strong></p>
+<pre><code>=IFERROR(E2/B2*1000,0)
+</code></pre>
+<p>Rumus ini memakai asumsi kolom di atas. Sesuaikan dengan struktur datamu. Periksa konsistensi periode dan definisi transaksi sebelum membandingkan hasil.</p>
+<h3 id="6-3-daftar-otomasi-boleh-dan-dilarang"><span class="h-text">6.3 Daftar otomasi: boleh dan dilarang</span><a class="anchor" href="#6-3-daftar-otomasi-boleh-dan-dilarang" aria-label="Tautan ke bagian ini">#</a></h3>
+<p><strong>Otomasi pencatatan yang boleh dipertimbangkan</strong></p>
+<p>Otomasi harus mengikuti aturan program affiliate, platform, dan alat yang kamu pakai. Contoh pekerjaan yang boleh dipertimbangkan:</p>
+<ul>
+<li>Menghitung EPC lewat spreadsheet.</li>
+<li>Menghitung CTR dan CVR.</li>
+<li>Menghitung kontribusi komisi.</li>
+<li>Mengingatkan jadwal pemeriksaan link.</li>
+<li>Membuat ringkasan dari data yang sudah dicatat.</li>
+<li>Memakai integrasi resmi yang diizinkan.</li>
+</ul>
+<blockquote class="callout">
+<p>Sebelum mengotomatisasi pengambilan data atau publikasi, periksa apakah metodenya diperbolehkan oleh platform dan layanan terkait.</p>
+<p><strong>Jangan memakai otomasi untuk menghasilkan klik palsu, pesanan palsu, spam, atau manipulasi engagement.</strong></p>
+</blockquote>
+<p><strong>Penggunaan otomasi yang dapat melanggar aturan</strong></p>
+<p>Otomasi bisa melanggar aturan jika dipakai untuk:</p>
+<ul>
+<li>Menghasilkan klik palsu.</li>
+<li>Membuat aktivitas yang menyesatkan.</li>
+<li>Mengirim spam.</li>
+<li>Membuat komentar otomatis yang tidak relevan.</li>
+<li>Memanipulasi transaksi.</li>
+<li>Mengambil data secara tidak sah.</li>
+<li>Mengunggah konten tanpa memperhatikan aturan platform.</li>
+</ul>
+<blockquote class="callout">
+<p>Jangan menganggap suatu metode boleh hanya karena secara teknis bisa dilakukan. Pakai integrasi resmi dan dokumentasi yang berlaku. <strong>Jika ketentuan tidak jelas, hindari metode itu sampai ada kepastian.</strong></p>
+</blockquote>
+</section><section class="sec reveal"><h2 id="7-kesalahan-umum-dan-cara-menghindarinya"><span class="h-text">7. Kesalahan Umum dan Cara Menghindarinya</span><a class="anchor" href="#7-kesalahan-umum-dan-cara-menghindarinya" aria-label="Tautan ke bagian ini">#</a></h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Kesalahan</th>
+<th>Cara menghindari</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mengotomatisasi proses yang belum dipahami</td>
+<td>Benahi struktur data lebih dulu; otomasi menyebarkan kesalahan lebih cepat</td>
+</tr>
+<tr>
+<td>Menganggap otomasi harus berupa bot</td>
+<td>Template dan rumus sederhana sering sudah cukup</td>
+</tr>
+<tr>
+<td>Membuat otomasi yang menambah kerumitan</td>
+<td>Otomasi harus mengurangi pekerjaan berulang</td>
+</tr>
+<tr>
+<td>Membuat database baru padahal sudah ada</td>
+<td>Rapikan 6 database baku; jangan menduplikasi data</td>
+</tr>
+<tr>
+<td>Menyimpan kata sandi atau OTP di database operasional</td>
+<td>Jangan simpan data rahasia akun di database yang tidak dirancang untuk itu</td>
+</tr>
+<tr>
+<td>Membuat semua konten terasa seperti salinan karena template</td>
+<td>Pakai template untuk konsistensi, bukan menyeragamkan isi</td>
+</tr>
+<tr>
+<td>Menganggap kalender penuh = strategi berhasil</td>
+<td>Evaluasi hasil bisnis secara terpisah</td>
+</tr>
+<tr>
+<td>Mengotomatisasi pengambilan data atau publikasi tanpa memeriksa izin</td>
+<td>Periksa aturan platform dan layanan terkait lebih dulu</td>
+</tr>
+<tr>
+<td>Memakai otomasi untuk klik palsu, pesanan palsu, spam, manipulasi engagement</td>
+<td>Dilarang; pakai integrasi resmi saja</td>
+</tr>
+<tr>
+<td>Menganggap metode boleh karena secara teknis bisa dilakukan</td>
+<td>Jika ketentuan tidak jelas, hindari sampai ada kepastian</td>
+</tr>
+<tr>
+<td>Sistem tugas terlalu rumit</td>
+<td>Pakai status sederhana agar tidak menyita waktu produksi</td>
+</tr>
+<tr>
+<td>Membuat backup tanpa memeriksanya</td>
+<td>Pastikan file backup bisa dibuka; perbarui berkala</td>
+</tr>
+</tbody>
+</table></div>
+</section><section class="sec reveal"><h2 id="8-tugas-dan-checklist"><span class="h-text">8. Tugas dan Checklist</span><a class="anchor" href="#8-tugas-dan-checklist" aria-label="Tautan ke bagian ini">#</a></h2>
+<ul>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-23-otomasi-dan-sistem-kerja.html#1"> <span>Tugas 1: Rapikan Database Produk Affiliate dengan kolom baku.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-23-otomasi-dan-sistem-kerja.html#2"> <span>Tugas 2: Rapikan Database Konten Affiliate dengan kolom baku.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-23-otomasi-dan-sistem-kerja.html#3"> <span>Tugas 3: Rapikan Database Eksperimen.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-23-otomasi-dan-sistem-kerja.html#4"> <span>Tugas 4: Rapikan Database Komisi Affiliate (database keuangan) dengan kolom komisi, biaya, bukti, dan rekonsiliasi.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-23-otomasi-dan-sistem-kerja.html#5"> <span>Tugas 5: Buat template skrip di Database SOP dan Pengetahuan.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-23-otomasi-dan-sistem-kerja.html#6"> <span>Tugas 6: Buat kalender konten.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-23-otomasi-dan-sistem-kerja.html#7"> <span>Tugas 7: Buat laporan mingguan.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-23-otomasi-dan-sistem-kerja.html#8"> <span>Tugas 8: Terapkan rumus CTR, CVR, EPC, dan komisi per 1.000 views.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-23-otomasi-dan-sistem-kerja.html#9"> <span>Tugas 9: Buat sistem backup.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-23-otomasi-dan-sistem-kerja.html#10"> <span>Tugas 10: Buat SOP pencatatan.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-23-otomasi-dan-sistem-kerja.html#11"> <span>Tugas 11: Periksa kepatuhan setiap otomasi yang kamu pakai.</span></label></li>
+</ul>
+</section><section class="sec reveal sec-latihan"><h2 id="9-latihan-dan-kunci-jawaban"><span class="h-text">9. Latihan dan Kunci Jawaban</span><a class="anchor" href="#9-latihan-dan-kunci-jawaban" aria-label="Tautan ke bagian ini">#</a></h2>
+<div class="qa"><p class="q"><strong>1. Sebutkan database Notion yang kamu rapikan di modul ini beserta satu kolom khasnya.</strong></p><details class="ans"><summary>Lihat jawaban</summary><div class="a"><p>Kunci: Database Produk Affiliate (mis. "Tarif Komisi"); Database Konten Affiliate (mis. "Status Konten"); Database Eksperimen (mis. "Hipotesis"); Database Komisi Affiliate / "keuangan" (mis. "Catatan Rekonsiliasi"); Database SOP dan Pengetahuan (mis. "Prosedur"). Totalnya ada 6 database baku di Notion; yang keenam adalah Database Link Affiliate.</p></div></details></div>
+<div class="qa"><p class="q"><strong>2. Tuliskan rumus spreadsheet untuk CTR dan CVR beserta format hasilnya.</strong></p><details class="ans"><summary>Lihat jawaban</summary><div class="a"><p>Kunci: CTR <code>=IFERROR(C2/B2,0)</code>; CVR <code>=IFERROR(D2/C2,0)</code>. Keduanya diformat sebagai persentase.</p></div></details></div>
+<div class="qa"><p class="q"><strong>3. Tuliskan rumus EPC dan komisi per 1.000 views.</strong></p><details class="ans"><summary>Lihat jawaban</summary><div class="a"><p>Kunci: EPC <code>=IFERROR(E2/C2,0)</code>; komisi per 1.000 views <code>=IFERROR(E2/B2*1000,0)</code>.</p></div></details></div>
+<div class="qa"><p class="q"><strong>4. Sebutkan tujuh penggunaan otomasi yang dapat melanggar aturan.</strong></p><details class="ans"><summary>Lihat jawaban</summary><div class="a"><p>Kunci: Menghasilkan klik palsu; membuat aktivitas yang menyesatkan; mengirim spam; membuat komentar otomatis yang tidak relevan; memanipulasi transaksi; mengambil data secara tidak sah; mengunggah konten tanpa memperhatikan aturan platform.</p></div></details></div>
+<div class="qa"><p class="q"><strong>5. Apa lima opsi keputusan pada template riset produk? Mana yang menjadi status awal?</strong></p><details class="ans"><summary>Lihat jawaban</summary><div class="a"><p>Kunci: Uji; Lanjutkan; Optimalkan; Uji ulang; Hentikan. "Uji" adalah status awal.</p></div></details></div>
+<div class="qa"><p class="q"><strong>6. Sebutkan enam langkah backup data.</strong></p><details class="ans"><summary>Lihat jawaban</summary><div class="a"><p>Kunci: Tentukan data penting; gunakan fitur ekspor atau backup; simpan salinan di lokasi aman; batasi akses; perbarui berkala; pastikan file backup bisa dibuka.</p></div></details></div>
+<div class="qa"><p class="q"><strong>7. Apa sembilan status tugas konten?</strong></p><details class="ans"><summary>Lihat jawaban</summary><div class="a"><p>Kunci: Ide, Riset, Skrip, Produksi, Pemeriksaan, Siap Publikasi, Terbit, Evaluasi, Selesai (pilihan Status Konten).</p></div></details></div>
+<div class="qa"><p class="q"><strong>8. Ketentuan sebuah metode otomasi tidak jelas. Apa yang harus dilakukan?</strong></p><details class="ans"><summary>Lihat jawaban</summary><div class="a"><p>Kunci: Hindari metode itu sampai ada kepastian; pakai integrasi resmi dan dokumentasi yang berlaku.</p></div></details></div>
+</section><section class="sec reveal"><h2 id="10-standar-kelulusan"><span class="h-text">10. Standar Kelulusan</span><a class="anchor" href="#10-standar-kelulusan" aria-label="Tautan ke bagian ini">#</a></h2>
+<p>Kamu dianggap menguasai modul ini jika mampu mengelola data, konten, dan tugas lewat sistem yang konsisten, mengurangi pekerjaan berulang, dan menjaga otomasi tetap sesuai aturan.</p></section>
+</article>
+<div class="complete reveal"><button type="button" id="mark-done" data-page="modul/modul-23-otomasi-dan-sistem-kerja.html">Tandai modul ini selesai</button><span class="hint">Tersimpan di browser kamu.</span></div>
+<nav class="pager" aria-label="Halaman sebelumnya dan berikutnya"><a class="prev" href="../modul/modul-22-advanced-strategy.html"><small>← Sebelumnya</small><span>22. Advanced Strategy</span></a><a class="next" href="../modul/modul-24-evaluasi-bisnis-dan-mastery.html"><small>Berikutnya →</small><span>24. Evaluasi Bisnis dan Mastery</span></a></nav>
+<footer class="foot">
+  <p>Materi pembelajaran, bukan nasihat hukum atau pajak. Aturan Shopee Affiliate bisa berubah, jadi selalu cek sumber resmi dan catat tanggal pemeriksaannya. Situs ini bukan situs resmi Shopee.</p>
+</footer>
+</main>
+<aside class="toc" aria-label="Isi halaman"><p class="toc-title">Di halaman ini</p><ol><li><a href="#1-tujuan-pembelajaran">Tujuan Pembelajaran</a></li><li><a href="#2-ringkasan-konsep-utama">Ringkasan Konsep Utama</a></li><li><a href="#3-penjelasan">Penjelasan</a></li><li><a href="#4-istilah-penting">Istilah Penting</a></li><li><a href="#5-langkah-praktik">Langkah Praktik</a></li><li><a href="#6-contoh-dan-perhitungan">Contoh dan Perhitungan</a></li><li><a href="#7-kesalahan-umum-dan-cara-menghindarinya">Kesalahan Umum dan Cara Menghindarinya</a></li><li><a href="#8-tugas-dan-checklist">Tugas dan Checklist</a></li><li><a href="#9-latihan-dan-kunci-jawaban">Latihan dan Kunci Jawaban</a></li><li><a href="#10-standar-kelulusan">Standar Kelulusan</a></li></ol></aside>
+</div>
+<nav class="bottom-nav" id="bottom-nav" aria-label="Navigasi cepat">
+  <a class="bn-item" href="../index.html"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5"/><path d="M5 10v10h14V10"/></svg><span>Beranda</span></a>
+  <button class="bn-item" id="bn-menu" type="button" aria-controls="sidebar"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="7" rx="1.5"/><rect x="4" y="13" width="7" height="7" rx="1.5"/><rect x="13" y="13" width="7" height="7" rx="1.5"/></svg><span>Materi</span></button>
+  <button class="bn-item" id="bn-search" type="button"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span>Cari</span></button>
+  <a class="bn-item bn-primary" href="../modul/modul-24-evaluasi-bisnis-dan-mastery.html"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg><span>Lanjut</span></a>
+</nav>
+<button class="to-top" id="to-top" type="button" aria-label="Kembali ke atas" hidden><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5"/><path d="m5 12 7-7 7 7"/></svg></button>
+<div class="toast-wrap" id="toasts" aria-live="polite"></div>
+<script src="../assets/search-index.js"></script>
+<script src="../assets/app.js"></script>
+</body>
+</html>

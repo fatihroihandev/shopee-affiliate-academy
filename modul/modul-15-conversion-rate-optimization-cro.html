@@ -1,0 +1,579 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Modul 15 — Conversion Rate Optimization (CRO) · Shopee Affiliate Academy</title>
+<meta name="description" content="Setelah modul ini, kamu mampu:">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#EE4D2D">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/style.css">
+<script>(function(){var d=document.documentElement;d.classList.add('js');try{var t=localStorage.getItem('sea-theme');if(t&&t!=='auto')d.setAttribute('data-theme',t);var p=JSON.parse(localStorage.getItem('sea-prefs')||'{}');['fs','lh','font','width'].forEach(function(k){if(p[k])d.setAttribute('data-'+k,p[k]);});if(p.focus)d.setAttribute('data-focus','1');}catch(e){}})();</script>
+</head>
+<body data-root="../" data-kind="modul" data-page="modul/modul-15-conversion-rate-optimization-cro.html" data-title="Modul 15 — Conversion Rate Optimization (CRO)">
+<a class="skip" href="#isi">Lewati ke isi</a>
+<div class="read-progress" id="read-progress" aria-hidden="true"></div>
+<div class="top" id="top">
+<header class="topbar">
+  <button class="icon-btn menu-btn" id="menu-btn" aria-label="Buka menu materi" aria-controls="sidebar" aria-expanded="false"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+  <a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true">SA</span><span class="brand-name">Shopee Affiliate Academy</span></a>
+  <div class="search" id="search">
+    <div class="search-box">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input id="search-input" type="search" placeholder="Cari materi…" autocomplete="off" aria-label="Cari materi">
+      <button class="icon-btn search-close" id="search-close" type="button" aria-label="Tutup pencarian"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+    </div>
+    <div class="search-results" id="search-results" hidden></div>
+  </div>
+  <button class="icon-btn desk-only" id="focus-btn" aria-label="Mode fokus" title="Mode fokus"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9V5h4M20 9V5h-4M4 15v4h4M20 15v4h-4"/></svg></button>
+  <button class="icon-btn aa-btn" id="aa-btn" aria-label="Pengaturan baca" aria-expanded="false" aria-controls="prefs"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20 10 5l6 15"/><path d="M6.5 14.5h7"/><path d="M15 12h5M17.5 12v8"/></svg></button>
+</header>
+<div class="subbar" id="subbar" aria-hidden="true"><span class="sb-title"></span><span class="sb-pct"></span></div>
+</div>
+<div class="prefs" id="prefs" hidden role="dialog" aria-label="Pengaturan tampilan">
+  <div class="prefs-head"><strong>Pengaturan baca</strong><button class="icon-btn sm" id="prefs-close" type="button" aria-label="Tutup"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
+  <div class="pref-row"><span>Ukuran teks</span><div class="seg" role="group" aria-label="Ukuran teks">
+    <button type="button" id="fs-down" aria-label="Perkecil teks">A−</button><output id="fs-val">3/5</output><button type="button" id="fs-up" aria-label="Perbesar teks">A+</button></div></div>
+  <div class="pref-row"><span>Jarak baris</span><div class="seg"><button type="button" data-pref="lh" data-val="tight">Rapat</button><button type="button" data-pref="lh" data-val="normal">Normal</button><button type="button" data-pref="lh" data-val="loose">Lega</button></div></div>
+  <div class="pref-row"><span>Huruf</span><div class="seg"><button type="button" data-pref="font" data-val="sans">Sans</button><button type="button" data-pref="font" data-val="serif">Serif</button></div></div>
+  <div class="pref-row"><span>Lebar teks</span><div class="seg"><button type="button" data-pref="width" data-val="normal">Standar</button><button type="button" data-pref="width" data-val="wide">Lebar</button></div></div>
+  <div class="pref-row"><span>Tema</span><div class="seg theme-seg"><button type="button" data-pref="theme" data-val="light">Terang</button><button type="button" data-pref="theme" data-val="sepia">Sepia</button><button type="button" data-pref="theme" data-val="dark">Gelap</button><button type="button" data-pref="theme" data-val="auto">Auto</button></div></div>
+  <label class="pref-switch"><input type="checkbox" id="pref-break" checked><span class="sw"></span><span>Pengingat istirahat (tiap 25 menit)</span></label>
+  <label class="pref-switch desk-only"><input type="checkbox" id="pref-focus"><span class="sw"></span><span>Mode fokus (sembunyikan menu)</span></label>
+  <button type="button" class="reset" id="prefs-reset">Kembalikan ke bawaan</button>
+</div>
+<div class="shell">
+<nav class="sidebar" id="sidebar" aria-label="Navigasi materi">
+<div class="nav-group">
+<a href="../index.html" data-page="index.html"><span>Beranda dan Pengantar</span></a>
+<a href="../master.html" data-page="master.html"><span>Rangkuman Master</span></a>
+</div>
+<details class="nav-level" data-mods="modul/modul-01-dasar-affiliate-marketing.html,modul/modul-02-shopee-affiliate-program-dan-kebijakan.html,modul/modul-03-persiapan-akun-dan-operasional.html"><summary><span class="lv-badge">1</span><span class="lv-name">Fundamentals</span><span class="lv-count">0/3</span></summary>
+<a href="../level-1.html" data-page="level-1.html"><span>Ringkasan level</span></a>
+<a href="../modul/modul-01-dasar-affiliate-marketing.html" data-page="modul/modul-01-dasar-affiliate-marketing.html"><span>Modul 01 — Dasar Affiliate Marketing</span></a>
+<a href="../modul/modul-02-shopee-affiliate-program-dan-kebijakan.html" data-page="modul/modul-02-shopee-affiliate-program-dan-kebijakan.html"><span>Modul 02 — Shopee Affiliate Program dan Kebijakan</span></a>
+<a href="../modul/modul-03-persiapan-akun-dan-operasional.html" data-page="modul/modul-03-persiapan-akun-dan-operasional.html"><span>Modul 03 — Persiapan Akun dan Operasional</span></a>
+</details>
+<details class="nav-level" data-mods="modul/modul-04-riset-pasar-dan-permintaan.html,modul/modul-05-niche-audiens-dan-positioning.html,modul/modul-06-riset-dan-evaluasi-produk.html,modul/modul-07-riset-kompetitor.html"><summary><span class="lv-badge">2</span><span class="lv-name">Market and Product Research</span><span class="lv-count">0/4</span></summary>
+<a href="../level-2.html" data-page="level-2.html"><span>Ringkasan level</span></a>
+<a href="../modul/modul-04-riset-pasar-dan-permintaan.html" data-page="modul/modul-04-riset-pasar-dan-permintaan.html"><span>Modul 04 — Riset Pasar dan Permintaan</span></a>
+<a href="../modul/modul-05-niche-audiens-dan-positioning.html" data-page="modul/modul-05-niche-audiens-dan-positioning.html"><span>Modul 05 — Niche, Audiens, dan Positioning</span></a>
+<a href="../modul/modul-06-riset-dan-evaluasi-produk.html" data-page="modul/modul-06-riset-dan-evaluasi-produk.html"><span>Modul 06 — Riset dan Evaluasi Produk</span></a>
+<a href="../modul/modul-07-riset-kompetitor.html" data-page="modul/modul-07-riset-kompetitor.html"><span>Modul 07 — Riset Kompetitor</span></a>
+</details>
+<details class="nav-level" data-mods="modul/modul-08-strategi-channel-dan-traffic-organik.html,modul/modul-09-strategi-konten.html,modul/modul-10-copywriting-dan-hook.html,modul/modul-11-produksi-video-dan-visual.html,modul/modul-12-seo-dan-konten-berbasis-pencarian.html,modul/modul-13-distribusi-dan-community-building.html"><summary><span class="lv-badge">3</span><span class="lv-name">Content and Traffic</span><span class="lv-count">0/6</span></summary>
+<a href="../level-3.html" data-page="level-3.html"><span>Ringkasan level</span></a>
+<a href="../modul/modul-08-strategi-channel-dan-traffic-organik.html" data-page="modul/modul-08-strategi-channel-dan-traffic-organik.html"><span>Modul 08 — Strategi Channel dan Traffic Organik</span></a>
+<a href="../modul/modul-09-strategi-konten.html" data-page="modul/modul-09-strategi-konten.html"><span>Modul 09 — Strategi Konten</span></a>
+<a href="../modul/modul-10-copywriting-dan-hook.html" data-page="modul/modul-10-copywriting-dan-hook.html"><span>Modul 10 — Copywriting dan Hook</span></a>
+<a href="../modul/modul-11-produksi-video-dan-visual.html" data-page="modul/modul-11-produksi-video-dan-visual.html"><span>Modul 11 — Produksi Video dan Visual</span></a>
+<a href="../modul/modul-12-seo-dan-konten-berbasis-pencarian.html" data-page="modul/modul-12-seo-dan-konten-berbasis-pencarian.html"><span>Modul 12 — SEO dan Konten Berbasis Pencarian</span></a>
+<a href="../modul/modul-13-distribusi-dan-community-building.html" data-page="modul/modul-13-distribusi-dan-community-building.html"><span>Modul 13 — Distribusi dan Community Building</span></a>
+</details>
+<details class="nav-level" data-mods="modul/modul-14-affiliate-link-dan-tracking.html,modul/modul-15-conversion-rate-optimization-cro.html,modul/modul-16-analytics-dan-dashboard.html,modul/modul-17-eksperimen-dan-validasi.html" open><summary><span class="lv-badge">4</span><span class="lv-name">Conversion and Analytics</span><span class="lv-count">0/4</span></summary>
+<a href="../level-4.html" data-page="level-4.html"><span>Ringkasan level</span></a>
+<a href="../modul/modul-14-affiliate-link-dan-tracking.html" data-page="modul/modul-14-affiliate-link-dan-tracking.html"><span>Modul 14 — Affiliate Link dan Tracking</span></a>
+<a href="../modul/modul-15-conversion-rate-optimization-cro.html" data-page="modul/modul-15-conversion-rate-optimization-cro.html" aria-current="page"><span>Modul 15 — Conversion Rate Optimization (CRO)</span></a>
+<a href="../modul/modul-16-analytics-dan-dashboard.html" data-page="modul/modul-16-analytics-dan-dashboard.html"><span>Modul 16 — Analytics dan Dashboard</span></a>
+<a href="../modul/modul-17-eksperimen-dan-validasi.html" data-page="modul/modul-17-eksperimen-dan-validasi.html"><span>Modul 17 — Eksperimen dan Validasi</span></a>
+</details>
+<details class="nav-level" data-mods="modul/modul-18-monetisasi-dan-pemilihan-produk-lanjutan.html,modul/modul-19-keuangan-dan-target-komisi.html,modul/modul-20-scaling-dan-sistem-produksi.html,modul/modul-21-kepatuhan-risiko-dan-reputasi.html,modul/modul-22-advanced-strategy.html,modul/modul-23-otomasi-dan-sistem-kerja.html,modul/modul-24-evaluasi-bisnis-dan-mastery.html"><summary><span class="lv-badge">5</span><span class="lv-name">Professional Growth</span><span class="lv-count">0/7</span></summary>
+<a href="../level-5.html" data-page="level-5.html"><span>Ringkasan level</span></a>
+<a href="../modul/modul-18-monetisasi-dan-pemilihan-produk-lanjutan.html" data-page="modul/modul-18-monetisasi-dan-pemilihan-produk-lanjutan.html"><span>Modul 18 — Monetisasi dan Pemilihan Produk Lanjutan</span></a>
+<a href="../modul/modul-19-keuangan-dan-target-komisi.html" data-page="modul/modul-19-keuangan-dan-target-komisi.html"><span>Modul 19 — Keuangan dan Target Komisi</span></a>
+<a href="../modul/modul-20-scaling-dan-sistem-produksi.html" data-page="modul/modul-20-scaling-dan-sistem-produksi.html"><span>Modul 20 — Scaling dan Sistem Produksi</span></a>
+<a href="../modul/modul-21-kepatuhan-risiko-dan-reputasi.html" data-page="modul/modul-21-kepatuhan-risiko-dan-reputasi.html"><span>Modul 21 — Kepatuhan, Risiko, dan Reputasi</span></a>
+<a href="../modul/modul-22-advanced-strategy.html" data-page="modul/modul-22-advanced-strategy.html"><span>Modul 22 — Advanced Strategy</span></a>
+<a href="../modul/modul-23-otomasi-dan-sistem-kerja.html" data-page="modul/modul-23-otomasi-dan-sistem-kerja.html"><span>Modul 23 — Otomasi dan Sistem Kerja</span></a>
+<a href="../modul/modul-24-evaluasi-bisnis-dan-mastery.html" data-page="modul/modul-24-evaluasi-bisnis-dan-mastery.html"><span>Modul 24 — Evaluasi Bisnis dan Mastery</span></a>
+</details>
+<div class="nav-group"><p class="nav-label">Praktik</p>
+<a href="../proyek-praktik.html" data-page="proyek-praktik.html"><span>8 Project Praktik Wajib</span></a>
+<a href="../database-notion.html" data-page="database-notion.html"><span>Database Notion</span></a>
+</div>
+<div class="nav-group"><p class="nav-label">Lampiran</p>
+<a href="../kamus-istilah.html" data-page="kamus-istilah.html"><span>Kamus Istilah</span></a>
+<a href="../rumus-template.html" data-page="rumus-template.html"><span>Lembar Rumus dan Template</span></a>
+<a href="../studi-kasus.html" data-page="studi-kasus.html"><span>Studi Kasus Simulasi</span></a>
+<a href="../panduan-pelatih.html" data-page="panduan-pelatih.html"><span>Panduan Pelatih dan Penilaian</span></a>
+</div></nav>
+<div class="scrim" id="scrim" hidden></div>
+<main id="isi" class="content">
+<nav class="crumbs" aria-label="Jejak halaman"><a href="../index.html">Beranda</a> <span>/</span> <a href="../level-4.html">Level 4</a> <span>/</span> Modul 15</nav>
+<details class="toc-mobile"><summary>Di halaman ini</summary><ol><li><a href="#1-tujuan-pembelajaran">Tujuan Pembelajaran</a></li><li><a href="#2-ringkasan-konsep-utama">Ringkasan Konsep Utama</a></li><li><a href="#3-penjelasan">Penjelasan</a></li><li><a href="#4-istilah-penting">Istilah Penting</a></li><li><a href="#5-langkah-praktik">Langkah Praktik</a></li><li><a href="#6-contoh-dan-perhitungan">Contoh dan Perhitungan</a></li><li><a href="#7-kesalahan-umum-dan-cara-menghindarinya">Kesalahan Umum dan Cara Menghindarinya</a></li><li><a href="#8-tugas-dan-checklist">Tugas dan Checklist</a></li><li><a href="#9-latihan-dan-kunci-jawaban">Latihan dan Kunci Jawaban</a></li><li><a href="#10-standar-kelulusan">Standar Kelulusan</a></li></ol></details>
+<article class="prose">
+<div class="eyebrow"><a class="chip" href="../level-4.html">Level 4 · Conversion and Analytics</a><span class="chip ghost">Modul 15 dari 24</span><span class="chip ghost">± 11 menit baca</span></div>
+<h1 id="modul-15-conversion-rate-optimization-cro">Modul 15 — Conversion Rate Optimization (CRO)</h1>
+<section class="sec reveal"><h2 id="1-tujuan-pembelajaran"><span class="h-text">1. Tujuan Pembelajaran</span><a class="anchor" href="#1-tujuan-pembelajaran" aria-label="Tautan ke bagian ini">#</a></h2>
+<p>Setelah modul ini, kamu mampu:</p>
+<ul>
+<li>Menghitung conversion rate dengan definisi yang jelas.</li>
+<li>Mengenali kemungkinan kebocoran funnel.</li>
+<li>Menjelaskan penyebab potensial klik tanpa pembelian.</li>
+<li>Memilih optimasi berdasarkan masalah yang sudah teridentifikasi.</li>
+<li>Membuat hipotesis yang bisa diuji.</li>
+<li>Menghindari perubahan yang hanya berdasarkan dugaan.</li>
+</ul>
+</section><section class="sec reveal"><h2 id="2-ringkasan-konsep-utama"><span class="h-text">2. Ringkasan Konsep Utama</span><a class="anchor" href="#2-ringkasan-konsep-utama" aria-label="Tautan ke bagian ini">#</a></h2>
+<ol>
+<li><strong>CRO</strong> adalah proses meningkatkan persentase orang yang melakukan tindakan yang kamu inginkan. Tiap tindakan punya conversion rate berbeda, jadi sebut <strong>konversi apa yang kamu ukur</strong>.</li>
+<li><strong>Funnel affiliate</strong> punya 6 tahap: Views → Klik → Pesanan → Transaksi memenuhi syarat → Komisi disetujui → Pembayaran. Setiap tahap bisa bocor.</li>
+<li>Cari <strong>tahap yang paling bermasalah</strong> sebelum memutuskan perubahan.</li>
+<li>Elemen yang bisa dioptimalkan: hook, relevansi produk, demonstrasi, CTA, kesesuaian harga dan manfaat, kepercayaan terhadap penjual, dan kualitas halaman tujuan.</li>
+<li><strong>Klik tinggi tetapi pesanan rendah tidak otomatis berarti konten buruk.</strong> Masalahnya bisa di halaman produk, harga, kepercayaan penjual, atau ekspektasi yang tidak sesuai.</li>
+<li>Jawab <strong>keberatan calon pembeli</strong> dengan informasi, bukan klaim yang tidak terbukti.</li>
+<li>Optimasi harus berbasis <strong>hipotesis yang jelas</strong>. Jangan mengubah banyak faktor sekaligus.</li>
+</ol>
+</section><section class="sec reveal"><h2 id="3-penjelasan"><span class="h-text">3. Penjelasan</span><a class="anchor" href="#3-penjelasan" aria-label="Tautan ke bagian ini">#</a></h2>
+<h3 id="3-1-pengertian-conversion-rate-optimization"><span class="h-text">3.1 Pengertian Conversion Rate Optimization</span><a class="anchor" href="#3-1-pengertian-conversion-rate-optimization" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>CRO adalah proses meningkatkan persentase orang yang melakukan tindakan yang kamu inginkan. Dalam affiliate marketing, tindakan itu bisa berupa:</p>
+<ul>
+<li>mengeklik affiliate link;</li>
+<li>membuka halaman produk;</li>
+<li>membeli;</li>
+<li>menyelesaikan transaksi yang memenuhi syarat komisi.</li>
+</ul>
+<p>Tiap tindakan punya conversion rate berbeda. Karena itu, jelaskan konversi apa yang sedang kamu ukur.</p>
+<p>Angka di modul ini memakai <strong>definisi sederhana untuk latihan</strong>. Jika laporan Shopee memakai definisi klik, pesanan, atau konversi yang berbeda, pakai definisi resmi itu secara konsisten.</p>
+<p>Tujuan CRO bukan sekadar membuat orang mengeklik lebih banyak. Tujuannya memperbaiki perjalanan calon pembeli sampai menghasilkan transaksi yang memenuhi syarat.</p>
+<h3 id="3-2-funnel-affiliate-marketing"><span class="h-text">3.2 Funnel Affiliate Marketing</span><a class="anchor" href="#3-2-funnel-affiliate-marketing" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>Funnel adalah gambaran tahap yang dilalui seseorang sejak melihat konten sampai komisi dibayarkan. Funnel baku memakai 6 tahap:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>No</th>
+<th>Tahap</th>
+<th>Keterangan</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Views</td>
+<td>Audiens melihat konten</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Klik</td>
+<td>Audiens tertarik membuka link</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Pesanan</td>
+<td>Audiens memesan produk</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Transaksi memenuhi syarat</td>
+<td>Transaksi memenuhi persyaratan program</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Komisi disetujui</td>
+<td>Komisi lolos validasi sesuai ketentuan program</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Pembayaran</td>
+<td>Komisi dibayarkan kepadamu</td>
+</tr>
+</tbody>
+</table></div>
+<p>Contoh kebocoran per tahap:</p>
+<ul>
+<li>Banyak views tetapi sedikit klik.</li>
+<li>Banyak klik tetapi sedikit pesanan.</li>
+<li>Banyak pesanan tetapi banyak yang dibatalkan.</li>
+<li>Banyak transaksi tetapi komisi per transaksi rendah.</li>
+</ul>
+<p>Cari tahap yang paling bermasalah sebelum memutuskan perubahan.</p>
+<h3 id="3-3-mengoptimalkan-hook"><span class="h-text">3.3 Mengoptimalkan Hook</span><a class="anchor" href="#3-3-mengoptimalkan-hook" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>Hook adalah bagian pembuka konten yang menarik perhatian. Di video pendek, hook muncul di beberapa detik pertama. Di artikel, hook berupa judul dan paragraf pembuka.</p>
+<p>Hook yang efektif:</p>
+<ul>
+<li>relevan dengan masalah audiens;</li>
+<li>menjelaskan manfaat atau konflik yang nyata;</li>
+<li>membuat orang ingin tahu kelanjutannya;</li>
+<li>sesuai dengan isi konten;</li>
+<li>tidak memakai klaim menyesatkan.</li>
+</ul>
+<p>Hook yang kuat tidak otomatis menghasilkan penjualan. Uji apakah audiens yang tertarik benar-benar mengeklik link dan membeli.</p>
+<p><strong>Cara mengevaluasi hook:</strong></p>
+<ol>
+<li>Views.</li>
+<li>Rasio klik terhadap views (CTR), jika datanya ada.</li>
+<li>Jumlah klik.</li>
+<li>Pesanan dan komisi.</li>
+<li>Kesesuaian audiens dengan produk.</li>
+</ol>
+<p>Jangan memilih hook hanya karena views-nya paling tinggi.</p>
+<h3 id="3-4-mengoptimalkan-relevansi-produk"><span class="h-text">3.4 Mengoptimalkan Relevansi Produk</span><a class="anchor" href="#3-4-mengoptimalkan-relevansi-produk" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>Relevansi produk adalah tingkat kesesuaian produk dengan kebutuhan, masalah, dan ekspektasi audiens. Contoh: audiens mencari cara menghemat ruang di kamar kos. Produk yang relevan misalnya rak bertingkat, organizer lipat, atau tempat penyimpanan bawah tempat tidur.</p>
+<p>Produk yang tidak relevan mungkin banyak diklik karena tampak menarik, tetapi belum tentu dibeli.</p>
+<p>Periksa:</p>
+<ul>
+<li>Apakah produk menyelesaikan masalah yang dibahas?</li>
+<li>Apakah harga sesuai kemampuan target audiens?</li>
+<li>Apakah manfaatnya mudah dipahami?</li>
+<li>Apakah produk sesuai konteks penggunaan?</li>
+<li>Apakah penjual memberi informasi produk yang jelas?</li>
+<li>Apakah kualitas produk didukung bukti yang cukup?</li>
+</ul>
+<p>Jangan hanya memilih produk berkomisi tertinggi. Produk berkomisi besar tetapi sulit terjual bisa menghasilkan lebih sedikit daripada produk yang lebih relevan dan lebih sering dibeli.</p>
+<h3 id="3-5-mengoptimalkan-demonstrasi-produk"><span class="h-text">3.5 Mengoptimalkan Demonstrasi Produk</span><a class="anchor" href="#3-5-mengoptimalkan-demonstrasi-produk" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>Demonstrasi menunjukkan bagaimana produk bekerja atau dipakai. Demonstrasi biasanya lebih informatif daripada foto produk saja, karena audiens memahami fungsi dan batasannya.</p>
+<p><strong>Prinsip demonstrasi yang baik:</strong></p>
+<ul>
+<li>Pakai produk yang benar-benar kamu tampilkan, atau jelaskan dengan jujur jika memakai materi resmi penjual.</li>
+<li>Jangan mengaku sudah mencoba produk jika belum.</li>
+<li>Jangan mengedit visual sampai manfaatnya tampak lebih besar dari kenyataan.</li>
+<li>Jangan menyembunyikan keterbatasan yang penting bagi pembeli.</li>
+<li>Pakai bukti yang relevan dengan klaim.</li>
+</ul>
+<p>Tujuan demonstrasi bukan memaksa orang membeli, tetapi mengurangi ketidakpastian mereka.</p>
+<h3 id="3-6-mengoptimalkan-cta"><span class="h-text">3.6 Mengoptimalkan CTA</span><a class="anchor" href="#3-6-mengoptimalkan-cta" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>CTA (call to action) adalah ajakan untuk melakukan tindakan berikutnya. Di affiliate marketing, CTA bisa mengajak audiens memeriksa harga, membaca detail, atau membuka link produk.</p>
+<p>Contoh CTA:</p>
+<ul>
+<li>"Cek ukuran dan pilihan warna lewat link produk."</li>
+<li>"Bandingkan harga dan ulasannya sebelum membeli."</li>
+<li>"Lihat detail produk lewat link yang tersedia."</li>
+</ul>
+<p>Sesuaikan CTA dengan tahap audiens. Audiens yang baru mengenal produk butuh informasi tambahan. Audiens yang sudah tertarik lebih butuh petunjuk menuju halaman produk.</p>
+<p>CTA yang jelas mengurangi kebingungan, <strong>tetapi bukan jaminan pembelian</strong>.</p>
+<h3 id="3-7-kesesuaian-harga-dan-manfaat"><span class="h-text">3.7 Kesesuaian Harga dan Manfaat</span><a class="anchor" href="#3-7-kesesuaian-harga-dan-manfaat" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>Calon pembeli menimbang apakah manfaat produk sebanding dengan harganya. Nilai yang dirasakan dipengaruhi oleh:</p>
+<ul>
+<li>fungsi produk;</li>
+<li>kualitas bahan;</li>
+<li>daya tahan;</li>
+<li>kemudahan penggunaan;</li>
+<li>biaya pengiriman;</li>
+<li>garansi atau layanan yang tersedia;</li>
+<li>alternatif produk lain;</li>
+<li>risiko membeli produk yang tidak sesuai.</li>
+</ul>
+<h3 id="3-8-kepercayaan-terhadap-penjual"><span class="h-text">3.8 Kepercayaan terhadap Penjual</span><a class="anchor" href="#3-8-kepercayaan-terhadap-penjual" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>Kepercayaan memengaruhi keputusan beli, terutama jika calon pembeli belum pernah memakai produk atau membeli dari toko itu. Periksa:</p>
+<ul>
+<li>penilaian dan ulasan pembeli;</li>
+<li>jumlah dan kualitas ulasan yang relevan;</li>
+<li>reputasi toko;</li>
+<li>kejelasan deskripsi;</li>
+<li>foto produk;</li>
+<li>respons penjual, jika informasinya ada;</li>
+<li>kebijakan pengembalian atau garansi.</li>
+</ul>
+<p>Jangan hanya melihat angka rating. Baca beberapa ulasan yang relevan dan lihat apakah keluhan pembeli berkaitan dengan kebutuhan audiensmu. Contoh: produk berating tinggi, tetapi beberapa pembeli mengeluh ukurannya terlalu kecil. Jika audiensmu butuh kapasitas besar, keluhan itu penting.</p>
+<h3 id="3-9-kualitas-halaman-tujuan"><span class="h-text">3.9 Kualitas Halaman Tujuan</span><a class="anchor" href="#3-9-kualitas-halaman-tujuan" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>Konten yang bagus bisa kehilangan konversi jika halaman tujuan tidak mendukung keputusan beli. Periksa:</p>
+<ul>
+<li>link mengarah ke produk yang tepat;</li>
+<li>harga dan varian sesuai konten;</li>
+<li>informasi ukuran dan fungsi tersedia;</li>
+<li>foto cukup jelas;</li>
+<li>ulasan bisa dibaca;</li>
+<li>produk tersedia atau ada alternatif yang sesuai;</li>
+<li>tidak ada informasi yang bertentangan dengan konten.</li>
+</ul>
+<h3 id="3-10-memahami-keberatan-calon-pembeli"><span class="h-text">3.10 Memahami Keberatan Calon Pembeli</span><a class="anchor" href="#3-10-memahami-keberatan-calon-pembeli" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>Keberatan adalah alasan yang membuat seseorang ragu atau menunda pembelian. Tabel keberatan ada di bagian 6.3. Jangan menjawab keberatan dengan klaim yang tidak terbukti. Jika produk punya keterbatasan, jelaskan dengan jujur.</p>
+<h3 id="3-11-perbandingan-produk"><span class="h-text">3.11 Perbandingan Produk</span><a class="anchor" href="#3-11-perbandingan-produk" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>Perbandingan produk membantu audiens memilih alternatif sesuai kebutuhan. Ciri perbandingan yang baik:</p>
+<ul>
+<li>memakai kriteria yang sama;</li>
+<li>menampilkan fakta yang bisa diperiksa;</li>
+<li>menjelaskan kelebihan dan kekurangan;</li>
+<li>tidak membandingkan klaim yang tidak setara;</li>
+<li>memberi rekomendasi sesuai kebutuhan audiens.</li>
+</ul>
+<p>Perbandingan juga membantu audiens yang belum siap membeli karena masih menimbang beberapa alternatif.</p>
+<h3 id="3-12-analisis-klik-tanpa-pembelian"><span class="h-text">3.12 Analisis Klik tanpa Pembelian</span><a class="anchor" href="#3-12-analisis-klik-tanpa-pembelian" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>Klik tanpa pembelian tidak otomatis berarti konten gagal. Kemungkinan penyebabnya:</p>
+<ol>
+<li>Audiens hanya ingin tahu harga.</li>
+<li>Produk kurang relevan.</li>
+<li>Harga lebih tinggi dari ekspektasi.</li>
+<li>Halaman produk kurang meyakinkan.</li>
+<li>Stok atau varian tidak tersedia.</li>
+<li>Audiens masih membandingkan alternatif.</li>
+<li>Transaksi belum selesai.</li>
+<li>Pelaporan belum diperbarui.</li>
+<li>Klik dan transaksi tidak terhubung di laporan karena keterbatasan atribusi.</li>
+</ol>
+<h3 id="3-13-menghindari-perubahan-yang-tidak-terukur"><span class="h-text">3.13 Menghindari Perubahan yang Tidak Terukur</span><a class="anchor" href="#3-13-menghindari-perubahan-yang-tidak-terukur" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>Lakukan optimasi berdasarkan hipotesis yang jelas. Perhatikan faktor lain seperti perbedaan produk, harga, waktu publikasi, dan distribusi views. Jangan menganggap perubahan hasil pasti disebabkan satu faktor jika banyak faktor berubah sekaligus.</p>
+</section><section class="sec reveal"><h2 id="4-istilah-penting"><span class="h-text">4. Istilah Penting</span><a class="anchor" href="#4-istilah-penting" aria-label="Tautan ke bagian ini">#</a></h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Istilah</th>
+<th>Definisi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Conversion Rate Optimization (CRO)</td>
+<td>Proses meningkatkan persentase orang yang melakukan tindakan yang kamu inginkan</td>
+</tr>
+<tr>
+<td>Funnel</td>
+<td>Gambaran tahap yang dilalui seseorang sejak melihat konten sampai pembayaran komisi</td>
+</tr>
+<tr>
+<td>CTR (Click-through rate)</td>
+<td>Klik ÷ Views × 100% (dasar yang dipakai di modul ini adalah views)</td>
+</tr>
+<tr>
+<td>CVR (Conversion rate)</td>
+<td>Pesanan ÷ Klik × 100%</td>
+</tr>
+<tr>
+<td>Hook</td>
+<td>Bagian pembuka konten yang menarik perhatian; di video pendek muncul di beberapa detik pertama, di artikel berupa judul dan paragraf pembuka</td>
+</tr>
+<tr>
+<td>Relevansi produk</td>
+<td>Tingkat kesesuaian produk dengan kebutuhan, masalah, dan ekspektasi audiens</td>
+</tr>
+<tr>
+<td>Demonstrasi</td>
+<td>Cara menunjukkan bagaimana produk bekerja atau dipakai</td>
+</tr>
+<tr>
+<td>CTA (call to action)</td>
+<td>Ajakan untuk melakukan tindakan berikutnya</td>
+</tr>
+<tr>
+<td>Keberatan</td>
+<td>Alasan yang membuat seseorang ragu atau menunda pembelian</td>
+</tr>
+</tbody>
+</table></div>
+</section><section class="sec reveal"><h2 id="5-langkah-praktik"><span class="h-text">5. Langkah Praktik</span><a class="anchor" href="#5-langkah-praktik" aria-label="Tautan ke bagian ini">#</a></h2>
+<h3 id="a-alur-demonstrasi-produk-contoh-organizer-meja"><span class="h-text">A. Alur demonstrasi produk (contoh organizer meja)</span><a class="anchor" href="#a-alur-demonstrasi-produk-contoh-organizer-meja" aria-label="Tautan ke bagian ini">#</a></h3>
+<ol>
+<li>Tampilkan kondisi meja yang berantakan.</li>
+<li>Tunjukkan cara memakai organizer.</li>
+<li>Perlihatkan meja setelah barang ditata.</li>
+<li>Jelaskan barang apa saja yang bisa dimasukkan.</li>
+<li>Sebutkan ukuran atau keterbatasan produk jika kamu tahu.</li>
+<li>Arahkan audiens memeriksa detail produk lewat link.</li>
+</ol>
+<h3 id="b-mendiagnosis-klik-tanpa-pembelian"><span class="h-text">B. Mendiagnosis klik tanpa pembelian</span><a class="anchor" href="#b-mendiagnosis-klik-tanpa-pembelian" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>Mulai dari data yang paling mudah diperiksa:</p>
+<ul>
+<li>Pastikan link berfungsi.</li>
+<li>Pastikan halaman tujuan benar.</li>
+<li>Periksa harga dan stok.</li>
+<li>Tinjau kesesuaian konten dengan produk.</li>
+<li>Periksa jumlah klik dan pesanan pada periode yang sama.</li>
+<li>Tinjau status transaksi.</li>
+<li>Bandingkan dengan konten lain yang mempromosikan produk serupa.</li>
+</ul>
+<p>Jika penyebabnya belum jelas, buat hipotesis dan uji. <strong>Jangan mengganti produk, format konten, dan CTA bersamaan.</strong> Kamu akan sulit tahu faktor mana yang menyebabkan perubahan.</p>
+</section><section class="sec reveal"><h2 id="6-contoh-dan-perhitungan"><span class="h-text">6. Contoh dan Perhitungan</span><a class="anchor" href="#6-contoh-dan-perhitungan" aria-label="Tautan ke bagian ini">#</a></h2>
+<p>Angka di bagian ini simulasi, bukan tarif resmi Shopee.</p>
+<h3 id="6-1-contoh-ctr-dan-cvr"><span class="h-text">6.1 Contoh CTR dan CVR</span><a class="anchor" href="#6-1-contoh-ctr-dan-cvr" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>Konten tentang botol minum mendapat <strong>10.000 views</strong>, lalu <strong>200 orang mengeklik link produk</strong>.</p>
+<pre><code>CTR = Klik ÷ Views × 100%
+CTR = 200 / 10.000 × 100% = 2%
+</code></pre>
+<p>Dari 200 klik itu tercatat <strong>10 pesanan</strong>.</p>
+<pre><code>CVR = Pesanan ÷ Klik × 100%
+CVR = 10 / 200 × 100% = 5%
+</code></pre>
+<p>Definisi ini sederhana untuk latihan. Jika laporan Shopee memakai definisi yang berbeda, pakai definisi resmi itu secara konsisten. Rumus yang sama dipakai di Modul 16.</p>
+<h3 id="6-2-contoh-hook"><span class="h-text">6.2 Contoh hook</span><a class="anchor" href="#6-2-contoh-hook" aria-label="Tautan ke bagian ini">#</a></h3>
+<p>Produk: organizer meja kerja.</p>
+<ul>
+<li>Hook kurang spesifik: "Ini dia produk yang bagus banget."</li>
+<li>Hook lebih relevan: "Meja kerja penuh barang? Organizer ini bisa membantu memisahkan alat tulis dan aksesori kecil."</li>
+</ul>
+<p>Hook kedua lebih jelas karena menyebut masalah dan manfaat.</p>
+<h3 id="6-3-tabel-keberatan-calon-pembeli"><span class="h-text">6.3 Tabel keberatan calon pembeli</span><a class="anchor" href="#6-3-tabel-keberatan-calon-pembeli" aria-label="Tautan ke bagian ini">#</a></h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Keberatan</th>
+<th>Informasi yang perlu disediakan</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Harga terlalu mahal</td>
+<td>Perbandingan manfaat dan alternatif</td>
+</tr>
+<tr>
+<td>Takut kualitas buruk</td>
+<td>Ulasan relevan dan bukti yang tersedia</td>
+</tr>
+<tr>
+<td>Tidak tahu ukuran</td>
+<td>Ukuran dan contoh penggunaan</td>
+</tr>
+<tr>
+<td>Tidak yakin produk cocok</td>
+<td>Batasan produk dan konteks penggunaan</td>
+</tr>
+<tr>
+<td>Khawatir barang tidak sesuai</td>
+<td>Foto, deskripsi, dan varian yang jelas</td>
+</tr>
+<tr>
+<td>Belum membutuhkan sekarang</td>
+<td>Informasi yang membantu keputusan tanpa tekanan</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="6-4-contoh-kesesuaian-harga-dan-manfaat"><span class="h-text">6.4 Contoh kesesuaian harga dan manfaat</span><a class="anchor" href="#6-4-contoh-kesesuaian-harga-dan-manfaat" aria-label="Tautan ke bagian ini">#</a></h3>
+<ul>
+<li>Produk A berharga <strong>Rp40.000</strong> dan berfungsi dasar.</li>
+<li>Produk B berharga <strong>Rp70.000</strong>, tetapi berkapasitas lebih besar dan berbahan lebih kuat.</li>
+</ul>
+<p>Produk A tidak otomatis lebih baik karena lebih murah. Produk B juga tidak otomatis lebih baik karena fiturnya lebih banyak. Pahami kebutuhan audiens dan tunjukkan perbedaan yang relevan.</p>
+<h3 id="6-5-tabel-perbandingan-produk"><span class="h-text">6.5 Tabel perbandingan produk</span><a class="anchor" href="#6-5-tabel-perbandingan-produk" aria-label="Tautan ke bagian ini">#</a></h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Faktor</th>
+<th>Produk A</th>
+<th>Produk B</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Harga</td>
+<td>Rp40.000</td>
+<td>Rp70.000</td>
+</tr>
+<tr>
+<td>Kapasitas</td>
+<td>Lebih kecil</td>
+<td>Lebih besar</td>
+</tr>
+<tr>
+<td>Ukuran</td>
+<td>Ringkas</td>
+<td>Lebih lebar</td>
+</tr>
+<tr>
+<td>Cocok untuk</td>
+<td>Ruang sempit</td>
+<td>Penyimpanan lebih banyak</td>
+</tr>
+<tr>
+<td>Kekurangan</td>
+<td>Kapasitas terbatas</td>
+<td>Butuh ruang lebih luas</td>
+</tr>
+</tbody>
+</table></div>
+<p>Angka ini contoh ilustratif, bukan penawaran produk aktual.</p>
+<h3 id="6-6-contoh-hipotesis-yang-terukur"><span class="h-text">6.6 Contoh hipotesis yang terukur</span><a class="anchor" href="#6-6-contoh-hipotesis-yang-terukur" aria-label="Tautan ke bagian ini">#</a></h3>
+<blockquote class="callout">
+<p>"Jika video menampilkan ukuran organizer secara langsung, rasio pesanan terhadap klik akan meningkat karena calon pembeli bisa menilai kesesuaiannya sebelum membuka link."</p>
+</blockquote>
+<p>Uji hipotesis ini dengan membandingkan konten yang menampilkan ukuran dengan konten yang tidak. Perhatikan perbedaan produk, harga, waktu publikasi, dan distribusi views.</p>
+</section><section class="sec reveal"><h2 id="7-kesalahan-umum-dan-cara-menghindarinya"><span class="h-text">7. Kesalahan Umum dan Cara Menghindarinya</span><a class="anchor" href="#7-kesalahan-umum-dan-cara-menghindarinya" aria-label="Tautan ke bagian ini">#</a></h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Kesalahan</th>
+<th>Cara menghindari</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Terlalu banyak ajakan dalam satu konten</td>
+<td>Pilih satu CTA utama</td>
+</tr>
+<tr>
+<td>CTA tidak berhubungan dengan isi konten</td>
+<td>Samakan CTA dengan topik konten</td>
+</tr>
+<tr>
+<td>Klaim mendesak tanpa bukti, mis. "stok tinggal satu" padahal tidak diketahui</td>
+<td>Tulis hanya hal yang kamu ketahui dan bisa dibuktikan</td>
+</tr>
+<tr>
+<td>Tidak memberi tahu audiens tindakan yang harus dilakukan</td>
+<td>Tulis ajakan yang jelas</td>
+</tr>
+<tr>
+<td>Mengarahkan audiens ke link yang berbeda dari produk yang dibahas</td>
+<td>Cocokkan link dengan produk di konten</td>
+</tr>
+<tr>
+<td>Memilih hook hanya karena views tertinggi</td>
+<td>Lihat juga klik, pesanan, dan kesesuaian audiens</td>
+</tr>
+<tr>
+<td>Memilih produk hanya karena komisi tertinggi</td>
+<td>Pilih produk yang relevan dan lebih mungkin dibeli</td>
+</tr>
+<tr>
+<td>Mengaku sudah mencoba produk, mengedit visual agar manfaat tampak berlebihan, atau menyembunyikan keterbatasan</td>
+<td>Tampilkan produk dan keterbatasannya dengan jujur</td>
+</tr>
+<tr>
+<td>Menjawab keberatan dengan klaim tidak terbukti</td>
+<td>Jawab dengan informasi dan bukti</td>
+</tr>
+<tr>
+<td>Menyimpulkan konten buruk hanya karena klik tinggi dan pesanan rendah</td>
+<td>Diagnosis dulu dengan langkah 5.B</td>
+</tr>
+<tr>
+<td>Mengganti produk, format konten, dan CTA bersamaan</td>
+<td>Ubah satu variabel utama</td>
+</tr>
+<tr>
+<td>Menganggap satu faktor sebagai penyebab padahal banyak yang berubah</td>
+<td>Catat semua faktor lain yang berubah</td>
+</tr>
+</tbody>
+</table></div>
+</section><section class="sec reveal"><h2 id="8-tugas-dan-checklist"><span class="h-text">8. Tugas dan Checklist</span><a class="anchor" href="#8-tugas-dan-checklist" aria-label="Tautan ke bagian ini">#</a></h2>
+<ul>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-15-conversion-rate-optimization-cro.html#1"> <span><strong>Tugas 1 — Petakan funnel</strong> dari Views sampai Pembayaran (6 tahap).</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-15-conversion-rate-optimization-cro.html#2"> <span><strong>Tugas 2 — Catat metrik</strong> pada setiap tahap yang datanya tersedia.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-15-conversion-rate-optimization-cro.html#3"> <span><strong>Tugas 3 — Temukan tahap</strong> yang paling banyak kehilangan calon pembeli.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-15-conversion-rate-optimization-cro.html#4"> <span><strong>Tugas 4 — Pilih satu masalah</strong> yang ingin diperbaiki.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-15-conversion-rate-optimization-cro.html#5"> <span><strong>Tugas 5 — Buat satu hipotesis</strong> yang bisa diuji.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-15-conversion-rate-optimization-cro.html#6"> <span><strong>Tugas 6 — Ubah satu variabel utama.</strong></span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-15-conversion-rate-optimization-cro.html#7"> <span><strong>Tugas 7 — Bandingkan hasil</strong> dengan baseline.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-15-conversion-rate-optimization-cro.html#8"> <span><strong>Tugas 8 — Catat faktor lain</strong> yang mungkin memengaruhi hasil.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="modul/modul-15-conversion-rate-optimization-cro.html#9"> <span><strong>Tugas 9 — Tentukan keputusan akhir</strong> memakai istilah baku: Lanjutkan, Optimalkan, Uji ulang, Kurangi prioritas, atau Hentikan. "Perluas" hanya dipertimbangkan setelah ada bukti (lihat Modul 20).</span></label></li>
+</ul>
+</section><section class="sec reveal sec-latihan"><h2 id="9-latihan-dan-kunci-jawaban"><span class="h-text">9. Latihan dan Kunci Jawaban</span><a class="anchor" href="#9-latihan-dan-kunci-jawaban" aria-label="Tautan ke bagian ini">#</a></h2>
+<div class="qa"><p class="q"><strong>Soal 1.</strong> Sebutkan enam tahap funnel affiliate menurut modul ini.</p><details class="ans"><summary>Lihat jawaban</summary><div class="a"><p><strong>Jawaban:</strong> Views → Klik → Pesanan → Transaksi memenuhi syarat → Komisi disetujui → Pembayaran.</p></div></details></div>
+<div class="qa"><p class="q"><strong>Soal 2.</strong> Kontenmu punya banyak klik tetapi sedikit pesanan. Kesimpulan apa yang TIDAK boleh langsung diambil, dan apa yang harus diperiksa?</p><details class="ans"><summary>Lihat jawaban</summary><div class="a"><p><strong>Jawaban:</strong> Jangan langsung menyimpulkan kontennya buruk. Masalahnya bisa di halaman produk, harga, kepercayaan terhadap penjual, atau ekspektasi yang tidak sesuai. Periksa link, halaman tujuan, harga dan stok, kesesuaian konten dengan produk, klik dan pesanan pada periode yang sama, status transaksi, serta bandingkan dengan konten lain untuk produk serupa.</p></div></details></div>
+<div class="qa"><p class="q"><strong>Soal 3.</strong> Audiens menyatakan "tidak tahu ukuran". Informasi apa yang perlu disediakan?</p><details class="ans"><summary>Lihat jawaban</summary><div class="a"><p><strong>Jawaban:</strong> Ukuran dan contoh penggunaan.</p></div></details></div>
+<div class="qa"><p class="q"><strong>Soal 4.</strong> Mengapa tidak boleh mengganti produk, format konten, dan CTA sekaligus?</p><details class="ans"><summary>Lihat jawaban</summary><div class="a"><p><strong>Jawaban:</strong> Karena kamu akan sulit mengetahui faktor mana yang menyebabkan perubahan hasil.</p></div></details></div>
+<div class="qa"><p class="q"><strong>Soal 5.</strong> Tuliskan satu contoh hipotesis yang bisa diuji.</p><details class="ans"><summary>Lihat jawaban</summary><div class="a"><p><strong>Jawaban:</strong> "Jika video menampilkan ukuran organizer secara langsung, rasio pesanan terhadap klik akan meningkat karena calon pembeli bisa menilai kesesuaiannya sebelum membuka link."</p></div></details></div>
+<div class="qa"><p class="q"><strong>Soal 6.</strong> Sebuah video punya 20.000 views dan 400 klik. Berapa CTR-nya?</p><details class="ans"><summary>Lihat jawaban</summary><div class="a"><p><strong>Jawaban:</strong> 400 / 20.000 × 100% = 2%. (Simulasi.)</p></div></details></div>
+</section><section class="sec reveal"><h2 id="10-standar-kelulusan"><span class="h-text">10. Standar Kelulusan</span><a class="anchor" href="#10-standar-kelulusan" aria-label="Tautan ke bagian ini">#</a></h2>
+<p>Kamu dianggap menguasai modul ini jika mampu menghitung conversion rate dengan definisi yang jelas, menemukan tahap funnel yang bocor, menjelaskan penyebab klik tanpa pembelian, memilih optimasi sesuai masalah, membuat hipotesis yang bisa diuji, dan tidak mengubah apa pun hanya berdasarkan dugaan.</p></section>
+</article>
+<div class="complete reveal"><button type="button" id="mark-done" data-page="modul/modul-15-conversion-rate-optimization-cro.html">Tandai modul ini selesai</button><span class="hint">Tersimpan di browser kamu.</span></div>
+<nav class="pager" aria-label="Halaman sebelumnya dan berikutnya"><a class="prev" href="../modul/modul-14-affiliate-link-dan-tracking.html"><small>← Sebelumnya</small><span>14. Affiliate Link dan Tracking</span></a><a class="next" href="../modul/modul-16-analytics-dan-dashboard.html"><small>Berikutnya →</small><span>16. Analytics dan Dashboard</span></a></nav>
+<footer class="foot">
+  <p>Materi pembelajaran, bukan nasihat hukum atau pajak. Aturan Shopee Affiliate bisa berubah, jadi selalu cek sumber resmi dan catat tanggal pemeriksaannya. Situs ini bukan situs resmi Shopee.</p>
+</footer>
+</main>
+<aside class="toc" aria-label="Isi halaman"><p class="toc-title">Di halaman ini</p><ol><li><a href="#1-tujuan-pembelajaran">Tujuan Pembelajaran</a></li><li><a href="#2-ringkasan-konsep-utama">Ringkasan Konsep Utama</a></li><li><a href="#3-penjelasan">Penjelasan</a></li><li><a href="#4-istilah-penting">Istilah Penting</a></li><li><a href="#5-langkah-praktik">Langkah Praktik</a></li><li><a href="#6-contoh-dan-perhitungan">Contoh dan Perhitungan</a></li><li><a href="#7-kesalahan-umum-dan-cara-menghindarinya">Kesalahan Umum dan Cara Menghindarinya</a></li><li><a href="#8-tugas-dan-checklist">Tugas dan Checklist</a></li><li><a href="#9-latihan-dan-kunci-jawaban">Latihan dan Kunci Jawaban</a></li><li><a href="#10-standar-kelulusan">Standar Kelulusan</a></li></ol></aside>
+</div>
+<nav class="bottom-nav" id="bottom-nav" aria-label="Navigasi cepat">
+  <a class="bn-item" href="../index.html"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5"/><path d="M5 10v10h14V10"/></svg><span>Beranda</span></a>
+  <button class="bn-item" id="bn-menu" type="button" aria-controls="sidebar"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="7" rx="1.5"/><rect x="4" y="13" width="7" height="7" rx="1.5"/><rect x="13" y="13" width="7" height="7" rx="1.5"/></svg><span>Materi</span></button>
+  <button class="bn-item" id="bn-search" type="button"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span>Cari</span></button>
+  <a class="bn-item bn-primary" href="../modul/modul-16-analytics-dan-dashboard.html"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg><span>Lanjut</span></a>
+</nav>
+<button class="to-top" id="to-top" type="button" aria-label="Kembali ke atas" hidden><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5"/><path d="m5 12 7-7 7 7"/></svg></button>
+<div class="toast-wrap" id="toasts" aria-live="polite"></div>
+<script src="../assets/search-index.js"></script>
+<script src="../assets/app.js"></script>
+</body>
+</html>

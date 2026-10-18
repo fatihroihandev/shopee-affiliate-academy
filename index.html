@@ -1,0 +1,436 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Shopee Affiliate V2 · Shopee Affiliate Academy</title>
+<meta name="description" content="Materi ini mengajarkan cara membangun bisnis Shopee Affiliate dari nol. Kamu akan belajar memilih produk, membuat konten, mendatangkan pengunjung tanpa iklan berbayar, lalu mengukur dan memperbaiki ha">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#EE4D2D">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/style.css">
+<script>(function(){var d=document.documentElement;d.classList.add('js');try{var t=localStorage.getItem('sea-theme');if(t&&t!=='auto')d.setAttribute('data-theme',t);var p=JSON.parse(localStorage.getItem('sea-prefs')||'{}');['fs','lh','font','width'].forEach(function(k){if(p[k])d.setAttribute('data-'+k,p[k]);});if(p.focus)d.setAttribute('data-focus','1');}catch(e){}})();</script>
+</head>
+<body data-root="" data-kind="index" data-page="index.html" data-title="Shopee Affiliate V2">
+<a class="skip" href="#isi">Lewati ke isi</a>
+<div class="read-progress" id="read-progress" aria-hidden="true"></div>
+<div class="top" id="top">
+<header class="topbar">
+  <button class="icon-btn menu-btn" id="menu-btn" aria-label="Buka menu materi" aria-controls="sidebar" aria-expanded="false"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+  <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true">SA</span><span class="brand-name">Shopee Affiliate Academy</span></a>
+  <div class="search" id="search">
+    <div class="search-box">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input id="search-input" type="search" placeholder="Cari materi…" autocomplete="off" aria-label="Cari materi">
+      <button class="icon-btn search-close" id="search-close" type="button" aria-label="Tutup pencarian"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+    </div>
+    <div class="search-results" id="search-results" hidden></div>
+  </div>
+  <button class="icon-btn desk-only" id="focus-btn" aria-label="Mode fokus" title="Mode fokus"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9V5h4M20 9V5h-4M4 15v4h4M20 15v4h-4"/></svg></button>
+  <button class="icon-btn aa-btn" id="aa-btn" aria-label="Pengaturan baca" aria-expanded="false" aria-controls="prefs"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20 10 5l6 15"/><path d="M6.5 14.5h7"/><path d="M15 12h5M17.5 12v8"/></svg></button>
+</header>
+<div class="subbar" id="subbar" aria-hidden="true"><span class="sb-title"></span><span class="sb-pct"></span></div>
+</div>
+<div class="prefs" id="prefs" hidden role="dialog" aria-label="Pengaturan tampilan">
+  <div class="prefs-head"><strong>Pengaturan baca</strong><button class="icon-btn sm" id="prefs-close" type="button" aria-label="Tutup"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
+  <div class="pref-row"><span>Ukuran teks</span><div class="seg" role="group" aria-label="Ukuran teks">
+    <button type="button" id="fs-down" aria-label="Perkecil teks">A−</button><output id="fs-val">3/5</output><button type="button" id="fs-up" aria-label="Perbesar teks">A+</button></div></div>
+  <div class="pref-row"><span>Jarak baris</span><div class="seg"><button type="button" data-pref="lh" data-val="tight">Rapat</button><button type="button" data-pref="lh" data-val="normal">Normal</button><button type="button" data-pref="lh" data-val="loose">Lega</button></div></div>
+  <div class="pref-row"><span>Huruf</span><div class="seg"><button type="button" data-pref="font" data-val="sans">Sans</button><button type="button" data-pref="font" data-val="serif">Serif</button></div></div>
+  <div class="pref-row"><span>Lebar teks</span><div class="seg"><button type="button" data-pref="width" data-val="normal">Standar</button><button type="button" data-pref="width" data-val="wide">Lebar</button></div></div>
+  <div class="pref-row"><span>Tema</span><div class="seg theme-seg"><button type="button" data-pref="theme" data-val="light">Terang</button><button type="button" data-pref="theme" data-val="sepia">Sepia</button><button type="button" data-pref="theme" data-val="dark">Gelap</button><button type="button" data-pref="theme" data-val="auto">Auto</button></div></div>
+  <label class="pref-switch"><input type="checkbox" id="pref-break" checked><span class="sw"></span><span>Pengingat istirahat (tiap 25 menit)</span></label>
+  <label class="pref-switch desk-only"><input type="checkbox" id="pref-focus"><span class="sw"></span><span>Mode fokus (sembunyikan menu)</span></label>
+  <button type="button" class="reset" id="prefs-reset">Kembalikan ke bawaan</button>
+</div>
+<div class="shell">
+<nav class="sidebar" id="sidebar" aria-label="Navigasi materi">
+<div class="nav-group">
+<a href="index.html" data-page="index.html" aria-current="page"><span>Beranda dan Pengantar</span></a>
+<a href="master.html" data-page="master.html"><span>Rangkuman Master</span></a>
+</div>
+<details class="nav-level" data-mods="modul/modul-01-dasar-affiliate-marketing.html,modul/modul-02-shopee-affiliate-program-dan-kebijakan.html,modul/modul-03-persiapan-akun-dan-operasional.html"><summary><span class="lv-badge">1</span><span class="lv-name">Fundamentals</span><span class="lv-count">0/3</span></summary>
+<a href="level-1.html" data-page="level-1.html"><span>Ringkasan level</span></a>
+<a href="modul/modul-01-dasar-affiliate-marketing.html" data-page="modul/modul-01-dasar-affiliate-marketing.html"><span>Modul 01 — Dasar Affiliate Marketing</span></a>
+<a href="modul/modul-02-shopee-affiliate-program-dan-kebijakan.html" data-page="modul/modul-02-shopee-affiliate-program-dan-kebijakan.html"><span>Modul 02 — Shopee Affiliate Program dan Kebijakan</span></a>
+<a href="modul/modul-03-persiapan-akun-dan-operasional.html" data-page="modul/modul-03-persiapan-akun-dan-operasional.html"><span>Modul 03 — Persiapan Akun dan Operasional</span></a>
+</details>
+<details class="nav-level" data-mods="modul/modul-04-riset-pasar-dan-permintaan.html,modul/modul-05-niche-audiens-dan-positioning.html,modul/modul-06-riset-dan-evaluasi-produk.html,modul/modul-07-riset-kompetitor.html"><summary><span class="lv-badge">2</span><span class="lv-name">Market and Product Research</span><span class="lv-count">0/4</span></summary>
+<a href="level-2.html" data-page="level-2.html"><span>Ringkasan level</span></a>
+<a href="modul/modul-04-riset-pasar-dan-permintaan.html" data-page="modul/modul-04-riset-pasar-dan-permintaan.html"><span>Modul 04 — Riset Pasar dan Permintaan</span></a>
+<a href="modul/modul-05-niche-audiens-dan-positioning.html" data-page="modul/modul-05-niche-audiens-dan-positioning.html"><span>Modul 05 — Niche, Audiens, dan Positioning</span></a>
+<a href="modul/modul-06-riset-dan-evaluasi-produk.html" data-page="modul/modul-06-riset-dan-evaluasi-produk.html"><span>Modul 06 — Riset dan Evaluasi Produk</span></a>
+<a href="modul/modul-07-riset-kompetitor.html" data-page="modul/modul-07-riset-kompetitor.html"><span>Modul 07 — Riset Kompetitor</span></a>
+</details>
+<details class="nav-level" data-mods="modul/modul-08-strategi-channel-dan-traffic-organik.html,modul/modul-09-strategi-konten.html,modul/modul-10-copywriting-dan-hook.html,modul/modul-11-produksi-video-dan-visual.html,modul/modul-12-seo-dan-konten-berbasis-pencarian.html,modul/modul-13-distribusi-dan-community-building.html"><summary><span class="lv-badge">3</span><span class="lv-name">Content and Traffic</span><span class="lv-count">0/6</span></summary>
+<a href="level-3.html" data-page="level-3.html"><span>Ringkasan level</span></a>
+<a href="modul/modul-08-strategi-channel-dan-traffic-organik.html" data-page="modul/modul-08-strategi-channel-dan-traffic-organik.html"><span>Modul 08 — Strategi Channel dan Traffic Organik</span></a>
+<a href="modul/modul-09-strategi-konten.html" data-page="modul/modul-09-strategi-konten.html"><span>Modul 09 — Strategi Konten</span></a>
+<a href="modul/modul-10-copywriting-dan-hook.html" data-page="modul/modul-10-copywriting-dan-hook.html"><span>Modul 10 — Copywriting dan Hook</span></a>
+<a href="modul/modul-11-produksi-video-dan-visual.html" data-page="modul/modul-11-produksi-video-dan-visual.html"><span>Modul 11 — Produksi Video dan Visual</span></a>
+<a href="modul/modul-12-seo-dan-konten-berbasis-pencarian.html" data-page="modul/modul-12-seo-dan-konten-berbasis-pencarian.html"><span>Modul 12 — SEO dan Konten Berbasis Pencarian</span></a>
+<a href="modul/modul-13-distribusi-dan-community-building.html" data-page="modul/modul-13-distribusi-dan-community-building.html"><span>Modul 13 — Distribusi dan Community Building</span></a>
+</details>
+<details class="nav-level" data-mods="modul/modul-14-affiliate-link-dan-tracking.html,modul/modul-15-conversion-rate-optimization-cro.html,modul/modul-16-analytics-dan-dashboard.html,modul/modul-17-eksperimen-dan-validasi.html"><summary><span class="lv-badge">4</span><span class="lv-name">Conversion and Analytics</span><span class="lv-count">0/4</span></summary>
+<a href="level-4.html" data-page="level-4.html"><span>Ringkasan level</span></a>
+<a href="modul/modul-14-affiliate-link-dan-tracking.html" data-page="modul/modul-14-affiliate-link-dan-tracking.html"><span>Modul 14 — Affiliate Link dan Tracking</span></a>
+<a href="modul/modul-15-conversion-rate-optimization-cro.html" data-page="modul/modul-15-conversion-rate-optimization-cro.html"><span>Modul 15 — Conversion Rate Optimization (CRO)</span></a>
+<a href="modul/modul-16-analytics-dan-dashboard.html" data-page="modul/modul-16-analytics-dan-dashboard.html"><span>Modul 16 — Analytics dan Dashboard</span></a>
+<a href="modul/modul-17-eksperimen-dan-validasi.html" data-page="modul/modul-17-eksperimen-dan-validasi.html"><span>Modul 17 — Eksperimen dan Validasi</span></a>
+</details>
+<details class="nav-level" data-mods="modul/modul-18-monetisasi-dan-pemilihan-produk-lanjutan.html,modul/modul-19-keuangan-dan-target-komisi.html,modul/modul-20-scaling-dan-sistem-produksi.html,modul/modul-21-kepatuhan-risiko-dan-reputasi.html,modul/modul-22-advanced-strategy.html,modul/modul-23-otomasi-dan-sistem-kerja.html,modul/modul-24-evaluasi-bisnis-dan-mastery.html"><summary><span class="lv-badge">5</span><span class="lv-name">Professional Growth</span><span class="lv-count">0/7</span></summary>
+<a href="level-5.html" data-page="level-5.html"><span>Ringkasan level</span></a>
+<a href="modul/modul-18-monetisasi-dan-pemilihan-produk-lanjutan.html" data-page="modul/modul-18-monetisasi-dan-pemilihan-produk-lanjutan.html"><span>Modul 18 — Monetisasi dan Pemilihan Produk Lanjutan</span></a>
+<a href="modul/modul-19-keuangan-dan-target-komisi.html" data-page="modul/modul-19-keuangan-dan-target-komisi.html"><span>Modul 19 — Keuangan dan Target Komisi</span></a>
+<a href="modul/modul-20-scaling-dan-sistem-produksi.html" data-page="modul/modul-20-scaling-dan-sistem-produksi.html"><span>Modul 20 — Scaling dan Sistem Produksi</span></a>
+<a href="modul/modul-21-kepatuhan-risiko-dan-reputasi.html" data-page="modul/modul-21-kepatuhan-risiko-dan-reputasi.html"><span>Modul 21 — Kepatuhan, Risiko, dan Reputasi</span></a>
+<a href="modul/modul-22-advanced-strategy.html" data-page="modul/modul-22-advanced-strategy.html"><span>Modul 22 — Advanced Strategy</span></a>
+<a href="modul/modul-23-otomasi-dan-sistem-kerja.html" data-page="modul/modul-23-otomasi-dan-sistem-kerja.html"><span>Modul 23 — Otomasi dan Sistem Kerja</span></a>
+<a href="modul/modul-24-evaluasi-bisnis-dan-mastery.html" data-page="modul/modul-24-evaluasi-bisnis-dan-mastery.html"><span>Modul 24 — Evaluasi Bisnis dan Mastery</span></a>
+</details>
+<div class="nav-group"><p class="nav-label">Praktik</p>
+<a href="proyek-praktik.html" data-page="proyek-praktik.html"><span>8 Project Praktik Wajib</span></a>
+<a href="database-notion.html" data-page="database-notion.html"><span>Database Notion</span></a>
+</div>
+<div class="nav-group"><p class="nav-label">Lampiran</p>
+<a href="kamus-istilah.html" data-page="kamus-istilah.html"><span>Kamus Istilah</span></a>
+<a href="rumus-template.html" data-page="rumus-template.html"><span>Lembar Rumus dan Template</span></a>
+<a href="studi-kasus.html" data-page="studi-kasus.html"><span>Studi Kasus Simulasi</span></a>
+<a href="panduan-pelatih.html" data-page="panduan-pelatih.html"><span>Panduan Pelatih dan Penilaian</span></a>
+</div></nav>
+<div class="scrim" id="scrim" hidden></div>
+<main id="isi" class="content">
+<nav class="crumbs" aria-label="Jejak halaman"><a href="index.html">Beranda</a></nav>
+
+<article class="prose">
+
+<section class="hero"><span class="blob b1" aria-hidden="true"></span><span class="blob b2" aria-hidden="true"></span><div class="hero-text"><span class="hero-badge">Materi pelatihan lengkap</span><h1>Shopee Affiliate V2</h1><p>Panduan dari pemula sampai profesional. Belajar memilih produk, membuat konten, dan mengukur hasil dengan data.</p><div class="hero-cta"><a class="btn btn-light" href="modul/modul-01-dasar-affiliate-marketing.html">Mulai dari Modul 01</a><a class="btn btn-outline" href="master.html">Lihat rangkuman</a></div></div><ul class="hero-stats"><li><b data-count="5">5</b><span>Level</span></li><li><b data-count="24">24</b><span>Modul</span></li><li><b data-count="8">8</b><span>Proyek</span></li><li><b data-count="6">6</b><span>Database</span></li></ul></section><a class="resume-card" id="resume" href="#" hidden><span class="rc-label">Lanjutkan membaca</span><strong class="rc-title"></strong><span class="rc-meta"></span></a><section class="progress-card" data-modules="modul/modul-01-dasar-affiliate-marketing.html,modul/modul-02-shopee-affiliate-program-dan-kebijakan.html,modul/modul-03-persiapan-akun-dan-operasional.html,modul/modul-04-riset-pasar-dan-permintaan.html,modul/modul-05-niche-audiens-dan-positioning.html,modul/modul-06-riset-dan-evaluasi-produk.html,modul/modul-07-riset-kompetitor.html,modul/modul-08-strategi-channel-dan-traffic-organik.html,modul/modul-09-strategi-konten.html,modul/modul-10-copywriting-dan-hook.html,modul/modul-11-produksi-video-dan-visual.html,modul/modul-12-seo-dan-konten-berbasis-pencarian.html,modul/modul-13-distribusi-dan-community-building.html,modul/modul-14-affiliate-link-dan-tracking.html,modul/modul-15-conversion-rate-optimization-cro.html,modul/modul-16-analytics-dan-dashboard.html,modul/modul-17-eksperimen-dan-validasi.html,modul/modul-18-monetisasi-dan-pemilihan-produk-lanjutan.html,modul/modul-19-keuangan-dan-target-komisi.html,modul/modul-20-scaling-dan-sistem-produksi.html,modul/modul-21-kepatuhan-risiko-dan-reputasi.html,modul/modul-22-advanced-strategy.html,modul/modul-23-otomasi-dan-sistem-kerja.html,modul/modul-24-evaluasi-bisnis-dan-mastery.html" aria-live="polite"><div class="pc-top"><strong>Progres belajarmu</strong><span class="pc-text">0 dari 24 modul selesai</span></div><div class="pc-bar"><i></i></div><p class="pc-hint">Tandai modul selesai di akhir tiap modul. Progres tersimpan di browser ini.</p></section>
+<section class="sec reveal"><h2 id="selamat-datang"><span class="h-text">Selamat datang</span><a class="anchor" href="#selamat-datang" aria-label="Tautan ke bagian ini">#</a></h2>
+<p>Materi ini mengajarkan cara membangun bisnis Shopee Affiliate dari nol. Kamu akan belajar memilih produk, membuat konten, mendatangkan pengunjung tanpa iklan berbayar, lalu mengukur dan memperbaiki hasilnya dengan data.</p>
+<p><strong>Misi:</strong> membangun bisnis Shopee Affiliate yang terukur, berkelanjutan, dan bisa dikembangkan dengan traffic organik.</p>
+<blockquote class="callout warn">
+<p><strong>Baca ini dulu:</strong> tidak ada jaminan penghasilan. Hasilmu bergantung pada pilihan produk, kualitas konten, kebutuhan pasar, dan aturan program yang bisa berubah. Karena itu, semua keputusan di materi ini didasarkan pada data nyata, bukan tebakan.</p>
+</blockquote>
+<section class="cards" aria-label="Level belajar"><a class="card reveal" href="level-1.html" data-mods="modul/modul-01-dasar-affiliate-marketing.html,modul/modul-02-shopee-affiliate-program-dan-kebijakan.html,modul/modul-03-persiapan-akun-dan-operasional.html"><span class="card-num">Level 1</span><strong>Fundamentals</strong><p>Dasar affiliate, aturan program Shopee, dan persiapan akun.</p><span class="card-bar"><i></i></span><span class="card-meta">Modul 01–03 · <em class="cm-done">0</em>/3 selesai</span></a><a class="card reveal" href="level-2.html" data-mods="modul/modul-04-riset-pasar-dan-permintaan.html,modul/modul-05-niche-audiens-dan-positioning.html,modul/modul-06-riset-dan-evaluasi-produk.html,modul/modul-07-riset-kompetitor.html"><span class="card-num">Level 2</span><strong>Market and Product Research</strong><p>Riset pasar, niche dan audiens, evaluasi produk, dan kompetitor.</p><span class="card-bar"><i></i></span><span class="card-meta">Modul 04–07 · <em class="cm-done">0</em>/4 selesai</span></a><a class="card reveal" href="level-3.html" data-mods="modul/modul-08-strategi-channel-dan-traffic-organik.html,modul/modul-09-strategi-konten.html,modul/modul-10-copywriting-dan-hook.html,modul/modul-11-produksi-video-dan-visual.html,modul/modul-12-seo-dan-konten-berbasis-pencarian.html,modul/modul-13-distribusi-dan-community-building.html"><span class="card-num">Level 3</span><strong>Content and Traffic</strong><p>Channel, strategi konten, hook, video, SEO, dan kepercayaan audiens.</p><span class="card-bar"><i></i></span><span class="card-meta">Modul 08–13 · <em class="cm-done">0</em>/6 selesai</span></a><a class="card reveal" href="level-4.html" data-mods="modul/modul-14-affiliate-link-dan-tracking.html,modul/modul-15-conversion-rate-optimization-cro.html,modul/modul-16-analytics-dan-dashboard.html,modul/modul-17-eksperimen-dan-validasi.html"><span class="card-num">Level 4</span><strong>Conversion and Analytics</strong><p>Link dan tracking, optimasi konversi, dashboard, dan eksperimen.</p><span class="card-bar"><i></i></span><span class="card-meta">Modul 14–17 · <em class="cm-done">0</em>/4 selesai</span></a><a class="card reveal" href="level-5.html" data-mods="modul/modul-18-monetisasi-dan-pemilihan-produk-lanjutan.html,modul/modul-19-keuangan-dan-target-komisi.html,modul/modul-20-scaling-dan-sistem-produksi.html,modul/modul-21-kepatuhan-risiko-dan-reputasi.html,modul/modul-22-advanced-strategy.html,modul/modul-23-otomasi-dan-sistem-kerja.html,modul/modul-24-evaluasi-bisnis-dan-mastery.html"><span class="card-num">Level 5</span><strong>Professional Growth</strong><p>Monetisasi, keuangan, scaling, kepatuhan, otomasi, dan evaluasi bisnis.</p><span class="card-bar"><i></i></span><span class="card-meta">Modul 18–24 · <em class="cm-done">0</em>/7 selesai</span></a></section></section><section class="sec reveal"><h2 id="untuk-siapa-materi-ini"><span class="h-text">Untuk siapa materi ini?</span><a class="anchor" href="#untuk-siapa-materi-ini" aria-label="Tautan ke bagian ini">#</a></h2>
+<ul>
+<li>Pemula yang belum pernah menjadi affiliate.</li>
+<li>Affiliate yang sudah mulai tetapi belum punya sistem dan data.</li>
+<li>Tim atau peserta pelatihan yang butuh panduan belajar yang seragam.</li>
+</ul>
+<p>Kamu tidak perlu punya produk, stok, atau modal uang. Kamu hanya perlu waktu, ponsel, koneksi internet, dan kemauan untuk konsisten.</p>
+</section><section class="sec reveal"><h2 id="apa-yang-akan-kamu-capai"><span class="h-text">Apa yang akan kamu capai?</span><a class="anchor" href="#apa-yang-akan-kamu-capai" aria-label="Tautan ke bagian ini">#</a></h2>
+<p>Setelah menyelesaikan semua modul dan proyek, kamu mampu:</p>
+<ul>
+<li>Memahami cara kerja affiliate dan aturan Shopee Affiliate.</li>
+<li>Memilih niche, audiens, dan produk berdasarkan bukti.</li>
+<li>Membuat konten orisinal secara konsisten dan sesuai aturan.</li>
+<li>Memasang link dengan benar dan melacak hasilnya.</li>
+<li>Membaca data (CTR, CVR, EPC) lalu mengambil keputusan.</li>
+<li>Menghitung target komisi dan kebutuhan traffic.</li>
+<li>Mengelola risiko, membuat SOP, dan mengembangkan bisnis secara bertahap.</li>
+</ul>
+</section><section class="sec reveal"><h2 id="cara-belajar-yang-disarankan"><span class="h-text">Cara belajar yang disarankan</span><a class="anchor" href="#cara-belajar-yang-disarankan" aria-label="Tautan ke bagian ini">#</a></h2>
+<ol>
+<li><strong>Belajar berurutan.</strong> Mulai dari Modul 01. Setiap modul memakai hasil modul sebelumnya.</li>
+<li><strong>Baca lalu praktik.</strong> Selesaikan Tugas dan Checklist di akhir tiap modul sebelum lanjut.</li>
+<li><strong>Kerjakan latihan.</strong> Jawab soal di bagian Latihan, lalu cocokkan dengan kunci jawabannya.</li>
+<li><strong>Catat semuanya di Notion.</strong> Pakai enam database di halaman "Database Notion yang Wajib Dibangun".</li>
+<li><strong>Cek aturan resmi.</strong> Sebelum promosi, buka sumber resmi Shopee dan catat tanggal pemeriksaanmu.</li>
+</ol>
+<p>Setiap modul punya urutan yang sama:</p>
+<ol>
+<li>Tujuan pembelajaran</li>
+<li>Ringkasan konsep utama</li>
+<li>Penjelasan</li>
+<li>Istilah penting</li>
+<li>Langkah praktik</li>
+<li>Contoh dan perhitungan</li>
+<li>Kesalahan umum</li>
+<li>Tugas dan checklist</li>
+<li>Latihan dan kunci jawaban</li>
+<li>Standar kelulusan</li>
+</ol>
+</section><section class="sec reveal"><h2 id="peta-belajar"><span class="h-text">Peta belajar</span><a class="anchor" href="#peta-belajar" aria-label="Tautan ke bagian ini">#</a></h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Level</th>
+<th>Modul</th>
+<th>Kamu akan belajar</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Level 1 — Fundamentals</strong></td>
+<td>01–03</td>
+<td>Dasar affiliate, aturan program Shopee, dan persiapan akun serta pencatatan</td>
+</tr>
+<tr>
+<td><strong>Level 2 — Market and Product Research</strong></td>
+<td>04–07</td>
+<td>Riset pasar, niche dan audiens, evaluasi produk, dan riset kompetitor</td>
+</tr>
+<tr>
+<td><strong>Level 3 — Content and Traffic</strong></td>
+<td>08–13</td>
+<td>Pilihan channel, strategi konten, hook, produksi video, SEO, dan membangun kepercayaan</td>
+</tr>
+<tr>
+<td><strong>Level 4 — Conversion and Analytics</strong></td>
+<td>14–17</td>
+<td>Link dan tracking, optimasi konversi, dashboard, dan eksperimen</td>
+</tr>
+<tr>
+<td><strong>Level 5 — Professional Growth</strong></td>
+<td>18–24</td>
+<td>Monetisasi, keuangan, scaling, kepatuhan, strategi lanjutan, otomasi, dan evaluasi bisnis</td>
+</tr>
+</tbody>
+</table></div>
+</section><section class="sec reveal"><h2 id="master-dashboard"><span class="h-text">MASTER DASHBOARD</span><a class="anchor" href="#master-dashboard" aria-label="Tautan ke bagian ini">#</a></h2>
+<div class="link-list"><a class="link-card reveal" href="level-1.html" data-page="level-1.html"><span>LEVEL 1 — FUNDAMENTALS</span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></a><a class="link-card reveal" href="level-2.html" data-page="level-2.html"><span>LEVEL 2 — MARKET AND PRODUCT RESEARCH</span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></a><a class="link-card reveal" href="level-3.html" data-page="level-3.html"><span>LEVEL 3 — CONTENT AND TRAFFIC</span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></a><a class="link-card reveal" href="level-4.html" data-page="level-4.html"><span>LEVEL 4 — CONVERSION AND ANALYTICS</span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></a><a class="link-card reveal" href="level-5.html" data-page="level-5.html"><span>LEVEL 5 — PROFESSIONAL GROWTH</span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></a><a class="link-card reveal" href="proyek-praktik.html" data-page="proyek-praktik.html"><span>8 Project Praktik Wajib</span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></a><a class="link-card reveal" href="database-notion.html" data-page="database-notion.html"><span>Database Notion yang Wajib Dibangun</span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></a></div><p><strong>LAMPIRAN PENDUKUNG</strong></p>
+<p><a href="kamus-istilah.html">Kamus Istilah</a> — arti semua istilah penting, urut abjad.</p>
+<p><a href="rumus-template.html">Lembar Rumus dan Template</a> — semua rumus dan template siap salin di satu tempat.</p>
+<p><a href="studi-kasus.html">Studi Kasus Simulasi</a> — contoh alur dari nol sampai laporan 30 hari.</p>
+<p><a href="panduan-pelatih.html">Panduan Pelatih dan Penilaian</a> — jadwal contoh, rubrik proyek, kuis tiap level, dan kriteria kelulusan (untuk pelatih).</p>
+</section><section class="sec reveal"><h2 id="status-belajar"><span class="h-text">Status Belajar</span><a class="anchor" href="#status-belajar" aria-label="Tautan ke bagian ini">#</a></h2>
+<ul>
+<li class="task"><label><input type="checkbox" data-key="index.html#1"> <span>LEVEL 1 — FUNDAMENTALS</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="index.html#2"> <span>LEVEL 2 — MARKET AND PRODUCT RESEARCH</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="index.html#3"> <span>LEVEL 3 — CONTENT AND TRAFFIC</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="index.html#4"> <span>LEVEL 4 — CONVERSION AND ANALYTICS</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="index.html#5"> <span>LEVEL 5 — PROFESSIONAL GROWTH</span></label></li>
+</ul>
+</section><section class="sec reveal"><h2 id="roadmap-utama"><span class="h-text">Roadmap Utama</span><a class="anchor" href="#roadmap-utama" aria-label="Tautan ke bagian ini">#</a></h2>
+<ul>
+<li class="task"><label><input type="checkbox" data-key="index.html#6"> <span>Modul 01 — Dasar Affiliate Marketing</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="index.html#7"> <span>Modul 02 — Shopee Affiliate Program dan Kebijakan</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="index.html#8"> <span>Modul 03 — Persiapan Akun dan Operasional</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="index.html#9"> <span>Modul 04 — Riset Pasar dan Permintaan</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="index.html#10"> <span>Modul 05 — Niche, Audiens, dan Positioning</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="index.html#11"> <span>Modul 06 — Riset dan Evaluasi Produk</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="index.html#12"> <span>Modul 07 — Riset Kompetitor</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="index.html#13"> <span>Modul 08 — Strategi Channel dan Traffic Organik</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="index.html#14"> <span>Modul 09 — Strategi Konten</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="index.html#15"> <span>Modul 10 — Copywriting dan Hook</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="index.html#16"> <span>Modul 11 — Produksi Video dan Visual</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="index.html#17"> <span>Modul 12 — SEO dan Konten Berbasis Pencarian</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="index.html#18"> <span>Modul 13 — Distribusi dan Community Building</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="index.html#19"> <span>Modul 14 — Affiliate Link dan Tracking</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="index.html#20"> <span>Modul 15 — Conversion Rate Optimization</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="index.html#21"> <span>Modul 16 — Analytics dan Dashboard</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="index.html#22"> <span>Modul 17 — Eksperimen dan Validasi</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="index.html#23"> <span>Modul 18 — Monetisasi dan Pemilihan Produk Lanjutan</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="index.html#24"> <span>Modul 19 — Keuangan dan Target Komisi</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="index.html#25"> <span>Modul 20 — Scaling dan Sistem Produksi</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="index.html#26"> <span>Modul 21 — Kepatuhan, Risiko, dan Reputasi</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="index.html#27"> <span>Modul 22 — Advanced Strategy</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="index.html#28"> <span>Modul 23 — Otomasi dan Sistem Kerja</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="index.html#29"> <span>Modul 24 — Evaluasi Bisnis dan Mastery</span></label></li>
+</ul>
+<hr />
+<h1 id="5-aturan-emas">5 ATURAN EMAS</h1>
+<ol>
+<li><strong>Aturan resmi dulu.</strong> Ikuti aturan Shopee dan platform. Jangan mengandalkan unggahan orang lain.</li>
+<li><strong>Jujur dan orisinal.</strong> Jangan mengaku sudah mencoba produk yang belum kamu coba. Jangan menyalin karya orang lain. Ungkapkan bahwa linkmu adalah affiliate link.</li>
+<li><strong>Data sebelum keputusan.</strong> Jangan menyimpulkan dari satu konten atau satu hari.</li>
+<li><strong>Satu hal sekaligus.</strong> Satu channel utama dulu. Ubah satu variabel utama per eksperimen.</li>
+<li><strong>Pisahkan angka estimasi dari uang yang sudah dibayar.</strong> Komisi estimasi belum tentu menjadi uang di rekeningmu.</li>
+</ol>
+<hr />
+<h1 id="istilah-baku-di-seluruh-materi">ISTILAH BAKU DI SELURUH MATERI</h1>
+<p>Semua modul memakai arti yang sama untuk istilah di bawah ini. Kalau ada yang terasa berbeda, ikuti tabel ini.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Hal</th>
+<th>Aturan baku</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Status komisi</td>
+<td>Empat tahap berurutan: <strong>Estimasi → Pending → Disetujui → Dibayarkan</strong>. Nama di dashboard Shopee bisa berbeda (misalnya "Dalam proses" untuk Pending). Jangan menjumlahkan keempatnya.</td>
+</tr>
+<tr>
+<td>Hasil setelah biaya</td>
+<td>Basis kas = komisi dibayarkan − biaya usaha. Basis kinerja = komisi disetujui − biaya usaha. Selalu sebutkan basisnya. Istilah "profit bersih" hanya dipakai setelah pajak dan kewajiban lain dihitung.</td>
+</tr>
+<tr>
+<td>Funnel</td>
+<td><strong>Views → Klik → Pesanan → Transaksi memenuhi syarat → Komisi disetujui → Pembayaran.</strong></td>
+</tr>
+<tr>
+<td>Rumus metrik</td>
+<td>CTR = klik ÷ tayangan × 100% (sebut dasarnya: views atau impresi). CVR = pesanan ÷ klik × 100%. EPC = komisi ÷ klik. Komisi per 1.000 views = komisi ÷ views × 1.000.</td>
+</tr>
+<tr>
+<td>Tahap pembeli</td>
+<td>Awareness (menyadari masalah) → Consideration (mencari solusi) → Evaluation (membandingkan produk) → Conversion (memutuskan membeli).</td>
+</tr>
+<tr>
+<td>Keputusan setelah evaluasi</td>
+<td><strong>Lanjutkan · Optimalkan · Uji ulang · Kurangi prioritas · Hentikan.</strong> "Perluas" hanya dipertimbangkan setelah ada bukti (lihat Modul 20).</td>
+</tr>
+<tr>
+<td>Angka contoh</td>
+<td>Semua tarif, persentase, dan target (termasuk contoh Rp30 juta per bulan) adalah simulasi untuk latihan hitung. Itu bukan tarif resmi Shopee dan bukan janji hasil.</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h1 id="sistem-evaluasi-mingguan">SISTEM EVALUASI MINGGUAN</h1>
+<p>Lakukan evaluasi ini setiap minggu, mulai setelah konten pertamamu terbit. Catat jawabannya di Notion.</p>
+</section><section class="sec reveal"><h2 id="traffic"><span class="h-text">Traffic</span><a class="anchor" href="#traffic" aria-label="Tautan ke bagian ini">#</a></h2>
+<ul>
+<li class="task"><label><input type="checkbox" data-key="index.html#30"> <span>Apakah traffic bertambah?</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="index.html#31"> <span>Apakah audiens sesuai target?</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="index.html#32"> <span>Format apa yang mendapat jangkauan terbaik?</span></label></li>
+</ul>
+</section><section class="sec reveal"><h2 id="engagement-dan-klik"><span class="h-text">Engagement dan Klik</span><a class="anchor" href="#engagement-dan-klik" aria-label="Tautan ke bagian ini">#</a></h2>
+<ul>
+<li class="task"><label><input type="checkbox" data-key="index.html#33"> <span>Apakah konten menghasilkan klik?</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="index.html#34"> <span>Apakah hook relevan?</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="index.html#35"> <span>Apakah CTA jelas?</span></label></li>
+</ul>
+</section><section class="sec reveal"><h2 id="konversi"><span class="h-text">Konversi</span><a class="anchor" href="#konversi" aria-label="Tautan ke bagian ini">#</a></h2>
+<ul>
+<li class="task"><label><input type="checkbox" data-key="index.html#36"> <span>Apakah klik menghasilkan pesanan?</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="index.html#37"> <span>Apakah produk sesuai dengan audiens?</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="index.html#38"> <span>Apakah ada masalah harga atau kualitas?</span></label></li>
+</ul>
+</section><section class="sec reveal"><h2 id="komisi"><span class="h-text">Komisi</span><a class="anchor" href="#komisi" aria-label="Tautan ke bagian ini">#</a></h2>
+<ul>
+<li class="task"><label><input type="checkbox" data-key="index.html#39"> <span>Berapa komisi estimasi?</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="index.html#40"> <span>Berapa komisi pending?</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="index.html#41"> <span>Berapa komisi disetujui?</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="index.html#42"> <span>Berapa komisi dibayarkan?</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="index.html#43"> <span>Apakah ada pembatalan atau penyesuaian?</span></label></li>
+</ul>
+</section><section class="sec reveal"><h2 id="keputusan"><span class="h-text">Keputusan</span><a class="anchor" href="#keputusan" aria-label="Tautan ke bagian ini">#</a></h2>
+<ul>
+<li class="task"><label><input type="checkbox" data-key="index.html#44"> <span><strong>Lanjutkan</strong> strategi yang terbukti.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="index.html#45"> <span><strong>Optimalkan</strong> titik yang lemah.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="index.html#46"> <span><strong>Uji ulang</strong> jika datanya belum cukup.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="index.html#47"> <span><strong>Kurangi prioritas</strong> aktivitas yang hasilnya kecil dibanding usahanya.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="index.html#48"> <span><strong>Hentikan</strong> pendekatan yang tidak layak.</span></label></li>
+<li class="task"><label><input type="checkbox" data-key="index.html#49"> <span><strong>Perluas</strong> strategi hanya setelah terbukti.</span></label></li>
+</ul>
+<hr />
+<h1 id="definisi-selesai-belajar">DEFINISI SELESAI BELAJAR</h1>
+<p>Kamu dianggap menguasai materi ini jika mampu:</p>
+<ul>
+<li>Menjelaskan dan mematuhi aturan program.</li>
+<li>Memilih niche berdasarkan kebutuhan audiens.</li>
+<li>Mengevaluasi produk secara objektif.</li>
+<li>Melakukan riset kompetitor.</li>
+<li>Membuat konten orisinal secara konsisten.</li>
+<li>Mengelola link dan tracking.</li>
+<li>Menganalisis funnel konversi.</li>
+<li>Mengukur komisi berdasarkan data.</li>
+<li>Merancang eksperimen yang terukur.</li>
+<li>Menyusun proyeksi bisnis.</li>
+<li>Mengelola risiko dan kepatuhan.</li>
+<li>Membangun SOP dan dashboard.</li>
+<li>Mengambil keputusan berdasarkan hasil nyata.</li>
+</ul>
+<p><strong>Penting:</strong> menyelesaikan semua modul tidak otomatis membuat bisnismu menguntungkan. Kemampuan profesional terbukti lewat praktik, data yang konsisten, keputusan yang baik, dan hasil yang tervalidasi.</p>
+<hr />
+<h1 id="sumber-resmi">SUMBER RESMI</h1>
+<ul>
+<li>Shopee Affiliate: <a href="https://affiliate.shopee.co.id/">https://affiliate.shopee.co.id/</a></li>
+<li>Pusat Bantuan Shopee: <a href="https://help.shopee.co.id/">https://help.shopee.co.id/</a></li>
+</ul>
+<p>Untuk setiap aturan komisi, atribusi, pembayaran, dan promosi, catat sumber resminya beserta tanggal pemeriksaan. Aturan bisa berubah. Daftar dokumen resmi dan caranya ada di Modul 02.</p>
+<hr />
+<h1 id="rencana-eksekusi-pertama">RENCANA EKSEKUSI PERTAMA</h1>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Langkah</th>
+<th>Yang dikerjakan</th>
+<th>Modul</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Pahami dasar affiliate, aturan program, dan siapkan akun</td>
+<td>01–03</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Pilih niche dan audiens</td>
+<td>04–05</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Riset produk dan kompetitor</td>
+<td>06–07</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Pilih satu channel utama</td>
+<td>08</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Buat 30 ide konten, tulis 10 skrip, lalu produksi minimal 10 konten</td>
+<td>09–11</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Bangun database tracking sejak awal</td>
+<td>03 dan 14</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Evaluasi data setiap minggu</td>
+<td>16</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Lanjut ke optimasi dan scaling setelah ada bukti transaksi</td>
+<td>17–20</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h1 id="faq-singkat">FAQ SINGKAT</h1>
+<p><strong>Apakah saya harus punya produk sendiri?</strong>
+Tidak. Affiliate mempromosikan produk milik penjual lain. Kamu tidak mengurus stok atau pengiriman.</p>
+<p><strong>Apakah modalnya benar-benar Rp0?</strong>
+Kamu tidak perlu membeli stok. Tetapi kamu tetap butuh waktu, ponsel, internet, dan tenaga untuk membuat konten.</p>
+<p><strong>Berapa lama sampai ada penghasilan?</strong>
+Tidak ada yang bisa memastikannya. Transaksi pertama adalah sebuah milestone, bukan hasil yang dijamin pada waktu tertentu.</p>
+<p><strong>Boleh membeli lewat link sendiri supaya dapat komisi?</strong>
+Tidak. Itu berisiko melanggar ketentuan program. Penjelasannya ada di Modul 02.</p>
+<p><strong>Angka dan tarif di materi ini bisa dipakai langsung?</strong>
+Tidak. Semuanya simulasi untuk latihan. Cek tarif dan aturan terbaru di dashboard dan sumber resmi Shopee.</p>
+<p><strong>Apa yang harus dibuka kalau bingung dengan istilah?</strong>
+Lihat tabel "Istilah Baku" di halaman ini, lalu buka "Kamus Istilah". Untuk penjelasan lengkap, baca bagian "Istilah Penting" di modul yang bersangkutan.</p>
+<p><strong>Di mana saya bisa menemukan semua rumus dan template?</strong>
+Di "Lembar Rumus dan Template". Kalau ingin melihat contoh alur lengkap, baca "Studi Kasus Simulasi".</p>
+<hr />
+<p><strong>Prinsip akhir:</strong> belajar secukupnya untuk mulai, praktik secara konsisten, ukur hasilnya, lalu tingkatkan strategi berdasarkan data.</p></section>
+</article>
+
+<nav class="pager" aria-label="Halaman sebelumnya dan berikutnya"><a class="next" href="level-1.html"><small>Berikutnya →</small><span>Level 1 — Fundamentals</span></a></nav>
+<footer class="foot">
+  <p>Materi pembelajaran, bukan nasihat hukum atau pajak. Aturan Shopee Affiliate bisa berubah, jadi selalu cek sumber resmi dan catat tanggal pemeriksaannya. Situs ini bukan situs resmi Shopee.</p>
+</footer>
+</main>
+<aside class="toc" aria-label="Isi halaman"><p class="toc-title">Di halaman ini</p><ol><li><a href="#selamat-datang">Selamat datang</a></li><li><a href="#untuk-siapa-materi-ini">Untuk siapa materi ini?</a></li><li><a href="#apa-yang-akan-kamu-capai">Apa yang akan kamu capai?</a></li><li><a href="#cara-belajar-yang-disarankan">Cara belajar yang disarankan</a></li><li><a href="#peta-belajar">Peta belajar</a></li><li><a href="#master-dashboard">MASTER DASHBOARD</a></li><li><a href="#status-belajar">Status Belajar</a></li><li><a href="#roadmap-utama">Roadmap Utama</a></li><li><a href="#traffic">Traffic</a></li><li><a href="#engagement-dan-klik">Engagement dan Klik</a></li><li><a href="#konversi">Konversi</a></li><li><a href="#komisi">Komisi</a></li><li><a href="#keputusan">Keputusan</a></li></ol></aside>
+</div>
+<nav class="bottom-nav" id="bottom-nav" aria-label="Navigasi cepat">
+  <a class="bn-item" href="index.html"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5"/><path d="M5 10v10h14V10"/></svg><span>Beranda</span></a>
+  <button class="bn-item" id="bn-menu" type="button" aria-controls="sidebar"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="7" rx="1.5"/><rect x="4" y="13" width="7" height="7" rx="1.5"/><rect x="13" y="13" width="7" height="7" rx="1.5"/></svg><span>Materi</span></button>
+  <button class="bn-item" id="bn-search" type="button"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span>Cari</span></button>
+  <a class="bn-item bn-primary" href="level-1.html"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg><span>Lanjut</span></a>
+</nav>
+<button class="to-top" id="to-top" type="button" aria-label="Kembali ke atas" hidden><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5"/><path d="m5 12 7-7 7 7"/></svg></button>
+<div class="toast-wrap" id="toasts" aria-live="polite"></div>
+<script src="assets/search-index.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>
