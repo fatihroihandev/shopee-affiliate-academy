@@ -20,6 +20,7 @@ import { PerformanceTracker } from '@/pages/workspaces/PerformanceTracker';
 import { ExperimentTracker } from '@/pages/workspaces/ExperimentTracker';
 import { SopDocuments } from '@/pages/workspaces/SopDocuments';
 import { AffiliateDashboard } from '@/pages/affiliate/AffiliateDashboard';
+import { AdminDashboard } from '@/pages/admin/AdminDashboard';
 import { AppLayout } from '@/components/layout/AppLayout';
 import { Loader2 } from 'lucide-react';
 
@@ -225,7 +226,7 @@ export const AppRoutes: React.FC = () => {
         path="/admin/*"
         element={
           <AdminRoute>
-            <ComingSoonPage title="Admin Command Center" desc="Dasbor admin pengelolaan order, entitlement, dan audit log (Fase 6)." />
+            <AdminDashboard />
           </AdminRoute>
         }
       />
