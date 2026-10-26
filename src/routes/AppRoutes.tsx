@@ -6,9 +6,10 @@ import { Login } from '@/pages/Login';
 import { Register } from '@/pages/Register';
 import { ForgotPassword } from '@/pages/ForgotPassword';
 import { Dashboard } from '@/pages/Dashboard';
+import { AppLayout } from '@/components/layout/AppLayout';
 import { Loader2 } from 'lucide-react';
 
-// Protected Route Component
+// Protected Route Component (Wraps with AppLayout for student dashboard & workspaces)
 const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const { user, loading } = useAuth();
 
@@ -24,7 +25,7 @@ const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({ children }) =
     return <Navigate to="/login" replace />;
   }
 
-  return <>{children}</>;
+  return <AppLayout>{children}</AppLayout>;
 };
 
 // Admin Route Component
@@ -43,7 +44,7 @@ const AdminRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     return <Navigate to="/dashboard" replace />;
   }
 
-  return <>{children}</>;
+  return <AppLayout>{children}</AppLayout>;
 };
 
 // Placeholder page for upcoming phase routes
