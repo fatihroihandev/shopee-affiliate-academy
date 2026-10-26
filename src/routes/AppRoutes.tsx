@@ -11,6 +11,14 @@ import { ModuleDetail } from '@/pages/learning/ModuleDetail';
 import { LessonReader } from '@/pages/learning/LessonReader';
 import { ProjectsIndex } from '@/pages/learning/ProjectsIndex';
 import { ProjectDetail } from '@/pages/learning/ProjectDetail';
+import { ProductResearchLab } from '@/pages/workspaces/ProductResearchLab';
+import { ResearchNotes } from '@/pages/workspaces/ResearchNotes';
+import { ContentStudio } from '@/pages/workspaces/ContentStudio';
+import { ContentPlanner } from '@/pages/workspaces/ContentPlanner';
+import { LinkArchive } from '@/pages/workspaces/LinkArchive';
+import { PerformanceTracker } from '@/pages/workspaces/PerformanceTracker';
+import { ExperimentTracker } from '@/pages/workspaces/ExperimentTracker';
+import { SopDocuments } from '@/pages/workspaces/SopDocuments';
 import { AppLayout } from '@/components/layout/AppLayout';
 import { Loader2 } from 'lucide-react';
 
@@ -140,7 +148,7 @@ export const AppRoutes: React.FC = () => {
         path="/tools/products"
         element={
           <ProtectedRoute>
-            <ComingSoonPage title="Product Research Lab" desc="Workspace riset produk dengan skor 7 faktor berbobot (Fase 4)." />
+            <ProductResearchLab />
           </ProtectedRoute>
         }
       />
@@ -148,7 +156,7 @@ export const AppRoutes: React.FC = () => {
         path="/tools/research-notes"
         element={
           <ProtectedRoute>
-            <ComingSoonPage title="Research Notes" desc="Pusat catatan riset niche dan kompetitor (Fase 4)." />
+            <ResearchNotes />
           </ProtectedRoute>
         }
       />
@@ -156,7 +164,7 @@ export const AppRoutes: React.FC = () => {
         path="/tools/content"
         element={
           <ProtectedRoute>
-            <ComingSoonPage title="Content Creation Studio" desc="Studio perancangan naskah, hook bank, dan QC checklist (Fase 4)." />
+            <ContentStudio />
           </ProtectedRoute>
         }
       />
@@ -164,7 +172,7 @@ export const AppRoutes: React.FC = () => {
         path="/tools/planner"
         element={
           <ProtectedRoute>
-            <ComingSoonPage title="Content Planner" desc="Kalender jadwal publikasi 30 hari (Fase 4)." />
+            <ContentPlanner />
           </ProtectedRoute>
         }
       />
@@ -172,7 +180,7 @@ export const AppRoutes: React.FC = () => {
         path="/tools/links"
         element={
           <ProtectedRoute>
-            <ComingSoonPage title="Link Archive" desc="Manajemen tautan Shopee Affiliate terorganisir (Fase 4)." />
+            <LinkArchive />
           </ProtectedRoute>
         }
       />
@@ -180,7 +188,7 @@ export const AppRoutes: React.FC = () => {
         path="/tools/tracker"
         element={
           <ProtectedRoute>
-            <ComingSoonPage title="Performance Tracker" desc="Pencatatan metrik CTR, CVR, EPC harian dan rekap periode (Fase 4)." />
+            <PerformanceTracker />
           </ProtectedRoute>
         }
       />
@@ -188,7 +196,7 @@ export const AppRoutes: React.FC = () => {
         path="/tools/experiments"
         element={
           <ProtectedRoute>
-            <ComingSoonPage title="Experiment Tracker" desc="Pengujian A/B hipotesis 4 bagian (Fase 4)." />
+            <ExperimentTracker />
           </ProtectedRoute>
         }
       />
@@ -196,7 +204,7 @@ export const AppRoutes: React.FC = () => {
         path="/tools/sop"
         element={
           <ProtectedRoute>
-            <ComingSoonPage title="SOP & Knowledge Hub" desc="Manajemen prosedur operasional standar (Fase 4)." />
+            <SopDocuments />
           </ProtectedRoute>
         }
       />
