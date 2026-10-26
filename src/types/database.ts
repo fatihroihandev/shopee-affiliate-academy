@@ -25,6 +25,7 @@ export interface Entitlement {
   source_order_id?: string | null;
   granted_at: string;
   revoked_at?: string | null;
+  revocation_reason?: string | null;
 }
 
 export interface Module {
@@ -169,4 +170,61 @@ export interface AffiliateProfile {
   is_active: boolean;
   total_commission_earned: number;
   total_commission_paid: number;
+}
+
+export interface ReferralClick {
+  id: string;
+  affiliate_id: string;
+  ip_hash?: string;
+  user_agent?: string;
+  referer_url?: string;
+  created_at: string;
+}
+
+export interface ReferralConversion {
+  id: string;
+  affiliate_id: string;
+  order_id: string;
+  order_number?: string;
+  customer_email?: string;
+  order_amount: number;
+  commission_rate: number;
+  commission_amount: number;
+  status: 'pending' | 'approved' | 'rejected' | 'paid';
+  created_at: string;
+}
+
+export interface AffiliatePayout {
+  id: string;
+  affiliate_id: string;
+  amount: number;
+  status: 'requested' | 'processing' | 'completed' | 'rejected';
+  bank_name?: string;
+  bank_account_number?: string;
+  bank_account_holder?: string;
+  admin_notes?: string;
+  transfer_proof_url?: string;
+  processed_at?: string;
+  created_at: string;
+}
+
+export interface MarketingMaterial {
+  id: string;
+  title: string;
+  category: 'banner' | 'swipe_copy' | 'video_mockup' | 'guide';
+  content_url?: string;
+  copy_text?: string;
+  sort_order: number;
+  is_published: boolean;
+}
+
+export interface AdminAuditLog {
+  id: string;
+  admin_user_id: string;
+  action: string;
+  target_user_id?: string;
+  related_order_id?: string;
+  reason?: string;
+  metadata?: Record<string, any>;
+  created_at: string;
 }

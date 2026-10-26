@@ -11,6 +11,8 @@ import {
   Calendar,
   Link2,
   BarChart2,
+  FlaskConical,
+  BookCheck,
   Share2,
   Shield,
   Sparkle
@@ -84,6 +86,14 @@ export const Sidebar: React.FC = () => {
             <NavLink to="/tools/tracker" className={navItemClass}>
               <BarChart2 className="w-4 h-4" />
               <span>6. Performance Tracker</span>
+            </NavLink>
+            <NavLink to="/tools/experiments" className={navItemClass}>
+              <FlaskConical className="w-4 h-4" />
+              <span>7. Experiment Tracker</span>
+            </NavLink>
+            <NavLink to="/tools/sop" className={navItemClass}>
+              <BookCheck className="w-4 h-4" />
+              <span>8. SOP & Knowledge Hub</span>
             </NavLink>
           </nav>
         </div>

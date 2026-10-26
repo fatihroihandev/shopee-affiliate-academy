@@ -1,11 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { AuthProvider } from '@/features/auth/AuthContext';
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
 import { AppRoutes } from '@/routes/AppRoutes';
+import { captureReferralParam } from '@/features/affiliate/affiliateStorage';
 
 export const App: React.FC = () => {
+  useEffect(() => {
+    captureReferralParam();
+  }, []);
+
   return (
     <BrowserRouter>
       <AuthProvider>

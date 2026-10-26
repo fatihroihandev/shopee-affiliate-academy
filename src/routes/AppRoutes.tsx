@@ -19,6 +19,7 @@ import { LinkArchive } from '@/pages/workspaces/LinkArchive';
 import { PerformanceTracker } from '@/pages/workspaces/PerformanceTracker';
 import { ExperimentTracker } from '@/pages/workspaces/ExperimentTracker';
 import { SopDocuments } from '@/pages/workspaces/SopDocuments';
+import { AffiliateDashboard } from '@/pages/affiliate/AffiliateDashboard';
 import { AppLayout } from '@/components/layout/AppLayout';
 import { Loader2 } from 'lucide-react';
 
@@ -211,10 +212,10 @@ export const AppRoutes: React.FC = () => {
 
       {/* Program Affiliate Internal (Fase 5) */}
       <Route
-        path="/affiliate"
+        path="/affiliate/*"
         element={
           <ProtectedRoute>
-            <ComingSoonPage title="Dashboard Affiliate" desc="Dasbor analitik link referral dan permohonan pencairan komisi (Fase 5)." />
+            <AffiliateDashboard />
           </ProtectedRoute>
         }
       />
