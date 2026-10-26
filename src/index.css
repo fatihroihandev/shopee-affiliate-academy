@@ -1,0 +1,60 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    background-color: #F7F4EA;
+    color: #171717;
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  }
+}
+
+/* Custom Brutalist Editorial Styles */
+.brutalist-card {
+  background-color: #FFFDF7;
+  border: 2px solid #171717;
+  box-shadow: 4px 4px 0px #171717;
+  border-radius: 8px;
+  transition: all 0.15s ease-in-out;
+}
+
+.brutalist-card:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 5px 5px 0px #171717;
+}
+
+.brutalist-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  border: 2px solid #171717;
+  box-shadow: 3px 3px 0px #171717;
+  border-radius: 6px;
+  transition: all 0.1s ease-in-out;
+}
+
+.brutalist-btn:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0px #171717;
+}
+
+.brutalist-btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0px #171717;
+}
+
+.brutalist-input {
+  background-color: #FFFDF7;
+  border: 2px solid #171717;
+  border-radius: 6px;
+  box-shadow: 2px 2px 0px #171717;
+  transition: border-color 0.15s ease-in-out;
+}
+
+.brutalist-input:focus {
+  outline: none;
+  border-color: #FF7A24;
+  box-shadow: 3px 3px 0px #FF7A24;
+}
