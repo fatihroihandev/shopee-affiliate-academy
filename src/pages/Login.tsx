@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { supabase } from '@/lib/supabase';
+import { useAuth } from '@/features/auth/AuthContext';
 import { Sparkle, StickerBadge } from '@/components/common/Doodles';
-import { ArrowRight, AlertCircle, Loader2 } from 'lucide-react';
+import { ArrowRight, AlertCircle, Loader2, UserCheck, ShieldCheck, Zap } from 'lucide-react';
 
 export const Login: React.FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
+  const { loginAsDemo } = useAuth();
   const navigate = useNavigate();
 
   const handleLogin = async (e: React.FormEvent) => {
@@ -28,15 +30,24 @@ export const Login: React.FC = () => {
 
       navigate('/dashboard');
     } catch (err: any) {
-      setErrorMsg(err.message || 'Gagal masuk. Periksa email dan kata sandi Anda.');
+      setErrorMsg(
+        err.message?.includes('fetch')
+          ? 'Koneksi ke Supabase belum terhubung. Anda bisa gunakan tombol "Login Cepat Demo" di bawah.'
+          : err.message || 'Gagal masuk. Periksa email dan kata sandi Anda.'
+      );
     } finally {
       setLoading(false);
     }
   };
 
+  const handleDemoLogin = (role: 'student' | 'admin', isPro = true) => {
+    loginAsDemo(role, isPro);
+    navigate('/dashboard');
+  };
+
   return (
-    <div className="min-h-[80vh] flex items-center justify-center px-4 py-12">
-      <div className="brutalist-card p-8 bg-surface w-full max-w-md space-y-6">
+    <div className="min-h-[85vh] flex items-center justify-center px-4 py-12">
+      <div className="brutalist-card p-6 sm:p-8 bg-surface w-full max-w-md space-y-6">
         <div className="text-center space-y-2">
           <StickerBadge variant="orange">MASUK AKUN</StickerBadge>
           <h1 className="text-2xl font-extrabold text-ink flex items-center justify-center gap-1.5">
@@ -44,8 +55,46 @@ export const Login: React.FC = () => {
             <Sparkle className="w-5 h-5 text-brand-orange" />
           </h1>
           <p className="text-xs text-warm-gray font-medium">
-            Masuk untuk melanjutkan belajar dan mengelola workspace affiliate Anda.
+            Masuk untuk mengakses materi kurikulum dan 6 workspace affiliate.
           </p>
+        </div>
+
+        {/* QUICK DEMO LOGIN BOX */}
+        <div className="p-4 bg-paper border-2 border-ink rounded-lg shadow-[2px_2px_0px_#171717] space-y-3">
+          <div className="flex items-center justify-between">
+            <span className="text-xs font-bold uppercase tracking-wider text-ink flex items-center gap-1">
+              <Zap className="w-3.5 h-3.5 text-brand-orange fill-brand-orange" />
+              Akses Cepat Mode Demo:
+            </span>
+            <span className="text-[10px] bg-acid-lime border border-ink px-1.5 py-0.2 rounded font-extrabold">Instant</span>
+          </div>
+          <div className="grid grid-cols-2 gap-2">
+            <button
+              type="button"
+              onClick={() => handleDemoLogin('student', true)}
+              className="brutalist-btn bg-surface hover:bg-acid-lime text-ink py-2 text-xs font-bold gap-1.5"
+            >
+              <UserCheck className="w-3.5 h-3.5 text-brand-orange" />
+              <span>Siswa Pro</span>
+            </button>
+            <button
+              type="button"
+              onClick={() => handleDemoLogin('admin', true)}
+              className="brutalist-btn bg-surface hover:bg-soft-coral text-ink py-2 text-xs font-bold gap-1.5"
+            >
+              <ShieldCheck className="w-3.5 h-3.5 text-brand-orange" />
+              <span>Akun Admin</span>
+            </button>
+          </div>
+          <p className="text-[10px] text-warm-gray text-center italic">
+            *Langsung masuk dashboard tanpa perlu setup database.
+          </p>
+        </div>
+
+        <div className="flex items-center gap-3">
+          <hr className="flex-1 border-ink/20" />
+          <span className="text-[11px] font-bold text-warm-gray uppercase">Atau Login Akun</span>
+          <hr className="flex-1 border-ink/20" />
         </div>
 
         {errorMsg && (

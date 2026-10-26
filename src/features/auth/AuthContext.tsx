@@ -13,6 +13,7 @@ interface AuthContextType {
   loading: boolean;
   signOut: () => Promise<void>;
   refreshProfile: () => Promise<void>;
+  loginAsDemo: (demoRole: 'student' | 'admin', isPro?: boolean) => void;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -64,6 +65,23 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   };
 
   useEffect(() => {
+    // 1. Check if demo session exists in localStorage
+    const savedDemo = localStorage.getItem('shopee_academy_demo_session');
+    if (savedDemo) {
+      try {
+        const parsed = JSON.parse(savedDemo);
+        setUser(parsed.user);
+        setProfile(parsed.profile);
+        setRole(parsed.role);
+        setIsPremium(parsed.isPremium);
+        setLoading(false);
+        return;
+      } catch (e) {
+        localStorage.removeItem('shopee_academy_demo_session');
+      }
+    }
+
+    // 2. Real Supabase session
     supabase.auth.getSession().then(({ data: { session } }) => {
       setSession(session);
       setUser(session?.user ?? null);
@@ -75,6 +93,9 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     });
 
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      // Don't override if in demo session
+      if (localStorage.getItem('shopee_academy_demo_session')) return;
+
       setSession(session);
       setUser(session?.user ?? null);
       if (session?.user) {
@@ -92,14 +113,53 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     };
   }, []);
 
+  const loginAsDemo = (demoRole: 'student' | 'admin', isPro = true) => {
+    const isAdm = demoRole === 'admin';
+    const mockUser = {
+      id: isAdm ? '00000000-0000-0000-0000-admin0000001' : '00000000-0000-0000-0000-student000001',
+      app_metadata: {},
+      user_metadata: {},
+      aud: 'authenticated',
+      created_at: new Date().toISOString(),
+      email: isAdm ? 'admin@affiliate-academy.id' : 'siswa.demo@affiliate-academy.id',
+    } as User;
+
+    const mockProfile: Profile = {
+      id: mockUser.id,
+      display_name: isAdm ? 'Admin Utama Akademi' : 'Fatih Siswa Pro',
+      avatar_url: null,
+      phone_number: '081234567890',
+      created_at: new Date().toISOString(),
+      updated_at: new Date().toISOString(),
+    };
+
+    const demoData = {
+      user: mockUser,
+      profile: mockProfile,
+      role: demoRole,
+      isPremium: isAdm ? true : isPro,
+    };
+
+    localStorage.setItem('shopee_academy_demo_session', JSON.stringify(demoData));
+    setUser(mockUser);
+    setProfile(mockProfile);
+    setRole(demoRole);
+    setIsPremium(demoData.isPremium);
+  };
+
   const refreshProfile = async () => {
-    if (user) {
+    if (user && !localStorage.getItem('shopee_academy_demo_session')) {
       await fetchUserData(user);
     }
   };
 
   const signOut = async () => {
-    await supabase.auth.signOut();
+    localStorage.removeItem('shopee_academy_demo_session');
+    try {
+      await supabase.auth.signOut();
+    } catch (e) {
+      // ignore network errors if offline
+    }
     setUser(null);
     setSession(null);
     setProfile(null);
@@ -121,6 +181,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         loading,
         signOut,
         refreshProfile,
+        loginAsDemo,
       }}
     >
       {children}
