@@ -6,6 +6,11 @@ import { Login } from '@/pages/Login';
 import { Register } from '@/pages/Register';
 import { ForgotPassword } from '@/pages/ForgotPassword';
 import { Dashboard } from '@/pages/Dashboard';
+import { ModulesIndex } from '@/pages/learning/ModulesIndex';
+import { ModuleDetail } from '@/pages/learning/ModuleDetail';
+import { LessonReader } from '@/pages/learning/LessonReader';
+import { ProjectsIndex } from '@/pages/learning/ProjectsIndex';
+import { ProjectDetail } from '@/pages/learning/ProjectDetail';
 import { AppLayout } from '@/components/layout/AppLayout';
 import { Loader2 } from 'lucide-react';
 
@@ -80,7 +85,7 @@ export const AppRoutes: React.FC = () => {
         element={<ComingSoonPage title="Kebijakan Privasi" desc="Perlindungan dan kepatuhan privasi data pengguna." />}
       />
 
-      {/* Protected Student Routes */}
+      {/* Protected Student LMS Routes */}
       <Route
         path="/dashboard"
         element={
@@ -93,7 +98,7 @@ export const AppRoutes: React.FC = () => {
         path="/learn"
         element={
           <ProtectedRoute>
-            <ComingSoonPage title="Ruang Belajar (M00 - M06)" desc="Akan diaktifkan pada Fase 3 dengan 30 pelajaran lengkap." />
+            <ModulesIndex />
           </ProtectedRoute>
         }
       />
@@ -101,7 +106,7 @@ export const AppRoutes: React.FC = () => {
         path="/learn/:moduleSlug"
         element={
           <ProtectedRoute>
-            <ComingSoonPage title="Daftar Pelajaran Modul" desc="Modul kurikulum pembelajaran Shopee Affiliate V2." />
+            <ModuleDetail />
           </ProtectedRoute>
         }
       />
@@ -109,7 +114,7 @@ export const AppRoutes: React.FC = () => {
         path="/learn/:moduleSlug/:lessonSlug"
         element={
           <ProtectedRoute>
-            <ComingSoonPage title="Lesson Reader" desc="Halaman materi pembelajaran Markdown interaktif." />
+            <LessonReader />
           </ProtectedRoute>
         }
       />
@@ -117,12 +122,20 @@ export const AppRoutes: React.FC = () => {
         path="/projects"
         element={
           <ProtectedRoute>
-            <ComingSoonPage title="8 Proyek Praktik Wajib" desc="Pusat pengerjaan dan pelacak kelulusan 8 proyek." />
+            <ProjectsIndex />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/projects/:projectCode"
+        element={
+          <ProtectedRoute>
+            <ProjectDetail />
           </ProtectedRoute>
         }
       />
 
-      {/* 6 Workspace Routes */}
+      {/* 6 Workspace Routes (Fase 4) */}
       <Route
         path="/tools/products"
         element={
@@ -171,8 +184,24 @@ export const AppRoutes: React.FC = () => {
           </ProtectedRoute>
         }
       />
+      <Route
+        path="/tools/experiments"
+        element={
+          <ProtectedRoute>
+            <ComingSoonPage title="Experiment Tracker" desc="Pengujian A/B hipotesis 4 bagian (Fase 4)." />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/tools/sop"
+        element={
+          <ProtectedRoute>
+            <ComingSoonPage title="SOP & Knowledge Hub" desc="Manajemen prosedur operasional standar (Fase 4)." />
+          </ProtectedRoute>
+        }
+      />
 
-      {/* Program Affiliate Internal */}
+      {/* Program Affiliate Internal (Fase 5) */}
       <Route
         path="/affiliate"
         element={
@@ -182,7 +211,7 @@ export const AppRoutes: React.FC = () => {
         }
       />
 
-      {/* Admin Route */}
+      {/* Admin Route (Fase 6) */}
       <Route
         path="/admin/*"
         element={
