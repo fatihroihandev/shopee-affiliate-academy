@@ -5,6 +5,8 @@ import { Home } from '@/pages/Home';
 import { Login } from '@/pages/Login';
 import { Register } from '@/pages/Register';
 import { ForgotPassword } from '@/pages/ForgotPassword';
+import { TermsPage } from '@/pages/legal/TermsPage';
+import { PrivacyPage } from '@/pages/legal/PrivacyPage';
 import { Dashboard } from '@/pages/Dashboard';
 import { ModulesIndex } from '@/pages/learning/ModulesIndex';
 import { ModuleDetail } from '@/pages/learning/ModuleDetail';
@@ -62,21 +64,6 @@ const AdminRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return <AppLayout>{children}</AppLayout>;
 };
 
-// Placeholder page for upcoming phase routes
-const ComingSoonPage: React.FC<{ title: string; desc: string }> = ({ title, desc }) => (
-  <div className="max-w-4xl mx-auto px-4 py-16 text-center space-y-4">
-    <div className="brutalist-card p-12 bg-surface space-y-4">
-      <h2 className="text-2xl font-extrabold text-ink">{title}</h2>
-      <p className="text-sm text-warm-gray max-w-md mx-auto">{desc}</p>
-      <div className="pt-2">
-        <a href="/dashboard" className="brutalist-btn bg-brand-orange text-white px-5 py-2.5 text-xs">
-          Kembali ke Dashboard
-        </a>
-      </div>
-    </div>
-  </div>
-);
-
 export const AppRoutes: React.FC = () => {
   return (
     <Routes>
@@ -86,14 +73,8 @@ export const AppRoutes: React.FC = () => {
       <Route path="/register" element={<Register />} />
       <Route path="/forgot-password" element={<ForgotPassword />} />
       <Route path="/pricing" element={<Home />} />
-      <Route
-        path="/terms"
-        element={<ComingSoonPage title="Ketentuan Layanan" desc="Ketentuan akses jangka panjang dan regulasi operasional." />}
-      />
-      <Route
-        path="/privacy"
-        element={<ComingSoonPage title="Kebijakan Privasi" desc="Perlindungan dan kepatuhan privasi data pengguna." />}
-      />
+      <Route path="/terms" element={<TermsPage />} />
+      <Route path="/privacy" element={<PrivacyPage />} />
 
       {/* Protected Student LMS Routes */}
       <Route
