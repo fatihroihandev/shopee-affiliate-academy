@@ -42,3 +42,10 @@ brain/
 *.key
 *.cert
 credentials*.json
+
+# agents
+.claude
+.codegraph
+.codex
+.gemini
+.vscode
