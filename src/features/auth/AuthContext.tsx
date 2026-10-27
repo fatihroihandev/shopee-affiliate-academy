@@ -1,19 +1,30 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { User, Session } from '@supabase/supabase-js';
 import { supabase } from '@/lib/supabase';
-import { Profile, UserRole } from '@/types/database';
+import { Profile, UserRole, ProductTier } from '@/types/database';
+import { getUserEntitlement } from '@/features/commerce/orderStorage';
 
 interface AuthContextType {
   user: User | null;
   session: Session | null;
   profile: Profile | null;
   role: UserRole;
+  tier: ProductTier;
   isAdmin: boolean;
-  isPremium: boolean;
+  isPremium: boolean; // Kept for 100% backward compatibility (true if Pro or Pro Plus)
+  isPro: boolean;
+  isProPlus: boolean;
   loading: boolean;
   signOut: () => Promise<void>;
   refreshProfile: () => Promise<void>;
-  loginAsDemo: (demoRole: 'student' | 'admin', isPro?: boolean) => void;
+  loginAsDemo: (
+    demoRole: 'student' | 'admin',
+    demoTier?: ProductTier | boolean,
+    adminType?: 'utama' | 'backup'
+  ) => void;
+  signInWithGoogle: () => Promise<{ error: Error | null }>;
+  setTier: (tier: ProductTier) => void;
+  setIsPremium: (isPremium: boolean) => void;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -23,41 +34,96 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [session, setSession] = useState<Session | null>(null);
   const [profile, setProfile] = useState<Profile | null>(null);
   const [role, setRole] = useState<UserRole>('student');
-  const [isPremium, setIsPremium] = useState<boolean>(false);
+  const [tier, setTier] = useState<ProductTier>('free');
   const [loading, setLoading] = useState<boolean>(true);
 
   const fetchUserData = async (currentUser: User) => {
     try {
-      // 1. Fetch Profile
+      // 1. Fetch Profile or create idempotently if first Google OAuth login
       const { data: profileData } = await supabase
         .from('profiles')
         .select('*')
         .eq('id', currentUser.id)
-        .single();
-      if (profileData) setProfile(profileData);
+        .maybeSingle();
 
-      // 2. Fetch Role
-      const { data: roleData } = await supabase
-        .from('user_roles')
-        .select('role')
-        .eq('user_id', currentUser.id)
-        .single();
-      const currentRole = (roleData?.role as UserRole) || 'student';
+      if (profileData) {
+        setProfile(profileData);
+      } else {
+        // Idempotent auto-profile creation for Google OAuth users
+        const meta = currentUser.user_metadata || {};
+        const fallbackName = meta.full_name || meta.name || currentUser.email?.split('@')[0] || 'Siswa Baru';
+        const fallbackAvatar = meta.avatar_url || meta.picture || null;
+
+        const { data: newProfile } = await supabase
+          .from('profiles')
+          .upsert({
+            id: currentUser.id,
+            display_name: fallbackName,
+            avatar_url: fallbackAvatar,
+            created_at: new Date().toISOString(),
+            updated_at: new Date().toISOString(),
+          })
+          .select('*')
+          .maybeSingle();
+
+        if (newProfile) setProfile(newProfile);
+      }
+
+      // 2. Fetch Role & Check Dual Admin accounts (Admin Utama & Admin Backup)
+      const userEmail = (currentUser.email || '').toLowerCase().trim();
+      let currentRole: UserRole = 'student';
+
+      if (
+        userEmail === 'admin@affiliateacademy.site' ||
+        userEmail === 'admin.utama@affiliateacademy.site' ||
+        userEmail === 'admin@affiliate-academy.id' ||
+        userEmail === 'admin.utama@affiliate-academy.id'
+      ) {
+        currentRole = 'super_admin';
+      } else if (
+        userEmail === 'admin.backup@affiliateacademy.site' ||
+        userEmail === 'admin.backup@affiliate-academy.id'
+      ) {
+        currentRole = 'admin';
+      } else {
+        const { data: roleData } = await supabase
+          .from('user_roles')
+          .select('role')
+          .eq('user_id', currentUser.id)
+          .maybeSingle();
+        currentRole = (roleData?.role as UserRole) || 'student';
+      }
       setRole(currentRole);
 
-      // 3. Fetch Entitlement (Admin always has full access)
+      // 3. Fetch Entitlement (Admin always has full pro_plus access)
       if (currentRole === 'admin' || currentRole === 'super_admin') {
-        setIsPremium(true);
+        setTier('pro_plus');
       } else {
+        // First check database entitlements
         const { data: entitlementData } = await supabase
           .from('entitlements')
-          .select('status')
+          .select('status, access_level')
           .eq('user_id', currentUser.id)
           .eq('product_code', 'affiliate_academy')
           .eq('status', 'active')
           .maybeSingle();
 
-        setIsPremium(!!entitlementData);
+        let resolvedTier: ProductTier = 'free';
+        if (entitlementData) {
+          const rawLevel = entitlementData.access_level;
+          if (rawLevel === 'pro_plus') {
+            resolvedTier = 'pro_plus';
+          } else if (rawLevel === 'pro' || rawLevel === 'premium') {
+            resolvedTier = 'pro';
+          }
+        } else {
+          // Fallback check: Look up manual/comped VIP grants in local order storage
+          const localEnt = getUserEntitlement(userEmail || currentUser.id);
+          if (localEnt && localEnt.status === 'active') {
+            resolvedTier = localEnt.access_level === 'pro_plus' ? 'pro_plus' : 'pro';
+          }
+        }
+        setTier(resolvedTier);
       }
     } catch (err) {
       console.warn('Error fetching user profile data:', err);
@@ -73,7 +139,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         setUser(parsed.user);
         setProfile(parsed.profile);
         setRole(parsed.role);
-        setIsPremium(parsed.isPremium);
+        setTier(parsed.tier || (parsed.isPremium ? 'pro' : 'free'));
         setLoading(false);
         return;
       } catch (e) {
@@ -81,7 +147,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       }
     }
 
-    // 2. Real Supabase session
+    // 2. Real Supabase session (including Google OAuth callback)
     supabase.auth.getSession().then(({ data: { session } }) => {
       setSession(session);
       setUser(session?.user ?? null);
@@ -103,7 +169,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       } else {
         setProfile(null);
         setRole('student');
-        setIsPremium(false);
+        setTier('free');
         setLoading(false);
       }
     });
@@ -113,20 +179,59 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     };
   }, []);
 
-  const loginAsDemo = (demoRole: 'student' | 'admin', isPro = true) => {
+  const loginAsDemo = (
+    demoRole: 'student' | 'admin',
+    demoTierOrPro: ProductTier | boolean = 'pro',
+    adminType: 'utama' | 'backup' = 'utama'
+  ) => {
     const isAdm = demoRole === 'admin';
+    let resolvedTier: ProductTier = 'pro';
+    if (typeof demoTierOrPro === 'boolean') {
+      resolvedTier = demoTierOrPro ? 'pro' : 'free';
+    } else if (demoTierOrPro) {
+      resolvedTier = demoTierOrPro;
+    }
+    if (isAdm) resolvedTier = 'pro_plus';
+
+    const assignedRole: UserRole = isAdm
+      ? adminType === 'utama'
+        ? 'super_admin'
+        : 'admin'
+      : 'student';
+
+    const adminId =
+      adminType === 'backup'
+        ? '00000000-0000-0000-0000-admin0000002'
+        : '00000000-0000-0000-0000-admin0000001';
+
+    const adminEmail =
+      adminType === 'backup'
+        ? 'admin.backup@affiliateacademy.site'
+        : 'admin.utama@affiliateacademy.site';
+
+    const adminName =
+      adminType === 'backup'
+        ? 'Admin Cadangan (Backup Admin)'
+        : 'Admin Utama (Super Admin)';
+
     const mockUser = {
-      id: isAdm ? '00000000-0000-0000-0000-admin0000001' : '00000000-0000-0000-0000-student000001',
+      id: isAdm ? adminId : `00000000-0000-0000-0000-student-${resolvedTier}`,
       app_metadata: {},
       user_metadata: {},
       aud: 'authenticated',
       created_at: new Date().toISOString(),
-      email: isAdm ? 'admin@affiliate-academy.id' : 'siswa.demo@affiliate-academy.id',
+      email: isAdm ? adminEmail : `siswa.${resolvedTier}@affiliateacademy.site`,
     } as User;
 
     const mockProfile: Profile = {
       id: mockUser.id,
-      display_name: isAdm ? 'Admin Utama Akademi' : 'Fatih Siswa Pro',
+      display_name: isAdm
+        ? adminName
+        : resolvedTier === 'pro_plus'
+        ? 'Fatih Siswa Pro Plus'
+        : resolvedTier === 'pro'
+        ? 'Fatih Siswa Pro'
+        : 'Fatih Siswa Free',
       avatar_url: null,
       phone_number: '081234567890',
       created_at: new Date().toISOString(),
@@ -136,15 +241,54 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     const demoData = {
       user: mockUser,
       profile: mockProfile,
-      role: demoRole,
-      isPremium: isAdm ? true : isPro,
+      role: assignedRole,
+      tier: resolvedTier,
+      isPremium: resolvedTier !== 'free',
     };
 
     localStorage.setItem('shopee_academy_demo_session', JSON.stringify(demoData));
     setUser(mockUser);
     setProfile(mockProfile);
-    setRole(demoRole);
-    setIsPremium(demoData.isPremium);
+    setRole(assignedRole);
+    setTier(resolvedTier);
+  };
+
+  const handleSetTier = (newTier: ProductTier) => {
+    setTier(newTier);
+    const savedDemo = localStorage.getItem('shopee_academy_demo_session');
+    if (savedDemo) {
+      try {
+        const parsed = JSON.parse(savedDemo);
+        parsed.tier = newTier;
+        parsed.isPremium = newTier !== 'free';
+        localStorage.setItem('shopee_academy_demo_session', JSON.stringify(parsed));
+      } catch (e) {
+        // ignore
+      }
+    }
+  };
+
+  const handleSetIsPremium = (val: boolean) => {
+    handleSetTier(val ? 'pro' : 'free');
+  };
+
+  const signInWithGoogle = async (): Promise<{ error: Error | null }> => {
+    try {
+      const redirectUrl = `${window.location.origin}/dashboard`;
+      const { error } = await supabase.auth.signInWithOAuth({
+        provider: 'google',
+        options: {
+          redirectTo: redirectUrl,
+          queryParams: {
+            access_type: 'offline',
+            prompt: 'select_account',
+          },
+        },
+      });
+      return { error: error ? new Error(error.message) : null };
+    } catch (err: any) {
+      return { error: err || new Error('Gagal menginisiasi Google OAuth') };
+    }
   };
 
   const refreshProfile = async () => {
@@ -164,10 +308,13 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     setSession(null);
     setProfile(null);
     setRole('student');
-    setIsPremium(false);
+    setTier('free');
   };
 
   const isAdmin = role === 'admin' || role === 'super_admin';
+  const isPro = tier === 'pro' || tier === 'pro_plus' || isAdmin;
+  const isProPlus = tier === 'pro_plus' || isAdmin;
+  const isPremium = isPro;
 
   return (
     <AuthContext.Provider
@@ -176,12 +323,18 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         session,
         profile,
         role,
+        tier,
         isAdmin,
         isPremium,
+        isPro,
+        isProPlus,
         loading,
         signOut,
         refreshProfile,
         loginAsDemo,
+        signInWithGoogle,
+        setTier: handleSetTier,
+        setIsPremium: handleSetIsPremium,
       }}
     >
       {children}

@@ -16,13 +16,19 @@ export interface UserRoleRecord {
   created_at: string;
 }
 
+export type ProductTier = 'free' | 'pro' | 'pro_plus';
+export type ProductSku = 'affiliate_academy_pro' | 'affiliate_academy_pro_plus';
+
 export interface Entitlement {
   id: string;
   user_id: string;
+  customer_email?: string;
   product_code: string;
-  access_level: 'free' | 'premium';
+  access_level: 'free' | 'pro' | 'pro_plus' | 'premium'; // 'premium' is legacy alias for 'pro'
   status: 'active' | 'revoked' | 'expired';
   source_order_id?: string | null;
+  grant_type?: 'purchase' | 'comped_influencer' | 'comped_vip' | 'manual_admin';
+  notes?: string;
   granted_at: string;
   revoked_at?: string | null;
   revocation_reason?: string | null;
@@ -155,6 +161,8 @@ export interface Order {
   currency: string;
   provider: string;
   provider_reference?: string | null;
+  sku?: ProductSku;
+  tier?: ProductTier;
   status: 'pending' | 'paid' | 'cancelled' | 'refunded' | 'failed';
   paid_at?: string | null;
   created_at: string;

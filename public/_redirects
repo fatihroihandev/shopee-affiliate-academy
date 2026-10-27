@@ -1,0 +1,4 @@
+# Cloudflare Pages SPA (Single Page Application) Redirect Rules
+# Ensures all client-side routes are resolved through index.html with HTTP 200
+
+/*    /index.html   200

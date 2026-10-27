@@ -1,3 +1,12 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Production build artifacts
+dist/
+dist-ssr/
+
 # Logs
 logs
 *.log
@@ -7,22 +16,29 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
-dist
-dist-ssr
-*.local
-
-# Editor directories and files
+# Editor & IDE directories
 .vscode/*
 !.vscode/extensions.json
-.idea
-.DS_Store
+.idea/
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
+.DS_Store
+Thumbs.db
 
-# Environment variables
+# Environment variables & secrets (CRITICAL: Do NOT commit secrets!)
 .env
-.env.production
+.env.*
+!.env.example
+
+# Temporary agent / AI tool caches & local indexers
+.codegraph/
+.gemini/
+brain/
+.system_generated/
+*.pem
+*.key
+*.cert
+credentials*.json

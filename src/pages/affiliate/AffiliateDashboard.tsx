@@ -105,7 +105,7 @@ export const AffiliateDashboard: React.FC = () => {
 
   const conversionRate = clicksCount > 0 ? ((conversions.length / clicksCount) * 100).toFixed(1) : '0';
 
-  const originUrl = typeof window !== 'undefined' ? window.location.origin : 'https://shopee-affiliate-academy.id';
+  const originUrl = typeof window !== 'undefined' ? window.location.origin : 'https://affiliateacademy.site';
   const baseReferralUrl = `${originUrl}/?ref=${profile.referral_code}`;
   const taggedReferralUrl = customSource ? `${baseReferralUrl}&src=${encodeURIComponent(customSource)}` : baseReferralUrl;
 

@@ -1,5 +1,5 @@
 // ORDER, ENTITLEMENT & ADMIN AUDIT STORAGE ENGINE
-import { Order, Entitlement, AdminAuditLog } from '@/types/database';
+import { Order, Entitlement, AdminAuditLog, ProductSku, ProductTier } from '@/types/database';
 import {
   recordReferralConversion,
   getStoredAffiliatePayouts,
@@ -10,6 +10,49 @@ const STORAGE_KEYS = {
   ORDERS: 'shopee_academy_orders',
   ENTITLEMENTS: 'shopee_academy_entitlements',
   AUDIT_LOGS: 'shopee_academy_admin_audit_logs',
+};
+
+// Official Product Catalog per Addendum v2.1
+export interface ProductCatalogItem {
+  sku: ProductSku;
+  name: string;
+  tier: ProductTier;
+  promoPrice: number;
+  regularPrice: number;
+  features: string[];
+}
+
+export const CATALOG_PRODUCTS: Record<ProductSku, ProductCatalogItem> = {
+  affiliate_academy_pro: {
+    sku: 'affiliate_academy_pro',
+    name: 'Shopee Affiliate Academy — Paket Pro',
+    tier: 'pro',
+    promoPrice: 99000,
+    regularPrice: 149000,
+    features: [
+      'Seluruh 24 Modul Materi Lengkap (Level 1–5)',
+      '30 Pelajaran Platform & 8 Proyek Praktik Wajib',
+      'Akses Penuh 6 Workspace Praktik Terintegrasi',
+      'Hook Bank 30+ Formula & Generator Skrip Konten',
+      'Akses Program Affiliate Internal Komisi 10%',
+      'Hak Akses Jangka Panjang Sekali Bayar',
+    ],
+  },
+  affiliate_academy_pro_plus: {
+    sku: 'affiliate_academy_pro_plus',
+    name: 'Shopee Affiliate Academy — Paket Pro Plus',
+    tier: 'pro_plus',
+    promoPrice: 199000,
+    regularPrice: 249000,
+    features: [
+      'Seluruh Hak Akses Paket Pro Tanpa Terkecuali',
+      'Bonus 1: Affiliate Campaign-in-a-Box (Paket Kampanye Siap Eksekusi)',
+      'Bonus 2: Affiliate Case Study Lab (2+ Studi Kasus Analisis Bukti)',
+      'Bonus 3: Content Angle & Objection Playbook (Matriks Sudut & Keberatan)',
+      'Tanpa Ketergantungan API AI Berbayar',
+      'Hak Akses Jangka Panjang Sekali Bayar',
+    ],
+  },
 };
 
 // Initial Sample Orders
@@ -160,18 +203,22 @@ export function saveStoredOrder(order: Order): void {
 export function createNewOrder(
   userId: string | null,
   customerEmail: string,
-  provider: 'lynk' | 'dana_qris' | 'manual' = 'dana_qris'
+  provider: 'lynk' | 'dana_qris' | 'manual' = 'dana_qris',
+  sku: ProductSku = 'affiliate_academy_pro'
 ): Order {
+  const catalogItem = CATALOG_PRODUCTS[sku] || CATALOG_PRODUCTS.affiliate_academy_pro;
   const orderNumber = `ORD-${new Date().toISOString().slice(0, 10).replace(/-/g, '')}-${Math.floor(100 + Math.random() * 900)}`;
   const newOrder: Order = {
     id: `ord-${Date.now()}`,
     order_number: orderNumber,
     user_id: userId,
     customer_email: customerEmail,
-    amount: 99000,
+    amount: catalogItem.promoPrice,
     currency: 'IDR',
     provider,
     provider_reference: `${provider.toUpperCase()}-${Math.floor(100000 + Math.random() * 900000)}`,
+    sku: catalogItem.sku,
+    tier: catalogItem.tier,
     status: 'pending',
     paid_at: null,
     created_at: new Date().toISOString(),
@@ -202,12 +249,29 @@ export function saveStoredEntitlement(entitlement: Entitlement): void {
   localStorage.setItem(STORAGE_KEYS.ENTITLEMENTS, JSON.stringify(updated));
 }
 
-export function checkUserEntitlement(userId: string): boolean {
+export function checkUserEntitlement(userIdOrEmail: string): boolean {
   const entitlements = getStoredEntitlements();
+  const clean = userIdOrEmail.trim().toLowerCase();
   const found = entitlements.find(
-    (e) => e.user_id === userId && e.product_code === 'affiliate_academy' && e.status === 'active'
+    (e) =>
+      (e.user_id === userIdOrEmail || (e.customer_email && e.customer_email.toLowerCase() === clean)) &&
+      e.product_code === 'affiliate_academy' &&
+      e.status === 'active'
   );
   return !!found;
+}
+
+export function getUserEntitlement(userIdOrEmail: string): Entitlement | null {
+  const entitlements = getStoredEntitlements();
+  const clean = userIdOrEmail.trim().toLowerCase();
+  return (
+    entitlements.find(
+      (e) =>
+        (e.user_id === userIdOrEmail || (e.customer_email && e.customer_email.toLowerCase() === clean)) &&
+        e.product_code === 'affiliate_academy' &&
+        e.status === 'active'
+    ) || null
+  );
 }
 
 // 3. Admin Audit Logs Management
@@ -270,18 +334,35 @@ export function confirmPaymentAndGrantEntitlement(
   order.paid_at = new Date().toISOString();
   saveStoredOrder(order);
 
-  // Grant Entitlement
-  const entitlementId = `ent-${Date.now()}`;
-  const entitlement: Entitlement = {
-    id: entitlementId,
-    user_id: order.user_id || 'default',
-    product_code: 'affiliate_academy',
-    access_level: 'premium',
-    status: 'active',
-    source_order_id: order.id,
-    granted_at: new Date().toISOString(),
-  };
-  saveStoredEntitlement(entitlement);
+  // Grant or Upgrade Entitlement atomically per Addendum v2.1
+  const targetLevel = order.tier === 'pro_plus' || order.sku === 'affiliate_academy_pro_plus' ? 'pro_plus' : 'pro';
+  const existingEntitlements = getStoredEntitlements();
+  const existingEnt = existingEntitlements.find(
+    (e) => e.user_id === (order.user_id || 'default') && e.product_code === 'affiliate_academy'
+  );
+
+  let entitlement: Entitlement;
+  if (existingEnt) {
+    // Atomic upgrade: if targetLevel is pro_plus or already pro, keep highest
+    existingEnt.access_level = targetLevel;
+    existingEnt.status = 'active';
+    existingEnt.source_order_id = order.id;
+    existingEnt.granted_at = new Date().toISOString();
+    saveStoredEntitlement(existingEnt);
+    entitlement = existingEnt;
+  } else {
+    const entitlementId = `ent-${Date.now()}`;
+    entitlement = {
+      id: entitlementId,
+      user_id: order.user_id || 'default',
+      product_code: 'affiliate_academy',
+      access_level: targetLevel,
+      status: 'active',
+      source_order_id: order.id,
+      granted_at: new Date().toISOString(),
+    };
+    saveStoredEntitlement(entitlement);
+  }
 
   // Also trigger referral conversion if user came through referral
   recordReferralConversion(order.id, order.order_number, order.customer_email, order.amount);
@@ -300,6 +381,103 @@ export function confirmPaymentAndGrantEntitlement(
     success: true,
     message: `Pesanan ${order.order_number} berhasil dikonfirmasi dan hak akses Premium langsung aktif!`,
     order,
+    entitlement,
+  };
+}
+
+// 4b. Manual Comped / Influencer Grant Logic (Akses Cuma-cuma Tanpa Bayar)
+export function grantCompedEntitlement(
+  targetEmail: string,
+  targetTier: 'pro' | 'pro_plus',
+  adminUserId: string = 'admin-utama',
+  reasonCategory: string = 'Influencer Endorsement',
+  notes: string = ''
+): { success: boolean; message: string; order: Order; entitlement: Entitlement } {
+  const cleanEmail = targetEmail.trim().toLowerCase();
+  const orderNumber = `ORD-VIP-${new Date().toISOString().slice(0, 10).replace(/-/g, '')}-${Math.floor(100 + Math.random() * 900)}`;
+  const orderId = `ord-comped-${Date.now()}`;
+
+  // Synthetic / mapped user ID
+  const userId = `usr-${cleanEmail.replace(/[^a-z0-9]/g, '_')}`;
+
+  const compedOrder: Order = {
+    id: orderId,
+    order_number: orderNumber,
+    user_id: userId,
+    customer_email: cleanEmail,
+    amount: 0,
+    currency: 'IDR',
+    provider: 'admin_manual_grant',
+    provider_reference: `VIP-${reasonCategory.toUpperCase().replace(/\s+/g, '_')}`,
+    sku: targetTier === 'pro_plus' ? 'affiliate_academy_pro_plus' : 'affiliate_academy_pro',
+    tier: targetTier,
+    status: 'paid',
+    paid_at: new Date().toISOString(),
+    created_at: new Date().toISOString(),
+  };
+
+  saveStoredOrder(compedOrder);
+
+  // Grant or update entitlement
+  const existingEntitlements = getStoredEntitlements();
+  const existingEnt = existingEntitlements.find(
+    (e) =>
+      (e.user_id === userId || (e.customer_email && e.customer_email.toLowerCase() === cleanEmail)) &&
+      e.product_code === 'affiliate_academy'
+  );
+
+  let entitlement: Entitlement;
+  const isInfluencer = reasonCategory.toLowerCase().includes('influencer');
+  const grantType = isInfluencer ? 'comped_influencer' : 'comped_vip';
+  const fullNotes = notes ? `[${reasonCategory}] ${notes}` : reasonCategory;
+
+  if (existingEnt) {
+    existingEnt.access_level = targetTier;
+    existingEnt.status = 'active';
+    existingEnt.source_order_id = compedOrder.id;
+    existingEnt.customer_email = cleanEmail;
+    existingEnt.grant_type = grantType;
+    existingEnt.notes = fullNotes;
+    existingEnt.granted_at = new Date().toISOString();
+    saveStoredEntitlement(existingEnt);
+    entitlement = existingEnt;
+  } else {
+    const entitlementId = `ent-vip-${Date.now()}`;
+    entitlement = {
+      id: entitlementId,
+      user_id: userId,
+      customer_email: cleanEmail,
+      product_code: 'affiliate_academy',
+      access_level: targetTier,
+      status: 'active',
+      source_order_id: compedOrder.id,
+      grant_type: grantType,
+      notes: fullNotes,
+      granted_at: new Date().toISOString(),
+    };
+    saveStoredEntitlement(entitlement);
+  }
+
+  // Record Admin Audit Log
+  recordAuditLog(
+    adminUserId,
+    'GRANT_COMPED_VIP_ACCESS',
+    userId,
+    compedOrder.id,
+    `Pemberian akses cuma-cuma (Rp0) paket ${targetTier.toUpperCase()} [${reasonCategory}]: ${notes || 'Tanpa catatan tambahan'}`,
+    {
+      target_email: cleanEmail,
+      tier: targetTier,
+      reason_category: reasonCategory,
+      amount: 0,
+      admin_user: adminUserId,
+    }
+  );
+
+  return {
+    success: true,
+    message: `Akses ${targetTier === 'pro_plus' ? 'Pro Plus' : 'Pro'} berhasil diberikan cuma-cuma (Rp0) kepada ${cleanEmail}!`,
+    order: compedOrder,
     entitlement,
   };
 }

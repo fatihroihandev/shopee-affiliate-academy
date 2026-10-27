@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { supabase } from '@/lib/supabase';
-import { Sparkle, StickerBadge } from '@/components/common/Doodles';
+import { StickerBadge } from '@/components/common/Doodles';
+import { AcademyLogo } from '@/components/common/AcademyLogo';
 import { ArrowLeft, CheckCircle2, AlertCircle, Loader2 } from 'lucide-react';
 
 export const ForgotPassword: React.FC = () => {
@@ -30,18 +31,33 @@ export const ForgotPassword: React.FC = () => {
   };
 
   return (
-    <div className="min-h-[75vh] flex items-center justify-center px-4 py-12">
-      <div className="brutalist-card p-8 bg-surface w-full max-w-md space-y-6">
-        <div className="text-center space-y-2">
-          <StickerBadge variant="coral">PEMULIHAN KATA SANDI</StickerBadge>
-          <h1 className="text-2xl font-extrabold text-ink flex items-center justify-center gap-1.5">
-            Lupa Kata Sandi?
-            <Sparkle className="w-5 h-5 text-brand-orange" />
-          </h1>
-          <p className="text-xs text-warm-gray font-medium">
-            Masukkan email terdaftar Anda untuk menerima tautan pemulihan akses.
-          </p>
+    <div className="min-h-[75vh] flex items-center justify-center px-4 py-8">
+      <div className="w-full max-w-md space-y-4">
+
+        {/* ── BRAND HEADER ── */}
+        <div className="text-center space-y-3">
+          <Link to="/" className="inline-block group" title="Kembali ke Beranda">
+            <div className="relative inline-flex items-center justify-center">
+              <div className="absolute inset-0 bg-soft-coral/30 rounded-2xl blur-xl group-hover:bg-soft-coral/50 transition-all" />
+              <div className="relative p-2.5 bg-surface border-2 border-ink rounded-2xl shadow-[3px_3px_0px_#171717] group-hover:-translate-y-1 group-hover:shadow-[5px_5px_0px_#FF9278] transition-all">
+                <AcademyLogo size="xl" imgClassName="group-hover:scale-105" />
+              </div>
+            </div>
+          </Link>
+          <div>
+            <div className="flex items-center justify-center gap-2 mb-1.5">
+              <StickerBadge variant="coral">BANTUAN AKSES</StickerBadge>
+              <span className="text-[11px] font-bold text-warm-gray">Reset Akun</span>
+            </div>
+            <h1 className="text-2xl font-extrabold text-ink tracking-tight">Lupa Kata Sandi?</h1>
+            <p className="text-xs text-warm-gray font-medium mt-1 max-w-sm mx-auto">
+              Masukkan email terdaftar Anda untuk menerima tautan pemulihan akses.
+            </p>
+          </div>
         </div>
+
+        {/* ── CARD FORM ── */}
+        <div className="brutalist-card p-6 sm:p-7 bg-surface space-y-5">
 
         {success ? (
           <div className="p-4 bg-acid-lime/30 border-2 border-ink rounded-md space-y-3 text-center">
@@ -100,6 +116,7 @@ export const ForgotPassword: React.FC = () => {
             <span>Kembali ke Halaman Masuk</span>
           </Link>
         </div>
+      </div>
       </div>
     </div>
   );

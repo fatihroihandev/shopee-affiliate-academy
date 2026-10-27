@@ -13,6 +13,7 @@ import { ModuleDetail } from '@/pages/learning/ModuleDetail';
 import { LessonReader } from '@/pages/learning/LessonReader';
 import { ProjectsIndex } from '@/pages/learning/ProjectsIndex';
 import { ProjectDetail } from '@/pages/learning/ProjectDetail';
+import { ProPlusBonusViewer } from '@/pages/learning/ProPlusBonusViewer';
 import { ProductResearchLab } from '@/pages/workspaces/ProductResearchLab';
 import { ResearchNotes } from '@/pages/workspaces/ResearchNotes';
 import { ContentStudio } from '@/pages/workspaces/ContentStudio';
@@ -64,15 +65,69 @@ const AdminRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return <AppLayout>{children}</AppLayout>;
 };
 
+// Guest Only Route: Logged-in users cannot access landing/auth pages and are redirected to /dashboard
+const GuestOnlyRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const { user, loading } = useAuth();
+
+  if (loading) {
+    return (
+      <div className="min-h-[70vh] flex items-center justify-center">
+        <Loader2 className="w-8 h-8 animate-spin text-brand-orange" />
+      </div>
+    );
+  }
+
+  if (user) {
+    return <Navigate to="/dashboard" replace />;
+  }
+
+  return <>{children}</>;
+};
+
 export const AppRoutes: React.FC = () => {
   return (
     <Routes>
-      {/* Public Routes */}
-      <Route path="/" element={<Home />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/register" element={<Register />} />
-      <Route path="/forgot-password" element={<ForgotPassword />} />
-      <Route path="/pricing" element={<Home />} />
+      {/* Public Routes - Landing page & Auth only accessible when logged out */}
+      <Route
+        path="/"
+        element={
+          <GuestOnlyRoute>
+            <Home />
+          </GuestOnlyRoute>
+        }
+      />
+      <Route
+        path="/pricing"
+        element={
+          <GuestOnlyRoute>
+            <Home />
+          </GuestOnlyRoute>
+        }
+      />
+      <Route
+        path="/login"
+        element={
+          <GuestOnlyRoute>
+            <Login />
+          </GuestOnlyRoute>
+        }
+      />
+      <Route
+        path="/register"
+        element={
+          <GuestOnlyRoute>
+            <Register />
+          </GuestOnlyRoute>
+        }
+      />
+      <Route
+        path="/forgot-password"
+        element={
+          <GuestOnlyRoute>
+            <ForgotPassword />
+          </GuestOnlyRoute>
+        }
+      />
       <Route path="/terms" element={<TermsPage />} />
       <Route path="/privacy" element={<PrivacyPage />} />
 
@@ -122,6 +177,14 @@ export const AppRoutes: React.FC = () => {
         element={
           <ProtectedRoute>
             <ProjectDetail />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/pro-plus-bonus"
+        element={
+          <ProtectedRoute>
+            <ProPlusBonusViewer />
           </ProtectedRoute>
         }
       />

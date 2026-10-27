@@ -1,62 +1,121 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Sparkle, CurvedArrow, WavyUnderline, StickerBadge } from '@/components/common/Doodles';
-import { BookOpen, CheckCircle2, ArrowRight, ShieldCheck, Flame, BarChart3, Wrench, Share2, Award } from 'lucide-react';
+import { CurvedArrow, WavyUnderline, StickerBadge } from '@/components/common/Doodles';
+import { BookOpen, CheckCircle2, ArrowRight, ShieldCheck, Flame, BarChart3, Wrench, Share2, Award, Zap, Sparkles } from 'lucide-react';
+import { CheckoutModal } from '@/features/commerce/CheckoutModal';
+import { ProductSku } from '@/types/database';
+import { usePageTitle } from '@/hooks/usePageTitle';
 
 export const Home: React.FC = () => {
+  usePageTitle(
+    'Bangun Bisnis Affiliate Berdasarkan Data',
+    'Platform belajar mandiri Shopee Affiliate terlengkap di Indonesia dengan 24 modul materi kurikulum V2.0, 6 workspace digital terintegrasi, dan 8 proyek praktik wajib.'
+  );
+
+  const [checkoutOpen, setCheckoutOpen] = useState(false);
+  const [selectedSku, setSelectedSku] = useState<ProductSku>('affiliate_academy_pro');
+
+  const handleOpenCheckout = (sku: ProductSku) => {
+    setSelectedSku(sku);
+    setCheckoutOpen(true);
+  };
   return (
-    <div className="space-y-24 pb-16">
+    <div className="space-y-20 pb-16">
       {/* 1. HERO SECTION */}
-      <section className="relative pt-12 sm:pt-20 pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-        <div className="text-center space-y-6 max-w-3xl mx-auto">
-          {/* Top Badge */}
-          <div className="flex items-center justify-center gap-2">
-            <StickerBadge variant="lime" rotate="-rotate-2">
-              <span className="flex items-center gap-1">
-                <Flame className="w-3.5 h-3.5 text-brand-orange" />
-                KURIKULUM SHOPEE AFFILIATE V2.0
-              </span>
-            </StickerBadge>
-            <StickerBadge variant="coral" rotate="rotate-2">SIAP PUBLIKASI</StickerBadge>
+      <section className="relative pt-10 sm:pt-16 pb-8 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+
+          {/* Left: Copy */}
+          <div className="space-y-6 text-center lg:text-left order-2 lg:order-1">
+            {/* Top Badges */}
+            <div className="flex items-center justify-center lg:justify-start gap-2 flex-wrap">
+              <StickerBadge variant="lime" rotate="-rotate-2">
+                <span className="flex items-center gap-1">
+                  <Flame className="w-3.5 h-3.5 text-brand-orange" />
+                  KURIKULUM V2.0
+                </span>
+              </StickerBadge>
+              <StickerBadge variant="coral" rotate="rotate-2">EDISI LENGKAP 2026</StickerBadge>
+            </div>
+
+            {/* Main Title */}
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.1] text-ink">
+              Bangun Bisnis Shopee Affiliate{' '}
+              <span className="relative inline-block">
+                <span className="relative z-10 text-brand-orange">Berdasarkan Data,</span>
+                <WavyUnderline className="absolute -bottom-2 left-0 text-brand-orange w-full" />
+              </span>{' '}
+              Bukan Sekadar Tebakan.
+            </h1>
+
+            {/* Subtitle */}
+            <p className="text-lg text-warm-gray font-medium leading-relaxed max-w-xl mx-auto lg:mx-0">
+              Platform belajar mandiri terlengkap dengan <strong className="text-ink">24 modul</strong>,{' '}
+              <strong className="text-ink">6 workspace digital</strong> terintegrasi, dan{' '}
+              <strong className="text-ink">8 proyek praktik wajib</strong>.
+            </p>
+
+            {/* CTA Group */}
+            <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+              <Link
+                to="/register"
+                className="brutalist-btn bg-brand-orange text-white text-base px-8 py-3.5 gap-2 w-full sm:w-auto"
+              >
+                <span>Mulai Belajar Gratis</span>
+                <ArrowRight className="w-5 h-5" />
+              </Link>
+              <Link
+                to="/learn"
+                className="brutalist-btn bg-surface text-ink text-base px-6 py-3.5 gap-2 w-full sm:w-auto hover:bg-paper"
+              >
+                <BookOpen className="w-5 h-5 text-brand-orange" />
+                <span>Lihat Kurikulum</span>
+              </Link>
+            </div>
+
+            {/* Micro copy */}
+            <div className="flex items-center justify-center lg:justify-start gap-2 text-xs font-bold text-warm-gray">
+              <CurvedArrow className="w-8 h-4 rotate-12 text-brand-orange hidden sm:inline-block" />
+              <span>Tanpa modal stok · M00 gratis · Materi teruji</span>
+            </div>
           </div>
 
-          {/* Main Title */}
-          <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight leading-[1.15] text-ink">
-            Bangun Bisnis Shopee Affiliate{' '}
-            <span className="relative inline-block whitespace-nowrap">
-              <span className="relative z-10 text-brand-orange">Berdasarkan Data,</span>
-              <WavyUnderline className="absolute -bottom-2 left-0 text-brand-orange w-full" />
-            </span>{' '}
-            Bukan Sekadar Tebakan.
-          </h1>
+          {/* Right: Hero Illustration */}
+          <div className="flex items-center justify-center order-1 lg:order-2">
+            <div className="relative flex items-center justify-center p-4">
+              {/* Playful editorial glow */}
+              <div className="absolute w-64 h-64 sm:w-80 sm:h-80 bg-brand-orange/20 rounded-full blur-3xl pointer-events-none" />
+              <div className="absolute w-44 h-44 bg-acid-lime/25 rounded-full blur-2xl translate-x-12 -translate-y-8 pointer-events-none" />
 
-          {/* Subtitle */}
-          <p className="text-lg sm:text-xl text-warm-gray font-medium max-w-2xl mx-auto leading-relaxed">
-            Platform belajar mandiri terlengkap dengan <strong className="text-ink">24 modul materi</strong>, <strong className="text-ink">6 workspace kerja digital</strong> terintegrasi, dan <strong className="text-ink">8 proyek praktik wajib</strong>.
-          </p>
+              {/* Floating Badge 1 - Top Left */}
+              <div className="absolute top-2 left-0 sm:-left-4 z-20">
+                <StickerBadge variant="orange" rotate="-rotate-6" className="shadow-[3px_3px_0px_#171717] text-[11px] sm:text-xs">
+                  ⚡ 7 Faktor Scoring
+                </StickerBadge>
+              </div>
 
-          {/* CTA Group */}
-          <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link
-              to="/register"
-              className="brutalist-btn bg-brand-orange text-white text-base px-8 py-3.5 gap-2 w-full sm:w-auto"
-            >
-              <span>Mulai Belajar Gratis</span>
-              <ArrowRight className="w-5 h-5" />
-            </Link>
-            <Link
-              to="/learn"
-              className="brutalist-btn bg-surface text-ink text-base px-6 py-3.5 gap-2 w-full sm:w-auto hover:bg-paper"
-            >
-              <BookOpen className="w-5 h-5 text-brand-orange" />
-              <span>Lihat Kurikulum</span>
-            </Link>
-          </div>
+              {/* Floating Badge 2 - Top Right */}
+              <div className="absolute top-4 -right-2 sm:-right-4 z-20 hidden sm:block">
+                <StickerBadge variant="coral" rotate="rotate-6" className="shadow-[3px_3px_0px_#171717] text-[11px] sm:text-xs">
+                  🎯 30+ Hook Bank
+                </StickerBadge>
+              </div>
 
-          {/* Subtle Annotations */}
-          <div className="pt-2 flex items-center justify-center gap-2 text-xs font-bold text-warm-gray">
-            <CurvedArrow className="w-8 h-4 rotate-12 text-brand-orange hidden sm:inline-block" />
-            <span>Tanpa modal stok barang • Akses modul orientasi M00 gratis • Garansi materi teruji</span>
+              {/* Floating Badge 3 - Bottom Right */}
+              <div className="absolute -bottom-2 right-2 sm:right-0 z-20">
+                <StickerBadge variant="lime" rotate="rotate-3" className="shadow-[3px_3px_0px_#171717] text-[11px] sm:text-xs font-black">
+                  💰 Komisi 10% Teruji
+                </StickerBadge>
+              </div>
+
+              {/* Main Logo Illustration */}
+              <img
+                src="/logo.png"
+                alt="Shopee Affiliate Academy Illustration"
+                className="relative z-10 w-60 h-60 sm:w-72 sm:h-72 lg:w-[360px] lg:h-[360px] object-contain animate-float-slow filter drop-shadow-[0_12px_24px_rgba(23,23,23,0.15)]"
+                draggable={false}
+              />
+            </div>
           </div>
         </div>
       </section>
@@ -178,65 +237,69 @@ export const Home: React.FC = () => {
       </section>
 
       {/* 4. PRICING SECTION */}
-      <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 text-center" id="pricing">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 text-center" id="pricing">
         <div className="space-y-3">
           <StickerBadge variant="coral">PILIHAN AKSES</StickerBadge>
           <h2 className="text-3xl sm:text-5xl font-extrabold text-ink">
-            Biaya Transparan. Sekali Bayar.
+            Investasi Transparan. Sekali Bayar.
           </h2>
-          <p className="text-warm-gray font-medium max-w-xl mx-auto">
-            Mulai eksplorasi gratis hari ini, upgrade ke Premium saat kamu siap membangun sistem bisnis affiliate jangka panjang.
+          <p className="text-warm-gray font-medium max-w-2xl mx-auto">
+            Mulai eksplorasi gratis hari ini, atau pilih paket Pro dan Pro Plus saat kamu siap membangun sistem bisnis affiliate jangka panjang.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-left pt-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-left pt-4">
           {/* Paket Free */}
-          <div className="brutalist-card p-8 bg-surface space-y-6 flex flex-col justify-between">
+          <div className="brutalist-card p-6 sm:p-8 bg-surface space-y-6 flex flex-col justify-between">
             <div className="space-y-4">
               <div className="flex justify-between items-center">
                 <span className="font-extrabold text-xl">Paket Free</span>
                 <span className="text-xs font-bold uppercase bg-paper border border-ink px-2.5 py-1 rounded">Dasar</span>
               </div>
               <div className="text-4xl font-extrabold text-ink">Rp0</div>
-              <p className="text-sm text-warm-gray">Cocok untuk memahami gambaran awal Shopee Affiliate sebelum berinvestasi.</p>
+              <p className="text-xs sm:text-sm text-warm-gray">Cocok untuk memahami fondasi Shopee Affiliate dan menjelajahi platform.</p>
               <hr className="border-ink/20" />
-              <ul className="space-y-2.5 text-sm font-semibold text-ink">
+              <ul className="space-y-2.5 text-xs sm:text-sm font-semibold text-ink">
                 <li className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-acid-lime fill-ink" />
+                  <CheckCircle2 className="w-4 h-4 text-acid-lime fill-ink shrink-0" />
                   <span>4 Pelajaran M00 — Start Here (Lengkap)</span>
                 </li>
                 <li className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-acid-lime fill-ink" />
+                  <CheckCircle2 className="w-4 h-4 text-acid-lime fill-ink shrink-0" />
                   <span>Preview Lengkap Modul 01 (Dasar Affiliate)</span>
                 </li>
                 <li className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-acid-lime fill-ink" />
-                  <span>Preview Terbatas 6 Workspace (3 Item)</span>
+                  <CheckCircle2 className="w-4 h-4 text-acid-lime fill-ink shrink-0" />
+                  <span>Preview 6 Workspace (Maksimal 3 Item)</span>
                 </li>
                 <li className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-acid-lime fill-ink" />
-                  <span>Hak Menjadi Affiliate Platform (Komisi 10%)</span>
+                  <CheckCircle2 className="w-4 h-4 text-acid-lime fill-ink shrink-0" />
+                  <span>Mode Baca 8 Proyek Praktik</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-acid-lime fill-ink shrink-0" />
+                  <span>Akses Program Affiliate Internal (Komisi 10%)</span>
                 </li>
               </ul>
             </div>
             <Link
               to="/register"
-              className="brutalist-btn bg-paper text-ink w-full py-3 text-sm hover:bg-surface"
+              className="brutalist-btn bg-paper text-ink w-full py-3 text-sm hover:bg-surface text-center"
             >
-              Daftar Gratis
+              Daftar Akun Gratis
             </Link>
           </div>
 
-          {/* Paket Premium */}
-          <div className="brutalist-card p-8 bg-surface space-y-6 flex flex-col justify-between relative border-brand-orange border-4">
-            <div className="absolute -top-3.5 right-6">
-              <StickerBadge variant="orange">PROMO PELUNCURAN</StickerBadge>
+          {/* Paket Pro (Pilihan Utama) */}
+          <div className="brutalist-card p-6 sm:p-8 bg-surface space-y-6 flex flex-col justify-between relative border-brand-orange border-4 shadow-[6px_6px_0px_#171717]">
+            <div className="absolute -top-3.5 right-4 sm:right-6">
+              <StickerBadge variant="orange">PILIHAN UTAMA</StickerBadge>
             </div>
             <div className="space-y-4">
               <div className="flex justify-between items-center">
                 <span className="font-extrabold text-xl flex items-center gap-1.5">
-                  Paket Premium
-                  <Sparkle className="w-4 h-4 text-brand-orange" />
+                  Paket Pro
+                  <Zap className="w-4 h-4 text-brand-orange fill-brand-orange" />
                 </span>
                 <span className="text-xs font-bold text-warm-gray line-through">Rp149.000</span>
               </div>
@@ -244,39 +307,105 @@ export const Home: React.FC = () => {
                 <span className="text-4xl font-extrabold text-brand-orange">Rp99.000</span>
                 <span className="text-xs font-bold text-warm-gray uppercase">/ Sekali Bayar</span>
               </div>
-              <p className="text-sm text-warm-gray">Akses jangka panjang ke seluruh materi premium, 6 workspace penuh, dan 8 proyek praktik.</p>
+              <p className="text-xs sm:text-sm text-warm-gray">Paket utama untuk membangun bisnis affiliate jangka panjang secara terstruktur.</p>
               <hr className="border-ink/20" />
-              <ul className="space-y-2.5 text-sm font-semibold text-ink">
+              <ul className="space-y-2.5 text-xs sm:text-sm font-semibold text-ink">
                 <li className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-brand-orange fill-brand-orange text-white" />
+                  <CheckCircle2 className="w-4 h-4 text-brand-orange fill-brand-orange text-white shrink-0" />
                   <span>Seluruh 24 Modul Materi Kurikulum V2.0</span>
                 </li>
                 <li className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-brand-orange fill-brand-orange text-white" />
+                  <CheckCircle2 className="w-4 h-4 text-brand-orange fill-brand-orange text-white shrink-0" />
                   <span>8 Proyek Praktik Wajib & Pelacak Kelulusan</span>
                 </li>
                 <li className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-brand-orange fill-brand-orange text-white" />
-                  <span>Akses Penuh 6 Workspace Tanpa Batasan Item</span>
+                  <CheckCircle2 className="w-4 h-4 text-brand-orange fill-brand-orange text-white shrink-0" />
+                  <span>Akses Penuh 6 Workspace Tanpa Batasan</span>
                 </li>
                 <li className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-brand-orange fill-brand-orange text-white" />
-                  <span>Hook Bank 30+ Formula & Template Skrip Konten</span>
+                  <CheckCircle2 className="w-4 h-4 text-brand-orange fill-brand-orange text-white shrink-0" />
+                  <span>Hook Bank 30+ Formula & Generator Skrip</span>
                 </li>
                 <li className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-brand-orange fill-brand-orange text-white" />
-                  <span>Pembaruan Materi & Akses Komunitas Siswa</span>
+                  <CheckCircle2 className="w-4 h-4 text-brand-orange fill-brand-orange text-white shrink-0" />
+                  <span>Riset Produk & SOP Anti-Pelanggaran</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-brand-orange fill-brand-orange text-white shrink-0" />
+                  <span>Akses Program Affiliate Internal (Komisi 10%)</span>
                 </li>
               </ul>
             </div>
-            <Link
-              to="/register"
+            <button
+              type="button"
+              onClick={() => handleOpenCheckout('affiliate_academy_pro')}
               className="brutalist-btn bg-brand-orange text-white w-full py-3.5 text-sm font-extrabold"
             >
-              Beli Akses Premium Sekarang
-            </Link>
+              Pilih Paket Pro (Rp99.000)
+            </button>
+          </div>
+
+          {/* Paket Pro Plus (Eksekusi Lanjutan) */}
+          <div className="brutalist-card p-6 sm:p-8 bg-surface space-y-6 flex flex-col justify-between relative border-2 border-ink shadow-[6px_6px_0px_#FF9278]">
+            <div className="absolute -top-3.5 right-4 sm:right-6">
+              <StickerBadge variant="coral">EKSEKUSI LANJUTAN</StickerBadge>
+            </div>
+            <div className="space-y-4">
+              <div className="flex justify-between items-center">
+                <span className="font-extrabold text-xl flex items-center gap-1.5">
+                  Paket Pro Plus
+                  <Sparkles className="w-4 h-4 text-brand-orange" />
+                </span>
+                <span className="text-xs font-bold text-warm-gray line-through">Rp249.000</span>
+              </div>
+              <div className="flex items-baseline gap-2">
+                <span className="text-4xl font-extrabold text-ink">Rp199.000</span>
+                <span className="text-xs font-bold text-warm-gray uppercase">/ Sekali Bayar</span>
+              </div>
+              <p className="text-xs sm:text-sm text-warm-gray">Seluruh hak akses Pro ditambah 3 materi implementasi & studi kasus mendalam.</p>
+              <hr className="border-ink/20" />
+              <ul className="space-y-2.5 text-xs sm:text-sm font-semibold text-ink">
+                <li className="flex items-center gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-brand-orange fill-brand-orange text-white shrink-0" />
+                  <strong className="text-brand-orange">Seluruh Hak Akses Paket Pro</strong>
+                </li>
+                <li className="flex items-center gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-brand-orange fill-brand-orange text-white shrink-0" />
+                  <span><strong>Bonus 1:</strong> Affiliate Campaign-in-a-Box</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-brand-orange fill-brand-orange text-white shrink-0" />
+                  <span><strong>Bonus 2:</strong> Affiliate Case Study Lab (2 Kasus)</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-brand-orange fill-brand-orange text-white shrink-0" />
+                  <span><strong>Bonus 3:</strong> Content Angle & Objection Playbook</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-brand-orange fill-brand-orange text-white shrink-0" />
+                  <span>Tanpa Biaya API AI Tambahan</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-brand-orange fill-brand-orange text-white shrink-0" />
+                  <span>Update Kasus & Playbook Berkala</span>
+                </li>
+              </ul>
+            </div>
+            <button
+              type="button"
+              onClick={() => handleOpenCheckout('affiliate_academy_pro_plus')}
+              className="brutalist-btn bg-ink text-paper w-full py-3.5 text-sm font-extrabold hover:bg-neutral-800"
+            >
+              Pilih Paket Pro Plus (Rp199.000)
+            </button>
           </div>
         </div>
+
+        <CheckoutModal
+          isOpen={checkoutOpen}
+          onClose={() => setCheckoutOpen(false)}
+          initialSku={selectedSku}
+        />
       </section>
 
       {/* 5. FIVE GOLDEN RULES */}

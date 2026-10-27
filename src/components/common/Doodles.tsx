@@ -1,14 +1,19 @@
 import React from 'react';
 import { cn } from '@/lib/utils';
 
-// 1. Sparkle / Bintang Coretan
+// 1. Sparkle / Bintang Coretan Tangan (Editorial Hand-Drawn Burst)
 export const Sparkle: React.FC<{ className?: string }> = ({ className }) => (
   <svg
     viewBox="0 0 24 24"
-    fill="currentColor"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2.5"
+    strokeLinecap="round"
+    strokeLinejoin="round"
     className={cn("w-6 h-6 text-brand-orange inline-block shrink-0", className)}
   >
-    <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z" />
+    <path d="M12 2 V22 M2 12 H22 M4.93 4.93 L19.07 19.07 M4.93 19.07 L19.07 4.93" />
+    <circle cx="12" cy="12" r="1.5" fill="currentColor" />
   </svg>
 );
 

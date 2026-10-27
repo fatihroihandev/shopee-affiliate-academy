@@ -1,0 +1,26 @@
+# Robots.txt for Shopee Affiliate Academy
+# Official Domain: https://affiliateacademy.site
+
+User-agent: *
+Allow: /
+Allow: /pricing
+Allow: /login
+Allow: /register
+Allow: /terms
+Allow: /privacy
+Allow: /favicon.png
+Allow: /favicon.ico
+Allow: /logo.png
+Allow: /logo-512.png
+
+# Disallow private/authenticated student workspaces & internal operations
+Disallow: /dashboard
+Disallow: /learn/
+Disallow: /projects/
+Disallow: /pro-plus-bonus
+Disallow: /tools/
+Disallow: /affiliate/
+Disallow: /admin/
+
+# Sitemap location
+Sitemap: https://affiliateacademy.site/sitemap.xml

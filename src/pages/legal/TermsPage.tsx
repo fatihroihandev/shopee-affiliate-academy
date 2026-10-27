@@ -3,8 +3,10 @@ import { Card } from '@/components/ui/Card';
 import { StickerBadge } from '@/components/common/Doodles';
 import { FileText, Shield, AlertTriangle, ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { usePageTitle } from '@/hooks/usePageTitle';
 
 export const TermsPage: React.FC = () => {
+  usePageTitle('Syarat & Ketentuan Layanan', 'Syarat dan ketentuan resmi penggunaan platform, hak akses materi kurikulum, kebijakan refund, dan komitmen Shopee Affiliate Academy.');
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 py-12 space-y-8">
       {/* Back button */}

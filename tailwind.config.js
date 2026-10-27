@@ -23,6 +23,20 @@ export default {
       borderRadius: {
         'brutalist': '8px',
       },
+      keyframes: {
+        float: {
+          '0%, 100%': { transform: 'translateY(0px)' },
+          '50%':      { transform: 'translateY(-12px)' },
+        },
+        'float-slow': {
+          '0%, 100%': { transform: 'translateY(0px) rotate(-1deg)' },
+          '50%':      { transform: 'translateY(-8px) rotate(1deg)' },
+        },
+      },
+      animation: {
+        float:        'float 4s ease-in-out infinite',
+        'float-slow': 'float-slow 6s ease-in-out infinite',
+      },
     },
   },
   plugins: [],

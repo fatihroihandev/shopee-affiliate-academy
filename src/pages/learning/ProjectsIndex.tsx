@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { PRACTICE_PROJECTS } from '@/data/curriculumData';
-import { Sparkle, StickerBadge } from '@/components/common/Doodles';
+import { StickerBadge } from '@/components/common/Doodles';
 import { CheckCircle2, ArrowRight, ShieldCheck } from 'lucide-react';
 
 export const ProjectsIndex: React.FC = () => {
@@ -30,9 +30,8 @@ export const ProjectsIndex: React.FC = () => {
               <StickerBadge variant="coral">BUKTI EKSEKUSI</StickerBadge>
               <span className="text-xs font-bold text-warm-gray">Bukan Sekadar Teori</span>
             </div>
-            <h1 className="text-2xl sm:text-3xl font-extrabold text-ink flex items-center gap-2">
+            <h1 className="text-2xl sm:text-3xl font-extrabold text-ink">
               8 Project Praktik Wajib
-              <Sparkle className="w-5 h-5 text-brand-orange" />
             </h1>
             <p className="text-xs sm:text-sm text-warm-gray font-medium max-w-2xl leading-relaxed">
               Delapan proyek ini adalah bukti nyata penerapan materi. Kerjakan berurutan dari P01 sampai P08. Anda dinilai dari kualitas data dan keputusan, bukan besaran komisi.

@@ -9,6 +9,7 @@ import {
   refundOrderAndRevokeEntitlement,
   approveAffiliatePayout,
   rejectAffiliatePayout,
+  grantCompedEntitlement,
 } from '@/features/commerce/orderStorage';
 import {
   getStoredAffiliatePayouts,
@@ -30,10 +31,16 @@ import {
   History,
   ArrowUpRight,
   TrendingUp,
+  UserPlus,
+  Sparkles,
+  Crown,
+  RefreshCw,
 } from 'lucide-react';
+import { usePageTitle } from '@/hooks/usePageTitle';
 
 export const AdminDashboard: React.FC = () => {
-  const { user } = useAuth();
+  usePageTitle('Admin Command Center', 'Panel kontrol superadmin dan backup admin untuk verifikasi pembayaran, approval komisi, dan manajemen akses VIP.');
+  const { user, loginAsDemo } = useAuth();
   const [activeTab, setActiveTab] = useState<'overview' | 'orders' | 'payouts' | 'users' | 'audit'>('overview');
 
   const [orders, setOrders] = useState<Order[]>([]);
@@ -54,6 +61,15 @@ export const AdminDashboard: React.FC = () => {
 
   const [isRejectPayoutModalOpen, setIsRejectPayoutModalOpen] = useState(false);
   const [rejectReason, setRejectReason] = useState('Nomor rekening atau nama pemilik tidak cocok.');
+
+  // COMPED / INFLUENCER ACCESS STATE (Akses Cuma-cuma Rp0)
+  const [isCompedModalOpen, setIsCompedModalOpen] = useState(false);
+  const [compedEmail, setCompedEmail] = useState('');
+  const [compedName, setCompedName] = useState('');
+  const [compedTier, setCompedTier] = useState<'pro' | 'pro_plus'>('pro_plus');
+  const [compedCategory, setCompedCategory] = useState('Influencer Endorsement (TikTok/IG/YouTube)');
+  const [compedNotes, setCompedNotes] = useState('');
+  const [compedLoading, setCompedLoading] = useState(false);
 
   const [toastMsg, setToastMsg] = useState<string | null>(null);
 
@@ -130,6 +146,44 @@ export const AdminDashboard: React.FC = () => {
     refreshData();
   };
 
+  const isBackupAdmin = user?.email?.includes('backup') || user?.id?.includes('admin0000002');
+
+  const handleSwitchAdminRole = () => {
+    const nextType = isBackupAdmin ? 'utama' : 'backup';
+    loginAsDemo('admin', 'pro_plus', nextType);
+    showToast(`Beralih ke sesi ${nextType === 'backup' ? 'Admin Cadangan (Backup)' : 'Admin Utama (Super Admin)'}.`);
+    setTimeout(() => {
+      window.location.reload();
+    }, 500);
+  };
+
+  const handleGrantCompedAccess = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!compedEmail.trim()) {
+      showToast('Email calon penerima wajib diisi.');
+      return;
+    }
+    setCompedLoading(true);
+    const adminIdentifier = user?.email || (isBackupAdmin ? 'admin.backup@affiliateacademy.site' : 'admin.utama@affiliateacademy.site');
+    const fullNotes = compedName ? `Nama/Akun: ${compedName}. ${compedNotes}` : compedNotes;
+
+    const res = grantCompedEntitlement(
+      compedEmail,
+      compedTier,
+      adminIdentifier,
+      compedCategory,
+      fullNotes
+    );
+
+    setCompedLoading(false);
+    showToast(res.message);
+    setIsCompedModalOpen(false);
+    setCompedEmail('');
+    setCompedName('');
+    setCompedNotes('');
+    refreshData();
+  };
+
   return (
     <div className="space-y-8 max-w-7xl mx-auto px-4 sm:px-6 py-6">
       {/* Toast Alert */}
@@ -143,23 +197,43 @@ export const AdminDashboard: React.FC = () => {
       {/* Header */}
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 border-b-2 border-ink pb-6">
         <div>
-          <div className="flex items-center gap-2 mb-1">
+          <div className="flex items-center gap-2 mb-1 flex-wrap">
             <span className="p-1.5 bg-ink text-brand-orange border-2 border-ink shadow-[2px_2px_0px_#171717]">
               <Shield className="w-5 h-5" />
             </span>
             <span className="text-xs font-bold uppercase tracking-wider text-warm-gray">
-              Otoritas Super Admin Platform
+              Otoritas Admin Platform
             </span>
-            <StickerBadge variant="orange" rotate="-rotate-2" className="hidden sm:inline-block">
-              COMMAND CENTER
+            <StickerBadge variant={isBackupAdmin ? 'lime' : 'orange'} rotate="-rotate-2">
+              {isBackupAdmin ? 'ADMIN CADANGAN (BACKUP)' : 'ADMIN UTAMA (SUPER ADMIN)'}
             </StickerBadge>
           </div>
           <h1 className="text-3xl font-extrabold text-ink font-serif">
             Admin Command Center
           </h1>
           <p className="text-sm text-warm-gray mt-1">
-            Pengelolaan transaksi e-commerce, aktivasi hak akses idempoten, audit approval pencairan komisi affiliate, dan log sistem.
+            Pengelolaan transaksi e-commerce, aktivasi hak akses idempoten, audit approval pencairan komisi affiliate, dan pemberian akses VIP/Influencer.
           </p>
+        </div>
+
+        {/* Dual Admin Switcher Card */}
+        <div className="p-3 bg-paper border-2 border-ink rounded-lg shadow-[3px_3px_0px_#171717] flex items-center justify-between gap-4">
+          <div className="text-xs">
+            <div className="text-[10px] uppercase font-bold text-warm-gray">Sesi Admin Aktif:</div>
+            <div className="font-extrabold text-ink flex items-center gap-1.5">
+              <Crown className="w-4 h-4 text-brand-orange" />
+              <span>{isBackupAdmin ? 'Admin Cadangan' : 'Admin Utama'}</span>
+            </div>
+            <div className="text-[10px] text-warm-gray font-mono">{user?.email || (isBackupAdmin ? 'admin.backup@affiliateacademy.site' : 'admin.utama@affiliateacademy.site')}</div>
+          </div>
+          <button
+            onClick={handleSwitchAdminRole}
+            className="brutalist-btn bg-surface hover:bg-paper text-ink px-3 py-1.5 text-xs font-bold flex items-center gap-1 border-2 border-ink"
+            title="Ganti ke akun admin lain"
+          >
+            <RefreshCw className="w-3.5 h-3.5 text-brand-orange" />
+            <span>Ganti ke {isBackupAdmin ? 'Utama' : 'Backup'}</span>
+          </button>
         </div>
       </div>
 
@@ -520,9 +594,19 @@ export const AdminDashboard: React.FC = () => {
       {/* TAB 4: USERS & ENTITLEMENTS */}
       {activeTab === 'users' && (
         <div className="space-y-6">
-          <div className="flex items-center justify-between">
-            <h3 className="text-xl font-bold text-ink">Manajemen Hak Akses & Entitlement Siswa</h3>
-            <span className="text-xs text-warm-gray">Kontrol lisensi modul kanonis</span>
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div>
+              <h3 className="text-xl font-bold text-ink">Manajemen Hak Akses Siswa & VIP</h3>
+              <p className="text-xs text-warm-gray">Kontrol lisensi Pro & Pro Plus serta penerbitan akses cuma-cuma (Rp0) untuk Influencer/Partner.</p>
+            </div>
+            <Button
+              variant="primary"
+              onClick={() => setIsCompedModalOpen(true)}
+              className="bg-brand-orange text-white flex items-center gap-2 text-xs font-extrabold shadow-[2px_2px_0px_#171717]"
+            >
+              <UserPlus className="w-4 h-4" />
+              <span>Masukkan Orang / Influencer (Rp0)</span>
+            </Button>
           </div>
 
           <div className="border-2 border-ink overflow-x-auto bg-surface shadow-[4px_4px_0px_#171717]">
@@ -530,31 +614,59 @@ export const AdminDashboard: React.FC = () => {
               <thead>
                 <tr className="bg-paper border-b-2 border-ink font-bold text-ink uppercase text-[11px]">
                   <th className="p-3 border-r border-ink">ID Entitlement</th>
-                  <th className="p-3 border-r border-ink">User ID</th>
-                  <th className="p-3 border-r border-ink">Produk</th>
+                  <th className="p-3 border-r border-ink">User / Email Siswa</th>
                   <th className="p-3 border-r border-ink">Level Akses</th>
+                  <th className="p-3 border-r border-ink">Jenis Pemberian</th>
                   <th className="p-3 border-r border-ink">Status</th>
+                  <th className="p-3 border-r border-ink">Keterangan / Alasan</th>
                   <th className="p-3 border-r border-ink">Diberikan Sejak</th>
-                  <th className="p-3">ID Pesanan Sumber</th>
+                  <th className="p-3">Pesanan Sumber</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-ink/10 font-sans">
                 {entitlements.map((ent) => (
                   <tr key={ent.id} className="hover:bg-paper/50">
                     <td className="p-3 border-r border-ink/10 font-mono font-bold text-ink">{ent.id}</td>
-                    <td className="p-3 border-r border-ink/10 font-mono text-warm-gray">{ent.user_id}</td>
-                    <td className="p-3 border-r border-ink/10 font-bold">{ent.product_code}</td>
                     <td className="p-3 border-r border-ink/10">
-                      <span className="px-2 py-0.5 bg-paper border border-ink uppercase text-[10px] font-bold">
-                        {ent.access_level}
-                      </span>
+                      <div className="font-bold text-ink">{ent.customer_email || ent.user_id}</div>
+                      {ent.customer_email && ent.user_id && (
+                        <div className="text-[10px] text-warm-gray font-mono">{ent.user_id}</div>
+                      )}
+                    </td>
+                    <td className="p-3 border-r border-ink/10">
+                      {ent.access_level === 'pro_plus' ? (
+                        <span className="px-2 py-0.5 bg-soft-coral text-ink border border-ink uppercase text-[10px] font-black rounded inline-flex items-center gap-1">
+                          <Sparkles className="w-3 h-3 text-brand-orange" />
+                          PRO PLUS
+                        </span>
+                      ) : (
+                        <span className="px-2 py-0.5 bg-brand-orange text-white border border-ink uppercase text-[10px] font-bold rounded">
+                          PRO
+                        </span>
+                      )}
+                    </td>
+                    <td className="p-3 border-r border-ink/10">
+                      {ent.grant_type === 'comped_influencer' ? (
+                        <span className="px-2 py-0.5 bg-purple-100 text-purple-900 border border-purple-400 text-[10px] font-bold rounded">
+                          ★ INFLUENCER VIP (Rp0)
+                        </span>
+                      ) : ent.grant_type === 'comped_vip' ? (
+                        <span className="px-2 py-0.5 bg-amber-100 text-amber-900 border border-amber-400 text-[10px] font-bold rounded">
+                          ★ PARTNER VIP (Rp0)
+                        </span>
+                      ) : (
+                        <span className="text-[11px] text-warm-gray">Pembelian Resmi</span>
+                      )}
                     </td>
                     <td className="p-3 border-r border-ink/10">
                       <Badge variant={ent.status === 'active' ? 'lime' : 'coral'} size="sm">
                         {ent.status.toUpperCase()}
                       </Badge>
                     </td>
-                    <td className="p-3 border-r border-ink/10 text-warm-gray">
+                    <td className="p-3 border-r border-ink/10 text-warm-gray max-w-[200px] truncate" title={ent.notes || ''}>
+                      {ent.notes || '-'}
+                    </td>
+                    <td className="p-3 border-r border-ink/10 text-warm-gray whitespace-nowrap">
                       {new Date(ent.granted_at).toLocaleDateString('id-ID')}
                     </td>
                     <td className="p-3 font-mono text-warm-gray">{ent.source_order_id || '-'}</td>
@@ -735,6 +847,134 @@ export const AdminDashboard: React.FC = () => {
             </Button>
           </div>
         </div>
+      </Modal>
+
+      {/* COMPED / VIP INFLUENCER GRANT MODAL */}
+      <Modal
+        isOpen={isCompedModalOpen}
+        onClose={() => setIsCompedModalOpen(false)}
+        title="Beri Akses Cuma-cuma (Rp0) — Influencer / Partner"
+      >
+        <form onSubmit={handleGrantCompedAccess} className="space-y-4">
+          <div className="p-3 bg-paper border-2 border-ink text-xs space-y-1 rounded">
+            <div className="font-bold text-ink flex items-center gap-1.5">
+              <Crown className="w-4 h-4 text-brand-orange" />
+              <span>Otoritas Pemberian Akses Bebas Bayar (Comped VIP)</span>
+            </div>
+            <p className="text-[11px] text-warm-gray">
+              Gunakan fitur ini untuk memberikan hak akses Pro atau Pro Plus tanpa biaya kepada Influencer, Content Creator mitra, atau tamu VIP. Transaksi ini akan tercatat resmi dengan nilai Rp0 di audit log.
+            </p>
+          </div>
+
+          <div>
+            <label className="block text-xs font-bold uppercase text-ink mb-1">
+              Email Calon Penerima Akses <span className="text-red-500">*</span>
+            </label>
+            <Input
+              type="email"
+              value={compedEmail}
+              onChange={(e) => setCompedEmail(e.target.value)}
+              placeholder="influencer@gmail.com"
+              required
+            />
+            <span className="text-[10px] text-warm-gray mt-1 block">
+              Ketika pengguna ini login dengan email tersebut (via Google / email), hak akses langsung aktif.
+            </span>
+          </div>
+
+          <div>
+            <label className="block text-xs font-bold uppercase text-ink mb-1">
+              Nama / Akun Sosmed (Opsional)
+            </label>
+            <Input
+              type="text"
+              value={compedName}
+              onChange={(e) => setCompedName(e.target.value)}
+              placeholder="Contoh: Kak @SintaAffiliate (TikTok 500k)"
+            />
+          </div>
+
+          <div>
+            <label className="block text-xs font-bold uppercase text-ink mb-1">
+              Pilih Paket Akses:
+            </label>
+            <div className="grid grid-cols-2 gap-2">
+              <button
+                type="button"
+                onClick={() => setCompedTier('pro')}
+                className={`p-3 border-2 text-left rounded transition-all ${
+                  compedTier === 'pro'
+                    ? 'border-brand-orange bg-brand-orange/10 shadow-[2px_2px_0px_#FF7A24]'
+                    : 'border-ink bg-surface hover:bg-paper'
+                }`}
+              >
+                <div className="font-black text-xs text-ink">Paket Pro</div>
+                <div className="text-[11px] text-brand-orange font-bold">24 Modul + 6 Workspace</div>
+                <div className="text-[10px] text-warm-gray">Biaya: <strong>Rp0 (Gratis)</strong></div>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => setCompedTier('pro_plus')}
+                className={`p-3 border-2 text-left rounded transition-all ${
+                  compedTier === 'pro_plus'
+                    ? 'border-brand-orange bg-brand-orange/10 shadow-[2px_2px_0px_#FF7A24]'
+                    : 'border-ink bg-surface hover:bg-paper'
+                }`}
+              >
+                <div className="font-black text-xs text-ink flex items-center gap-1">
+                  Paket Pro Plus <Sparkles className="w-3 h-3 text-brand-orange" />
+                </div>
+                <div className="text-[11px] text-ink font-bold">Pro + 3 Bonus Eksklusif</div>
+                <div className="text-[10px] text-warm-gray">Biaya: <strong>Rp0 (Gratis)</strong></div>
+              </button>
+            </div>
+          </div>
+
+          <div>
+            <label className="block text-xs font-bold uppercase text-ink mb-1">
+              Kategori Kemitraan:
+            </label>
+            <select
+              value={compedCategory}
+              onChange={(e) => setCompedCategory(e.target.value)}
+              className="w-full p-2.5 bg-surface border-2 border-ink rounded text-xs font-bold text-ink focus:outline-none focus:border-brand-orange"
+            >
+              <option value="Influencer Endorsement (TikTok/IG/YouTube)">Influencer Endorsement (TikTok/IG/YouTube)</option>
+              <option value="VIP Strategic Partner / Affiliate Ambassador">VIP Strategic Partner / Affiliate Ambassador</option>
+              <option value="Beasiswa Komunitas / Pemenang Giveaway">Beasiswa Komunitas / Pemenang Giveaway</option>
+              <option value="Kompensasi / Penyelesaian Kendala Sistem">Kompensasi / Penyelesaian Kendala Sistem</option>
+              <option value="Akses Internal Tim / Reviewer">Akses Internal Tim / Reviewer</option>
+            </select>
+          </div>
+
+          <div>
+            <label className="block text-xs font-bold uppercase text-ink mb-1">
+              Catatan / Kesepakatan Khusus:
+            </label>
+            <Input
+              type="text"
+              value={compedNotes}
+              onChange={(e) => setCompedNotes(e.target.value)}
+              placeholder="Contoh: Kesepakatan barter 2 video posting TikTok di bulan berjalan."
+            />
+          </div>
+
+          <div className="flex justify-end gap-2 pt-3 border-t-2 border-ink">
+            <Button variant="outline" type="button" onClick={() => setIsCompedModalOpen(false)}>
+              Batal
+            </Button>
+            <Button
+              variant="primary"
+              type="submit"
+              disabled={compedLoading}
+              className="bg-brand-orange text-white flex items-center gap-1.5 font-extrabold"
+            >
+              <UserPlus className="w-4 h-4" />
+              <span>{compedLoading ? 'Menerbitkan...' : `Terbitkan Akses ${compedTier === 'pro_plus' ? 'Pro Plus' : 'Pro'} (Rp0)`}</span>
+            </Button>
+          </div>
+        </form>
       </Modal>
     </div>
   );

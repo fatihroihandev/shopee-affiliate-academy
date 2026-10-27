@@ -3,8 +3,10 @@ import { Card } from '@/components/ui/Card';
 import { StickerBadge } from '@/components/common/Doodles';
 import { Shield, Lock, Eye, ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { usePageTitle } from '@/hooks/usePageTitle';
 
 export const PrivacyPage: React.FC = () => {
+  usePageTitle('Kebijakan Privasi', 'Kebijakan privasi dan perlindungan data pribadi siswa Shopee Affiliate Academy.');
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 py-12 space-y-8">
       {/* Back button */}
@@ -106,7 +108,7 @@ export const PrivacyPage: React.FC = () => {
             5. Kontak Dukungan & Pertanyaan Privasi
           </h2>
           <p className="text-xs text-warm-gray">
-            Jika Anda memiliki pertanyaan, klarifikasi, atau kekhawatiran terkait kebijakan privasi ini, silakan hubungi tim kami melalui email: <strong className="text-ink">support@shopee-affiliate-academy.id</strong>.
+            Jika Anda memiliki pertanyaan, klarifikasi, atau kekhawatiran terkait kebijakan privasi ini, silakan hubungi tim kami melalui email: <strong className="text-ink">support@affiliateacademy.site</strong>.
           </p>
         </section>
       </Card>

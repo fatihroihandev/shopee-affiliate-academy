@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { MODULES, LESSONS } from '@/data/curriculumData';
 import { useLessonProgress } from '@/features/learning/useLessonProgress';
 import { useAuth } from '@/features/auth/AuthContext';
-import { Sparkle, StickerBadge } from '@/components/common/Doodles';
+import { StickerBadge } from '@/components/common/Doodles';
 import { BookOpen, CheckCircle2, Lock, ArrowRight, Clock } from 'lucide-react';
 
 export const ModulesIndex: React.FC = () => {
@@ -24,9 +24,8 @@ export const ModulesIndex: React.FC = () => {
               <StickerBadge variant="orange">KURIKULUM 5 LEVEL</StickerBadge>
               <span className="text-xs font-bold text-warm-gray">7 Tahap • 30 Pelajaran</span>
             </div>
-            <h1 className="text-2xl sm:text-3xl font-extrabold text-ink flex items-center gap-2">
+            <h1 className="text-2xl sm:text-3xl font-extrabold text-ink">
               Jalur Pembelajaran Shopee Affiliate
-              <Sparkle className="w-5 h-5 text-brand-orange" />
             </h1>
             <p className="text-xs sm:text-sm text-warm-gray font-medium max-w-2xl">
               Kurikulum terstruktur dari persiapan dasar hingga scaling multi-channel. Pelajari materi berurutan dan selesaikan tugas praktik di tiap tahap.
