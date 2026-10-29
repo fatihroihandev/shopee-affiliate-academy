@@ -6,6 +6,7 @@ import {
   AffiliatePayout,
   MarketingMaterial,
 } from '@/types/database';
+import { supabase } from '@/lib/supabase';
 
 const STORAGE_KEYS = {
   PROFILES: 'shopee_academy_affiliate_profiles',
@@ -302,6 +303,125 @@ export function saveStoredAffiliateProfile(profile: AffiliateProfile): void {
   const index = list.findIndex((p) => p.user_id === profile.user_id || p.id === profile.id);
   const updated = index >= 0 ? list.map((p, i) => (i === index ? profile : p)) : [profile, ...list];
   localStorage.setItem(STORAGE_KEYS.PROFILES, JSON.stringify(updated));
+
+  // Background Cloud Sync to Supabase affiliate_profiles
+  if (profile.user_id && !profile.user_id.startsWith('00000000') && profile.user_id !== 'default') {
+    supabase
+      .from('affiliate_profiles')
+      .upsert({
+        id: profile.id,
+        user_id: profile.user_id,
+        referral_code: profile.referral_code,
+        bank_name: profile.bank_name,
+        bank_account_number: profile.bank_account_number,
+        bank_account_holder: profile.bank_account_holder,
+        is_active: profile.is_active,
+        total_commission_earned: profile.total_commission_earned,
+        total_commission_paid: profile.total_commission_paid,
+        updated_at: new Date().toISOString(),
+      }, { onConflict: 'user_id' })
+      .then(({ error }) => {
+        if (error) console.warn('Supabase affiliate_profile upsert notification:', error.message);
+      });
+  }
+}
+
+export async function syncAffiliateFromCloud(userId?: string): Promise<{
+  profile: AffiliateProfile | null;
+  conversions: ReferralConversion[];
+  payouts: AffiliatePayout[];
+}> {
+  try {
+    // 1. Fetch Profile
+    let cloudProfile: AffiliateProfile | null = null;
+    if (userId && !userId.startsWith('00000000') && userId !== 'default') {
+      const { data: pData } = await supabase
+        .from('affiliate_profiles')
+        .select('*')
+        .eq('user_id', userId)
+        .maybeSingle();
+
+      if (pData) {
+        cloudProfile = {
+          id: pData.id,
+          user_id: pData.user_id,
+          referral_code: pData.referral_code,
+          bank_name: pData.bank_name,
+          bank_account_number: pData.bank_account_number,
+          bank_account_holder: pData.bank_account_holder,
+          is_active: pData.is_active,
+          total_commission_earned: Number(pData.total_commission_earned || 0),
+          total_commission_paid: Number(pData.total_commission_paid || 0),
+        };
+        saveStoredAffiliateProfile(cloudProfile);
+      }
+    }
+
+    // 2. Fetch Conversions
+    const { data: convData } = await supabase
+      .from('referral_conversions')
+      .select('*')
+      .order('created_at', { ascending: false });
+
+    if (convData && convData.length > 0) {
+      const localConvs = getStoredReferralConversions();
+      const cMap = new Map<string, ReferralConversion>();
+      localConvs.forEach(c => cMap.set(c.id, c));
+      convData.forEach((c: any) => {
+        cMap.set(c.id, {
+          id: c.id,
+          affiliate_id: c.affiliate_id,
+          order_id: c.order_id,
+          order_number: c.order_number || `ORD-${c.order_id}`,
+          customer_email: c.customer_email || 'customer@gmail.com',
+          order_amount: Number(c.order_amount || 99000),
+          commission_rate: Number(c.commission_rate || 0.1),
+          commission_amount: Number(c.commission_amount || 9900),
+          status: c.status,
+          created_at: c.created_at,
+        });
+      });
+      const mergedConvs = Array.from(cMap.values());
+      localStorage.setItem(STORAGE_KEYS.CONVERSIONS, JSON.stringify(mergedConvs));
+    }
+
+    // 3. Fetch Payouts
+    const { data: payData } = await supabase
+      .from('affiliate_payouts')
+      .select('*')
+      .order('created_at', { ascending: false });
+
+    if (payData && payData.length > 0) {
+      const localPays = getStoredAffiliatePayouts();
+      const pMap = new Map<string, AffiliatePayout>();
+      localPays.forEach(p => pMap.set(p.id, p));
+      payData.forEach((p: any) => {
+        pMap.set(p.id, {
+          id: p.id,
+          affiliate_id: p.affiliate_id,
+          amount: Number(p.amount),
+          status: p.status,
+          bank_name: p.bank_name || 'BCA',
+          bank_account_number: p.bank_account_number || '',
+          bank_account_holder: p.bank_account_holder || '',
+          admin_notes: p.admin_notes,
+          transfer_proof_url: p.transfer_proof_url,
+          processed_at: p.processed_at,
+          created_at: p.created_at,
+        });
+      });
+      const mergedPays = Array.from(pMap.values());
+      localStorage.setItem(STORAGE_KEYS.PAYOUTS, JSON.stringify(mergedPays));
+    }
+  } catch (err) {
+    console.warn('Gagal sinkronisasi data affiliate dari Supabase:', err);
+  }
+
+  return {
+    profile: userId ? getOrCreateAffiliateProfile(userId) : null,
+    conversions: getStoredReferralConversions(),
+    payouts: getStoredAffiliatePayouts(),
+  };
 }
 
 export function getOrCreateAffiliateProfile(userId: string, defaultName?: string): AffiliateProfile {
@@ -357,6 +477,21 @@ export function recordReferralClick(referralCode: string, refererUrl?: string): 
 
   const clicks = getStoredReferralClicks();
   localStorage.setItem(STORAGE_KEYS.CLICKS, JSON.stringify([newClick, ...clicks]));
+
+  // Background Cloud Sync to Supabase referral_clicks
+  supabase
+    .from('referral_clicks')
+    .insert({
+      id: newClick.id,
+      affiliate_id: newClick.affiliate_id,
+      ip_hash: newClick.ip_hash,
+      user_agent: newClick.user_agent,
+      referer_url: newClick.referer_url,
+      created_at: newClick.created_at,
+    })
+    .then(({ error }) => {
+      if (error) console.warn('Supabase referral click insert notification:', error.message);
+    });
 }
 
 // 3. Conversions Storage
@@ -409,6 +544,22 @@ export function recordReferralConversion(
   matched.total_commission_earned += commissionAmount;
   saveStoredAffiliateProfile(matched);
 
+  // Background Cloud Sync to Supabase referral_conversions
+  supabase
+    .from('referral_conversions')
+    .insert({
+      id: conversion.id,
+      affiliate_id: conversion.affiliate_id,
+      order_id: conversion.order_id,
+      commission_rate: conversion.commission_rate,
+      commission_amount: conversion.commission_amount,
+      status: conversion.status,
+      created_at: conversion.created_at,
+    })
+    .then(({ error }) => {
+      if (error) console.warn('Supabase referral conversion insert notification:', error.message);
+    });
+
   return conversion;
 }
 
@@ -431,6 +582,23 @@ export function saveStoredAffiliatePayout(payout: AffiliatePayout): void {
   const index = list.findIndex((p) => p.id === payout.id);
   const updated = index >= 0 ? list.map((p) => (p.id === payout.id ? payout : p)) : [payout, ...list];
   localStorage.setItem(STORAGE_KEYS.PAYOUTS, JSON.stringify(updated));
+
+  // Background Cloud Sync to Supabase affiliate_payouts
+  supabase
+    .from('affiliate_payouts')
+    .upsert({
+      id: payout.id,
+      affiliate_id: payout.affiliate_id,
+      amount: payout.amount,
+      status: payout.status,
+      admin_notes: payout.admin_notes,
+      transfer_proof_url: payout.transfer_proof_url,
+      processed_at: payout.processed_at,
+      created_at: payout.created_at,
+    }, { onConflict: 'id' })
+    .then(({ error }) => {
+      if (error) console.warn('Supabase affiliate payout upsert notification:', error.message);
+    });
 }
 
 export function requestAffiliatePayout(

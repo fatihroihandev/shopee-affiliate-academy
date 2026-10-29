@@ -1,5 +1,6 @@
 // ORDER, ENTITLEMENT & ADMIN AUDIT STORAGE ENGINE
 import { Order, Entitlement, AdminAuditLog, ProductSku, ProductTier } from '@/types/database';
+import { supabase } from '@/lib/supabase';
 import {
   recordReferralConversion,
   getStoredAffiliatePayouts,
@@ -200,6 +201,46 @@ export function saveStoredOrder(order: Order): void {
   localStorage.setItem(STORAGE_KEYS.ORDERS, JSON.stringify(updated));
 }
 
+export async function syncOrdersFromCloud(): Promise<Order[]> {
+  try {
+    const { data, error } = await supabase
+      .from('orders')
+      .select('*')
+      .order('created_at', { ascending: false });
+
+    if (!error && data && data.length > 0) {
+      const local = getStoredOrders();
+      const map = new Map<string, Order>();
+      local.forEach((o) => map.set(o.id, o));
+      data.forEach((co: any) => {
+        map.set(co.id, {
+          id: co.id,
+          order_number: co.order_number,
+          user_id: co.user_id,
+          customer_email: co.customer_email,
+          amount: Number(co.amount),
+          currency: co.currency || 'IDR',
+          provider: co.provider,
+          provider_reference: co.provider_reference,
+          sku: co.sku || 'affiliate_academy_pro',
+          tier: co.tier || 'pro',
+          status: co.status,
+          paid_at: co.paid_at,
+          created_at: co.created_at,
+        });
+      });
+      const merged = Array.from(map.values()).sort(
+        (a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
+      );
+      localStorage.setItem(STORAGE_KEYS.ORDERS, JSON.stringify(merged));
+      return merged;
+    }
+  } catch (err) {
+    console.warn('Gagal sinkronisasi orders dari Supabase:', err);
+  }
+  return getStoredOrders();
+}
+
 export function createNewOrder(
   userId: string | null,
   customerEmail: string,
@@ -225,6 +266,29 @@ export function createNewOrder(
   };
 
   saveStoredOrder(newOrder);
+
+  // Background Cloud Sync to Supabase orders table
+  const cloudUserId = userId && !userId.startsWith('00000000') && userId !== 'default' ? userId : null;
+  supabase
+    .from('orders')
+    .insert({
+      id: newOrder.id,
+      order_number: newOrder.order_number,
+      user_id: cloudUserId,
+      customer_email: newOrder.customer_email,
+      amount: newOrder.amount,
+      currency: newOrder.currency,
+      provider: newOrder.provider,
+      provider_reference: newOrder.provider_reference,
+      sku: newOrder.sku,
+      tier: newOrder.tier,
+      status: newOrder.status,
+      created_at: newOrder.created_at,
+    })
+    .then(({ error }) => {
+      if (error) console.warn('Supabase order insert sync notification:', error.message);
+    });
+
   return newOrder;
 }
 
@@ -247,6 +311,40 @@ export function saveStoredEntitlement(entitlement: Entitlement): void {
   const index = list.findIndex((e) => e.user_id === entitlement.user_id && e.product_code === entitlement.product_code);
   const updated = index >= 0 ? list.map((e) => (e.id === entitlement.id ? entitlement : e)) : [entitlement, ...list];
   localStorage.setItem(STORAGE_KEYS.ENTITLEMENTS, JSON.stringify(updated));
+}
+
+export async function syncEntitlementsFromCloud(): Promise<Entitlement[]> {
+  try {
+    const { data, error } = await supabase
+      .from('entitlements')
+      .select('*');
+
+    if (!error && data && data.length > 0) {
+      const local = getStoredEntitlements();
+      const map = new Map<string, Entitlement>();
+      local.forEach((e) => map.set(e.id, e));
+      data.forEach((ce: any) => {
+        map.set(ce.id, {
+          id: ce.id,
+          user_id: ce.user_id,
+          customer_email: ce.customer_email,
+          product_code: ce.product_code,
+          access_level: ce.access_level,
+          status: ce.status,
+          source_order_id: ce.source_order_id,
+          granted_at: ce.granted_at,
+          revoked_at: ce.revoked_at,
+          revocation_reason: ce.revocation_reason,
+        });
+      });
+      const merged = Array.from(map.values());
+      localStorage.setItem(STORAGE_KEYS.ENTITLEMENTS, JSON.stringify(merged));
+      return merged;
+    }
+  } catch (err) {
+    console.warn('Gagal sinkronisasi entitlements dari Supabase:', err);
+  }
+  return getStoredEntitlements();
 }
 
 export function checkUserEntitlement(userIdOrEmail: string): boolean {
@@ -362,6 +460,38 @@ export function confirmPaymentAndGrantEntitlement(
       granted_at: new Date().toISOString(),
     };
     saveStoredEntitlement(entitlement);
+  }
+
+  // Background Cloud Sync to Supabase orders & entitlements
+  supabase
+    .from('orders')
+    .update({
+      status: 'paid',
+      paid_at: order.paid_at,
+      updated_at: new Date().toISOString(),
+    })
+    .eq('id', order.id)
+    .then(({ error }) => {
+      if (error) console.warn('Supabase order update status notification:', error.message);
+    });
+
+  const validCloudUserId = order.user_id && !order.user_id.startsWith('00000000') && order.user_id !== 'default' ? order.user_id : null;
+  if (validCloudUserId) {
+    supabase
+      .from('entitlements')
+      .upsert({
+        id: entitlement.id,
+        user_id: validCloudUserId,
+        customer_email: order.customer_email,
+        product_code: 'affiliate_academy',
+        access_level: entitlement.access_level,
+        status: 'active',
+        source_order_id: order.id,
+        granted_at: entitlement.granted_at,
+      }, { onConflict: 'user_id,product_code' })
+      .then(({ error }) => {
+        if (error) console.warn('Supabase entitlement upsert notification:', error.message);
+      });
   }
 
   // Also trigger referral conversion if user came through referral
@@ -498,6 +628,15 @@ export function refundOrderAndRevokeEntitlement(
   order.status = 'refunded';
   saveStoredOrder(order);
 
+  // Background Cloud Sync status update to Supabase
+  supabase
+    .from('orders')
+    .update({ status: 'refunded', updated_at: new Date().toISOString() })
+    .eq('id', order.id)
+    .then(({ error }) => {
+      if (error) console.warn('Supabase order refund update notification:', error.message);
+    });
+
   // Revoke entitlement if exists
   if (order.user_id) {
     const entitlements = getStoredEntitlements();
@@ -507,6 +646,21 @@ export function refundOrderAndRevokeEntitlement(
       ent.revoked_at = new Date().toISOString();
       ent.revocation_reason = reason;
       saveStoredEntitlement(ent);
+
+      if (!order.user_id.startsWith('00000000') && order.user_id !== 'default') {
+        supabase
+          .from('entitlements')
+          .update({
+            status: 'revoked',
+            revoked_at: ent.revoked_at,
+            revocation_reason: reason,
+          })
+          .eq('user_id', order.user_id)
+          .eq('product_code', 'affiliate_academy')
+          .then(({ error }) => {
+            if (error) console.warn('Supabase entitlement revoke notification:', error.message);
+          });
+      }
     }
   }
 

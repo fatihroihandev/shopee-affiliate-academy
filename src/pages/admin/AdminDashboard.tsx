@@ -10,9 +10,12 @@ import {
   approveAffiliatePayout,
   rejectAffiliatePayout,
   grantCompedEntitlement,
+  syncOrdersFromCloud,
+  syncEntitlementsFromCloud,
 } from '@/features/commerce/orderStorage';
 import {
   getStoredAffiliatePayouts,
+  syncAffiliateFromCloud,
 } from '@/features/affiliate/affiliateStorage';
 import { Card } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
@@ -87,7 +90,15 @@ export const AdminDashboard: React.FC = () => {
 
   useEffect(() => {
     refreshData();
-  }, []);
+    // Background cloud sync from Supabase
+    Promise.all([
+      syncOrdersFromCloud(),
+      syncEntitlementsFromCloud(),
+      syncAffiliateFromCloud(user?.id),
+    ]).then(() => {
+      refreshData();
+    });
+  }, [user?.id]);
 
   // Financial Stats
   const paidOrders = orders.filter((o) => o.status === 'paid');
@@ -164,7 +175,7 @@ export const AdminDashboard: React.FC = () => {
       return;
     }
     setCompedLoading(true);
-    const adminIdentifier = user?.email || (isBackupAdmin ? 'admin.backup@affiliateacademy.site' : 'admin.utama@affiliateacademy.site');
+    const adminIdentifier = user?.email || (isBackupAdmin ? 'admin.backup@shopeeaffiliateacademy.site' : 'admin.utama@shopeeaffiliateacademy.site');
     const fullNotes = compedName ? `Nama/Akun: ${compedName}. ${compedNotes}` : compedNotes;
 
     const res = grantCompedEntitlement(
@@ -224,7 +235,7 @@ export const AdminDashboard: React.FC = () => {
               <Crown className="w-4 h-4 text-brand-orange" />
               <span>{isBackupAdmin ? 'Admin Cadangan' : 'Admin Utama'}</span>
             </div>
-            <div className="text-[10px] text-warm-gray font-mono">{user?.email || (isBackupAdmin ? 'admin.backup@affiliateacademy.site' : 'admin.utama@affiliateacademy.site')}</div>
+            <div className="text-[10px] text-warm-gray font-mono">{user?.email || (isBackupAdmin ? 'admin.backup@shopeeaffiliateacademy.site' : 'admin.utama@shopeeaffiliateacademy.site')}</div>
           </div>
           <button
             onClick={handleSwitchAdminRole}

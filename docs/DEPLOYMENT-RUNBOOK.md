@@ -46,12 +46,31 @@ Sebelum memulai deployment ke server produksi, pastikan seluruh parameter beriku
 
 ## 3. PROSEDUR DEPLOYMENT PRODUKSI LANGKAH-DEMI-LANGKAH
 
-### Langkah 1: Setup Basis Data Supabase Produksi
+### Langkah 1: Setup Basis Data Supabase Produksi (Urutan Migrasi DDL & Seed)
 1. Buka [Supabase Dashboard](https://supabase.com/dashboard) dan pilih proyek produksi Anda.
 2. Masuk ke menu **SQL Editor**.
-3. Buka berkas `supabase/migrations/20261026000000_init_schema.sql` dari repositori ini.
-4. Salin seluruh isi SQL dan jalankan (*Run*) di SQL Editor Supabase.
-5. Verifikasi bahwa 23 tabel telah berhasil dibuat dan seluruh tabel memiliki status **RLS Enabled** (ikon gembok menyala).
+3. Jalankan 4 berkas migrasi secara berurutan:
+   - **Migrasi 1:** `supabase/migrations/20261026000000_init_schema.sql` (Pondasi skema tabel, RLS, profil & role).
+   - **Migrasi 2:** `supabase/migrations/20261029000000_curriculum_text_ids_and_seed.sql` (Seed 530 KB kurikulum lengkap 7 modul, 30 materi, 8 proyek).
+   - **Migrasi 3:** `supabase/migrations/20261029010000_workspace_text_ids_and_dual_layer.sql` (DDL penyelarasan ID workspace ke format string).
+   - **Migrasi 4:** `supabase/migrations/20261029020000_commerce_affiliate_text_ids_and_edge_webhook.sql` (Commerce, entitlement tiering Addendum v2.1, dan affiliate internal).
+4. Verifikasi bahwa 23 tabel telah berhasil dibuat dan seluruh tabel memiliki status **RLS Enabled** (ikon gembok menyala).
+
+### Langkah 1b: Deploy Supabase Edge Function untuk Payment Webhook
+1. Pasang [Supabase CLI](https://supabase.com/docs/guides/cli) di mesin deploy / runner CI.
+2. Tautkan proyek produksi:
+   ```bash
+   supabase link --project-ref <PRODUK_ID_SUPABASE>
+   ```
+3. Set secret variabel lingkungan untuk webhook payment gateway:
+   ```bash
+   supabase secrets set PAYMENT_WEBHOOK_SECRET=<TOKEN_RAHASIA_WEBHOOK>
+   ```
+4. Deploy fungsi edge:
+   ```bash
+   supabase functions deploy handle-payment-webhook
+   ```
+5. Salin URL endpoint webhook (`https://<PRODUK_ID_SUPABASE>.supabase.co/functions/v1/handle-payment-webhook`) dan daftarkan ke dashboard penyedia pembayaran (Lynk.id / Midtrans / Xendit).
 
 ### Langkah 2: Konfigurasi Supabase Storage (Buckets)
 Buat dua storage bucket privat untuk mengelola unggahan berkas:
@@ -73,8 +92,8 @@ Terapkan RLS Storage Policy agar berkas terlindungi dari akses publik liar.
 5. Kembali ke **Supabase Dashboard** $\rightarrow$ *Authentication* $\rightarrow$ *Providers* $\rightarrow$ *Google*.
 6. Aktifkan provider Google, tempel *Client ID* dan *Client Secret*, lalu klik **Save**.
 7. Pada menu *Authentication* $\rightarrow$ *URL Configuration*:
-   - Set **Site URL** ke domain produksi utama (misal: `https://shopeeaffiliateacademy.com`).
-   - Masukkan domain yang diizinkan pada **Redirect URLs**.
+   - Set **Site URL** ke domain produksi utama: `https://shopeeaffiliateacademy.site`.
+   - Masukkan domain yang diizinkan pada **Redirect URLs**: `https://shopeeaffiliateacademy.site/**`.
 
 ### Langkah 4: Setup Deployment di Cloudflare Pages
 1. Masuk ke [Cloudflare Dashboard](https://dash.cloudflare.com) $\rightarrow$ *Workers & Pages* $\rightarrow$ *Create Application* $\rightarrow$ *Pages* $\rightarrow$ *Connect to Git*.
@@ -88,7 +107,7 @@ Terapkan RLS Storage Policy agar berkas terlindungi dari akses publik liar.
    ```env
    VITE_SUPABASE_URL=https://<PRODUK_ID_SUPABASE>.supabase.co
    VITE_SUPABASE_ANON_KEY=<KUNCI_ANON_PRODUKSI_SUPABASE>
-   VITE_SITE_URL=https://shopeeaffiliateacademy.com
+   VITE_SITE_URL=https://shopeeaffiliateacademy.site
    ```
 5. Klik **Save and Deploy**. Cloudflare Pages akan menarik kode, menjalankan build TypeScript, dan mempublikasikan situs ke CDN global.
 
@@ -102,7 +121,7 @@ Agar perutean React Router (seperti `/modules/M01`, `/dashboard`, `/pricing`) ti
 
 ### Langkah 6: Konfigurasi Custom Domain & DNS
 1. Pada Cloudflare Pages project, buka tab **Custom domains** $\rightarrow$ Klik **Set up a custom domain**.
-2. Masukkan domain resmi Anda (misal: `shopeeaffiliateacademy.com` atau subdomain `app.shopeeaffiliateacademy.com`).
+2. Masukkan domain resmi Anda: `shopeeaffiliateacademy.site`.
 3. Cloudflare akan mengonfigurasi CNAME DNS dan menerbitkan sertifikat SSL/TLS otomatis dalam hitungan menit.
 4. Buka tab **SSL/TLS** di Cloudflare dan pastikan mode enkripsi adalah **Full (Strict)**.
 

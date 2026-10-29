@@ -1,5 +1,5 @@
 # Robots.txt for Shopee Affiliate Academy
-# Official Domain: https://affiliateacademy.site
+# Official Domain: https://shopeeaffiliateacademy.site
 
 User-agent: *
 Allow: /
@@ -23,4 +23,4 @@ Disallow: /affiliate/
 Disallow: /admin/
 
 # Sitemap location
-Sitemap: https://affiliateacademy.site/sitemap.xml
+Sitemap: https://shopeeaffiliateacademy.site/sitemap.xml

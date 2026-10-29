@@ -1,7 +1,14 @@
+# Ignore all hidden files and directories (starting with .) by default
+.*
+
+# Whitelist essential dotfiles that ARE safe and needed in the repository
+!.gitignore
+!.env.example
+!.github/
+!.github/**
+
 # Dependencies
 node_modules/
-.pnp
-.pnp.js
 
 # Production build artifacts
 dist/
@@ -16,36 +23,17 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-# Editor & IDE directories
-.vscode/*
-!.vscode/extensions.json
-.idea/
+# Editor & OS files
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
-.DS_Store
 Thumbs.db
 
-# Environment variables & secrets (CRITICAL: Do NOT commit secrets!)
-.env
-.env.*
-!.env.example
-
-# Temporary agent / AI tool caches & local indexers
-.codegraph/
-.gemini/
+# Temporary agent / AI tool caches & local keys
 brain/
-.system_generated/
 *.pem
 *.key
 *.cert
 credentials*.json
-
-# agents
-.claude
-.codegraph
-.codex
-.gemini
-.vscode

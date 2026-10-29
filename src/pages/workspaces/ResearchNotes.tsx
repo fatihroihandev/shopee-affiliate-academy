@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   ResearchNoteItem,
   getStoredResearchNotes,
   saveStoredResearchNote,
   deleteStoredResearchNote,
+  syncResearchNotesFromCloud,
 } from '@/features/workspaces/workspaceStorage';
+import { useAuth } from '@/features/auth/AuthContext';
 import { Sparkle, StickerBadge } from '@/components/common/Doodles';
 import { Button } from '@/components/ui/Button';
 import { Modal } from '@/components/ui/Modal';
@@ -22,11 +24,20 @@ import {
 } from 'lucide-react';
 
 export const ResearchNotes: React.FC = () => {
+  const { user } = useAuth();
   const [notes, setNotes] = useState<ResearchNoteItem[]>(getStoredResearchNotes());
   const [activeFilter, setActiveFilter] = useState<'all' | 'niche' | 'competitor'>('all');
   const [searchQuery, setSearchQuery] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingNote, setEditingNote] = useState<ResearchNoteItem | null>(null);
+
+  useEffect(() => {
+    if (user?.id) {
+      syncResearchNotesFromCloud(user.id).then((fresh) => {
+        if (fresh) setNotes(fresh);
+      });
+    }
+  }, [user]);
 
   const [formData, setFormData] = useState<Omit<ResearchNoteItem, 'id'>>({
     note_type: 'niche',
@@ -77,7 +88,7 @@ export const ResearchNotes: React.FC = () => {
 
   const handleDelete = (id: string) => {
     if (window.confirm('Hapus catatan riset ini?')) {
-      deleteStoredResearchNote(id);
+      deleteStoredResearchNote(id, user?.id);
       setNotes(getStoredResearchNotes());
     }
   };
@@ -85,7 +96,8 @@ export const ResearchNotes: React.FC = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const payload: ResearchNoteItem = {
-      id: editingNote ? editingNote.id : `note-${Date.now()}`,
+      id: editingNote ? editingNote.id : (typeof crypto !== 'undefined' && crypto.randomUUID ? crypto.randomUUID() : `note-${Date.now()}`),
+      user_id: user?.id || 'default',
       note_type: formData.note_type,
       title: formData.title,
       subject: formData.subject,
@@ -98,7 +110,7 @@ export const ResearchNotes: React.FC = () => {
       next_step: formData.next_step,
     };
 
-    saveStoredResearchNote(payload);
+    saveStoredResearchNote(payload, user?.id);
     setNotes(getStoredResearchNotes());
     setIsModalOpen(false);
   };

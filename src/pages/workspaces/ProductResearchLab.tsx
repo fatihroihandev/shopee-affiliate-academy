@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   AffiliateProduct
 } from '@/types/database';
@@ -6,8 +6,10 @@ import {
   getStoredProducts,
   saveStoredProduct,
   deleteStoredProduct,
+  syncProductsFromCloud,
   calculateResearchScore
 } from '@/features/workspaces/workspaceStorage';
+import { useAuth } from '@/features/auth/AuthContext';
 import { formatRupiah } from '@/lib/utils';
 import { Sparkle, StickerBadge } from '@/components/common/Doodles';
 import { ProductStatusBadge } from '@/components/ui/Badge';
@@ -25,11 +27,20 @@ import {
 } from 'lucide-react';
 
 export const ProductResearchLab: React.FC = () => {
+  const { user } = useAuth();
   const [products, setProducts] = useState<AffiliateProduct[]>(getStoredProducts());
   const [activeTab, setActiveTab] = useState<string>('all');
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [editingProduct, setEditingProduct] = useState<AffiliateProduct | null>(null);
+
+  useEffect(() => {
+    if (user?.id) {
+      syncProductsFromCloud(user.id).then((fresh) => {
+        if (fresh) setProducts(fresh);
+      });
+    }
+  }, [user]);
 
   // Form State
   const [formData, setFormData] = useState({
@@ -107,7 +118,7 @@ export const ProductResearchLab: React.FC = () => {
 
   const handleDelete = (id: string) => {
     if (window.confirm('Yakin ingin menghapus produk riset ini?')) {
-      deleteStoredProduct(id);
+      deleteStoredProduct(id, user?.id);
       setProducts(getStoredProducts());
     }
   };
@@ -117,8 +128,8 @@ export const ProductResearchLab: React.FC = () => {
     const score = calculateResearchScore(formData.factors);
 
     const productPayload: AffiliateProduct = {
-      id: editingProduct ? editingProduct.id : `prod-${Date.now()}`,
-      user_id: 'current_user',
+      id: editingProduct ? editingProduct.id : (typeof crypto !== 'undefined' && crypto.randomUUID ? crypto.randomUUID() : `prod-${Date.now()}`),
+      user_id: user?.id || 'current_user',
       name: formData.name,
       product_url: formData.product_url,
       category: formData.category,
@@ -141,7 +152,7 @@ export const ProductResearchLab: React.FC = () => {
       updated_at: new Date().toISOString(),
     };
 
-    saveStoredProduct(productPayload);
+    saveStoredProduct(productPayload, user?.id);
     setProducts(getStoredProducts());
     setIsModalOpen(false);
   };

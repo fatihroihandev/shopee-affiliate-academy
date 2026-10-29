@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ContentItem } from '@/types/database';
 import {
   getStoredContentItems,
   saveStoredContentItem,
   deleteStoredContentItem,
+  syncContentItemsFromCloud,
   getStoredProducts
 } from '@/features/workspaces/workspaceStorage';
+import { useAuth } from '@/features/auth/AuthContext';
 import { HOOK_BANK, HookTemplate } from '@/data/hookBankData';
 import { Sparkle, StickerBadge } from '@/components/common/Doodles';
 import { Button } from '@/components/ui/Button';
@@ -22,8 +24,17 @@ import {
 } from 'lucide-react';
 
 export const ContentStudio: React.FC = () => {
+  const { user } = useAuth();
   const [contentList, setContentList] = useState<ContentItem[]>(getStoredContentItems());
   const products = getStoredProducts();
+
+  useEffect(() => {
+    if (user?.id) {
+      syncContentItemsFromCloud(user.id).then((fresh) => {
+        if (fresh) setContentList(fresh);
+      });
+    }
+  }, [user]);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isHookBankOpen, setIsHookBankOpen] = useState(false);
@@ -110,7 +121,7 @@ export const ContentStudio: React.FC = () => {
 
   const handleDelete = (id: string) => {
     if (window.confirm('Hapus draf konten ini?')) {
-      deleteStoredContentItem(id);
+      deleteStoredContentItem(id, user?.id);
       setContentList(getStoredContentItems());
     }
   };
@@ -129,8 +140,8 @@ export const ContentStudio: React.FC = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const payload: ContentItem = {
-      id: editingItem ? editingItem.id : `cnt-${Date.now()}`,
-      user_id: 'current_user',
+      id: editingItem ? editingItem.id : (typeof crypto !== 'undefined' && crypto.randomUUID ? crypto.randomUUID() : `cnt-${Date.now()}`),
+      user_id: user?.id || 'default',
       title: formData.title,
       product_id: formData.product_id || null,
       platform: formData.platform,
@@ -149,7 +160,7 @@ export const ContentStudio: React.FC = () => {
       qc_checklist: formData.qc_checklist,
     };
 
-    saveStoredContentItem(payload);
+    saveStoredContentItem(payload, user?.id);
     setContentList(getStoredContentItems());
     setIsModalOpen(false);
   };

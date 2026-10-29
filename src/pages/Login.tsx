@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useNavigate, useSearchParams } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { supabase } from '@/lib/supabase';
 import { useAuth } from '@/features/auth/AuthContext';
 import { StickerBadge } from '@/components/common/Doodles';
@@ -17,13 +17,9 @@ export const Login: React.FC = () => {
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const { loginAsDemo, signInWithGoogle } = useAuth();
   const navigate = useNavigate();
-  const [searchParams] = useSearchParams();
 
-  // Opsi 1: Mode demo hanya aktif jika URL memiliki param ?demo=true / ?dev=true, atau di local development
-  const showDemoBox =
-    searchParams.get('demo') === 'true' ||
-    searchParams.get('dev') === 'true' ||
-    Boolean(import.meta.env.DEV);
+  // Mode demo hanya aktif di local development environment demi keamanan produksi
+  const showDemoBox = Boolean(import.meta.env.DEV);
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();

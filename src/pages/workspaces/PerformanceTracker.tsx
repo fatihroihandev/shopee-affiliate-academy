@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { PerformanceRecord } from '@/types/database';
 import {
   getStoredPerformanceRecords,
   saveStoredPerformanceRecord,
+  syncPerformanceRecordsFromCloud,
   getStoredContentItems
 } from '@/features/workspaces/workspaceStorage';
+import { useAuth } from '@/features/auth/AuthContext';
 import { formatRupiah, formatPercent } from '@/lib/utils';
 import { Sparkle, StickerBadge } from '@/components/common/Doodles';
 import { FormulaBox } from '@/components/ui/FormulaBox';
@@ -17,10 +19,19 @@ import {
 } from 'lucide-react';
 
 export const PerformanceTracker: React.FC = () => {
+  const { user } = useAuth();
   const [records, setRecords] = useState<PerformanceRecord[]>(getStoredPerformanceRecords());
   const contentItems = getStoredContentItems();
   const [activeTab, setActiveTab] = useState<'daily' | 'formulas'>('daily');
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  useEffect(() => {
+    if (user?.id) {
+      syncPerformanceRecordsFromCloud(user.id).then((fresh) => {
+        if (fresh) setRecords(fresh);
+      });
+    }
+  }, [user]);
 
   // Form State
   const [formData, setFormData] = useState<Omit<PerformanceRecord, 'id' | 'user_id'>>({
@@ -57,8 +68,8 @@ export const PerformanceTracker: React.FC = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const payload: PerformanceRecord = {
-      id: `perf-${Date.now()}`,
-      user_id: 'current_user',
+      id: (typeof crypto !== 'undefined' && crypto.randomUUID ? crypto.randomUUID() : `perf-${Date.now()}`),
+      user_id: user?.id || 'default',
       content_item_id: formData.content_item_id,
       record_date: formData.record_date,
       views: Number(formData.views),
@@ -73,7 +84,7 @@ export const PerformanceTracker: React.FC = () => {
       notes: formData.notes,
     };
 
-    saveStoredPerformanceRecord(payload);
+    saveStoredPerformanceRecord(payload, user?.id);
     setRecords(getStoredPerformanceRecords());
     setIsModalOpen(false);
   };

@@ -108,7 +108,7 @@ export const PrivacyPage: React.FC = () => {
             5. Kontak Dukungan & Pertanyaan Privasi
           </h2>
           <p className="text-xs text-warm-gray">
-            Jika Anda memiliki pertanyaan, klarifikasi, atau kekhawatiran terkait kebijakan privasi ini, silakan hubungi tim kami melalui email: <strong className="text-ink">support@affiliateacademy.site</strong>.
+            Jika Anda memiliki pertanyaan, klarifikasi, atau kekhawatiran terkait kebijakan privasi ini, silakan hubungi tim kami melalui email: <strong className="text-ink">support@shopeeaffiliateacademy.site</strong>.
           </p>
         </section>
       </Card>

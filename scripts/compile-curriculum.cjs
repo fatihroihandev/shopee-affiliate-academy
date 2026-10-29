@@ -554,3 +554,90 @@ console.log('Successfully compiled curriculumData.ts!');
 console.log('Modules compiled:', modules.length);
 console.log('Lessons compiled:', lessons.length);
 console.log('Projects compiled:', practiceProjects.length);
+
+// Generate Database SQL Seed Migration
+const sqlEscape = (str) => {
+  if (str === null || str === undefined) return "''";
+  return "'" + String(str).replace(/'/g, "''") + "'";
+};
+
+let sqlContent = `-- ==============================================================================
+-- SHOPEE AFFILIATE ACADEMY — MIGRATION 20261029000000_curriculum_text_ids_and_seed.sql
+-- Aligns modules/lessons/projects IDs to TEXT and seeds 7 Modules, 30 Lessons, 8 Projects
+-- ==============================================================================
+
+-- 1. Ensure columns use TEXT and foreign keys are preserved
+ALTER TABLE IF EXISTS public.lesson_progress DROP CONSTRAINT IF EXISTS lesson_progress_lesson_id_fkey;
+ALTER TABLE IF EXISTS public.lessons DROP CONSTRAINT IF EXISTS lessons_module_id_fkey;
+ALTER TABLE IF EXISTS public.project_progress DROP CONSTRAINT IF EXISTS project_progress_project_id_fkey;
+
+ALTER TABLE IF EXISTS public.modules ALTER COLUMN id TYPE TEXT;
+ALTER TABLE IF EXISTS public.lessons ALTER COLUMN id TYPE TEXT;
+ALTER TABLE IF EXISTS public.lessons ALTER COLUMN module_id TYPE TEXT;
+ALTER TABLE IF EXISTS public.lesson_progress ALTER COLUMN lesson_id TYPE TEXT;
+ALTER TABLE IF EXISTS public.practice_projects ALTER COLUMN id TYPE TEXT;
+ALTER TABLE IF EXISTS public.project_progress ALTER COLUMN project_id TYPE TEXT;
+
+ALTER TABLE IF EXISTS public.lessons 
+  ADD CONSTRAINT lessons_module_id_fkey FOREIGN KEY (module_id) REFERENCES public.modules(id) ON DELETE CASCADE;
+ALTER TABLE IF EXISTS public.lesson_progress 
+  ADD CONSTRAINT lesson_progress_lesson_id_fkey FOREIGN KEY (lesson_id) REFERENCES public.lessons(id) ON DELETE CASCADE;
+ALTER TABLE IF EXISTS public.project_progress 
+  ADD CONSTRAINT project_progress_project_id_fkey FOREIGN KEY (project_id) REFERENCES public.practice_projects(id) ON DELETE CASCADE;
+
+-- 2. Seed Modules
+`;
+
+modules.forEach((m) => {
+  sqlContent += `INSERT INTO public.modules (id, code, title, slug, description, sort_order, is_published)
+VALUES (${sqlEscape(m.id)}, ${sqlEscape(m.code)}, ${sqlEscape(m.title)}, ${sqlEscape(m.slug)}, ${sqlEscape(m.description)}, ${m.sort_order}, ${m.is_published})
+ON CONFLICT (id) DO UPDATE SET
+  code = EXCLUDED.code,
+  title = EXCLUDED.title,
+  slug = EXCLUDED.slug,
+  description = EXCLUDED.description,
+  sort_order = EXCLUDED.sort_order,
+  is_published = EXCLUDED.is_published;
+
+`;
+});
+
+sqlContent += `\n-- 3. Seed Lessons\n`;
+
+lessons.forEach((l) => {
+  sqlContent += `INSERT INTO public.lessons (id, module_id, title, slug, content, source_ref, estimated_minutes, is_free_preview, sort_order, is_published)
+VALUES (${sqlEscape(l.id)}, ${sqlEscape(l.module_id)}, ${sqlEscape(l.title)}, ${sqlEscape(l.slug)}, ${sqlEscape(l.content)}, ${sqlEscape(l.source_ref)}, ${l.estimated_minutes}, ${l.is_free_preview}, ${l.sort_order}, ${l.is_published})
+ON CONFLICT (id) DO UPDATE SET
+  module_id = EXCLUDED.module_id,
+  title = EXCLUDED.title,
+  slug = EXCLUDED.slug,
+  content = EXCLUDED.content,
+  source_ref = EXCLUDED.source_ref,
+  estimated_minutes = EXCLUDED.estimated_minutes,
+  is_free_preview = EXCLUDED.is_free_preview,
+  sort_order = EXCLUDED.sort_order,
+  is_published = EXCLUDED.is_published;
+
+`;
+});
+
+sqlContent += `\n-- 4. Seed Practice Projects\n`;
+
+practiceProjects.forEach((p) => {
+  sqlContent += `INSERT INTO public.practice_projects (id, code, title, objective, supporting_modules, checklist, sort_order, is_published)
+VALUES (${sqlEscape(p.id)}, ${sqlEscape(p.code)}, ${sqlEscape(p.title)}, ${sqlEscape(p.objective)}, ${sqlEscape(JSON.stringify(p.supporting_modules))}::jsonb, ${sqlEscape(JSON.stringify(p.checklist))}::jsonb, ${p.sort_order}, ${p.is_published})
+ON CONFLICT (id) DO UPDATE SET
+  code = EXCLUDED.code,
+  title = EXCLUDED.title,
+  objective = EXCLUDED.objective,
+  supporting_modules = EXCLUDED.supporting_modules,
+  checklist = EXCLUDED.checklist,
+  sort_order = EXCLUDED.sort_order,
+  is_published = EXCLUDED.is_published;
+
+`;
+});
+
+const migrationPath = path.join(__dirname, '..', 'supabase', 'migrations', '20261029000000_curriculum_text_ids_and_seed.sql');
+fs.writeFileSync(migrationPath, sqlContent, 'utf-8');
+console.log('Successfully generated Supabase migration:', migrationPath);

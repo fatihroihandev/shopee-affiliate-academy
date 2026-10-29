@@ -69,29 +69,36 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         if (newProfile) setProfile(newProfile);
       }
 
-      // 2. Fetch Role & Check Dual Admin accounts (Admin Utama & Admin Backup)
+      // 2. Fetch Role strictly from Supabase user_roles table
       const userEmail = (currentUser.email || '').toLowerCase().trim();
       let currentRole: UserRole = 'student';
 
-      if (
-        userEmail === 'admin@affiliateacademy.site' ||
-        userEmail === 'admin.utama@affiliateacademy.site' ||
-        userEmail === 'admin@affiliate-academy.id' ||
-        userEmail === 'admin.utama@affiliate-academy.id'
-      ) {
-        currentRole = 'super_admin';
-      } else if (
-        userEmail === 'admin.backup@affiliateacademy.site' ||
-        userEmail === 'admin.backup@affiliate-academy.id'
-      ) {
-        currentRole = 'admin';
-      } else {
-        const { data: roleData } = await supabase
-          .from('user_roles')
-          .select('role')
-          .eq('user_id', currentUser.id)
-          .maybeSingle();
-        currentRole = (roleData?.role as UserRole) || 'student';
+      const { data: roleData } = await supabase
+        .from('user_roles')
+        .select('role')
+        .eq('user_id', currentUser.id)
+        .maybeSingle();
+
+      if (roleData?.role) {
+        currentRole = roleData.role as UserRole;
+      } else if (import.meta.env.DEV) {
+        // Safe development-only fallback for local testing accounts
+        if (
+          userEmail === 'admin@shopeeaffiliateacademy.site' ||
+          userEmail === 'admin.utama@shopeeaffiliateacademy.site' ||
+          userEmail === 'admin@affiliateacademy.site' ||
+          userEmail === 'admin.utama@affiliateacademy.site' ||
+          userEmail === 'admin@affiliate-academy.id' ||
+          userEmail === 'admin.utama@affiliate-academy.id'
+        ) {
+          currentRole = 'super_admin';
+        } else if (
+          userEmail === 'admin.backup@shopeeaffiliateacademy.site' ||
+          userEmail === 'admin.backup@affiliateacademy.site' ||
+          userEmail === 'admin.backup@affiliate-academy.id'
+        ) {
+          currentRole = 'admin';
+        }
       }
       setRole(currentRole);
 
@@ -206,8 +213,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
     const adminEmail =
       adminType === 'backup'
-        ? 'admin.backup@affiliateacademy.site'
-        : 'admin.utama@affiliateacademy.site';
+        ? 'admin.backup@shopeeaffiliateacademy.site'
+        : 'admin.utama@shopeeaffiliateacademy.site';
 
     const adminName =
       adminType === 'backup'
@@ -220,7 +227,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       user_metadata: {},
       aud: 'authenticated',
       created_at: new Date().toISOString(),
-      email: isAdm ? adminEmail : `siswa.${resolvedTier}@affiliateacademy.site`,
+      email: isAdm ? adminEmail : `siswa.${resolvedTier}@shopeeaffiliateacademy.site`,
     } as User;
 
     const mockProfile: Profile = {

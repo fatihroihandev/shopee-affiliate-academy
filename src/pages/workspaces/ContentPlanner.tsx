@@ -1,16 +1,28 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import {
   getStoredContentItems,
-  getStoredProducts
+  getStoredProducts,
+  syncContentItemsFromCloud
 } from '@/features/workspaces/workspaceStorage';
+import { useAuth } from '@/features/auth/AuthContext';
+import { ContentItem } from '@/types/database';
 import { Sparkle, StickerBadge } from '@/components/common/Doodles';
 import { Calendar, CheckCircle2, Plus, Video, ArrowRight } from 'lucide-react';
 
 export const ContentPlanner: React.FC = () => {
-  const contentItems = getStoredContentItems();
+  const { user } = useAuth();
+  const [contentItems, setContentItems] = useState<ContentItem[]>(getStoredContentItems());
   const products = getStoredProducts();
   const [activeSprintTab, setActiveSprintTab] = useState<'sprint' | 'full'>('sprint');
+
+  useEffect(() => {
+    if (user?.id) {
+      syncContentItemsFromCloud(user.id).then((fresh) => {
+        if (fresh) setContentItems(fresh);
+      });
+    }
+  }, [user]);
 
   // Days 1 - 14 (Sprint Awal)
   const sprintDays = [

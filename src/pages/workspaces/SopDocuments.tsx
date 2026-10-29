@@ -4,7 +4,9 @@ import {
   getStoredSops,
   saveStoredSop,
   deleteStoredSop,
+  syncSopsFromCloud,
 } from '@/features/workspaces/workspaceStorage';
+import { useAuth } from '@/features/auth/AuthContext';
 import { Card } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
 import { Input } from '@/components/ui/Input';
@@ -23,7 +25,8 @@ import {
 } from 'lucide-react';
 
 export const SopDocuments: React.FC = () => {
-  const [sops, setSops] = useState<SopItem[]>([]);
+  const { user } = useAuth();
+  const [sops, setSops] = useState<SopItem[]>(getStoredSops());
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingSop, setEditingSop] = useState<SopItem | null>(null);
@@ -39,8 +42,14 @@ export const SopDocuments: React.FC = () => {
   });
 
   useEffect(() => {
-    setSops(getStoredSops());
-  }, []);
+    if (user?.id) {
+      syncSopsFromCloud(user.id).then((fresh) => {
+        if (fresh) setSops(fresh);
+      });
+    } else {
+      setSops(getStoredSops());
+    }
+  }, [user]);
 
   const handleOpenAdd = () => {
     setEditingSop(null);
@@ -62,7 +71,7 @@ export const SopDocuments: React.FC = () => {
 
   const handleDelete = (id: string) => {
     if (confirm('Hapus dokumen SOP ini?')) {
-      deleteStoredSop(id);
+      deleteStoredSop(id, user?.id);
       setSops(getStoredSops());
     }
   };
@@ -82,7 +91,8 @@ export const SopDocuments: React.FC = () => {
     }
 
     const item: SopItem = {
-      id: editingSop ? editingSop.id : `sop-${Date.now()}`,
+      id: editingSop ? editingSop.id : (typeof crypto !== 'undefined' && crypto.randomUUID ? crypto.randomUUID() : `sop-${Date.now()}`),
+      user_id: user?.id || 'default',
       title: formData.title || 'SOP Baru',
       category: formData.category || 'Operasional',
       procedure: formData.procedure || '',
@@ -90,7 +100,7 @@ export const SopDocuments: React.FC = () => {
       review_notes: formData.review_notes || '',
     };
 
-    saveStoredSop(item);
+    saveStoredSop(item, user?.id);
     setSops(getStoredSops());
     setIsModalOpen(false);
   };

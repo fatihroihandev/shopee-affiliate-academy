@@ -46,6 +46,7 @@ export const ProjectDetail: React.FC = () => {
   const [savedSuccess, setSavedSuccess] = useState(false);
 
   useEffect(() => {
+    // 1. Load local cache
     const saved = localStorage.getItem(storageKey);
     if (saved) {
       try {
@@ -55,7 +56,36 @@ export const ProjectDetail: React.FC = () => {
         setReflection(parsed.reflection || '');
       } catch (e) {}
     }
-  }, [storageKey]);
+
+    // 2. Hydrate from Supabase if authenticated
+    if (user && !user.id.startsWith('00000000-0000-0000-0000')) {
+      const fetchCloudProgress = async () => {
+        try {
+          const { data, error } = await supabase
+            .from('project_progress')
+            .select('*')
+            .eq('user_id', user.id)
+            .eq('project_id', currentProject.id)
+            .maybeSingle();
+
+          if (!error && data) {
+            if (Array.isArray(data.completed_checklist) && data.completed_checklist.length > 0) {
+              setCheckedItems(data.completed_checklist);
+            }
+            if (data.reflection_notes) {
+              setReflection(data.reflection_notes);
+            }
+            if (Array.isArray(data.evidence_urls) && data.evidence_urls.length > 0) {
+              setEvidenceUrl(data.evidence_urls[0]);
+            }
+          }
+        } catch (e) {
+          // offline or network error fallback
+        }
+      };
+      fetchCloudProgress();
+    }
+  }, [storageKey, user, currentProject.id]);
 
   const handleToggleCheck = (id: string) => {
     setCheckedItems((prev) =>
@@ -88,15 +118,21 @@ export const ProjectDetail: React.FC = () => {
     // If connected to live Supabase
     if (user && !user.id.startsWith('00000000-0000-0000-0000')) {
       try {
-        await supabase.from('project_progress').upsert({
-          user_id: user.id,
-          project_id: currentProject.id,
-          completed_checklist: checkedItems,
-          reflection_notes: reflection,
-          evidence_urls: evidenceUrl ? [evidenceUrl] : [],
-          status: dataToSave.isCompleted ? 'completed' : 'in_progress',
-          completed_at: dataToSave.isCompleted ? new Date().toISOString() : null,
-        });
+        const { error } = await supabase.from('project_progress').upsert(
+          {
+            user_id: user.id,
+            project_id: currentProject.id,
+            completed_checklist: checkedItems,
+            reflection_notes: reflection,
+            evidence_urls: evidenceUrl ? [evidenceUrl] : [],
+            status: dataToSave.isCompleted ? 'completed' : 'in_progress',
+            completed_at: dataToSave.isCompleted ? new Date().toISOString() : null,
+          },
+          { onConflict: 'user_id,project_id' }
+        );
+        if (error) {
+          console.warn('Sync project progress error:', error.message);
+        }
       } catch (e) {}
     }
 

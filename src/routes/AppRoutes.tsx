@@ -87,23 +87,9 @@ const GuestOnlyRoute: React.FC<{ children: React.ReactNode }> = ({ children }) =
 export const AppRoutes: React.FC = () => {
   return (
     <Routes>
-      {/* Public Routes - Landing page & Auth only accessible when logged out */}
-      <Route
-        path="/"
-        element={
-          <GuestOnlyRoute>
-            <Home />
-          </GuestOnlyRoute>
-        }
-      />
-      <Route
-        path="/pricing"
-        element={
-          <GuestOnlyRoute>
-            <Home />
-          </GuestOnlyRoute>
-        }
-      />
+      {/* Public Routes - Landing page & Pricing accessible to both guests & registered users */}
+      <Route path="/" element={<Home />} />
+      <Route path="/pricing" element={<Home />} />
       <Route
         path="/login"
         element={

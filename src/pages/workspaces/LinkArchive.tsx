@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   AffiliateLinkItem,
   getStoredAffiliateLinks,
   saveStoredAffiliateLink,
   deleteStoredAffiliateLink,
+  syncAffiliateLinksFromCloud,
   getStoredProducts
 } from '@/features/workspaces/workspaceStorage';
+import { useAuth } from '@/features/auth/AuthContext';
 import { Sparkle, StickerBadge } from '@/components/common/Doodles';
 import { Button } from '@/components/ui/Button';
 import { Modal } from '@/components/ui/Modal';
@@ -22,8 +24,17 @@ import {
 } from 'lucide-react';
 
 export const LinkArchive: React.FC = () => {
+  const { user } = useAuth();
   const [links, setLinks] = useState<AffiliateLinkItem[]>(getStoredAffiliateLinks());
   const products = getStoredProducts();
+
+  useEffect(() => {
+    if (user?.id) {
+      syncAffiliateLinksFromCloud(user.id).then((fresh) => {
+        if (fresh) setLinks(fresh);
+      });
+    }
+  }, [user]);
 
   const [searchQuery, setSearchQuery] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -73,7 +84,7 @@ export const LinkArchive: React.FC = () => {
 
   const handleDelete = (id: string) => {
     if (window.confirm('Hapus arsip tautan ini?')) {
-      deleteStoredAffiliateLink(id);
+      deleteStoredAffiliateLink(id, user?.id);
       setLinks(getStoredAffiliateLinks());
     }
   };
@@ -89,7 +100,8 @@ export const LinkArchive: React.FC = () => {
     const matched = products.find((p) => p.id === formData.product_id);
 
     const payload: AffiliateLinkItem = {
-      id: editingLink ? editingLink.id : `lnk-${Date.now()}`,
+      id: editingLink ? editingLink.id : (typeof crypto !== 'undefined' && crypto.randomUUID ? crypto.randomUUID() : `lnk-${Date.now()}`),
+      user_id: user?.id || 'default',
       product_id: formData.product_id,
       product_name: matched ? matched.name : formData.product_name,
       shop_name: formData.shop_name,
@@ -100,7 +112,7 @@ export const LinkArchive: React.FC = () => {
       notes: formData.notes,
     };
 
-    saveStoredAffiliateLink(payload);
+    saveStoredAffiliateLink(payload, user?.id);
     setLinks(getStoredAffiliateLinks());
     setIsModalOpen(false);
   };

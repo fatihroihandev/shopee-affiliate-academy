@@ -14,6 +14,7 @@ import {
   INITIAL_MARKETING_MATERIALS,
   requestAffiliatePayout,
   saveStoredAffiliateProfile,
+  syncAffiliateFromCloud,
 } from '@/features/affiliate/affiliateStorage';
 import { Card } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
@@ -81,6 +82,17 @@ export const AffiliateDashboard: React.FC = () => {
 
       const allPayouts = getStoredAffiliatePayouts().filter((py) => py.affiliate_id === p.id);
       setPayouts(allPayouts);
+
+      // Background cloud sync
+      syncAffiliateFromCloud(user.id).then((cloudData) => {
+        if (cloudData.profile) setProfile(cloudData.profile);
+        const upClicks = getStoredReferralClicks().filter((c) => c.affiliate_id === p.id);
+        setClicksCount(upClicks.length);
+        const upConvs = cloudData.conversions.filter((c) => c.affiliate_id === p.id);
+        setConversions(upConvs);
+        const upPays = cloudData.payouts.filter((py) => py.affiliate_id === p.id);
+        setPayouts(upPays);
+      });
     }
   }, [user, authProfile]);
 
@@ -105,7 +117,7 @@ export const AffiliateDashboard: React.FC = () => {
 
   const conversionRate = clicksCount > 0 ? ((conversions.length / clicksCount) * 100).toFixed(1) : '0';
 
-  const originUrl = typeof window !== 'undefined' ? window.location.origin : 'https://affiliateacademy.site';
+  const originUrl = typeof window !== 'undefined' ? window.location.origin : 'https://shopeeaffiliateacademy.site';
   const baseReferralUrl = `${originUrl}/?ref=${profile.referral_code}`;
   const taggedReferralUrl = customSource ? `${baseReferralUrl}&src=${encodeURIComponent(customSource)}` : baseReferralUrl;
 

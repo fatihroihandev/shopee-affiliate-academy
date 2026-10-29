@@ -52,16 +52,22 @@ export function useLessonProgress() {
     // Sync to Supabase if connected
     if (user && !user.id.startsWith('00000000-0000-0000-0000')) {
       try {
-        await supabase
+        const { error } = await supabase
           .from('lesson_progress')
-          .upsert({
-            user_id: user.id,
-            lesson_id: lessonId,
-            is_completed: !isCompleted,
-            completed_at: !isCompleted ? new Date().toISOString() : null,
-          });
+          .upsert(
+            {
+              user_id: user.id,
+              lesson_id: lessonId,
+              is_completed: !isCompleted,
+              completed_at: !isCompleted ? new Date().toISOString() : null,
+            },
+            { onConflict: 'user_id,lesson_id' }
+          );
+        if (error) {
+          console.warn('Sync lesson progress error:', error.message);
+        }
       } catch (e) {
-        // ignore offline error
+        // offline or network error fallback
       }
     }
   };

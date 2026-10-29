@@ -1,12 +1,19 @@
-// WORKSPACE LOCAL STORAGE HELPER WITH REALISTIC INITIAL SAMPLES
+// WORKSPACE DUAL-LAYER STORAGE ENGINE (LOCAL OPTIMISTIC + SUPABASE POSTGRESQL SYNC)
 import {
   AffiliateProduct,
   ContentItem,
   PerformanceRecord,
 } from '@/types/database';
+import { supabase } from '@/lib/supabase';
+
+export function isRealUser(userId?: string | null): boolean {
+  if (!userId) return false;
+  return !userId.startsWith('00000000') && userId !== 'default' && userId !== 'current_user';
+}
 
 export interface ResearchNoteItem {
   id: string;
+  user_id?: string;
   note_type: 'niche' | 'competitor';
   title: string;
   subject: string;
@@ -21,6 +28,7 @@ export interface ResearchNoteItem {
 
 export interface AffiliateLinkItem {
   id: string;
+  user_id?: string;
   product_id?: string;
   product_name?: string;
   shop_name: string;
@@ -33,6 +41,7 @@ export interface AffiliateLinkItem {
 
 export interface CommissionPeriodItem {
   id: string;
+  user_id?: string;
   period_label: string;
   start_date: string;
   end_date: string;
@@ -48,6 +57,7 @@ export interface CommissionPeriodItem {
 
 export interface ExperimentItem {
   id: string;
+  user_id?: string;
   name: string;
   goal: string;
   hypothesis: string;
@@ -66,6 +76,7 @@ export interface ExperimentItem {
 
 export interface SopItem {
   id: string;
+  user_id?: string;
   title: string;
   category: string;
   procedure: string;
@@ -183,22 +194,97 @@ export function getStoredProducts(): AffiliateProduct[] {
   }
 }
 
-export function saveStoredProduct(product: AffiliateProduct): void {
+export function saveStoredProduct(product: AffiliateProduct, currentUserId?: string): void {
+  const finalUserId = (isRealUser(currentUserId) ? currentUserId : product.user_id) || 'default';
+  const preparedProduct: AffiliateProduct = {
+    ...product,
+    user_id: finalUserId,
+    updated_at: new Date().toISOString(),
+  };
+
   const list = getStoredProducts();
-  const index = list.findIndex((p) => p.id === product.id);
+  const index = list.findIndex((p) => p.id === preparedProduct.id);
   let updated: AffiliateProduct[];
   if (index >= 0) {
     updated = [...list];
-    updated[index] = { ...product, updated_at: new Date().toISOString() };
+    updated[index] = preparedProduct;
   } else {
-    updated = [product, ...list];
+    updated = [preparedProduct, ...list];
   }
   localStorage.setItem('shopee_academy_products', JSON.stringify(updated));
+
+  // Dual-Layer Cloud Sync
+  if (isRealUser(finalUserId)) {
+    supabase
+      .from('affiliate_products')
+      .upsert(
+        {
+          id: preparedProduct.id,
+          user_id: finalUserId,
+          name: preparedProduct.name,
+          product_url: preparedProduct.product_url,
+          category: preparedProduct.category || null,
+          price: preparedProduct.price || 0,
+          commission_note: preparedProduct.commission_note || null,
+          rating: preparedProduct.rating || null,
+          review_count: preparedProduct.review_count || 0,
+          checked_at: preparedProduct.checked_at || new Date().toISOString().slice(0, 10),
+          score_audience_fit: preparedProduct.score_audience_fit || 3,
+          score_quality: preparedProduct.score_quality || 3,
+          score_price_value: preparedProduct.score_price_value || 3,
+          score_commission: preparedProduct.score_commission || 3,
+          score_competition: preparedProduct.score_competition || 3,
+          score_demo_potential: preparedProduct.score_demo_potential || 3,
+          score_availability: preparedProduct.score_availability || 5,
+          research_score: preparedProduct.research_score || 0,
+          status: preparedProduct.status || 'research',
+          notes: preparedProduct.notes || null,
+          updated_at: preparedProduct.updated_at,
+        },
+        { onConflict: 'id' }
+      )
+      .then(({ error }) => {
+        if (error) console.warn('Supabase sync product error:', error.message);
+      });
+  }
 }
 
-export function deleteStoredProduct(id: string): void {
+export function deleteStoredProduct(id: string, currentUserId?: string): void {
   const list = getStoredProducts().filter((p) => p.id !== id);
   localStorage.setItem('shopee_academy_products', JSON.stringify(list));
+
+  if (isRealUser(currentUserId)) {
+    supabase
+      .from('affiliate_products')
+      .delete()
+      .eq('id', id)
+      .then(({ error }) => {
+        if (error) console.warn('Supabase delete product error:', error.message);
+      });
+  }
+}
+
+export async function syncProductsFromCloud(userId: string): Promise<AffiliateProduct[]> {
+  if (!isRealUser(userId)) return getStoredProducts();
+
+  try {
+    const { data, error } = await supabase
+      .from('affiliate_products')
+      .select('*')
+      .eq('user_id', userId)
+      .order('updated_at', { ascending: false });
+
+    if (!error && data && data.length > 0) {
+      const localList = getStoredProducts();
+      const nonUserData = localList.filter((p) => p.user_id !== userId && p.user_id !== 'default');
+      const merged = [...data, ...nonUserData];
+      localStorage.setItem('shopee_academy_products', JSON.stringify(merged));
+      return merged;
+    }
+  } catch (e) {
+    console.warn('Fallback to local products cache');
+  }
+  return getStoredProducts();
 }
 
 // 2. RESEARCH NOTES STORAGE
@@ -244,16 +330,80 @@ export function getStoredResearchNotes(): ResearchNoteItem[] {
   }
 }
 
-export function saveStoredResearchNote(note: ResearchNoteItem): void {
+export function saveStoredResearchNote(note: ResearchNoteItem, currentUserId?: string): void {
+  const finalUserId = (isRealUser(currentUserId) ? currentUserId : note.user_id) || 'default';
+  const preparedNote: ResearchNoteItem = {
+    ...note,
+    user_id: finalUserId,
+  };
   const list = getStoredResearchNotes();
-  const index = list.findIndex((n) => n.id === note.id);
-  const updated = index >= 0 ? list.map((n) => (n.id === note.id ? note : n)) : [note, ...list];
+  const index = list.findIndex((n) => n.id === preparedNote.id);
+  const updated = index >= 0 ? list.map((n) => (n.id === preparedNote.id ? preparedNote : n)) : [preparedNote, ...list];
   localStorage.setItem('shopee_academy_research_notes', JSON.stringify(updated));
+
+  if (isRealUser(finalUserId)) {
+    supabase
+      .from('research_notes')
+      .upsert(
+        {
+          id: preparedNote.id,
+          user_id: finalUserId,
+          note_type: preparedNote.note_type,
+          title: preparedNote.title,
+          subject: preparedNote.subject,
+          findings: preparedNote.findings || null,
+          evidence_urls: preparedNote.evidence_urls || [],
+          observed_at: preparedNote.observed_at || new Date().toISOString().slice(0, 10),
+          facts: preparedNote.facts || null,
+          assumptions: preparedNote.assumptions || null,
+          content_gaps: preparedNote.content_gaps || null,
+          next_step: preparedNote.next_step || null,
+          updated_at: new Date().toISOString(),
+        },
+        { onConflict: 'id' }
+      )
+      .then(({ error }) => {
+        if (error) console.warn('Supabase sync research note error:', error.message);
+      });
+  }
 }
 
-export function deleteStoredResearchNote(id: string): void {
+export function deleteStoredResearchNote(id: string, currentUserId?: string): void {
   const list = getStoredResearchNotes().filter((n) => n.id !== id);
   localStorage.setItem('shopee_academy_research_notes', JSON.stringify(list));
+
+  if (isRealUser(currentUserId)) {
+    supabase
+      .from('research_notes')
+      .delete()
+      .eq('id', id)
+      .then(({ error }) => {
+        if (error) console.warn('Supabase delete research note error:', error.message);
+      });
+  }
+}
+
+export async function syncResearchNotesFromCloud(userId: string): Promise<ResearchNoteItem[]> {
+  if (!isRealUser(userId)) return getStoredResearchNotes();
+
+  try {
+    const { data, error } = await supabase
+      .from('research_notes')
+      .select('*')
+      .eq('user_id', userId)
+      .order('updated_at', { ascending: false });
+
+    if (!error && data && data.length > 0) {
+      const localList = getStoredResearchNotes();
+      const nonUserData = localList.filter((n) => n.user_id !== userId && n.user_id !== 'default');
+      const merged = [...data, ...nonUserData];
+      localStorage.setItem('shopee_academy_research_notes', JSON.stringify(merged));
+      return merged;
+    }
+  } catch (e) {
+    console.warn('Fallback to local research notes cache');
+  }
+  return getStoredResearchNotes();
 }
 
 // 3. CONTENT STUDIO STORAGE
@@ -316,16 +466,87 @@ export function getStoredContentItems(): ContentItem[] {
   }
 }
 
-export function saveStoredContentItem(item: ContentItem): void {
+export function saveStoredContentItem(item: ContentItem, currentUserId?: string): void {
+  const finalUserId = (isRealUser(currentUserId) ? currentUserId : item.user_id) || 'default';
+  const preparedItem: ContentItem = {
+    ...item,
+    user_id: finalUserId,
+  };
   const list = getStoredContentItems();
-  const index = list.findIndex((c) => c.id === item.id);
-  const updated = index >= 0 ? list.map((c) => (c.id === item.id ? item : c)) : [item, ...list];
+  const index = list.findIndex((c) => c.id === preparedItem.id);
+  const updated = index >= 0 ? list.map((c) => (c.id === preparedItem.id ? preparedItem : c)) : [preparedItem, ...list];
   localStorage.setItem('shopee_academy_content_items', JSON.stringify(updated));
+
+  if (isRealUser(finalUserId)) {
+    supabase
+      .from('content_items')
+      .upsert(
+        {
+          id: preparedItem.id,
+          user_id: finalUserId,
+          product_id: preparedItem.product_id || null,
+          link_id: preparedItem.link_id || null,
+          title: preparedItem.title,
+          platform: preparedItem.platform,
+          pillar: preparedItem.pillar || null,
+          format: preparedItem.format || null,
+          hook_type: preparedItem.hook_type || null,
+          hook: preparedItem.hook || null,
+          angle: preparedItem.angle || null,
+          script: preparedItem.script || null,
+          cta: preparedItem.cta || null,
+          has_disclosure: preparedItem.has_disclosure,
+          qc_checklist: preparedItem.qc_checklist || {},
+          status: preparedItem.status || 'idea',
+          scheduled_at: preparedItem.scheduled_at || null,
+          published_at: preparedItem.published_at || null,
+          content_url: preparedItem.content_url || null,
+          updated_at: new Date().toISOString(),
+        },
+        { onConflict: 'id' }
+      )
+      .then(({ error }) => {
+        if (error) console.warn('Supabase sync content item error:', error.message);
+      });
+  }
 }
 
-export function deleteStoredContentItem(id: string): void {
+export function deleteStoredContentItem(id: string, currentUserId?: string): void {
   const list = getStoredContentItems().filter((c) => c.id !== id);
   localStorage.setItem('shopee_academy_content_items', JSON.stringify(list));
+
+  if (isRealUser(currentUserId)) {
+    supabase
+      .from('content_items')
+      .delete()
+      .eq('id', id)
+      .then(({ error }) => {
+        if (error) console.warn('Supabase delete content item error:', error.message);
+      });
+  }
+}
+
+export async function syncContentItemsFromCloud(userId: string): Promise<ContentItem[]> {
+  if (!isRealUser(userId)) return getStoredContentItems();
+
+  try {
+    const { data, error } = await supabase
+      .from('content_items')
+      .select('*')
+      .eq('user_id', userId)
+      .order('updated_at', { ascending: false });
+
+    if (!error && data && data.length > 0) {
+      const localList = getStoredContentItems();
+      const nonUserData = localList.filter((c) => c.user_id !== userId && c.user_id !== 'default');
+      const merged = [...data, ...nonUserData];
+      localStorage.setItem('shopee_academy_content_items', JSON.stringify(merged));
+      return merged;
+    }
+  } catch (e) {
+    console.warn('Fallback to local content items cache');
+  }
+  return getStoredContentItems();
 }
 
 // 4. LINK ARCHIVE STORAGE
@@ -367,16 +588,76 @@ export function getStoredAffiliateLinks(): AffiliateLinkItem[] {
   }
 }
 
-export function saveStoredAffiliateLink(link: AffiliateLinkItem): void {
+export function saveStoredAffiliateLink(link: AffiliateLinkItem, currentUserId?: string): void {
+  const finalUserId = (isRealUser(currentUserId) ? currentUserId : link.user_id) || 'default';
+  const preparedLink: AffiliateLinkItem = {
+    ...link,
+    user_id: finalUserId,
+  };
   const list = getStoredAffiliateLinks();
-  const index = list.findIndex((l) => l.id === link.id);
-  const updated = index >= 0 ? list.map((l) => (l.id === link.id ? link : l)) : [link, ...list];
+  const index = list.findIndex((l) => l.id === preparedLink.id);
+  const updated = index >= 0 ? list.map((l) => (l.id === preparedLink.id ? preparedLink : l)) : [preparedLink, ...list];
   localStorage.setItem('shopee_academy_links', JSON.stringify(updated));
+
+  if (isRealUser(finalUserId)) {
+    supabase
+      .from('affiliate_links')
+      .upsert(
+        {
+          id: preparedLink.id,
+          user_id: finalUserId,
+          product_id: preparedLink.product_id || null,
+          shop_name: preparedLink.shop_name || null,
+          url: preparedLink.url,
+          platform: preparedLink.platform,
+          status: preparedLink.status || 'active',
+          checked_at: preparedLink.checked_at || new Date().toISOString().slice(0, 10),
+          notes: preparedLink.notes || null,
+        },
+        { onConflict: 'id' }
+      )
+      .then(({ error }) => {
+        if (error) console.warn('Supabase sync affiliate link error:', error.message);
+      });
+  }
 }
 
-export function deleteStoredAffiliateLink(id: string): void {
+export function deleteStoredAffiliateLink(id: string, currentUserId?: string): void {
   const list = getStoredAffiliateLinks().filter((l) => l.id !== id);
   localStorage.setItem('shopee_academy_links', JSON.stringify(list));
+
+  if (isRealUser(currentUserId)) {
+    supabase
+      .from('affiliate_links')
+      .delete()
+      .eq('id', id)
+      .then(({ error }) => {
+        if (error) console.warn('Supabase delete affiliate link error:', error.message);
+      });
+  }
+}
+
+export async function syncAffiliateLinksFromCloud(userId: string): Promise<AffiliateLinkItem[]> {
+  if (!isRealUser(userId)) return getStoredAffiliateLinks();
+
+  try {
+    const { data, error } = await supabase
+      .from('affiliate_links')
+      .select('*')
+      .eq('user_id', userId)
+      .order('created_at', { ascending: false });
+
+    if (!error && data && data.length > 0) {
+      const localList = getStoredAffiliateLinks();
+      const nonUserData = localList.filter((l) => l.user_id !== userId && l.user_id !== 'default');
+      const merged = [...data, ...nonUserData];
+      localStorage.setItem('shopee_academy_links', JSON.stringify(merged));
+      return merged;
+    }
+  } catch (e) {
+    console.warn('Fallback to local affiliate links cache');
+  }
+  return getStoredAffiliateLinks();
 }
 
 // 5. PERFORMANCE TRACKER STORAGE
@@ -428,11 +709,67 @@ export function getStoredPerformanceRecords(): PerformanceRecord[] {
   }
 }
 
-export function saveStoredPerformanceRecord(record: PerformanceRecord): void {
+export function saveStoredPerformanceRecord(record: PerformanceRecord, currentUserId?: string): void {
+  const finalUserId = (isRealUser(currentUserId) ? currentUserId : record.user_id) || 'default';
+  const preparedRecord: PerformanceRecord = {
+    ...record,
+    user_id: finalUserId,
+  };
   const list = getStoredPerformanceRecords();
-  const index = list.findIndex((r) => r.id === record.id);
-  const updated = index >= 0 ? list.map((r) => (r.id === record.id ? record : r)) : [record, ...list];
+  const index = list.findIndex((r) => r.id === preparedRecord.id);
+  const updated = index >= 0 ? list.map((r) => (r.id === preparedRecord.id ? preparedRecord : r)) : [preparedRecord, ...list];
   localStorage.setItem('shopee_academy_performance_records', JSON.stringify(updated));
+
+  if (isRealUser(finalUserId)) {
+    supabase
+      .from('performance_records')
+      .upsert(
+        {
+          id: preparedRecord.id,
+          user_id: finalUserId,
+          content_item_id: preparedRecord.content_item_id,
+          record_date: preparedRecord.record_date,
+          views: preparedRecord.views || 0,
+          clicks: preparedRecord.clicks || 0,
+          orders: preparedRecord.orders || 0,
+          cancelled_orders: preparedRecord.cancelled_orders || 0,
+          qualified_orders: preparedRecord.qualified_orders || 0,
+          commission_estimated: preparedRecord.commission_estimated || 0,
+          commission_pending: preparedRecord.commission_pending || 0,
+          commission_approved: preparedRecord.commission_approved || 0,
+          commission_paid: preparedRecord.commission_paid || 0,
+          notes: preparedRecord.notes || null,
+          updated_at: new Date().toISOString(),
+        },
+        { onConflict: 'id' }
+      )
+      .then(({ error }) => {
+        if (error) console.warn('Supabase sync performance record error:', error.message);
+      });
+  }
+}
+
+export async function syncPerformanceRecordsFromCloud(userId: string): Promise<PerformanceRecord[]> {
+  if (!isRealUser(userId)) return getStoredPerformanceRecords();
+
+  try {
+    const { data, error } = await supabase
+      .from('performance_records')
+      .select('*')
+      .eq('user_id', userId)
+      .order('record_date', { ascending: false });
+
+    if (!error && data && data.length > 0) {
+      const localList = getStoredPerformanceRecords();
+      const nonUserData = localList.filter((r) => r.user_id !== userId && r.user_id !== 'default');
+      const merged = [...data, ...nonUserData];
+      localStorage.setItem('shopee_academy_performance_records', JSON.stringify(merged));
+      return merged;
+    }
+  } catch (e) {
+    console.warn('Fallback to local performance records cache');
+  }
+  return getStoredPerformanceRecords();
 }
 
 // 6. EXPERIMENTS STORAGE
@@ -470,16 +807,84 @@ export function getStoredExperiments(): ExperimentItem[] {
   }
 }
 
-export function saveStoredExperiment(exp: ExperimentItem): void {
+export function saveStoredExperiment(exp: ExperimentItem, currentUserId?: string): void {
+  const finalUserId = (isRealUser(currentUserId) ? currentUserId : exp.user_id) || 'default';
+  const preparedExp: ExperimentItem = {
+    ...exp,
+    user_id: finalUserId,
+  };
   const list = getStoredExperiments();
-  const index = list.findIndex((e) => e.id === exp.id);
-  const updated = index >= 0 ? list.map((e) => (e.id === exp.id ? exp : e)) : [exp, ...list];
+  const index = list.findIndex((e) => e.id === preparedExp.id);
+  const updated = index >= 0 ? list.map((e) => (e.id === preparedExp.id ? preparedExp : e)) : [preparedExp, ...list];
   localStorage.setItem('shopee_academy_experiments', JSON.stringify(updated));
+
+  if (isRealUser(finalUserId)) {
+    supabase
+      .from('experiments')
+      .upsert(
+        {
+          id: preparedExp.id,
+          user_id: finalUserId,
+          name: preparedExp.name,
+          goal: preparedExp.goal,
+          hypothesis: preparedExp.hypothesis,
+          variable: preparedExp.variable,
+          primary_metric: preparedExp.primary_metric,
+          baseline: preparedExp.baseline || 0,
+          result: preparedExp.result || 0,
+          start_date: preparedExp.start_date,
+          end_date: preparedExp.end_date || preparedExp.start_date,
+          sample_size: preparedExp.sample_size || null,
+          limitations: preparedExp.limitations || null,
+          decision: preparedExp.decision || null,
+          decision_reason: preparedExp.decision_reason || null,
+          lessons: preparedExp.lessons || null,
+          updated_at: new Date().toISOString(),
+        },
+        { onConflict: 'id' }
+      )
+      .then(({ error }) => {
+        if (error) console.warn('Supabase sync experiment error:', error.message);
+      });
+  }
 }
 
-export function deleteStoredExperiment(id: string): void {
+export function deleteStoredExperiment(id: string, currentUserId?: string): void {
   const list = getStoredExperiments().filter((e) => e.id !== id);
   localStorage.setItem('shopee_academy_experiments', JSON.stringify(list));
+
+  if (isRealUser(currentUserId)) {
+    supabase
+      .from('experiments')
+      .delete()
+      .eq('id', id)
+      .then(({ error }) => {
+        if (error) console.warn('Supabase delete experiment error:', error.message);
+      });
+  }
+}
+
+export async function syncExperimentsFromCloud(userId: string): Promise<ExperimentItem[]> {
+  if (!isRealUser(userId)) return getStoredExperiments();
+
+  try {
+    const { data, error } = await supabase
+      .from('experiments')
+      .select('*')
+      .eq('user_id', userId)
+      .order('updated_at', { ascending: false });
+
+    if (!error && data && data.length > 0) {
+      const localList = getStoredExperiments();
+      const nonUserData = localList.filter((e) => e.user_id !== userId && e.user_id !== 'default');
+      const merged = [...data, ...nonUserData];
+      localStorage.setItem('shopee_academy_experiments', JSON.stringify(merged));
+      return merged;
+    }
+  } catch (e) {
+    console.warn('Fallback to local experiments cache');
+  }
+  return getStoredExperiments();
 }
 
 // 7. SOP DOCUMENTS STORAGE
@@ -517,14 +922,73 @@ export function getStoredSops(): SopItem[] {
   }
 }
 
-export function saveStoredSop(sop: SopItem): void {
+export function saveStoredSop(sop: SopItem, currentUserId?: string): void {
+  const finalUserId = (isRealUser(currentUserId) ? currentUserId : sop.user_id) || 'default';
+  const preparedSop: SopItem = {
+    ...sop,
+    user_id: finalUserId,
+  };
   const list = getStoredSops();
-  const index = list.findIndex((s) => s.id === sop.id);
-  const updated = index >= 0 ? list.map((s) => (s.id === sop.id ? sop : s)) : [sop, ...list];
+  const index = list.findIndex((s) => s.id === preparedSop.id);
+  const updated = index >= 0 ? list.map((s) => (s.id === preparedSop.id ? preparedSop : s)) : [preparedSop, ...list];
   localStorage.setItem('shopee_academy_sops', JSON.stringify(updated));
+
+  if (isRealUser(finalUserId)) {
+    supabase
+      .from('sop_documents')
+      .upsert(
+        {
+          id: preparedSop.id,
+          user_id: finalUserId,
+          title: preparedSop.title,
+          category: preparedSop.category,
+          procedure: preparedSop.procedure,
+          last_reviewed_at: preparedSop.last_reviewed_at || new Date().toISOString().slice(0, 10),
+          review_notes: preparedSop.review_notes || null,
+          updated_at: new Date().toISOString(),
+        },
+        { onConflict: 'id' }
+      )
+      .then(({ error }) => {
+        if (error) console.warn('Supabase sync sop error:', error.message);
+      });
+  }
 }
 
-export function deleteStoredSop(id: string): void {
+export function deleteStoredSop(id: string, currentUserId?: string): void {
   const list = getStoredSops().filter((s) => s.id !== id);
   localStorage.setItem('shopee_academy_sops', JSON.stringify(list));
+
+  if (isRealUser(currentUserId)) {
+    supabase
+      .from('sop_documents')
+      .delete()
+      .eq('id', id)
+      .then(({ error }) => {
+        if (error) console.warn('Supabase delete sop error:', error.message);
+      });
+  }
+}
+
+export async function syncSopsFromCloud(userId: string): Promise<SopItem[]> {
+  if (!isRealUser(userId)) return getStoredSops();
+
+  try {
+    const { data, error } = await supabase
+      .from('sop_documents')
+      .select('*')
+      .eq('user_id', userId)
+      .order('updated_at', { ascending: false });
+
+    if (!error && data && data.length > 0) {
+      const localList = getStoredSops();
+      const nonUserData = localList.filter((s) => s.user_id !== userId && s.user_id !== 'default');
+      const merged = [...data, ...nonUserData];
+      localStorage.setItem('shopee_academy_sops', JSON.stringify(merged));
+      return merged;
+    }
+  } catch (e) {
+    console.warn('Fallback to local sops cache');
+  }
+  return getStoredSops();
 }

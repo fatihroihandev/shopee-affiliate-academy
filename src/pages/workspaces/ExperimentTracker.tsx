@@ -4,7 +4,9 @@ import {
   getStoredExperiments,
   saveStoredExperiment,
   deleteStoredExperiment,
+  syncExperimentsFromCloud,
 } from '@/features/workspaces/workspaceStorage';
+import { useAuth } from '@/features/auth/AuthContext';
 import { Card } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
 import { Badge } from '@/components/ui/Badge';
@@ -23,7 +25,8 @@ import {
 } from 'lucide-react';
 
 export const ExperimentTracker: React.FC = () => {
-  const [experiments, setExperiments] = useState<ExperimentItem[]>([]);
+  const { user } = useAuth();
+  const [experiments, setExperiments] = useState<ExperimentItem[]>(getStoredExperiments());
   const [selectedFilter, setSelectedFilter] = useState<string>('all');
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingExp, setEditingExp] = useState<ExperimentItem | null>(null);
@@ -47,8 +50,14 @@ export const ExperimentTracker: React.FC = () => {
   });
 
   useEffect(() => {
-    setExperiments(getStoredExperiments());
-  }, []);
+    if (user?.id) {
+      syncExperimentsFromCloud(user.id).then((fresh) => {
+        if (fresh) setExperiments(fresh);
+      });
+    } else {
+      setExperiments(getStoredExperiments());
+    }
+  }, [user]);
 
   const handleOpenAdd = () => {
     setEditingExp(null);
@@ -80,7 +89,7 @@ export const ExperimentTracker: React.FC = () => {
 
   const handleDelete = (id: string) => {
     if (confirm('Hapus dokumentasi eksperimen ini?')) {
-      deleteStoredExperiment(id);
+      deleteStoredExperiment(id, user?.id);
       setExperiments(getStoredExperiments());
     }
   };
@@ -93,7 +102,8 @@ export const ExperimentTracker: React.FC = () => {
     }
 
     const item: ExperimentItem = {
-      id: editingExp ? editingExp.id : `exp-${Date.now()}`,
+      id: editingExp ? editingExp.id : (typeof crypto !== 'undefined' && crypto.randomUUID ? crypto.randomUUID() : `exp-${Date.now()}`),
+      user_id: user?.id || 'default',
       name: formData.name || 'Eksperimen Baru',
       goal: formData.goal || '',
       hypothesis: formData.hypothesis || '',
@@ -110,7 +120,7 @@ export const ExperimentTracker: React.FC = () => {
       lessons: formData.lessons || '',
     };
 
-    saveStoredExperiment(item);
+    saveStoredExperiment(item, user?.id);
     setExperiments(getStoredExperiments());
     setIsModalOpen(false);
   };

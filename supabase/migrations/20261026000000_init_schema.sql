@@ -43,7 +43,7 @@ $$ LANGUAGE plpgsql SECURITY DEFINER;
 
 -- 3. ORDERS & ENTITLEMENTS (Sebelum LMS agar RLS bisa mengecek entitlement)
 CREATE TABLE IF NOT EXISTS public.orders (
-    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    id TEXT PRIMARY KEY DEFAULT gen_random_uuid()::text,
     order_number TEXT NOT NULL UNIQUE,
     user_id UUID REFERENCES public.profiles(id) ON DELETE SET NULL,
     customer_email TEXT NOT NULL,
@@ -51,6 +51,9 @@ CREATE TABLE IF NOT EXISTS public.orders (
     currency TEXT DEFAULT 'IDR' NOT NULL,
     provider TEXT NOT NULL, -- 'lynk', 'dana_qris', 'manual', 'xendit'
     provider_reference TEXT UNIQUE,
+    sku TEXT DEFAULT 'affiliate_academy_pro',
+    tier TEXT DEFAULT 'pro',
+    notes TEXT,
     status TEXT CHECK (status IN ('pending', 'paid', 'cancelled', 'refunded', 'failed')) DEFAULT 'pending' NOT NULL,
     paid_at TIMESTAMPTZ,
     created_at TIMESTAMPTZ DEFAULT TIMEZONE('utc'::text, NOW()) NOT NULL,
@@ -58,12 +61,13 @@ CREATE TABLE IF NOT EXISTS public.orders (
 );
 
 CREATE TABLE IF NOT EXISTS public.entitlements (
-    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    id TEXT PRIMARY KEY DEFAULT gen_random_uuid()::text,
     user_id UUID NOT NULL REFERENCES public.profiles(id) ON DELETE CASCADE,
+    customer_email TEXT,
     product_code TEXT NOT NULL DEFAULT 'affiliate_academy',
     access_level TEXT NOT NULL DEFAULT 'premium',
     status TEXT CHECK (status IN ('active', 'revoked', 'expired')) DEFAULT 'active' NOT NULL,
-    source_order_id UUID REFERENCES public.orders(id) ON DELETE SET NULL,
+    source_order_id TEXT REFERENCES public.orders(id) ON DELETE SET NULL,
     granted_at TIMESTAMPTZ DEFAULT TIMEZONE('utc'::text, NOW()) NOT NULL,
     revoked_at TIMESTAMPTZ,
     revocation_reason TEXT,
@@ -79,17 +83,36 @@ BEGIN
   END IF;
   RETURN EXISTS (
     SELECT 1 FROM public.entitlements
-    WHERE user_id = auth.uid() AND product_code = 'affiliate_academy' AND status = 'active'
+    WHERE user_id = auth.uid() 
+      AND product_code = 'affiliate_academy' 
+      AND status = 'active'
+      AND access_level IN ('pro', 'pro_plus', 'premium')
+  );
+END;
+$$ LANGUAGE plpgsql SECURITY DEFINER;
+
+CREATE OR REPLACE FUNCTION public.has_active_pro_plus_access()
+RETURNS BOOLEAN AS $$
+BEGIN
+  IF public.is_admin() THEN
+    RETURN TRUE;
+  END IF;
+  RETURN EXISTS (
+    SELECT 1 FROM public.entitlements
+    WHERE user_id = auth.uid() 
+      AND product_code = 'affiliate_academy' 
+      AND status = 'active'
+      AND access_level IN ('pro_plus', 'premium')
   );
 END;
 $$ LANGUAGE plpgsql SECURITY DEFINER;
 
 CREATE TABLE IF NOT EXISTS public.admin_audit_logs (
-    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    id TEXT PRIMARY KEY DEFAULT gen_random_uuid()::text,
     admin_user_id UUID NOT NULL REFERENCES public.profiles(id),
     action TEXT NOT NULL,
     target_user_id UUID REFERENCES public.profiles(id),
-    related_order_id UUID REFERENCES public.orders(id),
+    related_order_id TEXT REFERENCES public.orders(id),
     reason TEXT,
     metadata JSONB DEFAULT '{}'::jsonb,
     created_at TIMESTAMPTZ DEFAULT TIMEZONE('utc'::text, NOW()) NOT NULL
@@ -97,7 +120,7 @@ CREATE TABLE IF NOT EXISTS public.admin_audit_logs (
 
 -- 4. KURIKULUM & LMS
 CREATE TABLE IF NOT EXISTS public.modules (
-    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    id TEXT PRIMARY KEY, -- 'm00' sampai 'm06'
     code TEXT NOT NULL UNIQUE, -- 'M00' sampai 'M06'
     title TEXT NOT NULL,
     slug TEXT NOT NULL UNIQUE,
@@ -107,8 +130,8 @@ CREATE TABLE IF NOT EXISTS public.modules (
 );
 
 CREATE TABLE IF NOT EXISTS public.lessons (
-    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-    module_id UUID NOT NULL REFERENCES public.modules(id) ON DELETE CASCADE,
+    id TEXT PRIMARY KEY, -- 'l01' sampai 'l30'
+    module_id TEXT NOT NULL REFERENCES public.modules(id) ON DELETE CASCADE,
     title TEXT NOT NULL,
     slug TEXT NOT NULL,
     content TEXT NOT NULL,
@@ -123,7 +146,7 @@ CREATE TABLE IF NOT EXISTS public.lessons (
 CREATE TABLE IF NOT EXISTS public.lesson_progress (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     user_id UUID NOT NULL REFERENCES public.profiles(id) ON DELETE CASCADE,
-    lesson_id UUID NOT NULL REFERENCES public.lessons(id) ON DELETE CASCADE,
+    lesson_id TEXT NOT NULL REFERENCES public.lessons(id) ON DELETE CASCADE,
     is_completed BOOLEAN DEFAULT false NOT NULL,
     completed_at TIMESTAMPTZ,
     updated_at TIMESTAMPTZ DEFAULT TIMEZONE('utc'::text, NOW()) NOT NULL,
@@ -131,7 +154,7 @@ CREATE TABLE IF NOT EXISTS public.lesson_progress (
 );
 
 CREATE TABLE IF NOT EXISTS public.practice_projects (
-    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    id TEXT PRIMARY KEY, -- 'p01' sampai 'p08'
     code TEXT NOT NULL UNIQUE, -- 'P01' sampai 'P08'
     title TEXT NOT NULL,
     objective TEXT NOT NULL,
@@ -144,7 +167,7 @@ CREATE TABLE IF NOT EXISTS public.practice_projects (
 CREATE TABLE IF NOT EXISTS public.project_progress (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     user_id UUID NOT NULL REFERENCES public.profiles(id) ON DELETE CASCADE,
-    project_id UUID NOT NULL REFERENCES public.practice_projects(id) ON DELETE CASCADE,
+    project_id TEXT NOT NULL REFERENCES public.practice_projects(id) ON DELETE CASCADE,
     completed_checklist JSONB NOT NULL DEFAULT '[]'::jsonb,
     reflection_notes TEXT,
     evidence_urls JSONB NOT NULL DEFAULT '[]'::jsonb,
@@ -157,7 +180,7 @@ CREATE TABLE IF NOT EXISTS public.project_progress (
 
 -- 5. WORKSPACE EKSEKUSI PENGGUNA
 CREATE TABLE IF NOT EXISTS public.affiliate_products (
-    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    id TEXT PRIMARY KEY DEFAULT gen_random_uuid()::text,
     user_id UUID NOT NULL REFERENCES public.profiles(id) ON DELETE CASCADE,
     name TEXT NOT NULL,
     product_url TEXT NOT NULL,
@@ -182,7 +205,7 @@ CREATE TABLE IF NOT EXISTS public.affiliate_products (
 );
 
 CREATE TABLE IF NOT EXISTS public.research_notes (
-    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    id TEXT PRIMARY KEY DEFAULT gen_random_uuid()::text,
     user_id UUID NOT NULL REFERENCES public.profiles(id) ON DELETE CASCADE,
     note_type TEXT CHECK (note_type IN ('niche', 'competitor')) NOT NULL,
     title TEXT NOT NULL,
@@ -199,7 +222,7 @@ CREATE TABLE IF NOT EXISTS public.research_notes (
 );
 
 CREATE TABLE IF NOT EXISTS public.content_templates (
-    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    id TEXT PRIMARY KEY DEFAULT gen_random_uuid()::text,
     kind TEXT CHECK (kind IN ('hook', 'script', 'cta', 'checklist')) NOT NULL,
     subtype TEXT,
     title TEXT NOT NULL,
@@ -209,9 +232,9 @@ CREATE TABLE IF NOT EXISTS public.content_templates (
 );
 
 CREATE TABLE IF NOT EXISTS public.affiliate_links (
-    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    id TEXT PRIMARY KEY DEFAULT gen_random_uuid()::text,
     user_id UUID NOT NULL REFERENCES public.profiles(id) ON DELETE CASCADE,
-    product_id UUID REFERENCES public.affiliate_products(id) ON DELETE SET NULL,
+    product_id TEXT REFERENCES public.affiliate_products(id) ON DELETE SET NULL,
     shop_name TEXT,
     url TEXT NOT NULL,
     platform TEXT NOT NULL,
@@ -222,10 +245,10 @@ CREATE TABLE IF NOT EXISTS public.affiliate_links (
 );
 
 CREATE TABLE IF NOT EXISTS public.content_items (
-    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    id TEXT PRIMARY KEY DEFAULT gen_random_uuid()::text,
     user_id UUID NOT NULL REFERENCES public.profiles(id) ON DELETE CASCADE,
-    product_id UUID REFERENCES public.affiliate_products(id) ON DELETE SET NULL,
-    link_id UUID REFERENCES public.affiliate_links(id) ON DELETE SET NULL,
+    product_id TEXT REFERENCES public.affiliate_products(id) ON DELETE SET NULL,
+    link_id TEXT REFERENCES public.affiliate_links(id) ON DELETE SET NULL,
     title TEXT NOT NULL,
     platform TEXT NOT NULL,
     pillar TEXT,
@@ -246,9 +269,9 @@ CREATE TABLE IF NOT EXISTS public.content_items (
 );
 
 CREATE TABLE IF NOT EXISTS public.performance_records (
-    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    id TEXT PRIMARY KEY DEFAULT gen_random_uuid()::text,
     user_id UUID NOT NULL REFERENCES public.profiles(id) ON DELETE CASCADE,
-    content_item_id UUID NOT NULL REFERENCES public.content_items(id) ON DELETE CASCADE,
+    content_item_id TEXT NOT NULL REFERENCES public.content_items(id) ON DELETE CASCADE,
     record_date DATE NOT NULL,
     views INT DEFAULT 0,
     clicks INT DEFAULT 0,
@@ -266,7 +289,7 @@ CREATE TABLE IF NOT EXISTS public.performance_records (
 );
 
 CREATE TABLE IF NOT EXISTS public.commission_periods (
-    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    id TEXT PRIMARY KEY DEFAULT gen_random_uuid()::text,
     user_id UUID NOT NULL REFERENCES public.profiles(id) ON DELETE CASCADE,
     period_label TEXT NOT NULL,
     start_date DATE NOT NULL,
@@ -290,7 +313,7 @@ CREATE TABLE IF NOT EXISTS public.commission_periods (
 );
 
 CREATE TABLE IF NOT EXISTS public.experiments (
-    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    id TEXT PRIMARY KEY DEFAULT gen_random_uuid()::text,
     user_id UUID NOT NULL REFERENCES public.profiles(id) ON DELETE CASCADE,
     name TEXT NOT NULL,
     goal TEXT NOT NULL,
@@ -311,7 +334,7 @@ CREATE TABLE IF NOT EXISTS public.experiments (
 );
 
 CREATE TABLE IF NOT EXISTS public.sop_documents (
-    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    id TEXT PRIMARY KEY DEFAULT gen_random_uuid()::text,
     user_id UUID NOT NULL REFERENCES public.profiles(id) ON DELETE CASCADE,
     title TEXT NOT NULL,
     category TEXT NOT NULL,
@@ -324,7 +347,7 @@ CREATE TABLE IF NOT EXISTS public.sop_documents (
 
 -- 6. PROGRAM AFFILIATE INTERNAL
 CREATE TABLE IF NOT EXISTS public.affiliate_profiles (
-    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    id TEXT PRIMARY KEY DEFAULT gen_random_uuid()::text,
     user_id UUID NOT NULL REFERENCES public.profiles(id) ON DELETE CASCADE UNIQUE,
     referral_code TEXT NOT NULL UNIQUE,
     bank_name TEXT,
@@ -338,8 +361,8 @@ CREATE TABLE IF NOT EXISTS public.affiliate_profiles (
 );
 
 CREATE TABLE IF NOT EXISTS public.referral_clicks (
-    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-    affiliate_id UUID NOT NULL REFERENCES public.affiliate_profiles(id) ON DELETE CASCADE,
+    id TEXT PRIMARY KEY DEFAULT gen_random_uuid()::text,
+    affiliate_id TEXT NOT NULL REFERENCES public.affiliate_profiles(id) ON DELETE CASCADE,
     ip_hash TEXT,
     user_agent TEXT,
     referer_url TEXT,
@@ -347,9 +370,9 @@ CREATE TABLE IF NOT EXISTS public.referral_clicks (
 );
 
 CREATE TABLE IF NOT EXISTS public.referral_conversions (
-    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-    affiliate_id UUID NOT NULL REFERENCES public.affiliate_profiles(id) ON DELETE CASCADE,
-    order_id UUID NOT NULL REFERENCES public.orders(id) ON DELETE CASCADE UNIQUE,
+    id TEXT PRIMARY KEY DEFAULT gen_random_uuid()::text,
+    affiliate_id TEXT NOT NULL REFERENCES public.affiliate_profiles(id) ON DELETE CASCADE,
+    order_id TEXT NOT NULL REFERENCES public.orders(id) ON DELETE CASCADE UNIQUE,
     commission_rate NUMERIC(4,2) DEFAULT 0.10 NOT NULL,
     commission_amount NUMERIC(12,2) NOT NULL,
     status TEXT CHECK (status IN ('pending', 'approved', 'rejected', 'paid')) DEFAULT 'pending' NOT NULL,
@@ -358,8 +381,8 @@ CREATE TABLE IF NOT EXISTS public.referral_conversions (
 );
 
 CREATE TABLE IF NOT EXISTS public.affiliate_payouts (
-    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-    affiliate_id UUID NOT NULL REFERENCES public.affiliate_profiles(id) ON DELETE CASCADE,
+    id TEXT PRIMARY KEY DEFAULT gen_random_uuid()::text,
+    affiliate_id TEXT NOT NULL REFERENCES public.affiliate_profiles(id) ON DELETE CASCADE,
     amount NUMERIC(12,2) NOT NULL,
     status TEXT CHECK (status IN ('requested', 'processing', 'completed', 'rejected')) DEFAULT 'requested' NOT NULL,
     admin_notes TEXT,
@@ -369,7 +392,7 @@ CREATE TABLE IF NOT EXISTS public.affiliate_payouts (
 );
 
 CREATE TABLE IF NOT EXISTS public.marketing_materials (
-    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    id TEXT PRIMARY KEY DEFAULT gen_random_uuid()::text,
     title TEXT NOT NULL,
     category TEXT CHECK (category IN ('banner', 'swipe_copy', 'video_mockup', 'guide')) NOT NULL,
     content_url TEXT,
@@ -527,6 +550,10 @@ CREATE POLICY "Users can view own orders"
 ON public.orders FOR SELECT
 USING (auth.uid() = user_id OR public.is_admin());
 
+CREATE POLICY "Public or Users can insert orders"
+ON public.orders FOR INSERT
+WITH CHECK (true);
+
 CREATE POLICY "Users can view own entitlements"
 ON public.entitlements FOR SELECT
 USING (auth.uid() = user_id OR public.is_admin());
@@ -549,6 +576,10 @@ CREATE POLICY "Affiliates manage own profile"
 ON public.affiliate_profiles FOR ALL
 USING (auth.uid() = user_id);
 
+CREATE POLICY "Public can record referral clicks"
+ON public.referral_clicks FOR INSERT
+WITH CHECK (true);
+
 CREATE POLICY "Affiliates view own conversions"
 ON public.referral_conversions FOR SELECT
 USING (
@@ -565,6 +596,15 @@ USING (
     SELECT 1 FROM public.affiliate_profiles
     WHERE id = affiliate_payouts.affiliate_id AND user_id = auth.uid()
   ) OR public.is_admin()
+);
+
+CREATE POLICY "Users can request affiliate payouts"
+ON public.affiliate_payouts FOR INSERT
+WITH CHECK (
+  EXISTS (
+    SELECT 1 FROM public.affiliate_profiles
+    WHERE id = affiliate_payouts.affiliate_id AND user_id = auth.uid()
+  )
 );
 
 CREATE POLICY "Marketing materials viewable by authenticated users"

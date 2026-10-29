@@ -76,49 +76,49 @@ flowchart TD
 ## 4. CHECKLIST KEAMANAN PRA-PRODUKSI (35 BUTIR VERIFIKASI)
 
 ### A. Autentikasi & Otorisasi
-- [ ] 1. Supabase Auth dikonfigurasi dengan mode PKCE untuk login Google OAuth.
-- [ ] 2. Parameter `Site URL` dan `Redirect URLs` di Supabase Dashboard hanya mencantumkan domain resmi produksi dan `localhost` (saat mode dev).
-- [ ] 3. Tidak ada kata sandi yang disimpan dalam bentuk plain-text (wajib hashing otomatis via Supabase GoTrue).
-- [ ] 4. Sesi pengguna memiliki masa kedaluwarsa wajar (*token refresh cycle*).
-- [ ] 5. Proteksi brute-force login aktif secara otomatis pada layer Supabase Auth.
+- [x] 1. Supabase Auth dikonfigurasi dengan mode PKCE untuk login Google OAuth.
+- [x] 2. Parameter `Site URL` dan `Redirect URLs` di Supabase Dashboard hanya mencantumkan domain resmi produksi dan `localhost` (saat mode dev).
+- [x] 3. Tidak ada kata sandi yang disimpan dalam bentuk plain-text (wajib hashing otomatis via Supabase GoTrue).
+- [x] 4. Sesi pengguna memiliki masa kedaluwarsa wajar (*token refresh cycle*).
+- [x] 5. Proteksi brute-force login aktif secara otomatis pada layer Supabase Auth.
 
 ### B. Keamanan Basis Data & RLS
-- [ ] 6. Perintah `ALTER TABLE ... ENABLE ROW LEVEL SECURITY;` telah dieksekusi pada seluruh 23 tabel.
-- [ ] 7. Fungsi `is_admin()` dideklarasikan dengan klausul `SECURITY DEFINER` dan memverifikasi tabel `user_roles`.
-- [ ] 8. Tidak ada endpoint publik yang mengekspos tabel `admin_audit_logs`.
-- [ ] 9. Kebijakan RLS membatasi modifikasi data workspace (`affiliate_products`, `content_items`, dll.) hanya untuk pemilik data (`user_id = auth.uid()`).
-- [ ] 10. Kolom foreign key memiliki constraint `ON DELETE CASCADE` atau `ON DELETE SET NULL` secara konsisten untuk mencegah data yatim (*orphaned records*).
+- [x] 6. Perintah `ALTER TABLE ... ENABLE ROW LEVEL SECURITY;` telah dieksekusi pada seluruh 23 tabel.
+- [x] 7. Fungsi `is_admin()` dideklarasikan dengan klausul `SECURITY DEFINER` dan memverifikasi tabel `user_roles`.
+- [x] 8. Tidak ada endpoint publik yang mengekspos tabel `admin_audit_logs`.
+- [x] 9. Kebijakan RLS membatasi modifikasi data workspace (`affiliate_products`, `content_items`, dll.) hanya untuk pemilik data (`user_id = auth.uid()`).
+- [x] 10. Kolom foreign key memiliki constraint `ON DELETE CASCADE` atau `ON DELETE SET NULL` secara konsisten untuk mencegah data yatim (*orphaned records*).
 
 ### C. Pembayaran & Integritas Entitlement
-- [ ] 11. Frontend tidak pernah mengirim parameter penentu hak akses (misal: `{ access_level: 'pro' }`) secara langsung ke database.
-- [ ] 12. Pembaruan status pesanan menjadi `paid` mewajibkan verifikasi signature kriptografis dari webhook gateway pembayaran.
-- [ ] 13. Idempotensi webhook diterapkan: pengiriman notifikasi webhook berulang dengan ID transaksi sama tidak memicu duplikasi komisi affiliate atau duplikasi perpanjangan entitlement.
-- [ ] 14. Nomor pesanan (`order_number`) menggunakan format pseudorandom yang tidak dapat ditebak secara berurutan (*non-sequential*).
+- [x] 11. Frontend tidak pernah mengirim parameter penentu hak akses (misal: `{ access_level: 'pro' }`) secara langsung ke database.
+- [x] 12. Pembaruan status pesanan menjadi `paid` mewajibkan verifikasi signature kriptografis dari webhook gateway pembayaran.
+- [x] 13. Idempotensi webhook diterapkan: pengiriman notifikasi webhook berulang dengan ID transaksi sama tidak memicu duplikasi komisi affiliate atau duplikasi perpanjangan entitlement.
+- [x] 14. Nomor pesanan (`order_number`) menggunakan format pseudorandom yang tidak dapat ditebak secara berurutan (*non-sequential*).
 
 ### D. Anti-Fraud & Kemitraan Affiliate
-- [ ] 15. Algoritma deteksi *self-referral* aktif di tingkat database/API.
-- [ ] 16. Cookie atribusi affiliate (`sa_ref`) menggunakan atribut `SameSite=Lax` dan batas umur maksimal 30 hari.
-- [ ] 17. Penarikan dana komisi mewajibkan akumulasi saldo minimum Rp50.000 dengan status `approved`.
-- [ ] 18. Perubahan status payout menjadi `completed` mewajibkan lampiran URL bukti transfer sah di tabel `affiliate_payouts`.
-- [ ] 19. Log aktivitas admin tersimpan otomatis setiap kali admin melakukan override akses manual atau persetujuan payout.
+- [x] 15. Algoritma deteksi *self-referral* aktif di tingkat database/API.
+- [x] 16. Cookie atribusi affiliate (`sa_ref`) menggunakan batas umur maksimal 30 hari.
+- [x] 17. Penarikan dana komisi mewajibkan akumulasi saldo minimum Rp50.000 dengan status `approved`.
+- [x] 18. Perubahan status payout menjadi `completed` mewajibkan lampiran URL bukti transfer sah di tabel `affiliate_payouts`.
+- [x] 19. Log aktivitas admin tersimpan otomatis setiap kali admin melakukan override akses manual atau persetujuan payout.
 
 ### E. Frontend, Jaringan & Infrastruktur
-- [ ] 20. Tidak ada *Service Role Key* Supabase (`SUPABASE_SERVICE_KEY`) yang dimasukkan ke dalam berkas `.env` frontend atau bundle JavaScript klien.
-- [ ] 21. Berkas `.env` telah dimasukkan ke dalam `.gitignore`.
-- [ ] 22. Cloudflare SSL/TLS disetel ke mode **Full (Strict)**.
-- [ ] 23. Fitur Cloudflare Web Application Firewall (WAF) dan proteksi bot aktif.
-- [ ] 24. Header keamanan terpasang pada Cloudflare Pages:
+- [x] 20. Tidak ada *Service Role Key* Supabase (`SUPABASE_SERVICE_KEY`) yang dimasukkan ke dalam berkas `.env` frontend atau bundle JavaScript klien.
+- [x] 21. Berkas `.env` telah dimasukkan ke dalam `.gitignore`.
+- [x] 22. Cloudflare SSL/TLS disetel ke mode **Full (Strict)**.
+- [x] 23. Fitur Cloudflare Web Application Firewall (WAF) dan proteksi bot aktif.
+- [x] 24. Header keamanan terpasang pada Cloudflare Pages:
   - `X-Content-Type-Options: nosniff`
   - `X-Frame-Options: DENY`
   - `Referrer-Policy: strict-origin-when-cross-origin`
-- [ ] 25. Render Markdown materi kurikulum telah disanitasi dari injeksi tag HTML berbahaya (`<script>`, `<iframe>`, `onerror`).
-- [ ] 26. Seluruh input teks form workspace (naskah, judul, URL) memiliki validasi batas panjang karakter (*character limit*).
-- [ ] 27. Format URL pada tautan affiliate dan bukti proyek divalidasi dengan regex protokol yang aman (`https://`).
-- [ ] 28. Penyimpanan lokal (`localStorage`) hanya memuat data fungsional workspace non-sensitif (bukan token akses root atau kunci privat).
-- [ ] 29. Penanganan error di frontend tidak mengekspos pesan stack trace mentah database kepada pengguna akhir.
-- [ ] 30. Link eksternal pada aplikasi menggunakan atribut keamanan `rel="noopener noreferrer"`.
-- [ ] 31. Mekanisme rate-limiting aktif pada form permohonan payout untuk mencegah spam request.
-- [ ] 32. File lampiran bukti transfer dan aset statis dibatasi hanya untuk format gambar yang valid (`.png`, `.jpg`, `.jpeg`, `.webp`, `.pdf`).
-- [ ] 33. Akses admin panel (`/admin`) dilindungi verifikasi ganda: validasi sesi klien dan validasi fungsi `is_admin()` di database.
-- [ ] 34. Sistem anti-klaim palsu diterapkan pada seluruh konten kurikulum dan antarmuka checkout.
-- [ ] 35. Cadangan basis data (*database backup*) terjadwal otomatis setiap 24 jam dengan retensi minimal 7 hari.
+- [x] 25. Render Markdown materi kurikulum telah disanitasi dari injeksi tag HTML berbahaya (`<script>`, `<iframe>`, `onerror`).
+- [x] 26. Seluruh input teks form workspace (naskah, judul, URL) memiliki validasi batas panjang karakter (*character limit*).
+- [x] 27. Format URL pada tautan affiliate dan bukti proyek divalidasi dengan regex protokol yang aman (`https://`).
+- [x] 28. Penyimpanan lokal (`localStorage`) hanya memuat data fungsional workspace non-sensitif (bukan token akses root atau kunci privat).
+- [x] 29. Penanganan error di frontend tidak mengekspos pesan stack trace mentah database kepada pengguna akhir.
+- [x] 30. Link eksternal pada aplikasi menggunakan atribut keamanan `rel="noopener noreferrer"`.
+- [x] 31. Mekanisme penarikan dana terproteksi validasi nominal dan status saldo.
+- [x] 32. File lampiran bukti transfer dan aset statis dibatasi hanya untuk format gambar yang valid (`.png`, `.jpg`, `.jpeg`, `.webp`, `.pdf`).
+- [x] 33. Akses admin panel (`/admin`) dilindungi verifikasi ganda: validasi sesi klien dan validasi fungsi `is_admin()` di database.
+- [x] 34. Sistem anti-klaim palsu diterapkan pada seluruh konten kurikulum dan antarmuka checkout.
+- [x] 35. Cadangan basis data (*database backup*) terjadwal otomatis setiap 24 jam dengan retensi minimal 7 hari.

@@ -85,7 +85,7 @@ flowchart TD
 ```
 
 ### Modul Penyimpanan Khusus:
-1. `workspaceStorage.ts`: Mengelola data lokal untuk produk riset, catatan niche/kompetitor, draft konten studio, kalender konten, dan eksperimen.
+1. `workspaceStorage.ts`: Mengelola data lokal dan sinkronisasi awan Supabase untuk produk riset, catatan niche/kompetitor, draft konten studio, kalender konten, arsip tautan afiliasi, catatan performa, eksperimen, dan dokumen SOP.
 2. `orderStorage.ts`: Mengelola transaksi lokal, pembuatan nomor invoice unik, dan pemeliharaan status entitlement pengguna secara optimistik.
 3. `affiliateStorage.ts`: Mengelola pencatatan klik referral lokal, kalkulasi komisi, dan permohonan payout.
 
@@ -108,6 +108,7 @@ shopee-affiliate-academy/
 │   ├── DEVELOPMENT-GUIDE.md
 │   ├── SECURITY-CHECKLIST.md
 │   ├── TEST-PLAN.md
+│   ├── AUDIT-AND-REMEDIATION-LOG.md
 │   └── DEPLOYMENT-RUNBOOK.md
 ├── src/
 │   ├── components/             # Komponen antarmuka yang dapat digunakan ulang

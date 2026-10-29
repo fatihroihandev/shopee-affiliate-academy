@@ -19,6 +19,7 @@ import {
   ShieldCheck,
   Zap,
   Sparkles,
+  Clock,
 } from 'lucide-react';
 
 export const CheckoutModal: React.FC<{
@@ -29,7 +30,7 @@ export const CheckoutModal: React.FC<{
 }> = ({ isOpen, onClose, onSuccess, initialSku = 'affiliate_academy_pro' }) => {
   const { user, setTier, setIsPremium } = useAuth();
   const [selectedSku, setSelectedSku] = useState<ProductSku>(initialSku);
-  const [step, setStep] = useState<'checkout' | 'payment' | 'success'>('checkout');
+  const [step, setStep] = useState<'checkout' | 'payment' | 'pending_verification' | 'success'>('checkout');
   const [email, setEmail] = useState(user?.email || 'siswa@gmail.com');
   const [paymentMethod, setPaymentMethod] = useState<'dana_qris' | 'lynk' | 'manual'>('dana_qris');
   const [createdOrder, setCreatedOrder] = useState<any>(null);
@@ -93,6 +94,8 @@ export const CheckoutModal: React.FC<{
       title={
         step === 'success'
           ? '🎉 Pembayaran Berhasil!'
+          : step === 'pending_verification'
+          ? '⏳ Menunggu Konfirmasi Pembayaran'
           : step === 'payment'
           ? 'Instruksi Pembayaran Akses'
           : 'Pilih & Beli Paket Akses Akademi'
@@ -382,14 +385,77 @@ export const CheckoutModal: React.FC<{
             <Button variant="outline" type="button" onClick={() => setStep('checkout')}>
               Ubah Kanal / Paket
             </Button>
+            <div className="flex flex-col sm:flex-row gap-2 w-full sm:w-auto">
+              {Boolean(import.meta.env.DEV) && (
+                <button
+                  type="button"
+                  onClick={handleSimulatePaymentSuccess}
+                  disabled={loading}
+                  className="px-3 py-2 text-xs font-bold bg-amber-100 border border-amber-600 text-amber-900 rounded hover:bg-amber-200 transition-colors inline-flex items-center gap-1"
+                  title="Simulasi Khusus Mode Developer"
+                >
+                  <Zap className="w-3.5 h-3.5 text-amber-700" />
+                  <span>[DEV] Simulasi Bayar</span>
+                </button>
+              )}
+              <Button
+                variant="primary"
+                onClick={() => setStep('pending_verification')}
+                className="w-full sm:w-auto flex items-center justify-center gap-2"
+              >
+                <CheckCircle2 className="w-4 h-4 text-white" />
+                <span>Saya Sudah Menyelesaikan Pembayaran</span>
+              </Button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* STEP: PENDING VERIFICATION */}
+      {step === 'pending_verification' && createdOrder && (
+        <div className="text-center py-6 space-y-5">
+          <div className="w-16 h-16 bg-pale-peach border-2 border-ink rounded-full flex items-center justify-center mx-auto shadow-[3px_3px_0px_#171717]">
+            <Clock className="w-9 h-9 text-brand-orange animate-pulse" />
+          </div>
+
+          <div className="space-y-2">
+            <h3 className="text-2xl font-black text-ink">
+              Konfirmasi Terkirim!
+            </h3>
+            <p className="text-xs text-warm-gray max-w-md mx-auto leading-relaxed">
+              Pesanan Anda dengan nomor <strong className="font-mono text-ink">{createdOrder.order_number}</strong> sedang dalam antrean verifikasi sistem.
+            </p>
+          </div>
+
+          <div className="p-4 bg-paper border-2 border-ink text-xs space-y-2 max-w-sm mx-auto text-left rounded">
+            <div className="flex justify-between">
+              <span className="text-warm-gray font-bold">Paket:</span>
+              <span className="font-bold text-ink">
+                {CATALOG_PRODUCTS[createdOrder.sku as ProductSku]?.name || 'Shopee Affiliate Academy'}
+              </span>
+            </div>
+            <div className="flex justify-between">
+              <span className="text-warm-gray font-bold">Total:</span>
+              <span className="font-mono font-bold text-brand-orange">
+                Rp{createdOrder.amount.toLocaleString('id-ID')}
+              </span>
+            </div>
+            <div className="flex justify-between">
+              <span className="text-warm-gray font-bold">Status:</span>
+              <span className="font-extrabold text-amber-600 uppercase">Menunggu Verifikasi</span>
+            </div>
+            <p className="text-[11px] text-warm-gray pt-2 border-t border-ink/10">
+              Hak akses akan diaktifkan secara otomatis setelah transaksi tervalidasi. Silakan periksa status di Dasbor Siswa secara berkala.
+            </p>
+          </div>
+
+          <div className="pt-2 flex justify-center gap-3">
             <Button
               variant="primary"
-              onClick={handleSimulatePaymentSuccess}
-              disabled={loading}
-              className="w-full sm:w-auto flex items-center justify-center gap-2"
+              onClick={handleCloseAll}
+              className="px-8 py-3 text-sm font-extrabold"
             >
-              <Zap className="w-4 h-4 text-white" />
-              <span>{loading ? 'Memverifikasi...' : 'Saya Sudah Bayar (Aktivasi Instan)'}</span>
+              Kembali ke Dasbor
             </Button>
           </div>
         </div>

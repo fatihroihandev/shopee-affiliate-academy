@@ -99,10 +99,10 @@ export const Footer: React.FC = () => {
               </li>
               <li>
                 <a
-                  href="mailto:support@affiliateacademy.site"
+                  href="mailto:support@shopeeaffiliateacademy.site"
                   className="hover:text-brand-orange transition-colors text-ink font-mono"
                 >
-                  support@affiliateacademy.site
+                  support@shopeeaffiliateacademy.site
                 </a>
               </li>
             </ul>
